@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autonomous vehicles will lead others through congested cities — Roland Meertens</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="page">
+    <a class="site-name" href="../../index.html">Roland Meertens</a>
+    <nav class="site-nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../blog/index.html" class="active">Blog</a>
+      <a href="https://github.com/rmeertens" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/rmeertens" target="_blank">LinkedIn</a>
+    </nav>
+  </div>
+</header>
+<div class="page">
+  <div class="post-header">
+    <div class="post-breadcrumb"><a href="../index.html">Blog</a></div>
+    <h1>Autonomous vehicles will lead others through congested cities</h1>
+    <div class="post-meta">September 21, 2017</div>
+  </div>
+  <div class="post-hero"><img src="https://www.pinchofintelligence.com/wp-content/uploads/2017/09/bothsigns-1024x516.jpg" alt="" loading="lazy"></div>
+  <div class="post-content">
+    <p>This weekend we got the second place in the Hack the Road Hackathon with our idea to let connected vehicles lead other vehicles through a “green wave”. As there will be a long period in which smart vehicles and “dumb” vehicles drive through the same streets, building this system would reduce a lot of traffic problems in the city without for a low price!</p>
+<h3 id="the-green-wave">The green wave</h3>
+<p>In traffic, a green wave is a phenomenon that occurs when series of traffic lights are green when you approach them. Riding a green wave, you never have to stop for a red traffic light. As stopping and accelerating takes a lot of time and wastes energy, such a green wave is beneficial for you and the road users behind you. If you know your distance to the next intersection and the time it will take for the traffic sign to become green you can calculate your ideal speed, and keep driving this speed. Sometimes, by driving a little slower, you actually are quicker at your destination, with more fuel to spare. </p>
+<h3 id="_1"><a href="https://www.pinchofintelligence.com/wp-content/uploads/2017/09/bothsigns.jpg"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/09/bothsigns-1024x516.jpg" /></a></h3>
+<h3 id="existing-solutions">Existing solutions</h3>
+<p>A few intersections in the Netherlands have traffic signs that indicate what speed you need to drive to hit the next green light. Unfortunately, many people ignore these. Perhaps people don’t pay attention to them, perhaps because they don’t understand what the signs mean. </p>
+<p>We have the same problem with traffic jams. In the Netherlands, we have so-called “matrix signs” above the road that indicate your maximum speed. If there is a traffic jam up ahead the matrix signs try to slow people down to <a href="https://www.youtube.com/watch?v=Suugn-p5C1M">prevent the “shockwave” traffic jams you often encounter</a>. Unfortunately, almost everyone ignores these signs. Many people don’t understand them, and it’s not clear that abiding these signals will result in you waiting less.</p>
+<p><a href="https://www.pinchofintelligence.com/wp-content/uploads/2017/09/leadbyexample.jpg"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/09/leadbyexample-1024x576.jpg" /></a></p>
+<h3 id="using-vehicles-as-infrastructure">Using vehicles AS infrastructure</h3>
+<p>The idea we came up with during the Hack the Road hackathon was to use autonomous/smart/connected vehicles to indicate where the green wave starts and ends. These vehicles are able to request the time-to-green and time-to-red of upcoming intersections from an API. They are also able to determine their distance to this intersection using GPS and an internal map. If they use this information to slow down or speed up to their ideal speed it would be great if other drivers could benefit from this knowledge! We proposed adding a simple light on the back of each vehicle to signal this to other users!</p>
+<p>This photoshopped image shows how we envision our prototype: a self-driving car is driving to a red light, but indicates that if you stay behind it you don’t have to brake for the red light.</p>
+<p><a href="https://www.pinchofintelligence.com/wp-content/uploads/2017/09/smartcargreen.jpg"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/09/smartcargreen-1024x819.jpg" /></a></p>
+<h3 id="the-prototype-a-wifi-chip-and-a-led-strip">The prototype: a wifi chip and a LED strip</h3>
+<p>During the hackathon, we spent a lot of time thinking about how to signal green wave information to other drivers. We wanted to convey a simple message in a way that would both be understood and followed. We went for a LED strip and programmed a wifi chip to accept messages from our computers (I used a build similar to the <a href="https://www.pinchofintelligence.com/building-a-smart-iot-bed-part-2-of-5/">one I made for my bed</a>). </p>
+<p>To get time-to-green and time-to-red information we <a href="http://dynniq.com/">interfaced with Dynniq’s API</a>. We looked at one intersection in the Dutch city Helmond whose information was available to us during this weekend. As data currently came in in a continuous stream we had to write our own parsers in Python that found relevant data. We also made a “mock-up” datastream we could use during a demo and which we use in the video below. </p>
+<h3 id="_2"><a href="https://www.pinchofintelligence.com/wp-content/uploads/2017/09/DJ1L483XoAAInk4.jpg"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/09/DJ1L483XoAAInk4-768x1024.jpg" /></a></h3>
+<h3 id="putting-a-demonstration-together">Putting a demonstration together</h3>
+<p>To demonstrate that building this product would be viable we had to show that our prototype was able to change color based on car location and live traffic information. We visualized the start and end of the green wave on a map, and let the color of our prototype change when we clicked on the map (indicating where our connected vehicle would drive). </p>
+<blockquote>
+<p>Our tech demo is ready <a href="https://twitter.com/hashtag/hacktheroad?src=hash">#hacktheroad</a> <a href="https://twitter.com/hashtag/jointhegoldenwave?src=hash">#jointhegoldenwave</a> <a href="https://t.co/yx7fkyxLOK">pic.twitter.com/yx7fkyxLOK</a></p>
+<p>— Roland Meertens (@rolandmeertens) <a href="https://twitter.com/rolandmeertens/status/908992977229447169">September 16, 2017</a></p>
+</blockquote>
+<h3 id="getting-our-product-on-the-road">Getting our product on the road</h3>
+<p>With our idea, prototype, and demonstration we got the second price of this hackathon! This means our project will be incubated by Dynniq: the company that provided us with the data we needed to make it work. To improve our product we have to wire the prototype directly into a car, improve the design of the lights, and think of a better way than wi-fi to receive traffic information in the car. </p>
+<p>Perhaps even more important than building the prototype is talking to stakeholders. As we only placed second we don’t get to fly to California to talk with companies that could help us. If you read this and think you could help us with a prototype, connect us to relevant people, can provide funding, or have any questions: please send us an email! We think it’s possible to get the first units in cars by 2018!</p>
+<h3 id="acknowledgements">Acknowledgements</h3>
+<p>We would like to thank the organisers of the Hackathon for all the effort they put into this event! The event was organised by the province of Noord Holland: thanks for inviting us over to come up with ideas for the roads in the Netherlands! We would also like to thank the BeMyApp staff who was really helpful during the event they set up: thank you very much Claire, Marc, and Su!</p>
+  </div>
+  <nav class="post-nav">
+<a class="post-nav-link post-nav-prev" href="../managing-budget-excel-machine-learning/index.html">
+  <span class="post-nav-label">&larr; Previous</span>
+  <span class="post-nav-title">Managing our budget with Excel and machine learning</span>
+</a>
+<a class="post-nav-link post-nav-next" href="../tradr-siks-summerschool-2017/index.html">
+  <span class="post-nav-label">Next &rarr;</span>
+  <span class="post-nav-title">TRADR SIKS summerschool 2017</span>
+</a>
+</nav>
+</div>
+<footer><div class="page">&copy; 2026 Roland Meertens &middot; <a href="../../index.html">meertens.dev</a></div></footer>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microbe Obliterator (MO) from Wall-e on a mopping robot — Roland Meertens</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="page">
+    <a class="site-name" href="../../index.html">Roland Meertens</a>
+    <nav class="site-nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../blog/index.html" class="active">Blog</a>
+      <a href="https://github.com/rmeertens" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/rmeertens" target="_blank">LinkedIn</a>
+    </nav>
+  </div>
+</header>
+<div class="page">
+  <div class="post-header">
+    <div class="post-breadcrumb"><a href="../index.html">Blog</a></div>
+    <h1>Microbe Obliterator (MO) from Wall-e on a mopping robot</h1>
+    <div class="post-meta">August 31, 2020</div>
+  </div>
+  <div class="post-hero"><img src="https://img.youtube.com/vi/iiMFRMoxxEI/mqdefault.jpg" alt="" loading="lazy"></div>
+  <div class="post-content">
+    <p>My favourite character in the Disney Pixar movie WALL-E is M-O. A while ago I bought a iRobot mopping robot, which always reminded me of Mo. This week I decided to try to pimp up my robot by actually making him look like Mo. I decided to make a short video to present my design. </p>
+<p>For this project I managed to get a head start by using a design by <a href="https://www.thingiverse.com/thing:3319967">Josh Swafford on Thingiverse</a>. He designed Mo himself as a standalone robot. His design was already amazing, using his components gave me an amazing head start in this project. In this blogpost I will thus refer to both his design, and the design modifications I made. </p>
+<p>If you want to build your own design you should start by buying an <a href="https://store.irobot.com/default/floor-mopping-braava-robot-mop-irobot-braava-jet/B240020.html">iRobot Braava Jet robot</a>. As a side-note: I really like this robot. He clears all foreign contaminants in the bathroom really well. </p>
+<p>If you want to replicate the design for your own robot you can already start with the following components: </p>
+<p>– The head of Mo. The design of Josh is already great.<br />
+– The arm of Mo. Take the Arm_driven print, but print it out at 140 percent (rescaled in Cura). You need the extra size as the iRobot is a bit bigger than the base Josh made<br />
+– The hand insert of the arm (arm-cover), printed out at 125 percent of the size (rescaled in Cura).</p>
+<p>And print the following of my designs:<br />
+– The shoulder of Mo<br />
+– The eye of Mo<br />
+– The brush of mo<br />
+– The two bodies of mo.<br />
+You can find all of them here: https://www.thingiverse.com/thing:4584695. </p>
+<p>To let Mo make any noise you should buy a raspberry pi and a pi-sense hat. You only need the sense hat to get the accelerations, so if you already have an IMU somewhere that would work as well. For the noise I used an external speaker I had laying around. The sound-effects I recorded myself to prevent any copyright infringement. You might select them from this video if you are feeling creative: <a href="https://www.youtube.com/watch?v=iiMFRMoxxEI">https://www.youtube.com/watch?v=iiMFRMoxxEI</a>. Make sure that in /boot/config.txt you uncomment hdmi_force_hotplug=1, as without this the raspberry pi won’t boot in headless mode for me. Make sure to start the script as normal user, the sudo user seems to not have access to the speaker. To power the raspberry pi I used a small powerbank. </p>
+<p>You can find the script I used to run Mo here: https://github.com/rmeertens/microbe_obliterator.</p>
+  </div>
+  <nav class="post-nav">
+<a class="post-nav-link post-nav-prev" href="../visualising-lidar-and-radar-in-virtual-reality/index.html">
+  <span class="post-nav-label">&larr; Previous</span>
+  <span class="post-nav-title">Visualising lidar and radar in virtual reality</span>
+</a>
+<a class="post-nav-link post-nav-next" href="../saturn-v/index.html">
+  <span class="post-nav-label">Next &rarr;</span>
+  <span class="post-nav-title">LEGO Apollo Saturn V Rocket Lamp</span>
+</a>
+</nav>
+</div>
+<footer><div class="page">&copy; 2026 Roland Meertens &middot; <a href="../../index.html">meertens.dev</a></div></footer>
+</body>
+</html>

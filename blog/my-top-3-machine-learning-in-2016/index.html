@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My top 3 of machine learning advancements in 2016 — Roland Meertens</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="page">
+    <a class="site-name" href="../../index.html">Roland Meertens</a>
+    <nav class="site-nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../blog/index.html" class="active">Blog</a>
+      <a href="https://github.com/rmeertens" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/rmeertens" target="_blank">LinkedIn</a>
+    </nav>
+  </div>
+</header>
+<div class="page">
+  <div class="post-header">
+    <div class="post-breadcrumb"><a href="../index.html">Blog</a></div>
+    <h1>My top 3 of machine learning advancements in 2016</h1>
+    <div class="post-meta">December 31, 2016</div>
+  </div>
+  <div class="post-hero"><img src="https://img.youtube.com/vi/umRdt3zGgpU/mqdefault.jpg" alt="" loading="lazy"></div>
+  <div class="post-content">
+    <p>The year 2017 is starting tomorrow, let’s look back at what happened in machine learning last year. In this blogpost I will post my personal top 3 of developments in Artificial Intelligence this year. </p>
+<h4 id="on-place-3-beating-the-world-champion-of-the-game-go">On place 3: beating the world champion of the game Go</h4>
+<p>Last year Alpha Go beat the human champion in the game of Go. If you would have asked me early 2015 how long it would take to achieve this, I would have guessed at least 5 to 10 more years. That said, the whole world was stunned when the computer won 4-1 against Lee Sedol.</p>
+<p>The big problem for computers playing Go was the amount of possible moves. To reduce the search space Alpha Go only expands “promising” moves. Determining how promising a move is a difficult problem, as sometimes a single move can have an effect many turns into the game. Alpha Go uses neural networks to determine whether a board setup is good or bad. By training on a large database of games the network learned what boards would lead to a win, and thus which move would be good to play.</p>
+<p>More information about AlphaGo can be found in the paper “<a href="https://arxiv.org/abs/1511.06410">Better Computer Go Player with Neural Network and Long-term Prediction</a>“.</p>
+<h4 id="on-place-2-navigating-forest-trails-with-a-drone">On place 2: navigating forest trails with a drone</h4>
+<p>Following a path with a drone is a difficult problem. Drones only have a low amount of on-board processing power, and a low amount of time to compute what action to perform. While trying to follow a forest trail you will encounter a lot of situations which you as a programmer did not foresee. </p>
+<p>A research group in Zurich decided to approach this problem by simply letting the drone ask itself: “should I go left, right, or straight ahead based on my front camera image”? They needed two things to solve this problem: </p>
+<ul>
+<li>A function that, based on an image, decides what direction to go in.</li>
+<li>A set of labeled images, telling you what direction to take.</li>
+</ul>
+<p>They wanted to train the function using convolutional neural networks. Unfortunately, training a neural network requires a lot of data. To generate this data they walked over a forest trail with 3 camera’s strapped on their head: one pointing left, one right, and one in the center of their head. Images taken from the left and right cameras meant that the drone had to turn. Images from the center camera mean that the drone can fly straight ahead. With this smart data-gathering technique they were able to gather enough images that the determine-direction function could be trained well enough to work on a drone. </p>
+<p><a href="https://www.youtube.com/watch?v=umRdt3zGgpU">A video of their research can be found on Youtube</a>, and more can be read in the paper “<a href="http://rpg.ifi.uzh.ch/docs/RAL16_Giusti.pdf">Quadcopter Navigation in the Forest using Deep Neural Networks</a>“.</p>
+<h4 id="on-place-1-zero-shot-translation">On place 1: zero shot translation</h4>
+<p>My personal favourite paper at this moment is Google’s Zero shot translation paper. For years statistical machine translation has been the best way of translating test. Unfortunately, the translation quality was nowhere near that of human translators. This year many researchers were able to improve computer translations using neural networks. </p>
+<p>With this translation method you have multiple neural networks. One network, the “encoder” reads a sentence word by word to produce a “context vector”. Another network, the “decoder” uses this context vector to produce a sentence in another language. People already discovered that using multiple encoders and multiple encoders helped with the translation quality. This forces the encoders and decoders to be as generic as possible, thus representing information in the best way. </p>
+<p>With Zero shot translation three encoders are used and three decoders are used: English, Japanese and Korean. During training Japanese to Korean is never tested, or Korean to Japanese is never tested. The networks DO have to learn the languages to represent (for example) Korean to English and English to Japanese. It turns out that they now also are able to translate from Korean to Japanese, although they never saw this language pair before. </p>
+<p>I explained this <a href="https://www.pinchofintelligence.com/explaining-googles-zero-shot-translation/">in more detail on my blog a month ago</a>. More information <a href="https://research.googleblog.com/2016/11/zero-shot-translation-with-googles.html">can be found on Google’s research blog</a>.</p>
+  </div>
+  <nav class="post-nav">
+<a class="post-nav-link post-nav-prev" href="../old-spelling-to-new-spelling-with-tensorflow/index.html">
+  <span class="post-nav-label">&larr; Previous</span>
+  <span class="post-nav-title">Old spelling to new Dutch spelling with tensorflow</span>
+</a>
+<a class="post-nav-link post-nav-next" href="../advent-of-codetesting-2016/index.html">
+  <span class="post-nav-label">Next &rarr;</span>
+  <span class="post-nav-title">Advent of code/testing 2016</span>
+</a>
+</nav>
+</div>
+<footer><div class="page">&copy; 2026 Roland Meertens &middot; <a href="../../index.html">meertens.dev</a></div></footer>
+</body>
+</html>

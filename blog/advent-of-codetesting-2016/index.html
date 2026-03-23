@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advent of code/testing 2016 — Roland Meertens</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="page">
+    <a class="site-name" href="../../index.html">Roland Meertens</a>
+    <nav class="site-nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../blog/index.html" class="active">Blog</a>
+      <a href="https://github.com/rmeertens" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/rmeertens" target="_blank">LinkedIn</a>
+    </nav>
+  </div>
+</header>
+<div class="page">
+  <div class="post-header">
+    <div class="post-breadcrumb"><a href="../index.html">Blog</a></div>
+    <h1>Advent of code/testing 2016</h1>
+    <div class="post-meta">December 25, 2016</div>
+  </div>
+  <div class="post-hero"><img src="https://www.pinchofintelligence.com/wp-content/uploads/2016/12/Screen-Shot-2016-12-25-at-09.29.56.png" alt="" loading="lazy"></div>
+  <div class="post-content">
+    <p>This year I participated in the “Advent of Code” challenge. Every day two small programming questions were posted on <a href="http://adventofcode.com">adventofcode.com</a> that (depending on your skill) could be solved within 30 minutes to 1-2 hours. During this challenge I tried something new: test-driven development. This post is a writedown of how this went and what I learned. </p>
+<p>During the first few challenges I noticed that each challenge included a wide range of examples on how to solve a single problem. This greatly helped in understanding the problem, and helped you debug your own code. Only after the samples worked for me I would input the posed problem to get the answer (and the shiny star).</p>
+<p>At the start of the december I started with my normal debugging method: writing print statements at the places I wanted to see were correct (and places I suspected had a bug). However, if you are unsure where your bug is, this can lead to a long messy output. In this long list of output you have to find the ‘wrong’ output, and have to track down where this came from (usually with more print statements).</p>
+<p><a href="https://www.pinchofintelligence.com/wp-content/uploads/2016/12/Screen-Shot-2016-12-25-at-09.29.56.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2016/12/Screen-Shot-2016-12-25-at-09.29.56.png" /></a></p>
+<p>To fix this problem I started writing down some of the examples using the <a href="https://docs.python.org/2/library/unittest.html">Unittest framework</a>. This had the advantage of verifying step by step that your example works (using AssertEquals). For each function I wrote I had at least one testcase to verify that the code I wrote was working for the example given in the question.</p>
+<p>The first few days this slowed me down a little. Finding out what tools to use for Python (my go to language for quickly solving small problems) took some time. Although I used unittests in Java, testing Python code was something I never did before. After a few days I did notice that the amount of time spent to type in the test-cases started to outweigh the time necessary to gradually walk through the code to find that one bug in my code (or my thinking).</p>
+<p>Later during the month I started using <a href="https://docs.python.org/2/library/doctest.html">Doctests</a> instead of Unittests. With this I knew that each function I wrote worked in the cases specified in the problem statement. After I verified this it was easy to link them together to (finally) solve the question for that day.</p>
+<p>An example of how my code looked at day 21: </p>
+<pre class="codehilite"><code>def swap_letter(input_str,letterx,lettery):
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; swap_letter('hallo','a','l')
+    'hlaao'
+    &gt;&gt;&gt; swap_letter('ebcda','d','b')
+    'edcba'
+    &quot;&quot;&quot;
+    input_str = input_str.replace(letterx,&quot;@&quot;)
+    input_str = input_str.replace(lettery,letterx)
+    input_str = input_str.replace(&quot;@&quot;,lettery)
+    return input_str
+</code></pre>
+
+<p>Overall I really enjoyed Advent of code 2016! Some of my personal stats are: </p>
+<ul>
+<li>Solved 50 problems (2 per day, including the last “free” one)</li>
+<li>Got 29 points on the public leaderboard (solved one problem as one of the first 100 people, had to wake up at 6 in the morning to do so)</li>
+<li>Got 537 points on the private leaderboard and finished first of my friends!</li>
+<li>Learned more about regular expressions (sometimes the text to parse required some extra power than I normally use)</li>
+<li>Became a better test-driven developer, using both Unittests and Doctests in Python</li>
+</ul>
+<p>Instant update: the solutions of Peter Norvig can be found here: <a href="https://nbviewer.jupyter.org/url/norvig.com/ipython/Advent%20of%20Code.ipynb">https://nbviewer.jupyter.org/url/norvig.com/ipython/Advent%20of%20Code.ipynb</a> . It is great to see that he too continuously tests his code using assert statements in a iPython notebook. Next up: comparing his solutions to mine to learn more about efficiently solving these kind of puzzles.</p>
+<p>Do you have an opinion on test-driven development, or want to show how you solved the Advent of Code 2016? Please post them in the comments or send them to me!</p>
+<p>Merry christmas everybody!</p>
+  </div>
+  <nav class="post-nav">
+<a class="post-nav-link post-nav-prev" href="../my-top-3-machine-learning-in-2016/index.html">
+  <span class="post-nav-label">&larr; Previous</span>
+  <span class="post-nav-title">My top 3 of machine learning advancements in 2016</span>
+</a>
+<a class="post-nav-link post-nav-next" href="../faster-writing-and-testing-machine-learning-applications/index.html">
+  <span class="post-nav-label">Next &rarr;</span>
+  <span class="post-nav-title">Faster writing and testing machine learning applications.</span>
+</a>
+</nav>
+</div>
+<footer><div class="page">&copy; 2026 Roland Meertens &middot; <a href="../../index.html">meertens.dev</a></div></footer>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Zalando python client — Roland Meertens</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="page">
+    <a class="site-name" href="../../index.html">Roland Meertens</a>
+    <nav class="site-nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../blog/index.html" class="active">Blog</a>
+      <a href="https://github.com/rmeertens" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/rmeertens" target="_blank">LinkedIn</a>
+    </nav>
+  </div>
+</header>
+<div class="page">
+  <div class="post-header">
+    <div class="post-breadcrumb"><a href="../index.html">Blog</a></div>
+    <h1>The Zalando python client</h1>
+    <div class="post-meta">July 1, 2017</div>
+  </div>
+  <div class="post-hero"><img src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/zalanopytho-300x300.jpg" alt="" loading="lazy"></div>
+  <div class="post-content">
+    <h1 id="the-zalando-python-client">The Zalando python client</h1>
+<p>Shopping is probably in the top-5 of things I hate. Walking from store to store, having to wade through endless clothes you are NOT interested in – it’s a really inefficient experience. Luckily I found Zalando a few years ago: you order your clothes online with free shipping and free returns. The only thing that could make this experience even better for me is if I could specify some rules and find the clothes I wanted in exactly my fit. This is why I created the Zalando python API client.</p>
+<h3 id="_1"><a href="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/zalanopytho.jpg"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/zalanopytho-300x300.jpg" /></a></h3>
+<h3 id="the-api-and-querying">The API and querying</h3>
+<p>Zalando’s api is very well documented with a <a href="https://api.zalando.com/swagger/index.html">Swagger specification</a>.<br />
+As you can see the API returns items after you make a request with a query string. I decided to create a zalandoQuery class to specify what items you want to see. Making it a class gives new users of the library an idea of what they can do with the API without having to dive in the specifications.</p>
+<h3 id="the-python-client">The Python client</h3>
+<p>To get the items I created a zalandoClient class. This class has a generator function that returns items if you pass it a zalandoQuery. The reason I chose a generator is that some queries might yield very big results (perhaps you want to go through all shirts till you find a very specific one). Making it a generator means that you as programmer can create a query, but stop going through items while the API did not return all items.</p>
+<h3 id="helper-functions">Helper functions</h3>
+<p>There are some functions I believe programmers want to use when programming their own shopping scripts. Some of these will mostly make sense to me like the <code>is_denim(item)</code> or <code>is_slim_fit(item)</code> function. Others will probably be useful for everyone, like the <code>size_in_stock(item,size_str)</code> or <code>has_attribute(item,attributename,attributevalue)</code> functions.</p>
+<h3 id="jupyter-notebook-shopping-experience">Jupyter notebook shopping experience</h3>
+<p>Although I love shopping with Python, I would like to see my products before I order them. To demonstrate the API I created this jupyter notebook in which I show several queries and results. Let’s start by saying I want to buy a new pair of pants.</p>
+<p>In [1]:</p>
+<pre class="codehilite"><code>%matplotlib inline
+import requests # &lt;- make sure you install requests
+import json
+import matplotlib.pyplot as plt
+from PIL import Image
+from io import BytesIO
+
+from zalandoclient.zalandoQuery import *
+from zalandoclient.zalandoClient import *
+</code></pre>
+
+<h3 id="build-the-query">Build the query</h3>
+<p>Let’s start by entering my age, gender, sizes, and the price range in which I’m searching.</p>
+<p>In [2]:</p>
+<pre class="codehilite"><code>query_builder = zalandoQuery()
+query_builder.setAgeGroup(&quot;adult&quot;)
+query_builder.setGender(&quot;male&quot;)
+query_builder.setLength(36)
+query_builder.setSize(32)
+query_builder.setPriceRange(0,50)
+
+myquery = query_builder.build_query()
+
+json_data = get_articles(query_builder)
+page_count = json_data['totalPages']
+print(myquery + &quot; gives &quot; + str(page_count) + &quot; pages of results&quot;)
+
+
+
+https://api.zalando.com/articles?ageGroup=adult&amp;gender=male&amp;length=36&amp;size=32&amp;price=0-50 gives 13 pages of results
+</code></pre>
+
+<h3 id="viewing-the-products">Viewing the products</h3>
+<p>Wow, 13 pages of results for the pants that I’m searching. Clicking every URL is a lot of work, so I define some Matplotlib visualisation functions to see the products I searched for:</p>
+<p>In [3]:</p>
+<pre class="codehilite"><code>def show_images_product(item):
+    images = []
+    for url in get_image_urls(item):
+        response = requests.get(url)
+        img = Image.open(BytesIO(response.content))
+        images.append(img)
+    show_images(images)
+
+def show_images(images):
+    count = len(images)
+    single_figure_size = 13
+    fig = plt.figure(figsize=(single_figure_size,count*single_figure_size))
+    for subplot in range(1,count+1):
+        plt.subplot(100+count*10+subplot)
+        plt.imshow(images[subplot-1])
+    plt.show()
+</code></pre>
+
+<h3 id="getting-items">Getting items</h3>
+<p>We defined the query, let’s see what Zalando has in store.</p>
+<p>Note that I’m located in the Netherlands. The function that yields articles has two arguments that default to my preferences, but might be annoying for you. Make sure you look at the parameters <code>get_articles(zalandoquery ,language='nl-NL' ,clientname="rolandisshopping")</code> expects when you use it.</p>
+<p>In [4]:</p>
+<pre class="codehilite"><code>items_displayed = 0
+for item in get_articles_all_pages(query_builder):
+    if not is_slim_fit(item) and size_in_stock(item,'32x36') and not is_denim(item):
+        print(get_url(item))
+        show_images_product(item)
+        price, originalprice = get_the_price(item)
+        print(&quot;Costs: &quot; + str(price) + &quot; from &quot; + str(originalprice))
+        print('binnenlengte: ' + str(get_attribute(item,'binnenbeenlengte')))
+        print('buitenlengte: ' + str(get_attribute(item,'buitenbeenlengte')))
+        print(&quot;-&quot;*20)
+        items_displayed +=1
+    if items_displayed &gt;= 5: # For show purpose, stop viewing more than five articles
+        break
+
+
+
+
+
+https://www.zalando.nl/produkt-pktakm-cargobroek-py522e00t-b11.html
+</code></pre>
+
+<p><a href="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/img1.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/img1.png" /></a></p>
+<pre class="codehilite"><code>Costs: 31.95 from 39.95
+binnenlengte: ['76 cm bij maat 31x32']
+buitenlengte: ['100 cm bij maat 31x32']
+--------------------
+https://www.zalando.nl/tom-tailor-uni-travis-chino-to222e02r-c11.html
+</code></pre>
+
+<p><a href="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/img-2.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/img-2.png" /></a></p>
+<pre class="codehilite"><code>Costs: 39.95 from 39.95
+binnenlengte: ['81 cm bij maat 31x32']
+buitenlengte: ['106 cm bij maat 31x32']
+--------------------
+https://www.zalando.nl/produkt-cargobroek-forest-night-py522e00t-m11.html
+</code></pre>
+
+<p><a href="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/img-3.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/img-3.png" /></a></p>
+<pre class="codehilite"><code>Costs: 31.95 from 39.95
+binnenlengte: ['76 cm bij maat 31x32']
+buitenlengte: ['97 cm bij maat 31x32']
+--------------------
+https://www.zalando.nl/pier-one-pantalon-beige-pi922ea16-b11.html
+</code></pre>
+
+<p><a href="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/img-4.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/img-4.png" /></a></p>
+<pre class="codehilite"><code>Costs: 22.95 from 22.95
+binnenlengte: ['78 cm bij maat 32x32']
+buitenlengte: ['104 cm bij maat 32x32']
+--------------------
+https://www.zalando.nl/pier-one-chino-beige-pi922ea14-b11.html
+</code></pre>
+
+<p><a href="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/img-5.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/img-5.png" /></a></p>
+<pre class="codehilite"><code>Costs: 27.95 from 27.95
+binnenlengte: ['79 cm bij maat 32x32']
+buitenlengte: ['106 cm bij maat 32x32']
+--------------------
+</code></pre>
+
+<h3 id="attributes">Attributes</h3>
+<p>In the example above you saw that I showed the size of the legs (I’m a long guy, or as I like to say: a big data scientist). There are many attributes an item can have. If you want to know the attributes the items have of the query you entered you can use this function I wrote:</p>
+<p>In [5]:</p>
+<pre class="codehilite"><code>def print_attributes(item):
+    for attribute in item['attributes']:
+        print(attribute['name'] + &quot; -&gt; &quot; + str(attribute['values']))
+
+items_displayed = 0
+for item in get_articles_all_pages(query_builder):
+    if not is_slim_fit(item) and size_in_stock(item,'32x36') and not is_denim(item):
+        print_attributes(item)
+        print(&quot;-&quot;*30)
+        items_displayed += 1
+
+    if items_displayed &gt;= 2: # For show purpose, stop viewing more than two articles
+        break
+
+
+
+
+Materiaal buitenlaag -&gt; ['100% katoen']
+Pasvorm -&gt; ['tapered leg']
+wasvoorschrift -&gt; ['machinewas tot 40°C']
+broekzakken -&gt; ['cargozakken', 'achterzakken', 'zijzakken']
+binnenbeenlengte -&gt; ['76 cm bij maat 31x32']
+sluiting -&gt; ['verborgen rits']
+patroon -&gt; ['effen']
+heuphoogte -&gt; ['hoog']
+Lichaamslengte model -&gt; ['Ons model is 187 cm groot en draagt maat 31x32']
+buitenbeenlengte -&gt; ['100 cm bij maat 31x32']
+pasvorm -&gt; ['We raden je aan een maat groter te bestellen']
+lengte -&gt; ['enkelhoogte']
+------------------------------
+Materiaal buitenlaag -&gt; ['75% katoen, 25% polyamide']
+Pasvorm -&gt; ['tapered leg']
+Details -&gt; ['steekzakken']
+wasvoorschrift -&gt; ['machinewas tot 40°C', 'niet geschikt voor de droger']
+broekzakken -&gt; ['achterzakken', 'zijzakken']
+binnenbeenlengte -&gt; ['81 cm bij maat 31x32']
+sluiting -&gt; ['verborgen rits']
+patroon -&gt; ['effen']
+heuphoogte -&gt; ['normaal']
+Lichaamslengte model -&gt; ['Ons model is 184 cm groot en draagt maat 31x32']
+buitenbeenlengte -&gt; ['106 cm bij maat 31x32']
+lengte -&gt; ['lang']
+------------------------------
+</code></pre>
+
+<h3 id="cheapest-product">Cheapest product</h3>
+<p>Now let’s see what else we can do with the API by bargain hunting. You can get the cheapest products (under 6 euros) and see how expensive they were before!</p>
+<p>In [6]:</p>
+<pre class="codehilite"><code>query_builder = zalandoQuery()
+query_builder.setPriceRange(0,6)
+
+cheapest = []
+for item in get_articles_all_pages(query_builder):
+    the_url = get_url(item)
+    price, originalprice = get_the_price(item)
+    cheapest.append((price,originalprice,the_url))
+
+cheapest.sort()
+for item in cheapest[:5]:
+    print(str(item[0]) + &quot; was: &quot; + str(item[1]) + &quot; - &quot; + item[2])
+
+
+
+4.45 was: 8.95 - https://www.zalando.nl/brooklyn-s-own-by-rocawear-3-pack-sokken-khaki-black-bh682fa0q-n11.html
+4.45 was: 8.95 - https://www.zalando.nl/esprit-sokken-fuchsia-es183d003-g11.html
+4.5 was: 4.5 - https://www.zalando.nl/next-2-pack-sokken-grey-navy-nx384d00i-c11.html
+4.75 was: 5.95 - https://www.zalando.nl/stups-organic-sokken-white-s1v53aa01-a11.html
+4.75 was: 5.95 - https://www.zalando.nl/stups-organic-wanten-white-s1v53aa03-a11.html
+</code></pre>
+
+<h3 id="exploring-categories">Exploring categories</h3>
+<p>Zalando has many categories in their API, which is a lot of fun to see. Just how many categories there are can be found by calling another function I implemented:</p>
+<p>In [7]:</p>
+<pre class="codehilite"><code>allcategories = get_possible_category_keys()
+print(str(len(allcategories)) + &quot; categories found: &quot;)
+#print(allcategories)
+
+
+
+2248 categories found:
+</code></pre>
+
+<h1 id="conclusion">Conclusion</h1>
+<p>Zalando had a positive inpact on my clothing style. Writing this client was a lot of fun and hopefully also helps someone else. The code can be found on <a href="https://github.com/rmeertens/zalandoclient">github</a>, and it is also available as pip package by invoking <code>pip install zalandoclient</code>. If you have any questions, don’t be afraid to send me a message!</p>
+  </div>
+  <nav class="post-nav">
+<a class="post-nav-link post-nav-prev" href="../getting-started-openai-gym/index.html">
+  <span class="post-nav-label">&larr; Previous</span>
+  <span class="post-nav-title">Getting started with OpenAI gym</span>
+</a>
+<a class="post-nav-link post-nav-next" href="../simple-introduction-to-tensorboard-embedding-visualisation/index.html">
+  <span class="post-nav-label">Next &rarr;</span>
+  <span class="post-nav-title">Simple Introduction to Tensorboard Embedding Visualisation</span>
+</a>
+</nav>
+</div>
+<footer><div class="page">&copy; 2026 Roland Meertens &middot; <a href="../../index.html">meertens.dev</a></div></footer>
+</body>
+</html>

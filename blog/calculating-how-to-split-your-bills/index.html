@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculating how to split your bills — Roland Meertens</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="page">
+    <a class="site-name" href="../../index.html">Roland Meertens</a>
+    <nav class="site-nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../blog/index.html" class="active">Blog</a>
+      <a href="https://github.com/rmeertens" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/rmeertens" target="_blank">LinkedIn</a>
+    </nav>
+  </div>
+</header>
+<div class="page">
+  <div class="post-header">
+    <div class="post-breadcrumb"><a href="../index.html">Blog</a></div>
+    <h1>Calculating how to split your bills</h1>
+    <div class="post-meta">October 30, 2016</div>
+  </div>
+  <div class="post-hero"><img src="http://pinchofintelligence.com/wp-content/uploads/2016/10/Screen-Shot-2016-11-06-at-23.49.16.png" alt="" loading="lazy"></div>
+  <div class="post-content">
+    <p>Dutch people are known for splitting their bills. When frequently eating with the same group this could normally lead to an awkward situation, where everybody has to pay everybody a little bit. Most students use the site “https://wiebetaaltwat.nl/”. You create a group with the people you frequently eat with, and every time you do something with a set of these people you add your expense to the list.</p>
+<p><a href="http://pinchofintelligence.com/wp-content/uploads/2016/10/Screen-Shot-2016-11-06-at-23.49.16.png"><img alt="screen-shot-2016-11-06-at-23-49-16" src="http://pinchofintelligence.com/wp-content/uploads/2016/10/Screen-Shot-2016-11-06-at-23.49.16.png" /></a></p>
+<p>Once in a while you want your bills paid, to do this wiebetaaltwat tries to find a way in which there is the lowest amount of transactions. Last week I had a discussion with a friend about what would be the best way to calculate these transactions. This post will show my first attempt at finding an algorithm, why my algorithm was wrong, and how I improved it.</p>
+<p>My first idea was:</p>
+<ul>
+<li>Input: a list L with the amount every person has to pay</li>
+<li>Returns: amount of transactions</li>
+<li>Define variable transaction_count</li>
+<li>while there is still an amount left: <ul>
+<li>Sort L</li>
+<li>Let the person who has to pay the most (last element of L) pay to the person who has to get the most (first element of L)</li>
+<li>transaction_count +=1</li>
+</ul>
+</li>
+<li>return transaction_count</li>
+</ul>
+<p>Now every step either:</p>
+<ul>
+<li>Both amounts cancel each other</li>
+<li>The one who paid has no debt anymore</li>
+<li>The one who got money got everything he had to get</li>
+</ul>
+<p>This guarantees that we take a maximum of N-1 transactions (which is pretty cool). Let’s analyse the complexity of this algorithm:</p>
+<ul>
+<li>The initial sorting takes n*log(n)</li>
+<li>One transaction calculation is O(1) (a step we have to take n times)</li>
+<li>Inserting the leftover value is log(n) (a step we have to take n times)</li>
+</ul>
+<p>So this program has a complexity of n<em>log(n), it takes exactly n</em>log(n) + n/2 steps.</p>
+<p>I programmed this out in Python to show that the approach works:  </p>
+<p>My friend wasn’t convinced by this script simply saying that it isn’t a good “real world example”. After a few hours I came up with an example that is NOT solved efficiently by my script:</p>
+<table>
+<thead>
+<tr>
+<th>Person</th>
+<th>Anna</th>
+<th>Bob</th>
+<th>Charlie</th>
+<th>Dennis</th>
+<th>Elisabeth</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Initial money:</td>
+<td>35</td>
+<td>34</td>
+<td>-2</td>
+<td>-33</td>
+<td>-34</td>
+</tr>
+<tr>
+<td>E pays A</td>
+<td>1</td>
+<td>34</td>
+<td>-2</td>
+<td>-33</td>
+<td>0</td>
+</tr>
+<tr>
+<td>D pays B</td>
+<td>1</td>
+<td>1</td>
+<td>-2</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>C pays A</td>
+<td>0</td>
+<td>1</td>
+<td>-1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>C pays B</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>How it should have been solved:</p>
+<table>
+<thead>
+<tr>
+<th>Person</th>
+<th>Anna</th>
+<th>Bob</th>
+<th>Charlie</th>
+<th>Dennis</th>
+<th>Elisabeth</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Initial money:</td>
+<td>35</td>
+<td>34</td>
+<td>-2</td>
+<td>-33</td>
+<td>-34</td>
+</tr>
+<tr>
+<td>E pays C</td>
+<td>35</td>
+<td>0</td>
+<td>-2</td>
+<td>-33</td>
+<td>0</td>
+</tr>
+<tr>
+<td>D pays A</td>
+<td>2</td>
+<td>0</td>
+<td>-2</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>C pays A</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Nothing!!</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see by searching for the same value the amount of transactions can be reduced.<br />
+An observation we make is that this is done by removing values (a,b) where a==-b.<br />
+To do this we:</p>
+<ul>
+<li>Before each step, take a as the last element of L and b as the first element of L. Check if -a or -b is in L. If this is the case, merge these two.</li>
+</ul>
+<p>Searching for two numbers in a list takes 2<em>log(n). With this update the total steps we take is n</em>log(n) + n/2 * 2 * log(n) which is 2<em>n</em>log(n).</p>
+<p>I plotted the two graphs so you can see that the optimal solution takes double the time than my first solution:<br />
+<a href="http://pinchofintelligence.com/wp-content/uploads/2016/10/whoo.png"><img alt="whoo" src="http://pinchofintelligence.com/wp-content/uploads/2016/10/whoo-1024x483.png" /></a></p>
+<p>Is my second algorithm correct? Is there a way to calculate who has to pay what which leads to less transactions? I hope so! If you have a better algorithm, please leave a comment!</p>
+  </div>
+  <nav class="post-nav">
+<a class="post-nav-link post-nav-prev" href="../building-a-smart-iot-bed-part-1-of-5/index.html">
+  <span class="post-nav-label">&larr; Previous</span>
+  <span class="post-nav-title">Building a “Smart IoT bed” Part 1 of 5</span>
+</a>
+<a class="post-nav-link post-nav-next" href="../connection-requests-strangers-linkedin-accepting-right-way/index.html">
+  <span class="post-nav-label">Next &rarr;</span>
+  <span class="post-nav-title">Connection requests from strangers on LinkedIn: accepting them the right way</span>
+</a>
+</nav>
+</div>
+<footer><div class="page">&copy; 2026 Roland Meertens &middot; <a href="../../index.html">meertens.dev</a></div></footer>
+</body>
+</html>

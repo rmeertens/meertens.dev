@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introduction to OpenAI gym part 3: playing Space Invaders with deep reinforcement learning — Roland Meertens</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="page">
+    <a class="site-name" href="../../index.html">Roland Meertens</a>
+    <nav class="site-nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../blog/index.html" class="active">Blog</a>
+      <a href="https://github.com/rmeertens" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/rmeertens" target="_blank">LinkedIn</a>
+    </nav>
+  </div>
+</header>
+<div class="page">
+  <div class="post-header">
+    <div class="post-breadcrumb"><a href="../index.html">Blog</a></div>
+    <h1>Introduction to OpenAI gym part 3: playing Space Invaders with deep reinforcement learning</h1>
+    <div class="post-meta">July 30, 2017</div>
+  </div>
+  <div class="post-hero"><img src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/cartwheel-neural-part3-300x191.png" alt="" loading="lazy"></div>
+  <div class="post-content">
+    <p>In <a href="https://www.pinchofintelligence.com/getting-started-openai-gym/">part 1 we got to know the openAI Gym environment</a>, and in <a href="https://www.pinchofintelligence.com/introduction-openai-gym-part-2-building-deep-q-network/">part 2 we explored deep q-networks</a>. We implemented a simple network that, if everything went well, was able to solve the Cartpole environment. Atari games are more fun than the CartPole environment, but are also harder to solve. This session is dedicated to playing Atari with deep reinforcement learning.</p>
+<p>A first warning before you are disappointed is that playing Atari games is more difficult than cartpole, and training times are way longer. This is the reason we toyed around with CartPole in the previous session.</p>
+<p><a href="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/cartwheel-neural-part3.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/cartwheel-neural-part3-300x191.png" /></a></p>
+<p>In this session I will show how you can use OpenAI gym to replicate the paper <a href="https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf">Playing Atari with Deep Reinforcement Learning</a>. A video of a Breakout playing robot <a href="https://www.youtube.com/watch?v=V1eYniJ0Rnk">can be found on Youtube</a>, as well as a video of a <a href="https://www.youtube.com/watch?v=6kO4eZWeKOM">Enduro playing robot</a>. Demis Hassabis, the CEO of DeepMind, can explain what happend in their experiments in a <a href="https://youtu.be/rbsqaJwpu6A?t=9m55s">very entertaining way</a>.</p>
+<p>A big difference between the CartPole and Atari task is that the Atari environment gives you the raw pixels as observation. Instead of 4 variables you are now dealing with <img alt="210 * 160 * 3 = 100.800" src="https://s0.wp.com/latex.php?latex=210+%2A+160+%2A+3+%3D+100.800&amp;bg=ffffff&amp;fg=000000&amp;s=0" />variables as input. The network you build in part 2 is not going to play very well. This means you can either improve your network yourself, or you can replicate the DeepMind layout. This session is only dedicated to showing what the DeepMind network is able to do.</p>
+<p>Flood Sung was able to put the network in Tensorflow and <a href="https://github.com/songrotek/DQN-Atari-Tensorflow">put the code on GitHub</a>. I downloaded his network architecture, updated it to the latest Tensorflow version, changed some parameters and added it to the Git repository of this <a href="https://github.com/rmeertens/reinforcementlearning-tensorflow-tradr-summerschool">summerschool session</a>.</p>
+<p>This tutorial has dependencies on Tensorflow, OpenCV, OpenAI Gym, and some other things. Just as with part 1 and 2 the best thing to do is run this code using <a href="https://docs.docker.com/engine/installation/#supported-platforms">Docker</a>. Run the following command to download my prepared docker image and navigate to <a href="http://localhost:8888">http://localhost:8888</a> to view your Jupyter notebook.</p>
+<pre class="codehilite"><code>docker run -p 8888:8888 -v rmeertens/tensorflowgym
+</code></pre>
+
+<p>In [1]:</p>
+<pre class="codehilite"><code>%matplotlib inline
+import matplotlib.pyplot as plt
+
+from ipywidgets import widgets
+from IPython.display import display
+
+from matplotlib import animation
+from JSAnimation.IPython_display import display_animation
+from time import gmtime, strftime
+import random
+import cv2
+import sys
+from BrainDQN_Nature import *
+import numpy as np
+
+import gym
+
+
+env = gym.make('SpaceInvaders-v0')
+env.reset()
+actions = env.action_space.n
+brain = BrainDQN(actions)
+
+
+
+[2017-07-11 13:46:00,813] Making new env: SpaceInvaders-v0
+
+
+
+dimension: 3136
+dimension: 3136
+Successfully loaded: ./savedweights/network-dqn-7580000
+</code></pre>
+
+<h3 id="image-preprocessing">Image preprocessing</h3>
+<p>As mentioned above we are dealing with <img alt="210 * 160 * 3 = 100.800" src="https://s0.wp.com/latex.php?latex=210+%2A+160+%2A+3+%3D+100.800&amp;bg=ffffff&amp;fg=000000&amp;s=0" />variables. The authors of the Playing Atari with DRL solve this by turning the image to grayscale, resizing to 84 x 110, and removing the first 26 rows as they only contain the score. This gives you <img alt="84 * 84 = 7.056" src="https://s0.wp.com/latex.php?latex=84+%2A+84+%3D+7.056&amp;bg=ffffff&amp;fg=000000&amp;s=0" />variables per image.</p>
+<p>Unfortunately, you need to have a sense of time for some Atari games. For example, what is happening in this image? Is the ball going up? Going down? Left or right? That’s why we concatenate the last four “images” of 84×84 to get an 84x84x4 image as input (which is <img alt="84*84*4=28.224" src="https://s0.wp.com/latex.php?latex=84%2A84%2A4%3D28.224&amp;bg=ffffff&amp;fg=000000&amp;s=0" />input variables for our neural network.<br />
+<img alt="Breakout" src="https://cbssanfran.files.wordpress.com/2015/02/block-up.jpg" /></p>
+<p>In [2]:</p>
+<pre class="codehilite"><code>def preprocess(observation):
+    observation = cv2.cvtColor(cv2.resize(observation, (84, 110)), cv2.COLOR_BGR2GRAY)
+    observation = observation[26:110,:]
+    ret, observation = cv2.threshold(observation,1,255,cv2.THRESH_BINARY)
+    return np.reshape(observation,(84,84,1))
+
+
+action0 = 0  # do nothing
+observation0, reward0, terminal, info = env.step(action0)
+print(&quot;Before processing: &quot; + str(np.array(observation0).shape))
+plt.imshow(np.array(observation0))
+plt.show()
+observation0 = preprocess(observation0)
+print(&quot;After processing: &quot; + str(np.array(observation0).shape))
+plt.imshow(np.array(np.squeeze(observation0)))
+plt.show()
+
+brain.setInitState(observation0)
+brain.currentState = np.squeeze(brain.currentState)
+
+
+
+Before processing: (210, 160, 3)
+</code></pre>
+
+<p><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/before1.png" /></p>
+<pre class="codehilite"><code>After processing: (84, 84, 1)
+</code></pre>
+
+<p><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/after1.png" /></p>
+<h3 id="network-layout">Network layout</h3>
+<p>Open the file BrainDQN_Nature.py and take a look at the function createQNetwork. You will see that this network consists of:</p>
+<ul>
+<li>3 convolational layers</li>
+<li>2 fully connected layers</li>
+</ul>
+<p>The convolutional layers might be new to you. The best way to learn about them is by taking a look at the <a href="https://www.udacity.com/course/deep-learning--ud730">Udacity course “Deep Learning”</a>, or if you quickly want to know what a conv layer is, <a href="https://www.youtube.com/watch?v=jajksuQW4mc">watch this video</a>.</p>
+<p>Also note that this implementation uses a target network (discussed in part 2) that is regularly updated.</p>
+<h3 id="learning">Learning</h3>
+<p>Most interesting things happen in the BrainDQN_Nature.py script. We ask the brain for an action, process the new observation, and give this back to the brain. This means we only have to use a few lines to start the learning of the network.</p>
+<p>Note that learning can take a very long time. This script is set to run forever, so start it in the evening and see what the network learned in the morning!</p>
+<p>In [1]:</p>
+<pre class="codehilite"><code>while True:
+    action = brain.getAction()
+    actionmax = np.argmax(np.array(action))
+
+    nextObservation,reward,terminal, info = env.step(actionmax)
+
+    if terminal:
+        nextObservation = env.reset()
+    nextObservation = preprocess(nextObservation)
+    brain.setPerception(nextObservation,action,reward,terminal)
+</code></pre>
+
+<h3 id="evaluation">Evaluation</h3>
+<p>After you let your network train for some hours, interrupt the python kernel and run the following script.<br />
+It is important to set the epsilon value of the brain to a low value (0.0 or 0.1), otherwise your brain might keep performing random actions…</p>
+<p>In [8]:</p>
+<pre class="codehilite"><code>def display_frames_as_gif(frames, filename_gif = None):
+    &quot;&quot;&quot;
+    Displays a list of frames as a gif, with controls
+    &quot;&quot;&quot;
+    plt.figure(figsize=(frames[0].shape[1] / 72.0, frames[0].shape[0] / 72.0), dpi = 72)
+    patch = plt.imshow(frames[0])
+    plt.axis('off')
+
+    def animate(i):
+        patch.set_data(frames[i])
+
+    anim = animation.FuncAnimation(plt.gcf(), animate, frames = len(frames), interval=50)
+    if filename_gif: 
+        anim.save(filename_gif, writer = 'imagemagick', fps=20)
+    display(display_animation(anim, default_mode='loop'))
+
+
+frameshistory = []
+observation = env.reset()
+backupepsilon = brain.epsilon
+
+brain.epsilon = 0.2
+
+for _ in range(150):
+    action = brain.getAction()
+
+    #print(action)
+    actionmax = np.argmax(np.array(action))
+
+    nextObservation,reward,terminal, info = env.step(actionmax)
+    if terminal:
+        nextObservation = env.reset()
+    frameshistory.append(nextObservation)
+    nextObservation = preprocess(nextObservation)
+    brain.setPerception(nextObservation,action,reward,terminal)
+brain.epsilon = backupepsilon
+
+display_frames_as_gif(frameshistory, 'playing_space_invaders.gif')
+</code></pre>
+
+<p><img alt="Playing space invaders" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/playing_space_invaders.gif" /></p>
+<h2 id="exercises">Exercises</h2>
+<p>This session you were handed the network layout and training methods described in the paper <a href="https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf">Playing Atari with Deep Reinforcement Learning</a>.</p>
+<h3 id="team-up">Team up</h3>
+<p>Humans are very good at learning to play these Atari games. Once I learned aliens kill me with bullets and I got points for killing each alien I was quickly getting many points in the game. Unfortunately our programmed brain is terrible at learning how to play the game (it needs a day, and a lot of frames, before it is able to consistently avoid bullents and kill aliens). Part of the problem is that it is difficult to estimate a reward from observations of random behaviour. The agent would be able to make a better guess of the Q-value if it would be fed with a well-played game of space invaders. The exercises I though would be interesting are:</p>
+<ul>
+<li>Record yourself or a friend playing a game of Space Invaders and save the observations, actions, and rewards in a replay memory (save this memory for later use). Use this game as initial replay memory of the agent.</li>
+<li>Record a fully trained agent playing a game of space Invaders and save the observations, actions, and rewards in a replay memory (save this memory for later use). Use this game as initial replay memory of a new agent you are going to train. Think of ways to evaluate how well these agents are doing compared to agents initialised on “random” experiences and see what agents are better.</li>
+<li>During the first episodes the reply memory of the agent is filled with many useless episodes of the agent only moving around, hitting nothing, getting no reward, etc. Perhaps we can increase the speed of learning by selecting episodes we deem “useful” for the agent. You can either do this by designing a “usefulness heuristic” for episodes. For example: the last X frames before getting a reward are something that should be learned really well, as this apparently was a good move. You can also show few-second videos of users and ask them if these frames show “good” behaviour of the agent. If not: why not remove this nasty memory from his memory?</li>
+</ul>
+<h3 id="transfer-knowledge">Transfer knowledge</h3>
+<p>Humans are very good at transferring knowledge from one domain to another. Unfortunately, our agent is not that good at this.</p>
+<ul>
+<li>Try training and agent on one game, and try to see how long it takes for this agent to learn to play another domain. If this topic interests you, take a look at how Deepmind improved <a href="https://deepmind.com/blog/enabling-continual-learning-in-neural-networks/">their agent</a></li>
+</ul>
+<h3 id="acknowledgments">Acknowledgments</h3>
+<p>This blogpost is the first part of my TRADR summerschool workshop on using human input in reinforcement learning algorithms. More information can be found <a href="https://sites.google.com/view/tradr/home">on their homepage. </a></p>
+  </div>
+  <nav class="post-nav">
+<a class="post-nav-link post-nav-prev" href="../detecting-bats-recognising-sound-tensorflow/index.html">
+  <span class="post-nav-label">&larr; Previous</span>
+  <span class="post-nav-title">Detecting bats by recognising their sound with Tensorflow</span>
+</a>
+<a class="post-nav-link post-nav-next" href="../introduction-openai-gym-part-2-building-deep-q-network/index.html">
+  <span class="post-nav-label">Next &rarr;</span>
+  <span class="post-nav-title">Introduction to OpenAI gym part 2: building a deep q-network</span>
+</a>
+</nav>
+</div>
+<footer><div class="page">&copy; 2026 Roland Meertens &middot; <a href="../../index.html">meertens.dev</a></div></footer>
+</body>
+</html>

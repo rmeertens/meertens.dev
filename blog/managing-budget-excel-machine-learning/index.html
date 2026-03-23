@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Managing our budget with Excel and machine learning — Roland Meertens</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="page">
+    <a class="site-name" href="../../index.html">Roland Meertens</a>
+    <nav class="site-nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../blog/index.html" class="active">Blog</a>
+      <a href="https://github.com/rmeertens" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/rmeertens" target="_blank">LinkedIn</a>
+    </nav>
+  </div>
+</header>
+<div class="page">
+  <div class="post-header">
+    <div class="post-breadcrumb"><a href="../index.html">Blog</a></div>
+    <h1>Managing our budget with Excel and machine learning</h1>
+    <div class="post-meta">December 14, 2017</div>
+  </div>
+  <div class="post-hero"><img src="https://www.pinchofintelligence.com/wp-content/uploads/2017/12/budgetfrontpage-300x200.png" alt="" loading="lazy"></div>
+  <div class="post-content">
+    <p>A little over a year ago my girlfriend Lisette and I moved in together. A big part of living together was getting used to managing a budget, and knowing where our money went. Lisette made one of the coolest Excel spreadsheets I ever saw, the only thing we needed to do was… actually fill in what expense belongs to what category. This is where things went wrong…Every month we have about 100 shared expenses, and labeling them turned out to be a boring job we both didn’t want to do (and thus ignored for the last 10 months…). Last weekend I made an attempt at automating this task using the power of machine learning!</p>
+<p><a href="https://www.pinchofintelligence.com/wp-content/uploads/2017/12/budgetfrontpage.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/12/budgetfrontpage-300x200.png" /></a></p>
+<p>The first step to training a classifier is getting your training data! My bank gives you the option to download a spreadsheet with all (unlabeled) expenses. I imported this into a Google spreadsheet and added two columns: one with my own (optional) labels and one for the computer-generated labels.</p>
+<p><img alt="extra labels" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/12/excelextra.png" /></p>
+<h2 id="getting-excel-data-into-python">Getting Excel data into Python</h2>
+<p>Although writing a classifier in Excel is probably possible I used Python with the NLTK and SKLearn library. To do this I needed to get all transactions and labels I added in my Jupyter Notebook. Thanks to <a href="https://twitter.com/greggyb">Greg Baugues</a> this turned out to be surprisingly easy! His <a href="https://www.twilio.com/blog/2017/02/an-easy-way-to-read-and-write-to-a-google-spreadsheet-in-python.html">blog post</a> was a great help, and made this process pretty smooth.</p>
+<p>In [1]:</p>
+<pre class="codehilite"><code>import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+
+creds = ServiceAccountCredentials.from_json_keyfile_name('google_account.json', ['https://spreadsheets.google.com/feeds'])
+client = gspread.authorize(creds)
+temp = client.open(&quot;rolands budgetvariant&quot;)
+sheet = temp.worksheet(&quot;ALLES&quot;)
+</code></pre>
+
+<p>For each transaction, I made a feature vector with a boolean for each of the most common words in the transaction. I made separate lists for words in the description, the number of the account money was transferred to, and whether we receive money or not.</p>
+<p>In [2]:</p>
+<pre class="codehilite"><code>import nltk
+def get_freq_dist_for_sheet(sheet, key, max_words=30):
+    records = sheet.get_all_records()
+    words = list()
+    for record in records:
+        words.extend(w.lower() for w in record[key].split())
+
+    all_words = nltk.FreqDist(words)
+    word_features = list(all_words)[:max_words]
+    return word_features
+
+interesting_features = [&quot;Naam / Omschrijving&quot;, &quot;Tegenrekening&quot;, &quot;Af Bij&quot;, &quot;Mededelingen&quot;]
+freq_dists = dict()
+for feature in interesting_features:
+    freq_dists[feature] = get_freq_dist_for_sheet(sheet, feature)
+</code></pre>
+
+<p>In [3]:</p>
+<pre class="codehilite"><code>def record_features(record, key, doc_features): 
+    document_words = set(w.lower() for w in record[key].split()) 
+    features = {}
+    for word in doc_features:
+        features['contains({},{})'.format(key,word)] = (word in document_words)
+    return features
+
+def all_record_features(record):
+    input_data = dict()
+    for categorie_name in freq_dists:
+        ## dict.update means that you merge dictionaries
+        input_data.update(record_features(record, categorie_name, freq_dists[categorie_name]))
+    return input_data
+
+def get_traindata(sheet):
+    records = sheet.get_all_records()
+    traindata = list()
+    for record in records:
+        if record[&quot;Categorie&quot;]:
+            input_data = all_record_features(record)
+            traindata.append((input_data, record[&quot;Categorie&quot;]))
+    return traindata
+</code></pre>
+
+<p>In [4]:</p>
+<pre class="codehilite"><code>training_data = get_traindata(sheet)
+all_labels = set([x[1] for x in training_data])
+print(&quot;Training with &quot; + str(len(training_data)) + &quot; entries&quot;)
+print(all_labels)
+
+
+
+Training with 365 entries
+{'reizen', 'inleg roland', 'overig', 'benzine', 'goede doelen', 'sport', 'uit eten', 'electriciteit', 'internet', 'huur', 'zorgverzekering roland', 'water', 'verzekering roland', 'sport lisette', 'wegenbelasting', 'tanken', 'cash', 'parkeren', 'openbaar vervoer', 'auto', 'abonnementen', 'verzekering auto', 'boodschappen', 'inleg lisette', 'waterschapsbelasting'}
+</code></pre>
+
+<p>After selecting all the transactions I labeled, and converting them to these feature vectors I could select and train a classifier! I decided to go for a simple decision tree. Not only did I expect this to work reasonably well for my features (only recognizing where I do groceries and who I pay my rent to would remove 80% of transactions I normally have to label!). Conveniently the NLTK library I used to create the frequency distribution also contains a class that allows you to import any SKLearn classifier. This reduced training to one line of code</p>
+<p>In [5]:</p>
+<pre class="codehilite"><code>from nltk.classify import SklearnClassifier
+from sklearn import tree
+
+classifier = SklearnClassifier(tree.DecisionTreeClassifier(), sparse=False).train(training_data)
+</code></pre>
+
+<h2 id="visualising-the-decision-tree">Visualising the decision tree</h2>
+<p>The SKLearn tree classifier has a function to write the decision tree as a graphviz file. This function requires the classifier NLTK created, the feature names, and the class labels. Getting these required a bit of documentation reading as there are no clear functions to get these (and there is no way to know what the classifier did with your data). Eventually, the following code was able to get what I needed. Python can even write the whole tree itself if you install and import the graphviz library.</p>
+<p>In [6]:</p>
+<pre class="codehilite"><code>import graphviz
+
+dot_data = tree.export_graphviz(classifier._clf, out_file=None, 
+                         feature_names=classifier._vectorizer.get_feature_names(),  
+                         class_names=classifier.labels(),  
+                         filled=True, rounded=True,  
+                         special_characters=True)
+graph = graphviz.Source(dot_data) 
+graph.render(&quot;budget_decisiontree&quot;)
+</code></pre>
+
+<p>Out[6]:</p>
+<pre class="codehilite"><code>'budget_decisiontree.pdf'
+</code></pre>
+
+<p>Below is a part of the decision tree the algorithm generated. It correctly discovered that I do my grocery shopping at the “Albert Heijn” (<a href="https://www.youtube.com/watch?v=GiZJa_Ctkr4">https://www.youtube.com/watch?v=GiZJa_Ctkr4</a>), where I rent my apartment, where my internet money goes to, and much more!</p>
+<p><img alt="result" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/12/subparttree.png" /></p>
+<h2 id="labeling-data">Labeling data</h2>
+<p>And now the most important part of this project: classify each of my transactions! As described at the start of this article I added a column for the computer prediction. The Google Sheets API allows you to write a single cell at a time which for some reason takes around a second per edit. Although it’s annoying if you try to iterate quickly, it gives some cool visualizations while your algorithm is working!</p>
+<p><a href="https://www.pinchofintelligence.com/wp-content/uploads/2017/12/labelingdata.gif"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/12/labelingdata.gif" /></a></p>
+<p>In [7]:</p>
+<pre class="codehilite"><code>records = sheet.get_all_records()
+for row, record in enumerate(records):
+    try:
+        row += 2 # rows start at 1... first row is a header
+        input_data = all_record_features(record)
+        but = classifier.classify(input_data)
+        if but != record[&quot;Computer guessed&quot;]:
+            sheet.update_cell(row, 11, but)
+    except Exception as e:
+        print(&quot;Exception at row &quot; + str(row))
+</code></pre>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>Although not everything is filled in correctly, about 80% of my transactions are now correctly labeled! It saved me a lot of time, was an interesting challenge, and makes the awesome Excel sheet way more usable now.</p>
+<p>If you are interested in the code, it’s available on Github: <a href="https://github.com/rmeertens/python_budget_classifier">https://github.com/rmeertens/python_budget_classifier .</a> I always love to hear feedback from people so please reach out to me!</p>
+  </div>
+  <nav class="post-nav">
+<a class="post-nav-link post-nav-prev" href="../painting-by-prime-number/index.html">
+  <span class="post-nav-label">&larr; Previous</span>
+  <span class="post-nav-title">Painting by Prime Number</span>
+</a>
+<a class="post-nav-link post-nav-next" href="../autonomous-green-wave/index.html">
+  <span class="post-nav-label">Next &rarr;</span>
+  <span class="post-nav-title">Autonomous vehicles will lead others through congested cities</span>
+</a>
+</nav>
+</div>
+<footer><div class="page">&copy; 2026 Roland Meertens &middot; <a href="../../index.html">meertens.dev</a></div></footer>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing the perseverance rover on mars — Roland Meertens</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="page">
+    <a class="site-name" href="../../index.html">Roland Meertens</a>
+    <nav class="site-nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../blog/index.html" class="active">Blog</a>
+      <a href="https://github.com/rmeertens" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/rmeertens" target="_blank">LinkedIn</a>
+    </nav>
+  </div>
+</header>
+<div class="page">
+  <div class="post-header">
+    <div class="post-breadcrumb"><a href="../index.html">Blog</a></div>
+    <h1>Landing the perseverance rover on mars</h1>
+    <div class="post-meta">February 25, 2021</div>
+  </div>
+  <div class="post-hero"><img src="https://img.youtube.com/vi/gYQwuYZbA6o/mqdefault.jpg" alt="" loading="lazy"></div>
+  <div class="post-content">
+    <p>This week the perseverance rover landed on mars! A big congratulations for everyone at NASA who made this possible! It’s a stunning engineering feat which I followed closely on Youtube. Something I noticed is that they mentioned they can land the rover more precise than last time because they use visual localisation (‘terrain-relative navigation’) during the landing.<br />
+Last week NASA actually released a video of the in-air footage of the rover landing. Thomas Zurbuchen mentioned that the best way to <a href="https://youtu.be/gYQwuYZbA6o?t=5119">get a career at NASA is playing around with their data</a>. I thus figured it would be cool to write and show some code that localises the rover during the landing so others can be inspired!</p>
+<p>I decided to try this using only their <a href="https://www.youtube.com/watch?v=L1taqzNovbk">Youtube video</a> as input, and using a <a href="https://mars.nasa.gov/mars2020/mission/where-is-the-rover/">two high resolution image of the landing site</a> where I exported the location the rover was going to land as images.</p>
+<p>I extensively used the OpenCV library. It has functions to histogram-equalize grayscale images, functions to find so-called ‘features’ in images, and even a way to estimate the <a href="https://en.wikipedia.org/wiki/Homography_(computer_vision)">homography</a> of an image. The approach I took was finding features in each image the rover took while it descended, and matching these features to the features in the map. When there are enough matching features I tried to find the homography of the image, and tried to draw the suspected border of the image from the rover projected on the map.</p>
+<p>The result is really good! I combined the outputs in a video which I uploaded to Youtube. Click on the image above to look at it. You can see that the algorithm finds a good homography far before the rover leaves the parachute, which means it can localise in time. I was also amazed at how good the algorithm performed while going down to the ground. The last real-known location before it loses tracking is indeed the location the rover landed!</p>
+<p>One thing to really improve is the speed at which the code runs. It is currently way too slow to put on a realtime descending system. It’s a fun challenge to improve the speed of the algorithm yourself! I would love to learn how NASA decided how much compute power to budget for localisation, and how this is optimally used. From what I heard there is a special FPGA to offload the compute power from their main computer, and I wonder if that hardware can now be re-used for something else.</p>
+<p>To really estimate the location of the space craft one would also take more variables into account. Examples of such variables are the height of the space craft (I would love to know how NASA estimates this during descent, I suspect they use the radar on board of the spacecraft), the intrinsic parameters of the camera (I would love to know how NASA calibrates a camera after launching it and before landing it), and the orientation of the spacecraft with respect to Mars (I would also love to see more explanation of how they estimate this!). I’m also wondering if NASA re-maps the area while landing by implementing some simultaneous localisation and mapping, to get better features for their landing site while actually landing.</p>
+<h3 id="challenges">Challenges</h3>
+<p>Last but not least I think that the code I have in my Jupyter notebook still contains some problems (or ‘challenges left as an exercise to the reader’. Some of these problem with my approach right now are:</p>
+<ul>
+<li>It’s wayyyy too slow! I literally let my computer run 24 hours to get the video out… We have to find some ways to speed the algorithm up! This can be done by only matching to likely features, or maybe by reducing the amount of small-scale features and only focussing on larger ones?</li>
+<li>If the spacecraft moves quickly the images are really blurry. This reduces the amount of useful features, so I wonder if we can either ‘guarantee’ a well-focussed and stable camera shot on mars, or if there are features which are less sensitive to blurring…</li>
+<li>In the video you can see that it takes a while before my algorithm gets a good feel for where it is. On the one hand I feel it’s a bit late, but the ‘lock’ on the ground is still while Perseverance is hanging on the parachute, making it on time for terrain-negative navigation. Having an earlier idea of where we are can only be beneficial!</li>
+<li>It re-localises every time. Building some tracking in would both increase the accuracy of the view, and would help speed up the algorithm because you can predict where the space craft will be looking.</li>
+</ul>
+<p>Want to try the code yourself? It’s on GitHub: <a href="https://github.com/rmeertens/localise_on_mars">https://github.com/rmeertens/localise_on_mars</a>. In case you want to take on the challenges above: by literally changing only a few lines I managed to get slightly worse results as in the Youtube video, but at a rate of 15Hz (less than 70ms per frame). Let me know if you manage to beat that!</p>
+  </div>
+  <nav class="post-nav">
+<a class="post-nav-link post-nav-prev" href="../analysing-my-swim-stroke/index.html">
+  <span class="post-nav-label">&larr; Previous</span>
+  <span class="post-nav-title">Analysing my swim stroke</span>
+</a>
+<a class="post-nav-link post-nav-next" href="../sending-a-neural-network-to-the-moon/index.html">
+  <span class="post-nav-label">Next &rarr;</span>
+  <span class="post-nav-title">Sending a Neural Network to the Moon</span>
+</a>
+</nav>
+</div>
+<footer><div class="page">&copy; 2026 Roland Meertens &middot; <a href="../../index.html">meertens.dev</a></div></footer>
+</body>
+</html>

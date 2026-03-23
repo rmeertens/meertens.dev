@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neural voting advice application — Roland Meertens</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="page">
+    <a class="site-name" href="../../index.html">Roland Meertens</a>
+    <nav class="site-nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../blog/index.html" class="active">Blog</a>
+      <a href="https://github.com/rmeertens" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/rmeertens" target="_blank">LinkedIn</a>
+    </nav>
+  </div>
+</header>
+<div class="page">
+  <div class="post-header">
+    <div class="post-breadcrumb"><a href="../index.html">Blog</a></div>
+    <h1>Neural voting advice application</h1>
+    <div class="post-meta">March 3, 2017</div>
+  </div>
+  <div class="post-hero"><img src="https://www.pinchofintelligence.com/wp-content/uploads/2017/03/stemwijzerbackground-300x200.jpg" alt="" loading="lazy"></div>
+  <div class="post-content">
+    <p>Next week the Netherlands will hold elections to choose who is going to represent the people in the house of representatives. <a href="https://en.wikipedia.org/wiki/Dutch_general_election,_2017">There are 28 political parties participating, although there are 10 ‘big’ political parties most people choose from.</a> As there are so many political parties people orient themselves on who to vote for using voting advice applications. Most of the time people tell these applications what their opinion is on 30 important questions, and the application tells them what party would represent their opinions the best.</p>
+<h2 id="neural-voting-advice-application">Neural voting advice application</h2>
+<p>For long I though that this system could be improved. Instead of filling in the 30 questions somebody else thinks are important, why not tell a voting advice application what you really want? Using neural networks I made such a system: the <a href="https://rmeertens.github.io/NeuralVotingAdvice">neural voting advice application</a>.</p>
+<h3 id="what-can-i-enter">What can I enter?</h3>
+<p>Enter a normal Dutch sentence that describes what you want to do with the Netherlands. The best input is a sentence that is longer than 10 words, and shorter than 20 words. The best input would be a sentence you would find in a party program… You can try:</p>
+<ul>
+<li>Door te werken aan een duurzame, reële economie creëren we groene en echte banen.</li>
+<li>Nederland versterkt de internationale terrorismebestrijding, de inlichtingendiensten en de aanpak van jihadisten.</li>
+<li>In Nederland gedraag je je. Als je dat doet, dan zijn de mogelijkheden eindeloos.</li>
+</ul>
+<p><a href="https://www.pinchofintelligence.com/wp-content/uploads/2017/03/stemwijzerbackground.jpg"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/03/stemwijzerbackground-300x200.jpg" /></a></p>
+<h3 id="how-did-your-program-learn-this">How did your program learn this?</h3>
+<p>Most parties have their program as PDF on their website. I downloaded these and cut them to single sentences. After , his I “trained” the neural voting advice application sentence by sentence by asking it “what party had this sentence in their program?”. Because the “Party for freedom” (right-wing populist party) has a one-page program I downloaded all tweets of their leader Geert Wilders instead. On a set of sentences it never saw before my program guesses the origin correctly in 55% of the cases.</p>
+<h3 id="why-are-some-of-the-words-replaced-by-_unk">Why are some of the words replaced by _UNK?</h3>
+<p>During the reading of the texts, all words that occur less than five times are removed. If you only see these words a few times you are not able to know what they mean in a context. They thus don’t contribute to determining to what party they belong. This neural voting advice application replaces these words by _UNK.</p>
+<h3 id="why-did-your-program-get-sentence-xxx-wrong">Why did your program get sentence XXX wrong?</h3>
+<p>We humans have certain associations with political parties. Sometimes this is another association my program got after reading the party program. There are two reasons for this: first of all, we know exactly what each word means, and what it means in a context. If we read a program for the first time we know exactly what the party means, where our computer has to learn everything about the dutch language from scratch. Second of all, we have more information about the political partys than just their program. Most of us read the newspapers, listen to the news, watching debates, etc instead of reading the program. If we would add more information, this program would be better.</p>
+<h3 id="i-have-a-remarkcomplaintidea">I have a remark/complaint/idea</h3>
+<p>Send me an e-mail!</p>
+<h3 id="are-there-any-similar-sites">Are there any similar sites?</h3>
+<p>After I wrote my program I found this website: <a href="http://www.bigdatarepublic.nl/stemradar/">http://www.bigdatarepublic.nl/stemradar/</a> . The difference is that that program only looks at words in each sentence, not at the context of the words.</p>
+  </div>
+  <nav class="post-nav">
+<a class="post-nav-link post-nav-prev" href="../stemwijzer-met-kunstmatige-intelligentie/index.html">
+  <span class="post-nav-label">&larr; Previous</span>
+  <span class="post-nav-title">Stemwijzer met kunstmatige intelligentie</span>
+</a>
+<a class="post-nav-link post-nav-next" href="../watching-tensorflow-dev-summit-2017-livestream/index.html">
+  <span class="post-nav-label">Next &rarr;</span>
+  <span class="post-nav-title">Watching the TensorFlow Dev Summit 2017 – Livestream</span>
+</a>
+</nav>
+</div>
+<footer><div class="page">&copy; 2026 Roland Meertens &middot; <a href="../../index.html">meertens.dev</a></div></footer>
+</body>
+</html>

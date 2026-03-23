@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lessons Learned During a Year at a Self-Driving Car Company — Roland Meertens</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="page">
+    <a class="site-name" href="../../index.html">Roland Meertens</a>
+    <nav class="site-nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../blog/index.html" class="active">Blog</a>
+      <a href="https://github.com/rmeertens" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/rmeertens" target="_blank">LinkedIn</a>
+    </nav>
+  </div>
+</header>
+<div class="page">
+  <div class="post-header">
+    <div class="post-breadcrumb"><a href="../index.html">Blog</a></div>
+    <h1>Lessons Learned During a Year at a Self-Driving Car Company</h1>
+    <div class="post-meta">March 8, 2019</div>
+  </div>
+  <div class="post-hero"><img src="https://www.pinchofintelligence.com/wp-content/uploads/2019/02/profile1jpg-1024x683.jpg" alt="" loading="lazy"></div>
+  <div class="post-content">
+    <p>In January I have been a machine learning engineer at <a href="http://aid-driving.eu/">Autonomous Intelligent Driving (AID)</a> for exactly a year! To summarize for myself what I learned, and to inspire others, I decided to write a short blog post about it. Are you interested in joining us? <a href="https://jobs.lever.co/aid-driving?lever-via=ahRIYgDiOu">Click here to apply!</a></p>
+<p>First of all, it might make sense to describe what I do at this job. My task is to both explore the feasibility of algorithms (mostly in Python) before we put them on the car, as well as rewrite algorithms in C++ to put them on the car. Projects I worked on in the past year are dynamic object detection (cars, pedestrians, etc.), semantic segmentation, and landmark recognition for localization. These algorithms ended up on the car, and the output of the algorithms is used by other teams to drive autonomously. </p>
+<p><a href="https://www.pinchofintelligence.com/wp-content/uploads/2019/02/profile1jpg.jpg"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2019/02/profile1jpg-1024x683.jpg" /></a></p>
+<p><strong>Working with LIDAR data</strong></p>
+<p>LIDAR data is really amazing to work with! Before I worked with stereo cameras, ultrasonic sensors and single small time of flight sensors. Now that I work with a car with multiple LiDAR sensors I have thousands of precise and accurate measurements all around the car!</p>
+<p>I wrote multiple applications which use this type of data, and I learned you can use the data in multiple ways. For some applications I treated it as a random collection of points, for some I used the intrinsics of the LiDAR sensor to get specific information, and for others, I used the multiple scan lines of the LiDAR to extract the information I needed. </p>
+<p><strong>The joy and frustration of C++</strong></p>
+<p>Before I joined AID I worked with C on low-level microcontrollers for both drones and cameras at the MAVLab. When a drone crashed in our cyber zoo the maximum damage was the price of the drone, and/or a lot of resoldering and gluing effort. With self-driving cars, you have to be extra cautious that you implement your algorithm efficiently. This required me to learn more about (modern) C++. I also tried to apply this during last years advent of code, as there is still much to learn for me there. </p>
+<p><strong>The benefit of working test-driven</strong></p>
+<p>Before joining AID I always thought test-driven development was boring, and a waste of time. Luckily people quickly taught me the opposite: it makes programming a less frustrating more stable experience and debugging a less frequent activity. It also allows you to make larger code changes without wondering why your car suddenly doesn’t see anything anymore. </p>
+<p><strong>The importance of continuous evaluation</strong></p>
+<p>In addition to making sure your code doesn’t become worse over time, it’s also important to make sure your algorithms/machine learning models keep performing. I spend a lot of time working with our machine learning people setting up an evaluation environment and making sure that every day we evaluate our algorithms on the same data to make sure they are improving. Personally, I worked a lot on building a dashboard for this, to make sure all developers can keep an eye on our KPI’s. </p>
+<p><strong>It takes a village, not a Batman</strong></p>
+<p>One of AID’s values is to succeed as a team. It takes a diverse team with people with different backgrounds to think about every possible scenario, both in the world as on the hardware. As almost every company we work in an agile way where we as a team decide how to approach our challenges. I worked as a scrum master for the machine learning team, which I greatly enjoyed. If you are interested in joining us, take a look at <a href="https://jobs.lever.co/aid-driving?lever-via=ahRIYgDiOu">AID’s career page</a>, or reach out to me if you want to know if building self-driving cars would be something for you! Make sure to <a href="https://jobs.lever.co/aid-driving?lever-via=ahRIYgDiOu">follow this link</a> when applying. </p>
+<p><a href="https://www.pinchofintelligence.com/wp-content/uploads/2019/03/grouppicture.jpeg"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2019/03/grouppicture-1024x768.jpeg" /></a></p>
+  </div>
+  <nav class="post-nav">
+<a class="post-nav-link post-nav-prev" href="../showing-kids-what-neural-networks-can-detect/index.html">
+  <span class="post-nav-label">&larr; Previous</span>
+  <span class="post-nav-title">Showing kids what neural networks can detect</span>
+</a>
+<a class="post-nav-link post-nav-next" href="../infoq-alexa-skill/index.html">
+  <span class="post-nav-label">Next &rarr;</span>
+  <span class="post-nav-title">I created the InfoQ Alexa skill</span>
+</a>
+</nav>
+</div>
+<footer><div class="page">&copy; 2026 Roland Meertens &middot; <a href="../../index.html">meertens.dev</a></div></footer>
+</body>
+</html>

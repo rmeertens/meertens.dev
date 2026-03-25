@@ -4,6 +4,7 @@ date: "2018-08-02"
 slug: "worlds-longest-palindrome"
 excerpt: "In honor of the 20th of February, 2002, a palindromic date, Peter Norvig designed his worlds longest unique palindromic sentence of 21,012 words(http://norvig.com/palindrome.html). With a new..."
 original_url: "https://www.pinchofintelligence.com/worlds-longest-palindrome/"
+thumbnail: "https://www.pinchofintelligence.com/wp-content/uploads/2018/08/explanation.png"
 ---
 
 In honor of the 20th of February, 2002, a palindromic date, Peter Norvig designed his [worlds longest unique palindromic sentence of 21,012 words](http://norvig.com/palindrome.html). With a new palindromic date approaching [on August 10, 2018 (8102018)](https://www.livescience.com/33583-palindrome-dates-21st-century-weird.html), I wanted to take some time to see if I could put my own spin on a palindrome world record. While Norvig focused on making his palindrome out of unique words, I just wanted to fit in as many words as possible.

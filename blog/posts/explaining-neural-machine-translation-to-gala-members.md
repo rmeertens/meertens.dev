@@ -4,6 +4,7 @@ date: "2017-01-27"
 slug: "explaining-neural-machine-translation-to-gala-members"
 excerpt: "Yesterday I presented an introduction to neural networks to GALA members: the Globalization and Localization Association. With the recent breakthrough of Neural Machine Translation (NMT) more and..."
 original_url: "https://www.pinchofintelligence.com/explaining-neural-machine-translation-to-gala-members/"
+thumbnail: "https://www.pinchofintelligence.com/wp-content/uploads/2017/01/2017-01-27-13_23_24-Neural-Machine-Translation-For-language-professionals-Google-Slides.png"
 ---
 
 Yesterday I presented an introduction to neural networks to GALA members: the Globalization and Localization Association. With the recent breakthrough of Neural Machine Translation (NMT) more and more people like to try this new technology. To effectively use NMT, you have to know how it works. This way you can understand what the advantages are compared to other translation methods, and why your translation software makes silly mistakes. The presentation itself was a big success, 78 people attended an left very positive reviews.

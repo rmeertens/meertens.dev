@@ -114,7 +114,8 @@ def parse_post(filepath: Path):
     else:
         meta["excerpt"] = clean_excerpt(meta["excerpt"])
 
-    meta["thumbnail"] = extract_thumbnail(body)
+    if not meta.get("thumbnail"):
+        meta["thumbnail"] = extract_thumbnail(body)
     return meta, body
 
 
@@ -148,6 +149,7 @@ def embed_youtube(html_text: str) -> str:
 def site_header(css_path, active=""):
     root = css_path.replace("style.css", "").rstrip("/") or "."
     blog_path = f"{root}/blog/index.html" if root != "." else "blog/index.html"
+    about_path = f"{root}/about.html" if root != "." else "about.html"
     home_path = f"{root}/index.html" if root != "." else "index.html"
 
     def cls(name):
@@ -158,7 +160,9 @@ def site_header(css_path, active=""):
     <a class="site-name" href="{home_path}">Roland Meertens</a>
     <nav class="site-nav">
       <a href="{home_path}"{cls("home")}>Home</a>
+      <a href="{about_path}"{cls("about")}>About</a>
       <a href="{blog_path}"{cls("blog")}>Blog</a>
+      <a href="https://www.youtube.com/@roland_does_things" target="_blank">YouTube</a>
       <a href="https://github.com/rmeertens" target="_blank">GitHub</a>
       <a href="https://linkedin.com/in/rmeertens" target="_blank">LinkedIn</a>
     </nav>
@@ -330,6 +334,79 @@ def blog_index_html(posts):
 
 
 # ---------------------------------------------------------------------------
+# Homepage (blog-focused)
+# ---------------------------------------------------------------------------
+
+def homepage_html(posts):
+    css_path = "style.css"
+
+    latest = posts[0] if posts else None
+    thumb = ""
+    if latest and latest.get("thumbnail"):
+        thumb = f'<img class="featured-thumb" src="{html.escape(latest["thumbnail"])}" alt="" loading="lazy">'
+
+    featured = ""
+    if latest:
+        featured = (
+            f'<a class="featured-post" href="blog/{latest["slug"]}/index.html">\n'
+            f'  <div class="featured-body">\n'
+            f'    <span class="featured-label">Latest post</span>\n'
+            f'    <h3>{html.escape(latest["title"])}</h3>\n'
+            f'    <p>{html.escape(clean_excerpt(latest["excerpt"]))}</p>\n'
+            f'    <span class="featured-date">{html.escape(format_date(latest.get("date", "")))}</span>\n'
+            f'  </div>\n'
+            f'  {thumb}\n'
+            f'</a>'
+        )
+
+    recent = posts[1:9] if len(posts) > 1 else []
+    cards = "\n".join(post_card_html(m, slug_prefix="blog/") for m in recent)
+
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roland Meertens</title>
+  <meta name="description" content="Roland Meertens — ML engineer, builder of curious things.">
+  <link rel="stylesheet" href="{css_path}">
+  {GTAG}
+</head>
+<body>
+{site_header(css_path, active="home")}
+<div class="page">
+
+  <div class="hero hero-with-photo">
+    <div class="hero-text">
+      <h1>Roland Meertens</h1>
+      <p class="lead">
+        I'm a machine learning engineer who builds <strong>self-driving cars</strong> at
+        <a href="https://wayve.ai" target="_blank">Wayve</a>.
+        In my spare time I sometimes build interesting things, and on this
+        <a href="blog/index.html">blog</a> I share robots I build, websites I make,
+        and other interesting musings.
+      </p>
+    </div>
+    <img class="hero-photo" src="photo.jpg" alt="Roland Meertens">
+  </div>
+
+{featured}
+
+  <div class="section-label">Recent posts</div>
+  <div class="post-grid">
+{cards}
+  </div>
+  <p style="margin-top: 16px; font-size: 0.9rem;">
+    <a href="blog/index.html">View all {len(posts)} posts &rarr;</a>
+  </p>
+
+</div>
+{site_footer(".")}
+</body>
+</html>"""
+
+
+# ---------------------------------------------------------------------------
 # Sort / build
 # ---------------------------------------------------------------------------
 
@@ -379,6 +456,12 @@ def build():
         blog_index_html(all_posts), encoding="utf-8"
     )
     print(f"  Built: blog/index.html")
+
+    # Phase 4: write homepage
+    (ROOT / "index.html").write_text(
+        homepage_html(all_posts), encoding="utf-8"
+    )
+    print(f"  Built: index.html")
 
     print(f"\nDone — {len(all_posts)} posts built.")
 

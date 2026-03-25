@@ -58,8 +58,25 @@ a:hover { text-decoration: underline; }
 .site-nav a:hover { color: var(--accent); text-decoration: none; }
 .site-nav a.active { color: var(--text); font-weight: 600; }
 
-/* ---- Hero (homepage only) ---- */
+/* ---- Hero ---- */
 .hero { padding: 64px 0 48px; }
+
+.hero-with-photo {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.hero-text { flex: 1; min-width: 0; }
+
+.hero-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 3px solid var(--border);
+}
 
 .hero h1 {
   font-size: 2rem;
@@ -657,6 +674,8 @@ footer {
 /* ---- Responsive ---- */
 @media (max-width: 520px) {
   .hero { padding: 48px 0 36px; }
+  .hero-with-photo { flex-direction: column-reverse; text-align: center; gap: 20px; }
+  .hero-photo { width: 120px; height: 120px; }
   .hero h1 { font-size: 1.6rem; }
   .now-grid { grid-template-columns: 1fr; }
   .career li { grid-template-columns: 1fr; gap: 1px; }

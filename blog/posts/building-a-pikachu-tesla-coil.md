@@ -4,6 +4,7 @@ date: "2023-08-30"
 slug: "building-a-pikachu-tesla-coil"
 excerpt: "This week I made a new project: a Tesla-coil powered Pikachu It’s essentially a 3D printed pikachu which emits sparks. What’s cool about it is that I can also play the pokemon theme tune through it..."
 original_url: "https://www.pinchofintelligence.com/building-a-pikachu-tesla-coil/"
+thumbnail: "https://www.pinchofintelligence.com/wp-content/uploads/2023/08/Kopie-van-Kopie-van-Kopie-van-Kopie-van-Kopie-van-Kopie-van-Kopie-van-Kopie-van-Koffie-Tutorial-YouTube-Thumbnail-1.png"
 ---
 
 This week I made a new project: a Tesla-coil powered Pikachu! It’s essentially a 3D printed pikachu which emits sparks. What’s cool about it is that I can also play the pokemon theme tune through it and use it to amplify my electric guitar. The below video best show-cases it. 

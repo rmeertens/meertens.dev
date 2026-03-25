@@ -4,6 +4,7 @@ date: "2022-05-05"
 slug: "point-and-snap-for-my-smart-home"
 excerpt: "Having smart devices in your home is fun, but turning them off is still a hassle. Taking an app, talking to Alexa, or pressing a button all takes too much time. Why can’t we in 2022 just point at a..."
 original_url: "https://www.pinchofintelligence.com/point-and-snap-for-my-smart-home/"
+thumbnail: "https://www.pinchofintelligence.com/wp-content/uploads/2022/05/Screenshot-2022-05-05-at-21.03.47-1024x674.jpg"
 ---
 
 Having smart devices in your home is fun, but turning them off is still a hassle. Taking an app, talking to Alexa, or pressing a button all takes too much time. Why can’t we in 2022 just point at a device and snap our fingers to turn things on and off? I decided to fix it in this weekend project!

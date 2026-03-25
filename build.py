@@ -160,7 +160,7 @@ def site_header(css_path, active=""):
     <a class="site-name" href="{home_path}">Roland Meertens</a>
     <nav class="site-nav">
       <a href="{home_path}"{cls("home")}>Home</a>
-      <a href="{about_path}"{cls("about")}>About</a>
+      <a href="{about_path}"{cls("about")}>About me</a>
       <a href="{blog_path}"{cls("blog")}>Blog</a>
       <a href="https://www.youtube.com/@roland_does_things" target="_blank">YouTube</a>
       <a href="https://github.com/rmeertens" target="_blank">GitHub</a>
@@ -171,7 +171,7 @@ def site_header(css_path, active=""):
 
 
 def site_footer(root="."):
-    return f'<footer><div class="page">&copy; 2026 Roland Meertens &middot; <a href="{root}/index.html">meertens.dev</a></div></footer>'
+    return ""
 
 
 # ---------------------------------------------------------------------------
@@ -337,6 +337,14 @@ def blog_index_html(posts):
 # Homepage (blog-focused)
 # ---------------------------------------------------------------------------
 
+HIGHLIGHTED_SLUGS = [
+    "point-and-snap-for-my-smart-home",
+    "building-a-pikachu-tesla-coil",
+    "building-a-cupcake-robot",
+    "immersive-points-a-virtual-reality-point-cloud-visualisation-tool",
+]
+
+
 def homepage_html(posts):
     css_path = "style.css"
 
@@ -359,8 +367,9 @@ def homepage_html(posts):
             f'</a>'
         )
 
-    recent = posts[1:9] if len(posts) > 1 else []
-    cards = "\n".join(post_card_html(m, slug_prefix="blog/") for m in recent)
+    by_slug = {m["slug"]: m for m in posts}
+    highlighted = [by_slug[s] for s in HIGHLIGHTED_SLUGS if s in by_slug]
+    highlight_cards = "\n".join(post_card_html(m, slug_prefix="blog/") for m in highlighted)
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -387,18 +396,28 @@ def homepage_html(posts):
         and other interesting musings.
       </p>
     </div>
-    <img class="hero-photo" src="photo.jpg" alt="Roland Meertens">
+    <img class="hero-photo" src="myphoto.jpg" alt="Roland Meertens">
+  </div>
+
+  <div class="follow-me">
+    <span class="follow-me-label">Follow me on</span>
+    <div class="follow-me-links">
+      <a href="https://linkedin.com/in/rmeertens" target="_blank">LinkedIn (most active)</a>
+      <a href="https://www.youtube.com/@roland_does_things" target="_blank">YouTube</a>
+      <a href="https://github.com/rmeertens" target="_blank">GitHub</a>
+      <a href="https://www.infoq.com/profile/Roland-Meertens" target="_blank">InfoQ</a>
+    </div>
   </div>
 
 {featured}
 
-  <div class="section-label">Recent posts</div>
+  <div class="section-label">Highlighted posts (<a href="blog/index.html">all posts</a>)</div>
   <div class="post-grid">
-{cards}
+{highlight_cards}
   </div>
-  <p style="margin-top: 16px; font-size: 0.9rem;">
-    <a href="blog/index.html">View all {len(posts)} posts &rarr;</a>
-  </p>
+  <div class="view-all-posts">
+    <a href="blog/index.html" class="view-all-btn">View all {len(posts)} posts &rarr;</a>
+  </div>
 
 </div>
 {site_footer(".")}

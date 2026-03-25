@@ -63,19 +63,19 @@ a:hover { text-decoration: underline; }
 
 .hero-with-photo {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: 32px;
 }
 
 .hero-text { flex: 1; min-width: 0; }
 
 .hero-photo {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
+  width: 280px;
+  border-radius: 10px;
   object-fit: cover;
   flex-shrink: 0;
-  border: 3px solid var(--border);
+  border: 1px solid var(--border);
+  align-self: stretch;
 }
 
 .hero h1 {
@@ -92,6 +92,44 @@ a:hover { text-decoration: underline; }
 }
 
 .hero .lead strong { font-weight: 600; }
+
+.follow-me {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.follow-me-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.follow-me-links {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.follow-me-links a {
+  display: inline-block;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--card);
+  color: var(--text);
+  font-size: 0.84rem;
+  font-weight: 500;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.follow-me-links a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 1px 6px rgba(37,99,235,.08);
+  text-decoration: none;
+}
 
 .links {
   display: flex;
@@ -235,6 +273,13 @@ section p:last-child { margin-bottom: 0; }
 }
 .career .role { font-weight: 600; font-size: 0.92rem; }
 .career .org { color: var(--muted); font-size: 0.88rem; }
+
+.career .role-desc {
+  font-size: 0.84rem;
+  color: var(--muted);
+  margin-top: 4px;
+  line-height: 1.5;
+}
 
 /* ---- Writing list ---- */
 .writing-list { list-style: none; }
@@ -405,6 +450,28 @@ section p:last-child { margin-bottom: 0; }
   font-size: 0.72rem;
   color: var(--muted);
   margin-top: 8px;
+}
+
+/* ---- View all posts button ---- */
+.view-all-posts {
+  text-align: center;
+  margin: 28px 0 8px;
+}
+
+.view-all-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  transition: background 0.15s, color 0.15s;
+}
+.view-all-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
 }
 
 /* ---- Archive compact list ---- */
@@ -675,7 +742,7 @@ footer {
 @media (max-width: 520px) {
   .hero { padding: 48px 0 36px; }
   .hero-with-photo { flex-direction: column-reverse; text-align: center; gap: 20px; }
-  .hero-photo { width: 120px; height: 120px; }
+  .hero-photo { width: 180px; }
   .hero h1 { font-size: 1.6rem; }
   .now-grid { grid-template-columns: 1fr; }
   .career li { grid-template-columns: 1fr; gap: 1px; }

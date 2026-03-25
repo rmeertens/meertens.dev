@@ -44,4 +44,11 @@ If you now create a simple program you should see that it runs remote! Good luck
 [![](https://www.pinchofintelligence.com/wp-content/uploads/2016/12/image03.png)](https://www.pinchofintelligence.com/wp-content/uploads/2016/12/image03.png) [  
 ](https://www.pinchofintelligence.com/wp-content/uploads/2016/12/image04.png) [  
 ](https://www.pinchofintelligence.com/wp-content/uploads/2016/12/image05.png) [  
-](https://www.pinchofintelligence.com/wp-content/uploads/2016/12/image06.png)
+](https://www.pinchofintelligence.com/wp-content/uploads/2016/12/image06.png)  
+
+
+Share List
+
+### Facebook Comments ()
+
+### G+ Comments ()

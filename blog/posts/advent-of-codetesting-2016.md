@@ -50,3 +50,9 @@ Instant update: the solutions of Peter Norvig can be found here: <https://nbview
 Do you have an opinion on test-driven development, or want to show how you solved the Advent of Code 2016? Please post them in the comments or send them to me!
 
 Merry christmas everybody!
+
+Share List
+
+### Facebook Comments ()
+
+### G+ Comments ()

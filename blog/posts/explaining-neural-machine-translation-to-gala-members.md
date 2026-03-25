@@ -13,3 +13,9 @@ The organisers allowed me to share the slides with you, they can be downloaded h
 “ _Roland’s presentation for our international association describing the basics of neural networks was excellent. NMT is complex and multifaceted, yet Roland easily broke down the components into understandable and relatable pieces of information. His presentation is a valuable reference for anyone looking to understand the building blocks of neural networks and searching for details about the differences between NMT and SMT.”_
 
 The process of giving a presentation to GALA members was well organised. Thanks to everybody that helped me out.
+
+Share List
+
+### Facebook Comments ()
+
+### G+ Comments ()

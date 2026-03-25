@@ -17,3 +17,5 @@ If you want to print your own version, you can download it here: <https://www.th
 I also wanted to thank my colleagues for giving feedback on the designs I made, as you can see it took multiple iterations to get the most useful design. That said, if you have any ideas for improvement, please let me know!
 
 [![](https://www.pinchofintelligence.com/wp-content/uploads/2019/12/A2658496-2DAF-45F2-96A3-B617952F7BF6_1_102_o-300x225.jpeg)](https://www.pinchofintelligence.com/wp-content/uploads/2019/12/A2658496-2DAF-45F2-96A3-B617952F7BF6_1_102_o.jpeg)
+
+Share List

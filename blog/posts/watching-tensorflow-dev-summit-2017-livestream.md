@@ -32,3 +32,9 @@ Unfortunately, I am in the wrong timezone for watching the whole summit live, bu
 
 
 Let me know what your thoughts were on the conference, and what talk you enjoyed the most!
+
+Share List
+
+### Facebook Comments ()
+
+### G+ Comments ()

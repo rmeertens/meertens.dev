@@ -43,4 +43,10 @@ Google does something even more interesting: they only take two persons that do 
 
 Normally you need a lot of training data from one language to another language to get a good translation model. If you don’t have this parallel data, you can still try to go from one language to a third (more common) language, and translate that to the language you actually wanted. How well something like this works can be seen at the site “translationparty.com”:[ http://www.translationparty.com/ten-cats-were-eating-their-food-while-five-dogs-were-12843805](http://www.translationparty.com/ten-cats-were-eating-their-food-while-five-dogs-were-12843805). With these results, translation from uncommon languages to other uncommon languages would improve without the need for more data. 
 
-Hopefully you now understand what Google did, and why this is interesting. If you have any questions, please feel free to contact me.
+Hopefully you now understand what Google did, and why this is interesting. If you have any questions, please feel free to contact me. 
+
+Share List
+
+### Facebook Comments ()
+
+### G+ Comments ()

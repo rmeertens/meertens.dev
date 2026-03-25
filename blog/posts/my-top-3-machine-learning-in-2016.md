@@ -40,3 +40,9 @@ With this translation method you have multiple neural networks. One network, the
 With Zero shot translation three encoders are used and three decoders are used: English, Japanese and Korean. During training Japanese to Korean is never tested, or Korean to Japanese is never tested. The networks DO have to learn the languages to represent (for example) Korean to English and English to Japanese. It turns out that they now also are able to translate from Korean to Japanese, although they never saw this language pair before. 
 
 I explained this [in more detail on my blog a month ago](https://www.pinchofintelligence.com/explaining-googles-zero-shot-translation/). More information [can be found on Google’s research blog](https://research.googleblog.com/2016/11/zero-shot-translation-with-googles.html).
+
+Share List
+
+### Facebook Comments ()
+
+### G+ Comments ()

@@ -25,6 +25,15 @@ ROOT = Path(__file__).parent
 POSTS_SRC = ROOT / "blog" / "posts"
 BLOG_OUT = ROOT / "blog"
 
+GTAG = """<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXWYNZC7YH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXWYNZC7YH');
+</script>"""
+
 MONTHS = [
     "", "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December",
@@ -240,6 +249,7 @@ def post_page_html(meta, content_html, prev_meta=None, next_meta=None):
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title_esc} — Roland Meertens</title>
   <link rel="stylesheet" href="{css_path}">
+  {GTAG}
 </head>
 <body>
 {site_header(css_path, active="blog")}
@@ -296,6 +306,7 @@ def blog_index_html(posts):
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog — Roland Meertens</title>
   <link rel="stylesheet" href="{css_path}">
+  {GTAG}
 </head>
 <body>
 {site_header(css_path, active="blog")}

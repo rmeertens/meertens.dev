@@ -556,3 +556,5 @@ Although Norvig’s solution finds a palindrome in 30 minutes, my solution only 
 ### Find a better dictionary
 
 Let’s be honest, the dictionary we use is terrible. I kept it as Norvig used it for his palindrome, so it offers a nice comparison to his work. However, it would be more impressive if the palindrome made a bit more sense.
+
+Share List

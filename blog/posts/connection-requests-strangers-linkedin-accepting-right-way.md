@@ -26,3 +26,9 @@ Some people did not reply at all. I consider these people spammers who are worth
 [![](https://www.pinchofintelligence.com/wp-content/uploads/2017/06/remove-connection-284x300.png)](https://www.pinchofintelligence.com/wp-content/uploads/2017/06/remove-connection.png)
 
 To add or to ignore strangers on LinkedIn: it has been a dilemma since the day LinkedIn started. Hopefully, you can give this method a try to improve your connections and build a stronger network.
+
+Share List
+
+### Facebook Comments ()
+
+### G+ Comments ()

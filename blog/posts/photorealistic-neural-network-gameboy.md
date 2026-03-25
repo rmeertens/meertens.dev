@@ -701,3 +701,5 @@ Update: somebody wanted to try out my network, and sent me an image taken with h
 ![A real test](https://www.pinchofintelligence.com/wp-content/uploads/2018/05/realtest.png)
 
 The colorized result of an image sent to me taken with his Gameboy Camera
+
+Share List

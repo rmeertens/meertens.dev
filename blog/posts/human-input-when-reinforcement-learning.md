@@ -21,3 +21,7 @@ At the BNAIC 2014 I set up a demonstration to demonstrate this principle. The Ma
 The demonstration uses the Mario AI framework and a phone application that all interested visitors could download. This allowed a great amount of people to give instructions to Mario at the moment they believe it is necessary to give instructions. On a screen the game was visible to all by-standing participants.
 
 [![best-resolution-app](http://pinchofintelligence.com/wp-content/uploads/2014/11/best-resolution-app-300x153.png)](http://pinchofintelligence.com/wp-content/uploads/2014/11/best-resolution-app.png)
+
+Share List
+
+#

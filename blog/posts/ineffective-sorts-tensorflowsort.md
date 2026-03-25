@@ -29,3 +29,9 @@ Please let me know what you think about this sorting algorithm, and let me know 
 #### Update: found another sorting algorithm
 
 Apparently Ilya Kostrikov also wanted to have a neural sorting algorithm. His algorithm is even cooler, using attention for a pointer network! His code can be found here: <https://github.com/ikostrikov/TensorFlow-Pointer-Networks> . If you want to learn more about attention and pointer networks these slides are easy to follow: <http://www.slideshare.net/KeonKim/attention-mechanisms-with-tensorflow> .
+
+Share List
+
+### Facebook Comments ()
+
+### G+ Comments ()

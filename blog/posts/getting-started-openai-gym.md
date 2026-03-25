@@ -192,3 +192,5 @@ Unless you decided to make your own algorithm as an exercise you will not have d
 ### Acknowledgments
 
 This blogpost is the first part of my TRADR summerschool workshop on using human input in reinforcement learning algorithms. More information can be found [on their homepage](https://sites.google.com/view/tradr/home)
+
+Share List

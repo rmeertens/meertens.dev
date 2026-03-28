@@ -31,9 +31,3 @@ What’s next? Well, there are currently three things we like to fix:
 
 
 I hope you enjoyed tinkering with the components! If you have any questions, or a cool result: send me a message!
-
-Share List
-
-### Facebook Comments ()
-
-### G+ Comments ()

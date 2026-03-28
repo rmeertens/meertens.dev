@@ -48,9 +48,3 @@ Searching your own (additional) data is important. We were given a USB stick wit
 Working together is important. Every two hours we took 10-15 minutes to discuss our ideas, and how we could put different data together. We were also very pragmatic during the whole datathon. At one moment different people used different data sources to come up with different metrics. At first combining this was difficult, until one of us simply decided to convert everything to pixels on a world map. A simple solution that would never be acceptable for a project longer than 24 hours, but perfect for us in the short run. 
 
 Visualisations are everything! Although our results were interesting, it started coming together as soon as we started to plot the data. Only in the last hour we started on the GUI shown in the video. However, the fact that we had something that could be tweaked live on stage is something that helped us win the first price.
-
-Share List
-
-### Facebook Comments ()
-
-### G+ Comments ()

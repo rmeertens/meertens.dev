@@ -738,6 +738,29 @@ footer {
   border-top: 1px solid var(--border);
 }
 
+/* ---- Photo lightbox ---- */
+.photo-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+
+.photo-lightbox.open {
+  display: flex;
+}
+
+.photo-lightbox img {
+  max-width: 92vw;
+  max-height: 92vh;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
 /* ---- Career examples (fold-out) ---- */
 .career-examples {
   margin-top: 8px;

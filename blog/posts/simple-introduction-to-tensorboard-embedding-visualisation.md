@@ -200,9 +200,3 @@ If Tensorboard does not work or hangs up, you might need to change you LOG_DIR t
 # Conclusion
 
 Hopefully you now see that it is easy to add an embedding visualisation to your algorithm. Good luck visualising your own! The IPython notebook used to create this post can be found here: https://github.com/rmeertens/Simplest-Tensorflow-Tensorboard-MNIST-Embedding-Visualisation/blob/master/Minimal%20example%20embeddings.ipynb
-
-Share List
-
-### Facebook Comments ()
-
-### G+ Comments ()

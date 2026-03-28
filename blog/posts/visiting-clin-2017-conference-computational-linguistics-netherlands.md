@@ -34,9 +34,3 @@ To do this, they feed both character names in a neural network that goes over th
 ### Conclusion
 
 Visiting CLIN was a great experience. Unfortunately, describing every interesting talk I saw would lead to a way too lengthy article. I met many people, with whom I had interesting discussions. The talks I attended were great, and the city of Leuven was simply beautiful. During my visit, I got so many ideas that I am eager to implement. If you talked with me at CLIN 2017, or have any questions, don’t be afraid to contact me.
-
-Share List
-
-### Facebook Comments ()
-
-### G+ Comments ()

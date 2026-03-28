@@ -157,5 +157,3 @@ In [7]:
 Although not everything is filled in correctly, about 80% of my transactions are now correctly labeled! It saved me a lot of time, was an interesting challenge, and makes the awesome Excel sheet way more usable now.
 
 If you are interested in the code, it’s available on Github: [https://github.com/rmeertens/python_budget_classifier .](https://github.com/rmeertens/python_budget_classifier) I always love to hear feedback from people so please reach out to me!
-
-Share List

@@ -35,5 +35,3 @@ In addition to making sure your code doesn’t become worse over time, it’s al
 One of AID’s values is to succeed as a team. It takes a diverse team with people with different backgrounds to think about every possible scenario, both in the world as on the hardware. As almost every company we work in an agile way where we as a team decide how to approach our challenges. I worked as a scrum master for the machine learning team, which I greatly enjoyed. If you are interested in joining us, take a look at [AID’s career page](https://jobs.lever.co/aid-driving?lever-via=ahRIYgDiOu), or reach out to me if you want to know if building self-driving cars would be something for you! Make sure to [follow this link](https://jobs.lever.co/aid-driving?lever-via=ahRIYgDiOu) when applying. 
 
 [![](https://www.pinchofintelligence.com/wp-content/uploads/2019/03/grouppicture-1024x768.jpeg)](https://www.pinchofintelligence.com/wp-content/uploads/2019/03/grouppicture.jpeg)
-
-Share List

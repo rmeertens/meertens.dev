@@ -54,11 +54,4 @@ The set state function works like the set color function: you navigate to a cert
 ![screen-shot-2016-12-08-at-21-30-35](http://pinchofintelligence.com/wp-content/uploads/2016/11/Screen-Shot-2016-12-08-at-21.30.35-1024x575.png)  
 Hopefully you enjoyed building your own app with the MIT App inventor. If you have any questions, feel free to leave a comment!
 
-[![screen-shot-2016-12-08-at-21-28-46](http://pinchofintelligence.com/wp-content/uploads/2016/11/Screen-Shot-2016-12-08-at-21.28.46.png)](http://pinchofintelligence.com/wp-content/uploads/2016/11/Screen-Shot-2016-12-08-at-21.28.46.png)  
-
-
-Share List
-
-### Facebook Comments ()
-
-### G+ Comments ()
+[![screen-shot-2016-12-08-at-21-28-46](http://pinchofintelligence.com/wp-content/uploads/2016/11/Screen-Shot-2016-12-08-at-21.28.46.png)](http://pinchofintelligence.com/wp-content/uploads/2016/11/Screen-Shot-2016-12-08-at-21.28.46.png)

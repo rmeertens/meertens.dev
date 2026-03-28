@@ -357,5 +357,3 @@ Initially I wanted to dive into the Atari game environments and skip the CartPol
 ### Acknowledgments
 
 This blogpost is the first part of my TRADR summerschool workshop on using human input in reinforcement learning algorithms. More information can be found [on their homepage.](https://sites.google.com/view/tradr/home)
-
-Share List

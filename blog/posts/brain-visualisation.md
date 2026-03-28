@@ -32,10 +32,4 @@ At Google I/O 2014 the google cardboard was introduced. With a cardboard box, tw
 
 # 
 
-# 
-
-Share List
-
-### Facebook Comments ()
-
-### G+ Comments ()
+#

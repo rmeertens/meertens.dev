@@ -272,9 +272,3 @@ In [7]:
 # Conclusion
 
 Zalando had a positive inpact on my clothing style. Writing this client was a lot of fun and hopefully also helps someone else. The code can be found on [github](https://github.com/rmeertens/zalandoclient), and it is also available as pip package by invoking `pip install zalandoclient`. If you have any questions, don’t be afraid to send me a message!
-
-Share List
-
-### Facebook Comments ()
-
-### G+ Comments ()

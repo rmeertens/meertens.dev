@@ -349,5 +349,3 @@ In the end my sensor detected 1 bat at a time when there was probably no bat out
 While working on this project the [Nature Smart Cities project](https://naturesmartcities.com/) created the [Bats London project](http://www.batslondon.com). Per sensor you can [see the bat activity](http://www.batslondon.com/sensors/7). Also interesting is that their sensor is able to capture way more interesting sounds, such as [this social call made by a bat](https://www.youtube.com/watch?v=HHja1Wwm0BU). It is great to see others are also interested in this subject, and it’s great to compare approaches. The bats London project built nice boxes with a computer in it that does all [processing based on a spectogram](https://naturesmartcities.com/about/). They use convolutional neural networks based on 3-second sound files they record every 6 seconds. In the future they even want to start to make a distinction between different species of bats! They did a great job with a very interesting project!
 
 ![Shazam for bats](https://batslive.files.wordpress.com/2017/06/bat-device-inside_web.jpg?w=900)
-
-Share List

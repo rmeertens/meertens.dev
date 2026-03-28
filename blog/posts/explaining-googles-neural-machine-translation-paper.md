@@ -13,11 +13,4 @@ Interesting things to read after watching the video are:
 – Their blogpost: <https://research.googleblog.com/2016/09/a-neural-network-for-machine.html>  
 – Their paper:[ https://arxiv.org/abs/1609.08144](https://arxiv.org/abs/1609.08144)
 
-The video can be found here:  
-
-
-Share List
-
-### Facebook Comments ()
-
-### G+ Comments ()
+The video can be found here:

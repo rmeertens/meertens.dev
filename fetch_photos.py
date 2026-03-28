@@ -19,6 +19,8 @@ from pathlib import Path
 
 try:
     import boto3
+    import botocore
+    import botocore.config
 except ImportError:
     print("Install boto3: pip install boto3")
     raise
@@ -73,7 +75,7 @@ def fetch_photos():
     THUMBS_DIR.mkdir(exist_ok=True)
     FULL_DIR.mkdir(exist_ok=True)
 
-    s3 = boto3.client("s3")
+    s3 = boto3.client("s3", config=botocore.config.Config(signature_version=botocore.UNSIGNED))
 
     paginator = s3.get_paginator("list_objects_v2")
     keys = []

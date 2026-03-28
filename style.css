@@ -811,8 +811,8 @@ footer {
 /* ---- Responsive ---- */
 @media (max-width: 520px) {
   .hero { padding: 48px 0 36px; }
-  .hero-with-photo { flex-direction: column-reverse; text-align: center; gap: 20px; }
-  .hero-photo { width: 180px; }
+  .hero-with-photo { flex-direction: column-reverse; gap: 20px; }
+  .hero-photo { width: 100%; height: 240px; }
   .hero h1 { font-size: 1.6rem; }
   .now-grid { grid-template-columns: 1fr; }
   .career li { grid-template-columns: 1fr; gap: 1px; }

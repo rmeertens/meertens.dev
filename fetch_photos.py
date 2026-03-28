@@ -28,7 +28,7 @@ except ImportError:
     raise
 
 try:
-    from PIL import Image
+    from PIL import Image, ImageOps
 except ImportError:
     print("Install Pillow: pip install Pillow")
     raise
@@ -56,6 +56,7 @@ def make_thumbnail(key: str, stem: str):
         data = resp.read()
 
     img = Image.open(io.BytesIO(data))
+    img = ImageOps.exif_transpose(img)
     img = img.convert("RGB")
     img.thumbnail((THUMB_MAX, THUMB_MAX), Image.LANCZOS)
     img.save(thumb_path, "JPEG", quality=82, optimize=True)

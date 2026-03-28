@@ -132,7 +132,7 @@ a:hover { text-decoration: underline; }
   box-shadow: 0 1px 6px rgba(37,99,235,.08);
   text-decoration: none;
 }
-.follow-me-links a svg { width: 14px; height: 14px; flex-shrink: 0; }
+.follow-me-links a svg { width: 1em; height: 1em; flex-shrink: 0; }
 .follow-me-links .follow-note { font-size: 0.75rem; color: var(--muted); font-weight: 400; }
 
 .links {

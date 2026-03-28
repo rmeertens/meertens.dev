@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Immersive Points: a virtual reality point cloud visualisation tool — Roland Meertens</title>
+  <link rel="stylesheet" href="../../style.css">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXWYNZC7YH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXWYNZC7YH');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="page">
+    <a class="site-name" href="../../index.html">Roland Meertens</a>
+    <nav class="site-nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../about.html">About me</a>
+      <a href="../../blog/index.html" class="active">Blog</a>
+      <a href="../../photos/index.html">Photos</a>
+    </nav>
+  </div>
+</header>
+<div class="page">
+  <div class="post-header">
+    <div class="post-breadcrumb"><a href="../index.html">Blog</a></div>
+    <h1>Immersive Points: a virtual reality point cloud visualisation tool</h1>
+    <div class="post-meta">January 11, 2020</div>
+  </div>
+  <div class="post-hero"><img src="https://www.pinchofintelligence.com/wp-content/uploads/2020/01/immersivepoints-1024x469.png" alt="" loading="lazy"></div>
+  <div class="post-content">
+    <p>A couple of years ago I made a visualization tool for the <a href="https://www.pinchofintelligence.com/brain-visualisation/">Google Cardboard that could show you a brain by looking around</a>. The two big downsides were that you could not walk around through the point cloud and that you could not point out to others what you are seeing. This weekend I fixed both points by creating a new app: <a href="https://rmeertens.github.io/ImmersivePoints/index.html">Immersive Points</a>. This web app still shows a point cloud, but also allows you to physically walk through it, and use your hands to point to things. Other people can look at the screencast to see what you want to point out. </p>
+<p>The app can be found at <a href="https://rmeertens.github.io/ImmersivePoints/index.html">https://rmeertens.github.io/ImmersivePoints/index.html</a>. I currently put a frame with points from a brain in (taken from the old brain visualization app), two frames from a self-driving car dataset, and a frame from a scan of the Notre-Dame. </p>
+<p><a href="https://www.pinchofintelligence.com/wp-content/uploads/2020/01/immersivepoints.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2020/01/immersivepoints-1024x469.png" /></a></p>
+<p>In terms of controls, you can currently walk around freely (if your headset supports this). You can use the select button on the left hand of your VR device to move forward, and the right hand of your VR device to move backwards. Movement is always in the direction in which you are looking, which means you can also get a birds-eye view of a scene if you want. </p>
+<p>In the process of adding a virtual reality option to the visualizer I also made the data loading more efficient (this used to take up to 10 seconds), and data is now hosted in an S3 bucket. If you have point cloud data you would like to walk around in, you can even upload it!</p>
+<p>Currently, some nice examples are:</p>
+<ul>
+<li><a href="https://rmeertens.github.io/ImmersivePoints/oculus.html?name=d6263c4a-7121-432f-8712-b0de530a78ff.xyzrgb">The entire Notre dame</a> in colour, <a href="https://sketchfab.com/3d-models/notre-dame-paris-facade-hi-res-point-cloud-50deeb164f324d1c8607bafa67f948b9">taken from here</a></li>
+<li><a href="https://rmeertens.github.io/ImmersivePoints/oculus.html?name=e2652aab-4ace-4a09-86f4-374b23cb677b.xyzi">An aggregated scan</a> from the <a href="https://www.audi-electronics-venture.de/aev/web/de/driving-dataset/dataset.html">AEV dataset</a>.</li>
+<li><a href="https://rmeertens.github.io/ImmersivePoints/oculus.html?name=816ca9a5-1eec-4e23-a34e-f409dbed1ff0.xyzi">A semantic segmented scan</a> from the <a href="https://www.audi-electronics-venture.de/aev/web/de/driving-dataset/dataset.html">AEV dataset</a>.</li>
+<li><a href="https://rmeertens.github.io/ImmersivePoints/oculus.html?name=77b04781-5d7c-445f-9e6a-65956758d644.xyzi">A brain with some clustered information</a>, with data from the Radboud University.</li>
+</ul>
+  </div>
+  <nav class="post-nav">
+<a class="post-nav-link post-nav-prev" href="../visualise-embeddings-in-virtual-reality/index.html">
+  <span class="post-nav-label">&larr; Previous</span>
+  <span class="post-nav-title">Visualise embeddings in virtual reality</span>
+</a>
+<a class="post-nav-link post-nav-next" href="../my-new-years-resolution-in-super-resolution/index.html">
+  <span class="post-nav-label">Next &rarr;</span>
+  <span class="post-nav-title">My new years resolution in super-resolution</span>
+</a>
+</nav>
+</div>
+
+</body>
+</html>

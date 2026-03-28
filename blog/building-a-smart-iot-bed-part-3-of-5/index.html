@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building a “Smart IoT bed”: part 3 of 5 — Roland Meertens</title>
+  <link rel="stylesheet" href="../../style.css">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXWYNZC7YH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXWYNZC7YH');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="page">
+    <a class="site-name" href="../../index.html">Roland Meertens</a>
+    <nav class="site-nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../about.html">About me</a>
+      <a href="../../blog/index.html" class="active">Blog</a>
+      <a href="../../photos/index.html">Photos</a>
+    </nav>
+  </div>
+</header>
+<div class="page">
+  <div class="post-header">
+    <div class="post-breadcrumb"><a href="../index.html">Blog</a></div>
+    <h1>Building a “Smart IoT bed”: part 3 of 5</h1>
+    <div class="post-meta">December 9, 2016</div>
+  </div>
+  <div class="post-hero"><img src="http://pinchofintelligence.com/wp-content/uploads/2016/11/Screen-Shot-2016-12-08-at-21.28.00-1024x553.png" alt="" loading="lazy"></div>
+  <div class="post-content">
+    <p>Recently I finished a cool electronics project: internet connected lights under my bed. In five steps I will guide you from project to project, each time adding functionality to what we made. In the first two parts we tinkered with hardware and now have an internet connected device! This time we will create a user friendly interface: an Android app.</p>
+<p>Creating a simple app is ridiculously easy nowadays. Every simple app I create is done using the MIT App inventor found here: ai2.appinventor.mit.edu/. The layout of your app is created by dragging and dropping components, and the logic is created by putting “puzzle pieces” together.</p>
+<p>As you “code” by dragging and dropping components, sharing this “code” is difficult to do. Therefore I will show what I made, how I made it, and why I made it that way.</p>
+<p>Start off by dragging the following things in your screen:</p>
+<ul>
+<li>Three sliders (red, green, and blue) which we use to select a colour. Make sure that their MinValue is 0, and their MaxValue is 250.</li>
+<li>A canvas that will display the color we selected with the sliders</li>
+<li>A button that, when pushed, will set the lights on our device</li>
+<li>A WebViewer. This component is necessary to go to a URL, just like we did in our browser in the previous part of the tutorial.</li>
+</ul>
+<p>I made the width of all components equal to “Fill parent..” to look good on my phone.</p>
+<p><a href="http://pinchofintelligence.com/wp-content/uploads/2016/11/Screen-Shot-2016-12-08-at-21.28.00.png"><img alt="screen-shot-2016-12-08-at-21-28-00" src="http://pinchofintelligence.com/wp-content/uploads/2016/11/Screen-Shot-2016-12-08-at-21.28.00-1024x553.png" /></a></p>
+<p>Speaking about phones: the best thing about the App Inventor is the possibility to immediately test your app on your phone using the companion app. Download it from the App store: <a href="https://play.google.com/store/apps/details?id=edu.mit.appinventor.aicompanion3&amp;hl=nl">https://play.google.com/store/apps/details?id=edu.mit.appinventor.aicompanion3&amp;hl=nl</a> .</p>
+<p><a href="http://pinchofintelligence.com/wp-content/uploads/2016/12/2016-12-09-15_20_55-MIT-App-Inventor.png"><img alt="2016-12-09-15_20_55-mit-app-inventor" src="http://pinchofintelligence.com/wp-content/uploads/2016/12/2016-12-09-15_20_55-MIT-App-Inventor.png" /></a></p>
+<p>Next we will first create the color preview option. In your designer screen you added a canvas. This canvas has the option to set a background color, making it perfectly usable as a color previewer.</p>
+<p>Although you can select many colors with the built-in functions, we want to preview the color we selected with the red, green, and blue slider. This can be done using the block “make color”.</p>
+<p>After you create the procedure (or, function) “setCanvasColor” you call this one every time the position of the sliders changed. This will update your canvas continuously making it easy to select a color.</p>
+<p><a href="http://pinchofintelligence.com/wp-content/uploads/2016/11/Screen-Shot-2016-12-08-at-21.28.23.png"><img alt="screen-shot-2016-12-08-at-21-28-23" src="http://pinchofintelligence.com/wp-content/uploads/2016/11/Screen-Shot-2016-12-08-at-21.28.23-1024x553.png" /></a></p>
+<p>Note that changing the color of the bed at the same time would probably be a bad idea: moving the slider from 0 to 250 would cause a lot of data packages sent to our device. That’s why we added the “SetColorButton” to our interface. After this button is clicked we will go to the URL of our device with the WebViewer. How I coded this can be seen in this image:</p>
+<p><a href="http://pinchofintelligence.com/wp-content/uploads/2016/11/Screen-Shot-2016-12-08-at-21.30.56.png"><img alt="screen-shot-2016-12-08-at-21-28-51" src="http://pinchofintelligence.com/wp-content/uploads/2016/11/Screen-Shot-2016-12-08-at-21.28.51-1024x592.png" /></a></p>
+<p>Try our your self-made app and enjoy the fact that you just made a nice interface with your bed!</p>
+<p>You might remember that we had 3 different modes: on, off, and motion detected. You can adjust your app to be able to set these with a “ListPicker”, an element that when clicked gives the user the choice between several items. What these items are can be selected with the “ElementsFromString” option.</p>
+<p><a href="http://pinchofintelligence.com/wp-content/uploads/2016/11/Screen-Shot-2016-12-08-at-21.30.56.png"><img alt="screen-shot-2016-12-08-at-21-30-05" src="http://pinchofintelligence.com/wp-content/uploads/2016/11/Screen-Shot-2016-12-08-at-21.30.05-1024x621.png" /></a></p>
+<p>The set state function works like the set color function: you navigate to a certain URL using the WebViewer. Note that the listpicker outputs numbers 1,2,3, and we expect the number 0,1,2. This means we have to substract one from the selectionIndex before sending it to our device. The final program looks like this:</p>
+<p><a href="http://pinchofintelligence.com/wp-content/uploads/2016/11/Screen-Shot-2016-12-08-at-21.30.56.png"><br />
+<img alt="screen-shot-2016-12-08-at-21-30-56" src="http://pinchofintelligence.com/wp-content/uploads/2016/11/Screen-Shot-2016-12-08-at-21.30.56-1024x573.png" /></a><br />
+<img alt="screen-shot-2016-12-08-at-21-30-35" src="http://pinchofintelligence.com/wp-content/uploads/2016/11/Screen-Shot-2016-12-08-at-21.30.35-1024x575.png" /><br />
+Hopefully you enjoyed building your own app with the MIT App inventor. If you have any questions, feel free to leave a comment!</p>
+<p><a href="http://pinchofintelligence.com/wp-content/uploads/2016/11/Screen-Shot-2016-12-08-at-21.28.46.png"><img alt="screen-shot-2016-12-08-at-21-28-46" src="http://pinchofintelligence.com/wp-content/uploads/2016/11/Screen-Shot-2016-12-08-at-21.28.46.png" /></a></p>
+  </div>
+  <nav class="post-nav">
+<a class="post-nav-link post-nav-prev" href="../looking-back-at-my-first-datathon/index.html">
+  <span class="post-nav-label">&larr; Previous</span>
+  <span class="post-nav-title">Looking back at my first datathon</span>
+</a>
+<a class="post-nav-link post-nav-next" href="../explaining-googles-zero-shot-translation/index.html">
+  <span class="post-nav-label">Next &rarr;</span>
+  <span class="post-nav-title">Explaining Google’s zero shot translation</span>
+</a>
+</nav>
+</div>
+
+</body>
+</html>

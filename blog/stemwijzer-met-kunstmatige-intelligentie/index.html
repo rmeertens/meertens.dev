@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stemwijzer met kunstmatige intelligentie — Roland Meertens</title>
+  <link rel="stylesheet" href="../../style.css">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXWYNZC7YH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXWYNZC7YH');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="page">
+    <a class="site-name" href="../../index.html">Roland Meertens</a>
+    <nav class="site-nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../about.html">About me</a>
+      <a href="../../blog/index.html" class="active">Blog</a>
+      <a href="../../photos/index.html">Photos</a>
+    </nav>
+  </div>
+</header>
+<div class="page">
+  <div class="post-header">
+    <div class="post-breadcrumb"><a href="../index.html">Blog</a></div>
+    <h1>Stemwijzer met kunstmatige intelligentie</h1>
+    <div class="post-meta">March 6, 2017</div>
+  </div>
+  <div class="post-hero"><img src="https://www.pinchofintelligence.com/wp-content/uploads/2017/03/stemwijzerbackground-300x200.jpg" alt="" loading="lazy"></div>
+  <div class="post-content">
+    <p>Volgende week zijn er verkiezingen in Nederland. Met 28 partijen is dit een lastige keuze. Vaak orienteren mensen zich door een stemwijzer in te vullen. Door de 30 belangrijkste vragen van het moment in te vullen zoeken ze een partij die het beste bij ze past.</p>
+<h2 id="stemwijzer-met-kunstmatige-intelligentie">Stemwijzer met kunstmatige intelligentie</h2>
+<p>Al jaren denk ik dat dit beter moet kunnen. In plaats van de 30 vragen in te vullen die iemand anders belangrijk vindt, waarom niet zelf invullen wat jij wilt met Nederland? Zo’n systeem heb ik gemaakt, waarbij kunstmatige intelligentie bepaald bij welke partij jouw ingevoerde zin het beste past: <a href="https://rmeertens.github.io/NeuralVotingAdvice/">https://rmeertens.github.io/NeuralVotingAdvice/</a> .</p>
+<h3 id="wat-kan-ik-invoeren">Wat kan ik invoeren?</h3>
+<p>Schrijf in een normale zin op wat je graag wilt met Nederland. Het beste is een zin die langer is dan 10 woorden en korter dan 20 woorden. Het beste werkt een zin die lijkt alsof hij uit een partijprogramma komt. Probeer eens:</p>
+<ul>
+<li>Door te werken aan een duurzame, reële economie creëren we groene en echte banen.</li>
+<li>Nederland versterkt de internationale terrorismebestrijding, de inlichtingendiensten en de aanpak van jihadisten.</li>
+<li>In Nederland gedraag je je. Als je dat doet, dan zijn de mogelijkheden eindeloos.</li>
+</ul>
+<h3 id="wat-gebeurt-hier">Wat gebeurt hier?</h3>
+<p>Normaal stelt een stemwijzer je een hele hoop vragen, maar heb je niet de kans om zelf aan te geven wat je met Nederland wilt. Om dit te verhelpen wilde ik het volgende maken: je typt een zin in, en de computer bedenkt bij welke partij dit zou passen.<br />
+Om dit te maken heb ik neurale netwerken gebruikt. Deze technieke uit de kunstmatige intelligentie “leest” de zin, en gaat dan gokken uit welk partijprogramma deze komt.</p>
+<h3 id="_1"><a href="https://www.pinchofintelligence.com/wp-content/uploads/2017/03/stemwijzerbackground.jpg"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/03/stemwijzerbackground-300x200.jpg" /></a></h3>
+<h3 id="hoe-heeft-hij-dat-kunnen-leren">Hoe heeft hij dat kunnen leren?</h3>
+<p>Van de meeste partijen staat het partijprogramma als PDF op hun site. Deze heb ik gedownload en opgeknipt in losse zinnen. Vervolgens “traint” de computer zichzelf door per zin zich af te vragen uit welk partijprogramma deze zin komt. Omdat de Partij voor de Vrijheid een klein partijprogramma heeft heb ik in plaats daarvan de tweets van Geert Wilders toegevoegd. Op een set van zinnen die hij nog nooit gezien heeft kande stemwijzer met kunstmatige intelligentie van 55% de juiste partij raden.</p>
+<h3 id="waarom-leest-de-computer-sommige-woorden-als-_unk">Waarom leest de computer sommige woorden als _UNK?</h3>
+<p>Bij het lezen van de teksten worden alle woorden die minder dan 5 keer in alle partijprogrammas voorkomen weggelaten. Omdat je niet goed weet wat de woorden betekenen als je ze maar een paar keer ziet kan je hun context niet goed bepalen. Hierdoor dragen ze weinig bij aan bepalen wat elke partij er mee zou moeten.</p>
+<h3 id="waarom-doet-hij-zin-xxx-verkeerd">Waarom doet hij zin XXX verkeerd?</h3>
+<p>Wij mensen associeren bepaalde standpunten met bepaalde partijen. Soms komt dit idee niet overeen met wat dit programma als associatie heeft. Dit heeft twee belangrijke redenen. Ten eerste weten wij precies wat de betekenis van elk woord is. Als wij een partijprogramma voor de eerste keer lezen weten we dus ook meteen wat de partij precies bedoelt. Ten tweede hebben we meer informatie over de partijen dan alleen de partijprogramma’s. De meeste informatie over partijen halen we uit de krant, van het journaal, door het kijken van debatten, niet uit de partijprogramma’s dus. Als we meer informatie zouden toevoegen, zou de stemwijzer met kunstmatige intelligentie het natuurlijk ook beter doen.</p>
+<h3 id="ik-heb-een-opmerkingklachtidee">Ik heb een opmerking/klacht/idee</h3>
+<p>Neem contact met me op via e-mail.</p>
+<h3 id="zijn-er-vergelijkbare-sites">Zijn er vergelijkbare sites?</h3>
+<p>Nadat de stemwijzer met kunstmatige intelligentie geschreven had kwam ik deze site tegen: http://www.bigdatarepublic.nl/stemradar/ . Het verschil is dat ze hier puur kijken naar de woorden in de zin, en niet de context.</p>
+  </div>
+  <nav class="post-nav">
+<a class="post-nav-link post-nav-prev" href="../learned-developing-neural-voting-advice-application/index.html">
+  <span class="post-nav-label">&larr; Previous</span>
+  <span class="post-nav-title">What I learned developing the Neural Voting Advice Application</span>
+</a>
+<a class="post-nav-link post-nav-next" href="../neural-voting-advice-application/index.html">
+  <span class="post-nav-label">Next &rarr;</span>
+  <span class="post-nav-title">Neural voting advice application</span>
+</a>
+</nav>
+</div>
+
+</body>
+</html>

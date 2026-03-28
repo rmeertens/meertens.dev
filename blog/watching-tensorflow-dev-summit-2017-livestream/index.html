@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watching the TensorFlow Dev Summit 2017 – Livestream — Roland Meertens</title>
+  <link rel="stylesheet" href="../../style.css">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXWYNZC7YH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXWYNZC7YH');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="page">
+    <a class="site-name" href="../../index.html">Roland Meertens</a>
+    <nav class="site-nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../about.html">About me</a>
+      <a href="../../blog/index.html" class="active">Blog</a>
+      <a href="../../photos/index.html">Photos</a>
+    </nav>
+  </div>
+</header>
+<div class="page">
+  <div class="post-header">
+    <div class="post-breadcrumb"><a href="../index.html">Blog</a></div>
+    <h1>Watching the TensorFlow Dev Summit 2017 – Livestream</h1>
+    <div class="post-meta">February 15, 2017</div>
+  </div>
+  <div class="post-hero"><img src="https://www.pinchofintelligence.com/wp-content/uploads/2017/02/Screen-Shot-2017-02-15-at-20.58.54.png" alt="" loading="lazy"></div>
+  <div class="post-content">
+    <p>Last night Tensorflow held the Dev Summit 2017. Although it was in California, they streamed all talks live through Youtube (<a href="https://www.youtube.com/watch?v=LqLyrl-agOw">https://www.youtube.com/watch?</a>v=LqLyrl-agOw). As I use Tensorflow a lot I loved watching some of the talks (together with 2500 other people watching live). This blog post is a summary of the first talks I watched before going to bed. </p>
+<p>First of all, it was great watching the announcement of version 1.0 at the start of the conference! Each talk later kept referring back to new features, some of which will already available in the next release!</p>
+<h3 id="tensorboard-for-debugging-and-visualisation">Tensorboard for debugging and visualisation</h3>
+<p>Dandelion Mane explained Tensorboard. Up till now I mainly used it as a cool visualization tool for other people (impressing your boss and showing co-workers how cool your network is). Dandelion also showed how using Tensorboard is very practical for debugging your model if it is not learning. He started by creating a graph with an error (which I did not spot) and shows the model is not training. He shows that through the use of Tensorboard it is easy to find where you make this error. I know I will be using Tensorboard next time I have a problem. </p>
+<p>Another thing I did not know was in there is the embedding visualiser. He showed the principal components of MNIST in 3D and was able to create a 3D cloud of smart replies Google Inbox. This feature really helps you when you want to know what your model learned exactly, and where mistakes come from. You can find the code and slides of Dandelion here: <a href="https://gist.github.com/dandelionmane/4f02ab8f1451e276fea1f165a20336f1#file-mnist-py">https://gist.github.com/dandelionmane/4f02ab8f1451e276fea1f165a20336f1#file-mnist-py</a></p>
+<h3 id="high-level-libraries">High level libraries</h3>
+<p>Francois Chollet talked about the integration of high-level libraries in Tensorflow. Although TFLearn, TFSlim, and SKFlow are already available, I still used Keras for quickly developing a quick model. The Tensorflow guys took the ideas of Keras and implemented them directly into Tensorflow in an efficient manner. Most interesting about this is that Keras includes all best practices, for example, it initialises your weights in a way that makes sense. </p>
+<p>Another awesome development are the canned estimators. These are basically models in a box, ready to use in your model. At the end of his talk Francois created a network for what seems to be a difficult task: show a computer a video, ask a question, and let the computer answer with a single word. The resulting code fit in this single slide: </p>
+<p><a href="https://www.pinchofintelligence.com/wp-content/uploads/2017/02/Screen-Shot-2017-02-15-at-20.58.54.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/02/Screen-Shot-2017-02-15-at-20.58.54.png" /></a></p>
+<p>Unfortunately, I am in the wrong timezone for watching the whole summit live, but I will surely watching the rest of the talks later this week. If this post peaked your interest:</p>
+<ul>
+<li>The schedule can be found here: <a href="https://events.withgoogle.com/tensorflow-dev-summit/agenda/#content">https://events.withgoogle.com/tensorflow-dev-summit/agenda/#content</a></li>
+<li>And the video here<a href="https://www.youtube.com/watch?v=LqLyrl-agOw"> https://www.youtube.com/watch?v=LqLyrl-agOw</a></li>
+</ul>
+<p>Let me know what your thoughts were on the conference, and what talk you enjoyed the most!</p>
+  </div>
+  <nav class="post-nav">
+<a class="post-nav-link post-nav-prev" href="../neural-voting-advice-application/index.html">
+  <span class="post-nav-label">&larr; Previous</span>
+  <span class="post-nav-title">Neural voting advice application</span>
+</a>
+<a class="post-nav-link post-nav-next" href="../visiting-clin-2017-conference-computational-linguistics-netherlands/index.html">
+  <span class="post-nav-label">Next &rarr;</span>
+  <span class="post-nav-title">Visiting the CLIN 2017 conference – Computational Linguistics in the Netherlands</span>
+</a>
+</nav>
+</div>
+
+</body>
+</html>

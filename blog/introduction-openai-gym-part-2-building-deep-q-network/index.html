@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introduction to OpenAI gym part 2: building a deep q-network — Roland Meertens</title>
+  <link rel="stylesheet" href="../../style.css">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXWYNZC7YH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXWYNZC7YH');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="page">
+    <a class="site-name" href="../../index.html">Roland Meertens</a>
+    <nav class="site-nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../about.html">About me</a>
+      <a href="../../blog/index.html" class="active">Blog</a>
+      <a href="../../photos/index.html">Photos</a>
+    </nav>
+  </div>
+</header>
+<div class="page">
+  <div class="post-header">
+    <div class="post-breadcrumb"><a href="../index.html">Blog</a></div>
+    <h1>Introduction to OpenAI gym part 2: building a deep q-network</h1>
+    <div class="post-meta">July 17, 2017</div>
+  </div>
+  <div class="post-hero"><img src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/deepqnetworks.png" alt="" loading="lazy"></div>
+  <div class="post-content">
+    <p>In part 1 we used a random search algorithm to “solve” the cartpole environment. This time we are going to take things to the next level and implement a deep q-network.The OpenAI gym environment is one of the most fun ways to learn more about machine learning. Especially reinforcement learning and neural networks can be applied perfectly to the benchmark and Atari games collection that is included.Every environment has multiple featured solutions, and often you can find a writeup on how to achieve the same score. By looking at others approaches and ideas you can improve yourself quickly in a fun way.</p>
+<p>In <a href="https://www.pinchofintelligence.com/getting-started-openai-gym/">part 1</a> we introduced the Gym environment, and looked at a “random search” algorithm. Hopefully you were able to add something to this algorithm, and got some more experience with OpenAI Gym. In part two we are going to take a look at reinforcement learning algorithms, specifically the deep q-networks that are all the hype lately.</p>
+<p><img alt="deep q network 2" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/deepqnetworks.png" /></p>
+<h2 id="background">Background</h2>
+<p>Q-learning is a reinforcement learning technique that tries to predict the reward of a state-action pair. For the cartpole environment the state consists of four values, and there are two possible actions. For a certain state S we can predict the reward if we were to push left <img alt="Q(S,left)" src="https://s0.wp.com/latex.php?latex=Q%28S%2Cleft%29&amp;bg=ffffff&amp;fg=000000&amp;s=0" /> or right <img alt="Q(S,right)" src="https://s0.wp.com/latex.php?latex=Q%28S%2Cright%29&amp;bg=ffffff&amp;fg=000000&amp;s=0" />.</p>
+<p>In the Atari game environment you get a reward of 1 every time you score a point. This scoring can happen when you hit a block in breakout, an alien in Space Invaders, or eat a pallet in Pacman. In the cartpole environment you get a reward every time the pole is standing on the cart (which is: every frame). The trick of q-learning is that it not only considers the direct reward, but also the expected future reward. After applying action <img alt="a" src="https://s0.wp.com/latex.php?latex=a&amp;bg=ffffff&amp;fg=000000&amp;s=0" /> we enter state <img alt="S_{t+1}" src="https://s0.wp.com/latex.php?latex=S_%7Bt%2B1%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0" /> and take the following into account:</p>
+<ul>
+<li>The reward <img alt="r" src="https://s0.wp.com/latex.php?latex=r&amp;bg=ffffff&amp;fg=000000&amp;s=0" /> we obtained by performing this action</li>
+<li>The expected maximum reward <img alt="Q(S_{t+1},a)" src="https://s0.wp.com/latex.php?latex=Q%28S_%7Bt%2B1%7D%2Ca%29&amp;bg=ffffff&amp;fg=000000&amp;s=0" />, in the cartpole environment this is <img alt="max(Q(S_{t+1},left), Q(S_{t+1},right)" src="https://s0.wp.com/latex.php?latex=max%28Q%28S_%7Bt%2B1%7D%2Cleft%29%2C+Q%28S_%7Bt%2B1%7D%2Cright%29&amp;bg=ffffff&amp;fg=000000&amp;s=0" /></li>
+</ul>
+<p>We combine this into a neat formula where say that the predicted value should be <img alt="r" src="https://s0.wp.com/latex.php?latex=r&amp;bg=ffffff&amp;fg=000000&amp;s=0" /> in a</p>
+<p><a href="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/rewardfunction.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/rewardfunction-300x39.png" /></a></p>
+<p>Where <img alt="\gamma" src="https://s0.wp.com/latex.php?latex=%5Cgamma&amp;bg=ffffff&amp;fg=000000&amp;s=0" /> is the discount factor. Taking a small <img alt="\gamma" src="https://s0.wp.com/latex.php?latex=%5Cgamma&amp;bg=ffffff&amp;fg=000000&amp;s=0" /> (for example 0.2) means that you don’t really care about long-term rewards, a large <img alt="\gamma" src="https://s0.wp.com/latex.php?latex=%5Cgamma&amp;bg=ffffff&amp;fg=000000&amp;s=0" /> (0.95) means that you care a lot about the long-term rewards. In our case we do care a lot about long-term rewards, so we take a large <img alt="\gamma" src="https://s0.wp.com/latex.php?latex=%5Cgamma&amp;bg=ffffff&amp;fg=000000&amp;s=0" />.</p>
+<p>This notebook can be found in my prepared docker environment. If you did not install Docker yet, make sure <a href="https://docs.docker.com/engine/installation/#supported-platforms">you do this</a>. To run this environment type this in your terminal:</p>
+<pre class="codehilite"><code>docker run -p 8888:8888 rmeertens/tensorflowgym
+</code></pre>
+
+<p>Then navigate to localhost:8888 and navigate to the TRADR folder.</p>
+<p>Let’s apply our knowledge of q-learning on the same environment we tried last time: the CartPole environment.</p>
+<p>In [ ]:</p>
+<pre class="codehilite"><code>%matplotlib notebook
+from time import gmtime, strftime
+import threading
+import time
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+from ipywidgets import widgets
+from IPython.display import display
+import tensorflow as tf
+import gym
+from gym import wrappers
+import random
+
+from matplotlib import animation
+from JSAnimation.IPython_display import display_animation
+
+env = gym.make('CartPole-v0')
+observation = env.reset()
+</code></pre>
+
+<h2 id="value-approximation">Value approximation</h2>
+<p>There are many ways in which you can estimate the Q-value for each (state,action) pair. Neural networks have been really popular the last couple of years, so we are going to estimate the Q-value using a neural network.</p>
+<p>We will build our network in Tensorflow: an open-source libary for machine-learning. If you are not familiar with Tensorflow, the most important thing to know is that we will fist build our network, then initialise it and use it. All python variables are “placeholders” in a session. You can find more information on the <a href="https://www.tensorflow.org/get_started/">Tensorflow homepage</a></p>
+<p>I created a very simple network layout with four inputs (the four variables we observe) and two outputs (either push left or right). I added four fully connected layers:</p>
+<ul>
+<li>From 4 to 16 variables</li>
+<li>From 16 to 32 variables</li>
+<li>From 32 to 8 variables</li>
+<li>From 8 to 2 variables</li>
+</ul>
+<p>Every layer is a dense layer with a RELU nonlinearity except for the last layer as this one has to predict the expected Q-value.</p>
+<p>In [ ]:</p>
+<pre class="codehilite"><code># Network input
+networkstate = tf.placeholder(tf.float32, [None, 4], name=&quot;input&quot;)
+networkaction = tf.placeholder(tf.int32, [None], name=&quot;actioninput&quot;)
+networkreward = tf.placeholder(tf.float32,[None], name=&quot;groundtruth_reward&quot;)
+action_onehot = tf.one_hot(networkaction, 2, name=&quot;actiononehot&quot;)
+
+# The variable in our network: 
+w1 = tf.Variable(tf.random_normal([4,16], stddev=0.35), name=&quot;W1&quot;)
+w2 = tf.Variable(tf.random_normal([16,32], stddev=0.35), name=&quot;W2&quot;)
+w3 = tf.Variable(tf.random_normal([32,8], stddev=0.35), name=&quot;W3&quot;)
+w4 = tf.Variable(tf.random_normal([8,2], stddev=0.35), name=&quot;W4&quot;)
+b1 = tf.Variable(tf.zeros([16]), name=&quot;B1&quot;)
+b2 = tf.Variable(tf.zeros([32]), name=&quot;B2&quot;)
+b3 = tf.Variable(tf.zeros([8]), name=&quot;B3&quot;)
+b4 = tf.Variable(tf.zeros(2), name=&quot;B4&quot;)
+
+# The network layout
+layer1 = tf.nn.relu(tf.add(tf.matmul(networkstate,w1), b1), name=&quot;Result1&quot;)
+layer2 = tf.nn.relu(tf.add(tf.matmul(layer1,w2), b2), name=&quot;Result2&quot;)
+layer3 = tf.nn.relu(tf.add(tf.matmul(layer2,w3), b3), name=&quot;Result3&quot;)
+predictedreward = tf.add(tf.matmul(layer3,w4), b4, name=&quot;predictedReward&quot;)
+
+# Learning 
+qreward = tf.reduce_sum(tf.multiply(predictedreward, action_onehot), reduction_indices = 1)
+loss = tf.reduce_mean(tf.square(networkreward - qreward))
+tf.summary.scalar('loss', loss)
+optimizer = tf.train.RMSPropOptimizer(0.0001).minimize(loss)
+merged_summary = tf.summary.merge_all()
+</code></pre>
+
+<h2 id="session-management-and-tensorboard">Session management and Tensorboard</h2>
+<p>Now we start the session. I added support for Tensorboard: a nice tool to visualise your learning. At the moment I only added one summary: the loss of the network.<br />
+If you did not install Docker yet, make sure <a href="https://docs.docker.com/engine/installation/#supported-platforms">you do this</a>. To run tensorboard you have to run:</p>
+<pre class="codehilite"><code>docker run -p 6006:6006 -v $(pwd):/mounted rmeertens/tensorboard
+</code></pre>
+
+<p>Then navigate to localhost:6006 to see your tensorboard.</p>
+<p>In [ ]:</p>
+<pre class="codehilite"><code>sess = tf.InteractiveSession()
+summary_writer = tf.summary.FileWriter('trainsummary',sess.graph)
+sess.run(tf.global_variables_initializer())
+</code></pre>
+
+<h2 id="learning-qsa">Learning Q(S,a)</h2>
+<p>An interesting paper you can use as guideline for deep q-networks is “Playing Atari with Deep Reinforcement Learning (<a href="https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf">https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf</a>). This paper by deepmind explains how they were able to teach a neural network to play Atari games.</p>
+<p>One of the main contributions of this paper is their use of an “experience replay mechanism”. If you were to train your neural network in the order of images you see normally the network quickly forgets what it saw before. To fix this we save what we saw in a memory with the following variables:</p>
+<p>(<img alt="S" src="https://s0.wp.com/latex.php?latex=S&amp;bg=ffffff&amp;fg=000000&amp;s=0" />, <img alt="action" src="https://s0.wp.com/latex.php?latex=action&amp;bg=ffffff&amp;fg=000000&amp;s=0" />, <img alt="reward" src="https://s0.wp.com/latex.php?latex=reward&amp;bg=ffffff&amp;fg=000000&amp;s=0" />, <img alt="is terminal" src="https://s0.wp.com/latex.php?latex=is+terminal&amp;bg=ffffff&amp;fg=000000&amp;s=0" />, <img alt="S_{t+1}" src="https://s0.wp.com/latex.php?latex=S_%7Bt%2B1%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0" />)</p>
+<p>Now every frame we sample a random minibatch of our memory and train our network on that. We also only keep the newer experiences to keep our memory fresh with good actions. The full algorithm in their paper looks like this:<br />
+<a href="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/dqn-alg.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/dqn-alg.png" /></a></p>
+<p>In [ ]:</p>
+<pre class="codehilite"><code>replay_memory = [] # (state, action, reward, terminalstate, state_t+1)
+epsilon = 1.0
+BATCH_SIZE = 32
+GAMMA = 0.9
+MAX_LEN_REPLAY_MEMORY = 30000
+FRAMES_TO_PLAY = 300001
+MIN_FRAMES_FOR_LEARNING = 1000
+summary = None
+
+for i_epoch in range(FRAMES_TO_PLAY):
+
+    ### Select an action and perform this
+    ### EXERCISE: this is where your network should play and try to come as far as possible!
+    ### You have to implement epsilon-annealing yourself
+    action = env.action_space.sample() 
+    newobservation, reward, terminal, info = env.step(action)
+
+    ### I prefer that my agent gets 0 reward if it dies
+    if terminal: 
+        reward = 0
+
+    ### Add the observation to our replay memory
+    replay_memory.append((observation, action, reward, terminal, newobservation))
+
+    ### Reset the environment if the agent died
+    if terminal: 
+        newobservation = env.reset()
+    observation = newobservation
+
+    ### Learn once we have enough frames to start learning
+    if len(replay_memory) &gt; MIN_FRAMES_FOR_LEARNING: 
+        experiences = random.sample(replay_memory, BATCH_SIZE)
+        totrain = [] # (state, action, delayed_reward)
+
+        ### Calculate the predicted reward
+        nextstates = [var[4] for var in experiences]
+        pred_reward = sess.run(predictedreward, feed_dict={networkstate:nextstates})
+
+        ### Set the &quot;ground truth&quot;: the value our network has to predict:
+        for index in range(BATCH_SIZE):
+            state, action, reward, terminalstate, newstate = experiences[index]
+            predicted_reward = max(pred_reward[index])
+
+            if terminalstate:
+                delayedreward = reward
+            else:
+                delayedreward = reward + GAMMA*predicted_reward
+            totrain.append((state, action, delayedreward))
+
+        ### Feed the train batch to the algorithm 
+        states = [var[0] for var in totrain]
+        actions = [var[1] for var in totrain]
+        rewards = [var[2] for var in totrain]
+        _, l, summary = sess.run([optimizer, loss, merged_summary], feed_dict={networkstate:states, networkaction: actions, networkreward: rewards})
+
+
+        ### If our memory is too big: remove the first element
+        if len(replay_memory) &gt; MAX_LEN_REPLAY_MEMORY:
+                replay_memory = replay_memory[1:]
+
+        ### Show the progress 
+        if i_epoch%100==1:
+            summary_writer.add_summary(summary, i_epoch)
+        if i_epoch%1000==1:
+            print(&quot;Epoch %d, loss: %f&quot; % (i_epoch,l))
+</code></pre>
+
+<h2 id="testing-the-algorithm">Testing the algorithm</h2>
+<p>Now we have a trained network that gives use the expected <img alt="Q(s,a)" src="https://s0.wp.com/latex.php?latex=Q%28s%2Ca%29&amp;bg=ffffff&amp;fg=000000&amp;s=0" /> for a certain state. We can use this to balance the stick (and see how long it lasts) and see what the network predicts at each frame:</p>
+<p>In [ ]:</p>
+<pre class="codehilite"><code>def display_frames_as_gif(frames, filename_gif = None):
+    &quot;&quot;&quot;
+    Displays a list of frames as a gif, with controls
+    &quot;&quot;&quot;
+    plt.figure(figsize=(frames[0].shape[1] / 72.0, frames[0].shape[0] / 72.0), dpi = 72)
+    patch = plt.imshow(frames[0])
+    plt.axis('off')
+
+    def animate(i):
+        patch.set_data(frames[i])
+
+    anim = animation.FuncAnimation(plt.gcf(), animate, frames = len(frames), interval=50)
+    if filename_gif: 
+        anim.save(filename_gif, writer = 'imagemagick', fps=20)
+    display(display_animation(anim, default_mode='loop'))
+
+### Play till we are dead
+observation = env.reset()
+term = False
+predicted_q = []
+frames = []
+while not term:
+    rgb_observation = env.render(mode = 'rgb_array')
+    frames.append(rgb_observation)
+    pred_q = sess.run(predictedreward, feed_dict={networkstate:[observation]})
+    predicted_q.append(pred_q)
+    action = np.argmax(pred_q)
+    observation, _, term, _ = env.step(action)
+
+### Plot the replay!
+display_frames_as_gif(frames,filename_gif='dqn_run.gif')
+</code></pre>
+
+<p><img alt="Dqn result" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/dqn_run-1.gif" /></p>
+<h3 id="result">Result</h3>
+<p>During this run on my pc the robot learns to compensate… but then overcompensates and dies. We can plot the Q-value the robot expected for each action(left or right) during the training.</p>
+<p>In [ ]:</p>
+<pre class="codehilite"><code>plt.plot([var[0] for var in predicted_q])
+plt.legend(['left', 'right'])
+plt.xlabel(&quot;frame&quot;)
+plt.ylabel('predicted Q(s,a)')
+</code></pre>
+
+<p><img alt="estimated q-value" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/predicted_qvalue.png" /></p>
+<h2 id="handling-difficult-situations-team-up-with-your-robot">Handling difficult situations – team up with your robot</h2>
+<p>You can see in the graph above that our q-function, without the final mistake it made, has a good idea how well it is doing. At moments the pole is going sideways the maximum expected reward lowers. This is a good moment to team up with your robot and guide him when he is in trouble.</p>
+<p>Collaborating is easy: if your robot does not know what to do, we can ask the user to provide input. The initial state the robot is in gives us a lot of information: <img alt="Q(S,a)" src="https://s0.wp.com/latex.php?latex=Q%28S%2Ca%29&amp;bg=ffffff&amp;fg=000000&amp;s=0" /> tells us how much reward the robot expects for the next frames of its run. If during execution of the robots strategy the maximum expected <img alt="Q" src="https://s0.wp.com/latex.php?latex=Q&amp;bg=ffffff&amp;fg=000000&amp;s=0" /> drops a bit below this number we can interpret this as the robot being in a dire situation. We then ask for the user to say if the cart should move left or right.</p>
+<p>Note that in the graph above the agent died, even though it expected a lot of reward. This method is not foolproof, but does help the agent to survive longer.</p>
+<p>In [ ]:</p>
+<pre class="codehilite"><code>%matplotlib inline
+plt.ion()
+observation = env.reset()
+
+### We predict the reward for the initial state, if we are slightly below this ideal reward, let the human take over. 
+TRESHOLD = max(max(sess.run(predictedreward, feed_dict={networkstate:[observation]})))-0.2
+TIME_DELAY = 0.5 # Seconds between frames 
+terminated = False
+while not terminated:
+    ### Show the current status
+    now = env.render(mode = 'rgb_array')
+    plt.imshow(now)
+    plt.show()
+
+    ### See if our agent thinks it is safe to move on its own
+    pred_reward = sess.run(predictedreward, feed_dict={networkstate:[observation]})
+    maxexpected = max(max(pred_reward))
+    if maxexpected &gt; TRESHOLD: 
+        action = np.argmax(pred_reward)
+        print(&quot;Max expected: &quot; + str(maxexpected))
+        time.sleep(TIME_DELAY)
+    else:
+        ### Not safe: let the user select an action!
+        action = -1
+        while action &lt; 0:
+            try:
+                action = int(raw_input(&quot;Max expected: &quot; + str(maxexpected) + &quot; left (0) or right(1): &quot;))
+                print(&quot;Performing: &quot; + str(action))
+            except:
+                pass
+
+    ### Perform the action
+    observation, _, terminated, _ = env.step(action)
+
+print(&quot;Unfortunately, the agent died...&quot;)
+</code></pre>
+
+<h3 id="exercises">Exercises</h3>
+<p>Now that you and your neural network can balance a stick there are many things you can do to improve. As everyones skills are different I wrote down some ideas you can try:</p>
+<h4 id="machine-learning-starter">Machine learning starter:</h4>
+<ul>
+<li>
+<ul>
+<li>Improve the neural network. You can toy around with layers (size, type), tune the hyperparameters, or many more.</li>
+<li>Toy around with the value of gamma, visualise for several values what kind of behaviour the agent will exercise. Is the agent more careful with a higher gamma value?</li>
+</ul>
+</li>
+</ul>
+<h4 id="tensorflow-starter">Tensorflow starter:</h4>
+<ul>
+<li>
+<ul>
+<li>If you don’t have a lot of experience you can either try to improve the neural network, or you can experiment with the Tensorboard tool. Try to add plots of the average reward during training. If you implemented epsilon-greedy exploration this number should go up during training.</li>
+</ul>
+</li>
+</ul>
+<h4 id="reinforcement-learning-starter">Reinforcement learning starter:</h4>
+<ul>
+<li>
+<ul>
+<li>Because our agent only performs random actions our network dies pretty often during training. This means that it has a good idea what to do in its start configurations, but might have a problem when it survived for a longer time. Epsilon-greedy exploration prevents this. With this method you roll a die: with probability epsilon you take a random action, otherwise you take the action the agent thinks is best. You can either set epsilon to a specific value (0.25? 0.1?) or gradually take a lower value to encourage exploration.</li>
+<li>Team up with your agent! We already help our agent when he thinks he is in a difficult situation, we could also let it ask for help during training. By letting the agent ask for help with probability epsilon you explore the state space in a way that makes more sense than random exploration, and this will give you a better agent.</li>
+</ul>
+</li>
+</ul>
+<h4 id="reinforcement-learning-itermediate">Reinforcement learning itermediate:</h4>
+<ul>
+<li>Right now we only visualise the loss, which is no indication for how good the network is. According to the paper <a href="https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf">Playing Atari with Deep Reinforcement Learning</a> the average expected <img alt="Q" src="https://s0.wp.com/latex.php?latex=Q&amp;bg=ffffff&amp;fg=000000&amp;s=0" /> should go up during learning (in combination with epsilon-greedy exploration).</li>
+<li>Artur Juliani suggests that you can use a <a href="https://medium.com/@awjuliani/simple-reinforcement-learning-with-tensorflow-part-4-deep-q-networks-and-beyond-8438a3e2b8df">target network</a>. During training your network is very “unstable”, it “swings” in all directions which can take a long time to converge. You can add a second neural network (exactly the same layout as the first one) that calculates the predicted reward. During training, every <img alt="X" src="https://s0.wp.com/latex.php?latex=X&amp;bg=ffffff&amp;fg=000000&amp;s=0" /> frames, you set the weights of your target network equal to the weights of your other network.</li>
+</ul>
+<h3 id="conclusion">Conclusion</h3>
+<p>In part two we implemented a deep q-network in Tensorflow, and used it to control a cartpole. We saw that the network can “know” when it has problems, and then teamed up with our agent to help him out. Hopefully you enjoyed working with neural networks, the OpenAI gym, and working together with your agent.</p>
+<p>Initially I wanted to dive into the Atari game environments and skip the CartPole environment for the deep q-networks. Unfortunately, training takes too long (24 hours) before the agent is capable of exercising really cool moves. As I still think it is a lot of fun to learn how to play Atari games I made a third part with some exercises you can take a look at.</p>
+<h3 id="acknowledgments">Acknowledgments</h3>
+<p>This blogpost is the first part of my TRADR summerschool workshop on using human input in reinforcement learning algorithms. More information can be found <a href="https://sites.google.com/view/tradr/home">on their homepage.</a></p>
+  </div>
+  <nav class="post-nav">
+<a class="post-nav-link post-nav-prev" href="../openai-gym-part-3-playing-space-invaders-deep-reinforcement-learning/index.html">
+  <span class="post-nav-label">&larr; Previous</span>
+  <span class="post-nav-title">Introduction to OpenAI gym part 3: playing Space Invaders with deep reinforcement learning</span>
+</a>
+<a class="post-nav-link post-nav-next" href="../getting-started-openai-gym/index.html">
+  <span class="post-nav-label">Next &rarr;</span>
+  <span class="post-nav-title">Getting started with OpenAI gym</span>
+</a>
+</nav>
+</div>
+
+</body>
+</html>

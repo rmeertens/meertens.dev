@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getting started with OpenAI gym — Roland Meertens</title>
+  <link rel="stylesheet" href="../../style.css">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXWYNZC7YH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXWYNZC7YH');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="page">
+    <a class="site-name" href="../../index.html">Roland Meertens</a>
+    <nav class="site-nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../about.html">About me</a>
+      <a href="../../blog/index.html" class="active">Blog</a>
+      <a href="../../photos/index.html">Photos</a>
+    </nav>
+  </div>
+</header>
+<div class="page">
+  <div class="post-header">
+    <div class="post-breadcrumb"><a href="../index.html">Blog</a></div>
+    <h1>Getting started with OpenAI gym</h1>
+    <div class="post-meta">July 11, 2017</div>
+  </div>
+  <div class="post-hero"><img src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/cartwheel-neural-part1-e1500278401585-300x191.png" alt="" loading="lazy"></div>
+  <div class="post-content">
+    <p>The OpenAI gym environment is one of the most fun ways to learn more about machine learning. Especially reinforcement learning and neural networks can be applied perfectly to the benchmark and Atari games collection that is included. Every environment has multiple featured solutions, and often you can find a writeup on how to achieve the same score. By looking at others approaches and ideas you can improve yourself quickly in a fun way.I noticed that getting started with Gym can be a bit difficult. Although there are many tutorials for algorithms online, the first step is understanding the programming environment in which you are working. To easy new people into this environment I decided to make a small tutorial with a docker container and a jupyter notebook.</p>
+<p><a href="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/cartwheel-neural-part1-e1500278401585.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/cartwheel-neural-part1-e1500278401585-300x191.png" /></a></p>
+<h3 id="what-you-need">What you need</h3>
+<p>Before you get started, <a href="https://docs.docker.com/engine/installation/#supported-platforms">install Docker</a>. Docker is a tool that lets you run virtual machines on your computer. I created an “image” that contains several things you want to have: tensorflow, the gym environment, numpy, opencv, and some other useful tools.</p>
+<p>After you installed Docker, run the following command to download my prepared docker image:</p>
+<pre class="codehilite"><code>docker run -p 8888:8888 rmeertens/tensorflowgym
+</code></pre>
+
+<p>In your browser, navigate to: localhost:8888 and open the OpenAI Universe notebook in the TRADR folder.</p>
+<h3 id="play-a-game-yourself">Play a game yourself</h3>
+<p>Let’s start by playing the cartpole game ourselves. You control a bar that has a pole on it. The goal of the “game” is to keep the bar upright as long as possible. There are two actions you can perform in this game: give a force to the left, or give a force to the right. To play this game manually, execute the first part of the code.</p>
+<p>By clicking left and right you apply a force, and you see the new state. Note that I programmed the game to automatically reset when you “lost” the game.</p>
+<p>In [ ]:</p>
+<pre class="codehilite"><code>%matplotlib notebook
+import numpy as np
+import matplotlib.pyplot as plt
+
+from ipywidgets import widgets
+from IPython.display import display
+
+import gym
+
+from matplotlib import animation
+from JSAnimation.IPython_display import display_animation
+
+
+
+def leftclicked(something):
+    &quot;&quot;&quot; Apply a force to the left of the cart&quot;&quot;&quot;
+    onclick(0)
+
+def rightclicked(something):
+    &quot;&quot;&quot; Apply a force to the right of the cart&quot;&quot;&quot;
+    onclick(1)
+
+def display_buttons():
+    &quot;&quot;&quot; Display the buttons you can use to apply a force to the cart &quot;&quot;&quot;
+    left = widgets.Button(description=&quot;&lt;&quot;)
+    right = widgets.Button(description=&quot;&gt;&quot;)
+    display(left, right)
+
+    left.on_click(leftclicked)
+    right.on_click(rightclicked)
+
+# Create the environment and display the initial state
+env = gym.make('CartPole-v0')
+observation = env.reset()
+firstframe = env.render(mode = 'rgb_array')
+fig,ax = plt.subplots()
+im = ax.imshow(firstframe)
+
+# Show the buttons to control the cart
+display_buttons()
+
+
+# Function that defines what happens when you click one of the buttons
+frames = []
+def onclick(action):
+    global frames
+    observation, reward, done, info = env.step(action)
+    frame = env.render(mode = 'rgb_array')
+    im.set_data(frame)
+    frames.append(frame)
+    if done:
+        env.reset()
+</code></pre>
+
+<p><img alt="My manual play" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/manualplay.gif" /></p>
+<h3 id="replay">Replay</h3>
+<p>Now that you toyed around you probably want to see a replay. Every button click we saved the state of the game, which you can display in your browser:</p>
+<p>In [ ]:</p>
+<pre class="codehilite"><code>def display_frames_as_gif(frames, filename_gif = None):
+    &quot;&quot;&quot;
+    Displays a list of frames as a gif, with controls
+    &quot;&quot;&quot;
+    plt.figure(figsize=(frames[0].shape[1] / 72.0, frames[0].shape[0] / 72.0), dpi = 72)
+    patch = plt.imshow(frames[0])
+    plt.axis('off')
+
+    def animate(i):
+        patch.set_data(frames[i])
+
+    anim = animation.FuncAnimation(plt.gcf(), animate, frames = len(frames), interval=50)
+    if filename_gif: 
+        anim.save(filename_gif, writer = 'imagemagick', fps=20)
+    display(display_animation(anim, default_mode='loop'))
+
+display_frames_as_gif(frames, filename_gif=&quot;manualplay.gif&quot;)
+</code></pre>
+
+<h3 id="representation">Representation</h3>
+<p>The cartpole environment is described on the <a href="https://gym.openai.com/envs/CartPole-v0">OpenAI website</a>. The values in the observation parameter show position (x), velocity (x_dot), angle (theta), and angular velocity (theta_dot). If the pole has an angle of more than 15 degrees, or the cart moves more than 2.4 units from the center, the game is “over”. The environment can then be reset by calling env.reset().</p>
+<h3 id="start-learning">Start learning</h3>
+<p>This blogpost would be incomplete without a simple “learning” mechanism. Kevin Frans made a great blogpost about simple algorithms you can apply on this problem: <a href="http://kvfrans.com/simple-algoritms-for-solving-cartpole/">http://kvfrans.com/simple-algoritms-for-solving-cartpole/</a>.</p>
+<p>The simplest one to implement is his random search algorithm. By multiplying parameters with the observation parameters the cart either decides to apply the force left or right. Now the question is: what are the best parameters? Random search defines them at random, sees how long the cart lasts with those parameters, and remembers the best parameters it found.</p>
+<p>In [ ]:</p>
+<pre class="codehilite"><code>def run_episode(env, parameters):  
+    &quot;&quot;&quot;Runs the env for a certain amount of steps with the given parameters. Returns the reward obtained&quot;&quot;&quot;
+    observation = env.reset()
+    totalreward = 0
+    for _ in xrange(200):
+        action = 0 if np.matmul(parameters,observation) &lt; 0 else 1
+        observation, reward, done, info = env.step(action)
+        totalreward += reward
+        if done:
+            break
+    return totalreward
+
+# Random search: try random parameters between -1 and 1, see how long the game lasts with those parameters
+bestparams = None  
+bestreward = 0  
+for _ in xrange(10000):  
+    parameters = np.random.rand(4) * 2 - 1
+    reward = run_episode(env,parameters)
+    if reward &gt; bestreward:
+        bestreward = reward
+        bestparams = parameters
+        # considered solved if the agent lasts 200 timesteps
+        if reward == 200:
+            break
+
+def show_episode(env, parameters):  
+    &quot;&quot;&quot; Records the frames of the environment obtained using the given parameters... Returns RGB frames&quot;&quot;&quot;
+    observation = env.reset()
+    firstframe = env.render(mode = 'rgb_array')
+    frames = [firstframe]
+
+    for _ in xrange(200):
+        action = 0 if np.matmul(parameters,observation) &lt; 0 else 1
+        observation, reward, done, info = env.step(action)
+        frame = env.render(mode = 'rgb_array')
+        frames.append(frame)
+        if done:
+            break
+    return frames
+
+frames = show_episode(env, bestparams)
+display_frames_as_gif(frames, filename_gif=&quot;bestresultrandom.gif&quot;)
+</code></pre>
+
+<p><img alt="My best random result" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/bestresultrandom.gif" /></p>
+<h3 id="exercises-to-learn-more-about-openai-gym">Exercises to learn more about OpenAI gym</h3>
+<p>The next step is to play and learn yourself. Here are some suggestions:</p>
+<ul>
+<li>Continue with the tutorial Kevin Frans made: <a href="http://kvfrans.com/simple-algoritms-for-solving-cartpole/">http://kvfrans.com/simple-algoritms-for-solving-cartpole/</a></li>
+<li>Upload and share your results. Compare how well either the random algorithm works, or how well the algorithm you implemented yourself works compared to others. How you can do this can be found on this page: <a href="https://gym.openai.com/docs#recording-and-uploading-results">https://gym.openai.com/docs#recording-and-uploading-results</a> under the heading “Recording and uploading results”</li>
+<li>Take a look at the other environments: <a href="https://gym.openai.com/envs">https://gym.openai.com/envs</a> . If you can solve the cartpole environment you can surely also solve the Pendulum problem (note that you do have to adjust your algorithm, as this one only has 3 variables in its observation).</li>
+</ul>
+<h3 id="conclusion">Conclusion</h3>
+<p>Congratulations! You made your first autonomous pole-balancer in the OpenAI gym environment. Now that this works it is time to either improve your algorithm, or start playing around with different environments. This Jupyter notebook skips a lot of basic knowledge about what you are actually doing, there is a great writeup about that on the <a href="https://gym.openai.com/docs">OpenAI site</a>.</p>
+<p>Unless you decided to make your own algorithm as an exercise you will not have done a lot of machine learning this tutorial (I don’t consider finding random parameters “learning”). Next session we will take a look at deep q networks: neural networks that predict the reward of each action.</p>
+<h3 id="acknowledgments">Acknowledgments</h3>
+<p>This blogpost is the first part of my TRADR summerschool workshop on using human input in reinforcement learning algorithms. More information can be found <a href="https://sites.google.com/view/tradr/home">on their homepage</a></p>
+  </div>
+  <nav class="post-nav">
+<a class="post-nav-link post-nav-prev" href="../introduction-openai-gym-part-2-building-deep-q-network/index.html">
+  <span class="post-nav-label">&larr; Previous</span>
+  <span class="post-nav-title">Introduction to OpenAI gym part 2: building a deep q-network</span>
+</a>
+<a class="post-nav-link post-nav-next" href="../zalando-python-client/index.html">
+  <span class="post-nav-label">Next &rarr;</span>
+  <span class="post-nav-title">The Zalando python client</span>
+</a>
+</nav>
+</div>
+
+</body>
+</html>

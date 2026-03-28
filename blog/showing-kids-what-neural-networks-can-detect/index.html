@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Showing kids what neural networks can detect — Roland Meertens</title>
+  <link rel="stylesheet" href="../../style.css">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXWYNZC7YH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXWYNZC7YH');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="page">
+    <a class="site-name" href="../../index.html">Roland Meertens</a>
+    <nav class="site-nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../about.html">About me</a>
+      <a href="../../blog/index.html" class="active">Blog</a>
+      <a href="../../photos/index.html">Photos</a>
+    </nav>
+  </div>
+</header>
+<div class="page">
+  <div class="post-header">
+    <div class="post-breadcrumb"><a href="../index.html">Blog</a></div>
+    <h1>Showing kids what neural networks can detect</h1>
+    <div class="post-meta">October 8, 2019</div>
+  </div>
+  <div class="post-hero"><img src="https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image-2019-10-03_085508.457928.png" alt="" loading="lazy"></div>
+  <div class="post-content">
+    <p><strong>Last week the company I work for, Autonomous Intelligent Driving, held an open day for children. I showed the kids an object detector to teach kids what Artificial Intelligence can detect.</strong></p>
+<p>The setup I used was overall quite easy. I used OpenCV to interface with the webcam, and a Python library called ImageAI(<a href="https://github.com/OlafenwaMoses/ImageAI">https://github.com/OlafenwaMoses/ImageAI</a>) for the wrapping of the object detection network. The network I downloaded, Yolo V3, gives you a wide variety of 80 objects that the neural network can detect. We put a collection of these objects in a box so kids could try them out on the neural network. Besides that we made a list with questions to ask kids to get them to think about AI, and what needs to be on a self-driving car. </p>
+<p>Overall kids were quite enthusiastic about the demonstration. It was cool that they themselves were detected, and it’s good for kids to have a bit of interaction by trying out different objects. Things that were difficult to detect during the day were the smaller “out of context” objects, which sparked discussion on whether the car needs to detect broccoli at all… Another cool thing is that we challenged people to behave in an adversarial way: try to fool the neural network into thinking you are a horse or dog. This was actually possible with a bit of effort. </p>
+<p>In case someone is interested in replicating this for themselves, take a look at this repository: </p>
+<p><a href="https://github.com/rmeertens/selfdriving_car_ai_for_kids">https://github.com/rmeertens/selfdriving_car_ai_for_kids</a> . Also, let me know if you have ideas to make it better. </p>
+<p>Here are some impressions of the day, taken with the webcam I used during the day itself:<a href="https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image-2019-10-03_085508.457928.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image-2019-10-03_085508.457928.png" /></a> <a href="https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image-2019-10-03_090440.772973.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image-2019-10-03_090440.772973.png" /></a> <a href="https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image-2019-10-03_092036.099507.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image-2019-10-03_092036.099507.png" /></a> <a href="https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image-2019-10-03_111909.697854.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image-2019-10-03_111909.697854.png" /></a> <a href="https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image-2019-10-03_115501.123909.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image-2019-10-03_115501.123909.png" /></a> <a href="https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image-2019-10-03_120203.965385.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image-2019-10-03_120203.965385.png" /></a> <a href="https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image-2019-10-03_180748.544888.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image-2019-10-03_180748.544888.png" /></a></p>
+  </div>
+  <nav class="post-nav">
+<a class="post-nav-link post-nav-prev" href="../scale-your-deep-learning-on-the-aws-platform-using-horovod/index.html">
+  <span class="post-nav-label">&larr; Previous</span>
+  <span class="post-nav-title">Scale your deep learning on the AWS platform using Horovod</span>
+</a>
+<a class="post-nav-link post-nav-next" href="../working-self-driving-car-company/index.html">
+  <span class="post-nav-label">Next &rarr;</span>
+  <span class="post-nav-title">Lessons Learned During a Year at a Self-Driving Car Company</span>
+</a>
+</nav>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ineffective sorts: tensorflowsort — Roland Meertens</title>
+  <link rel="stylesheet" href="../../style.css">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXWYNZC7YH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXWYNZC7YH');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="page">
+    <a class="site-name" href="../../index.html">Roland Meertens</a>
+    <nav class="site-nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../about.html">About me</a>
+      <a href="../../blog/index.html" class="active">Blog</a>
+      <a href="../../photos/index.html">Photos</a>
+    </nav>
+  </div>
+</header>
+<div class="page">
+  <div class="post-header">
+    <div class="post-breadcrumb"><a href="../index.html">Blog</a></div>
+    <h1>Ineffective sorts: tensorflowsort</h1>
+    <div class="post-meta">November 1, 2016</div>
+  </div>
+  <div class="post-hero"><img src="https://www.pinchofintelligence.com/wp-content/uploads/2016/11/Shell_sorting_algorithm_color_bars.svg_.png" alt="" loading="lazy"></div>
+  <div class="post-content">
+    <p>Recently sequential neural networks have been gaining popularity. To explore what they were capable of I decided to create the ineffective sorting algorithm (<a href="https://xkcd.com/1185/">https://xkcd.com/1185/</a>) “Tensorflowsort”. In this post I will explain what we can do with sequential neural networks, and how we can use them to sort an array.</p>
+<p>The basis of my sorting algorithm is the Recurrent Neural Network. The best article to learn about how they work can be found in this post: <a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/">http://colah.github.io/posts/2015-08-Understanding-LSTMs/</a> . The basic idea is that there is an encoder, through which you pass your input sequentially. For comprehending text this means reading word for word, or letter for letter. Every time the encoder reads a letter it updates its own global state. After reading everything the cell state is passed to the decoder, that generates output. The encoder thus has to create a representation of the input at all time steps for the decoder to be able to generate suitable output.</p>
+<p>The output of the encoder is used as input for the decorder. However, you can have multiple decoders working with the same output. One practical example of this is a network that can:</p>
+<ul>
+<li>Return its input</li>
+<li>Predict the future of that input</li>
+</ul>
+<p>This makes sure that the network knows what happened (because it can reproduce its input) and knows what will happen (it can predict the future). The same idea can be used in the sorting algorithm: if the output of the encoder can be used to sort numbers, it can also output them in a reversed order.</p>
+<p>The code I used is:  </p>
+<p>The output of the algorithm at several steps is really interesting. After only 100 cases it learns that is has to output something “sorted”. That is: the outputs are sorted, but they are not the numbers we gave as input. This is probably due to the embeddings we use: each number is associated with a 50 dimensional vector. What should be in this vector is also determined by our network, but starts completely random. After seeing 100 examples of ordered numbers the network knows that numbers have a certain order.</p>
+<p>Please let me know what you think about this sorting algorithm, and let me know what YOU made with recurrent neural networks.</p>
+<h4 id="update-found-another-sorting-algorithm">Update: found another sorting algorithm</h4>
+<p>Apparently Ilya Kostrikov also wanted to have a neural sorting algorithm. His algorithm is even cooler, using attention for a pointer network! His code can be found here: <a href="https://github.com/ikostrikov/TensorFlow-Pointer-Networks">https://github.com/ikostrikov/TensorFlow-Pointer-Networks</a> . If you want to learn more about attention and pointer networks these slides are easy to follow: <a href="http://www.slideshare.net/KeonKim/attention-mechanisms-with-tensorflow">http://www.slideshare.net/KeonKim/attention-mechanisms-with-tensorflow</a> .</p>
+  </div>
+  <nav class="post-nav">
+<a class="post-nav-link post-nav-prev" href="../building-a-smart-iot-bed-part-2-of-5/index.html">
+  <span class="post-nav-label">&larr; Previous</span>
+  <span class="post-nav-title">Building a “Smart IoT bed”: part 2 of 5</span>
+</a>
+<a class="post-nav-link post-nav-next" href="../building-a-smart-iot-bed-part-1-of-5/index.html">
+  <span class="post-nav-label">Next &rarr;</span>
+  <span class="post-nav-title">Building a “Smart IoT bed” Part 1 of 5</span>
+</a>
+</nav>
+</div>
+
+</body>
+</html>

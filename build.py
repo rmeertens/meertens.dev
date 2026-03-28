@@ -151,6 +151,7 @@ def site_header(css_path, active=""):
     blog_path = f"{root}/blog/index.html" if root != "." else "blog/index.html"
     about_path = f"{root}/about.html" if root != "." else "about.html"
     home_path = f"{root}/index.html" if root != "." else "index.html"
+    photos_path = f"{root}/photos/index.html" if root != "." else "photos/index.html"
 
     def cls(name):
         return ' class="active"' if active == name else ""
@@ -162,6 +163,7 @@ def site_header(css_path, active=""):
       <a href="{home_path}"{cls("home")}>Home</a>
       <a href="{about_path}"{cls("about")}>About me</a>
       <a href="{blog_path}"{cls("blog")}>Blog</a>
+      <a href="{photos_path}"{cls("photos")}>Photos</a>
       <a href="https://www.youtube.com/@roland_does_things" target="_blank">YouTube</a>
       <a href="https://github.com/rmeertens" target="_blank">GitHub</a>
       <a href="https://linkedin.com/in/rmeertens" target="_blank">LinkedIn</a>
@@ -442,6 +444,98 @@ def homepage_html(posts):
 
 
 # ---------------------------------------------------------------------------
+# Photos page
+# ---------------------------------------------------------------------------
+
+def photos_page_html(photos):
+    """Generate photos/index.html from a list of photo dicts."""
+    css_path = "../style.css"
+
+    if not photos:
+        grid = '<p class="photos-empty">No photos yet — check back soon.</p>'
+    else:
+        items = []
+        for p in photos:
+            name_esc = html.escape(p["name"])
+            thumb_esc = html.escape(p["thumb"])
+            full_esc = html.escape(p["full"])
+            items.append(
+                f'<a class="photo-item" href="{full_esc}" target="_blank" rel="noopener">\n'
+                f'  <img src="{thumb_esc}" alt="{name_esc}" loading="lazy">\n'
+                f'  <span class="photo-caption">{name_esc}</span>\n'
+                f'</a>'
+            )
+        grid = '<div class="photo-grid">\n' + "\n".join(items) + "\n</div>"
+
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photos — Roland Meertens</title>
+  <link rel="stylesheet" href="{css_path}">
+  {GTAG}
+</head>
+<body>
+{site_header(css_path, active="photos")}
+<div class="page">
+  <div class="blog-intro">
+    <h1>Photos</h1>
+    <p>A selection of photos I've taken. Click any image to open the full resolution version.</p>
+  </div>
+  {grid}
+</div>
+<div id="photo-lightbox" class="photo-lightbox" onclick="this.classList.remove('open')">
+  <img id="lightbox-img" src="" alt="">
+</div>
+<script>
+  document.querySelectorAll('.photo-item').forEach(function(link) {{
+    link.addEventListener('click', function(e) {{
+      e.preventDefault();
+      var lb = document.getElementById('photo-lightbox');
+      document.getElementById('lightbox-img').src = this.href;
+      lb.classList.add('open');
+    }});
+  }});
+</script>
+</body>
+</html>"""
+
+
+def build_photos_page():
+    """Read photos/ directory and generate photos/index.html."""
+    photos_dir = ROOT / "photos"
+    thumbs_dir = photos_dir / "thumbs"
+    full_dir = photos_dir / "full"
+
+    photos = []
+    if thumbs_dir.exists():
+        IMAGE_EXTS = {".jpg", ".jpeg", ".png", ".webp", ".gif"}
+        for thumb_path in sorted(thumbs_dir.iterdir()):
+            if thumb_path.suffix.lower() not in IMAGE_EXTS:
+                continue
+            stem = thumb_path.stem
+            # Find matching full-res file
+            full_path = None
+            for ext in [".jpg", ".jpeg", ".png", ".webp", ".gif"]:
+                candidate = full_dir / f"{stem}{ext}"
+                if candidate.exists():
+                    full_path = candidate
+                    break
+            if full_path is None:
+                continue
+            photos.append({
+                "name": stem.replace("-", " ").replace("_", " ").title(),
+                "thumb": f"thumbs/{stem}.jpg",
+                "full": f"full/{full_path.name}",
+            })
+
+    photos_dir.mkdir(exist_ok=True)
+    (photos_dir / "index.html").write_text(photos_page_html(photos), encoding="utf-8")
+    print(f"  Built: photos/index.html ({len(photos)} photo(s))")
+
+
+# ---------------------------------------------------------------------------
 # Sort / build
 # ---------------------------------------------------------------------------
 
@@ -497,6 +591,9 @@ def build():
         homepage_html(all_posts), encoding="utf-8"
     )
     print(f"  Built: index.html")
+
+    # Phase 5: write photos page (reads from photos/thumbs/ and photos/full/)
+    build_photos_page()
 
     print(f"\nDone — {len(all_posts)} posts built.")
 

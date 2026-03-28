@@ -738,6 +738,76 @@ footer {
   border-top: 1px solid var(--border);
 }
 
+/* ---- Career examples (fold-out) ---- */
+.career-examples {
+  margin-top: 8px;
+}
+
+.career-examples summary {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--accent);
+  cursor: pointer;
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  user-select: none;
+}
+
+.career-examples summary::-webkit-details-marker { display: none; }
+
+.career-examples summary::after {
+  content: '›';
+  font-size: 1rem;
+  display: inline-block;
+  transition: transform 0.2s;
+  line-height: 1;
+}
+
+.career-examples[open] summary::after {
+  transform: rotate(90deg);
+}
+
+.career-examples summary:hover { text-decoration: underline; }
+
+.career-examples-list {
+  list-style: none;
+  margin-top: 8px;
+  padding: 10px 12px;
+  background: var(--tag-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.career-examples-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 0.82rem;
+}
+
+.career-examples-list a {
+  color: var(--text);
+  font-weight: 500;
+}
+.career-examples-list a:hover { color: var(--accent); text-decoration: none; }
+
+.career-examples-list .ex-type {
+  font-size: 0.68rem;
+  color: var(--muted);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 1px 5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-weight: 500;
+}
+
 /* ---- Responsive ---- */
 @media (max-width: 520px) {
   .hero { padding: 48px 0 36px; }

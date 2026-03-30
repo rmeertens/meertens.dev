@@ -492,7 +492,7 @@ def photos_page_html(photos):
 <div class="page">
   <div class="blog-intro">
     <h1>Photos</h1>
-    <p>A selection of photos I've taken. Click any image to open the full resolution version.</p>
+    <p>A selection of photos I've taken. I recently bought a new camera and lens, mostly to photograph the diversity of wildlife in my garden in the center of London! Click any image to open the full resolution version.</p>
   </div>
   {grid}
 </div>

@@ -151,19 +151,20 @@ def site_header(css_path, active=""):
     blog_path = f"{root}/blog/index.html" if root != "." else "blog/index.html"
     about_path = f"{root}/about.html" if root != "." else "about.html"
     home_path = f"{root}/index.html" if root != "." else "index.html"
-    photos_path = f"{root}/photos/index.html" if root != "." else "photos/index.html"
 
     def cls(name):
         return ' class="active"' if active == name else ""
 
     return f"""<header class="site-header">
   <div class="page">
-    <a class="site-name" href="{home_path}">Roland Meertens</a>
+    <a class="site-name" href="{home_path}">\U0001F916 Roland Meertens</a>
     <nav class="site-nav">
       <a href="{home_path}"{cls("home")}>Home</a>
       <a href="{about_path}"{cls("about")}>About me</a>
       <a href="{blog_path}"{cls("blog")}>Blog</a>
-      <a href="{photos_path}"{cls("photos")}>Photos</a>
+      <a href="https://www.youtube.com/@roland_does_things" target="_blank">YouTube</a>
+      <a href="https://github.com/rmeertens" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/rmeertens" target="_blank">LinkedIn</a>
     </nav>
   </div>
 </header>"""

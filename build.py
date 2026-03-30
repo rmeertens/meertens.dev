@@ -66,7 +66,7 @@ def clean_excerpt(text):
     return text
 
 
-_IMG_RE = re.compile(r"!\[[^\]]*\]\((https?://[^\)]+\.(?:jpg|jpeg|png|gif|webp)[^\)]*)\)", re.IGNORECASE)
+_IMG_RE = re.compile(r"!\[[^\]]*\]\(([^\)]+\.(?:jpg|jpeg|png|gif|webp)[^\)]*)\)", re.IGNORECASE)
 _YT_LINK_RE = re.compile(r"https?://(?:www\.)?(?:youtube\.com/watch\?v=|youtu\.be/)([\w-]+)", re.IGNORECASE)
 
 

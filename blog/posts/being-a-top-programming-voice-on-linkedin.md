@@ -16,4 +16,4 @@ I am always happy to review articles, interview people, speak at conferences, an
 
 So dear LinkedIn: please kill this feature and promote the unique stories your members are already writing. Please focus your time on adjusting your ranking algorithm such that the posts which read the top of my feed are of higher quality, more unique, and actually written by humans rather than ChatGPT powered self-marketing people.
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2023/07/Screenshot-2023-07-03-at-09.12.06-300x225.png)](https://www.pinchofintelligence.com/wp-content/uploads/2023/07/Screenshot-2023-07-03-at-09.12.06.png)
+[![](images/2023/07/Screenshot-2023-07-03-at-09.12.06-300x225.png)](images/2023/07/Screenshot-2023-07-03-at-09.12.06.png)

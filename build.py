@@ -178,12 +178,19 @@ def site_footer(root="."):
 # Post card (for grid layout on blog index)
 # ---------------------------------------------------------------------------
 
-def post_card_html(meta, slug_prefix=""):
+def _prefix_thumb(thumb, prefix):
+    """Add a prefix to local thumbnail paths (those starting with 'images/')."""
+    if thumb and not thumb.startswith(("http://", "https://")) and prefix:
+        return f"{prefix}{thumb}"
+    return thumb
+
+
+def post_card_html(meta, slug_prefix="", thumb_prefix=""):
     slug = meta["slug"]
     title_esc = html.escape(meta["title"])
     excerpt_esc = html.escape(clean_excerpt(meta["excerpt"]))
     date_str = format_date(meta.get("date", ""))
-    thumb = meta.get("thumbnail", "")
+    thumb = _prefix_thumb(meta.get("thumbnail", ""), thumb_prefix)
     href = f"{slug_prefix}{slug}/index.html"
 
     if thumb:
@@ -238,7 +245,13 @@ def post_page_html(meta, content_html, prev_meta=None, next_meta=None):
     css_path = "../../style.css"
     title_esc = html.escape(meta["title"])
     date_pretty = format_date(meta.get("date", ""))
-    thumb = meta.get("thumbnail", "")
+    thumb = _prefix_thumb(meta.get("thumbnail", ""), "../")
+
+    content_html = re.sub(
+        r'(src|href)="(images/)',
+        r'\1="../images/',
+        content_html,
+    )
 
     hero_html = ""
     if thumb:
@@ -351,7 +364,8 @@ def homepage_html(posts):
     latest = posts[0] if posts else None
     thumb = ""
     if latest and latest.get("thumbnail"):
-        thumb = f'<img class="featured-thumb" src="{html.escape(latest["thumbnail"])}" alt="" loading="lazy">'
+        t = _prefix_thumb(latest["thumbnail"], "blog/")
+        thumb = f'<img class="featured-thumb" src="{html.escape(t)}" alt="" loading="lazy">'
 
     featured = ""
     if latest:
@@ -369,7 +383,7 @@ def homepage_html(posts):
 
     by_slug = {m["slug"]: m for m in posts}
     highlighted = [by_slug[s] for s in HIGHLIGHTED_SLUGS if s in by_slug]
-    highlight_cards = "\n".join(post_card_html(m, slug_prefix="blog/") for m in highlighted)
+    highlight_cards = "\n".join(post_card_html(m, slug_prefix="blog/", thumb_prefix="blog/") for m in highlighted)
 
     return f"""<!DOCTYPE html>
 <html lang="en">

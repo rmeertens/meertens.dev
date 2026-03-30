@@ -8,7 +8,7 @@ original_url: "https://www.pinchofintelligence.com/getting-started-openai-gym/"
 
 The OpenAI gym environment is one of the most fun ways to learn more about machine learning. Especially reinforcement learning and neural networks can be applied perfectly to the benchmark and Atari games collection that is included. Every environment has multiple featured solutions, and often you can find a writeup on how to achieve the same score. By looking at others approaches and ideas you can improve yourself quickly in a fun way.I noticed that getting started with Gym can be a bit difficult. Although there are many tutorials for algorithms online, the first step is understanding the programming environment in which you are working. To easy new people into this environment I decided to make a small tutorial with a docker container and a jupyter notebook.
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/cartwheel-neural-part1-e1500278401585-300x191.png)](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/cartwheel-neural-part1-e1500278401585.png)
+[![](images/2017/07/cartwheel-neural-part1-e1500278401585-300x191.png)](images/2017/07/cartwheel-neural-part1-e1500278401585.png)
 
 ### What you need
 
@@ -86,7 +86,7 @@ In [ ]:
         
     
 
-![My manual play](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/manualplay.gif)
+![My manual play](images/2017/07/manualplay.gif)
 
 ### Replay
 
@@ -171,7 +171,7 @@ In [ ]:
     display_frames_as_gif(frames, filename_gif="bestresultrandom.gif")
     
 
-![My best random result](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/bestresultrandom.gif)
+![My best random result](images/2017/07/bestresultrandom.gif)
 
 ### Exercises to learn more about OpenAI gym
 

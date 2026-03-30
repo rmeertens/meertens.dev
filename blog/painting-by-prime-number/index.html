@@ -34,14 +34,14 @@
     <h1>Painting by Prime Number</h1>
     <div class="post-meta">June 7, 2018</div>
   </div>
-  <div class="post-hero"><img src="https://www.pinchofintelligence.com/wp-content/uploads/2018/05/monalisa-prime.png" alt="" loading="lazy"></div>
+  
   <div class="post-content">
     <p>Two weeks ago I stumbled upon the concept of <a href="http://archive.bridgesmathart.org/2016/bridges2016-359.pdf">prime portraits</a>. In short, prime portraits are pictures in which each color is assigned a number. When we align every pixel, the result should be a prime number. Because I could not find the code used in the article, I decided to recreate these prime portraits in Python – in color! Below is the Jupyter Notebook with the code (<a href="https://github.com/rmeertens/prime_portraitshttps://github.com/rmeertens/prime_portraits">also available on Github</a>) I used to generate the Mona Lisa:</p>
-<p><img alt="mona lisa" src="https://www.pinchofintelligence.com/wp-content/uploads/2018/05/monalisa-prime.png" /></p>
+<p><img alt="mona lisa" src="../images/2018/05/monalisa-prime.png" /></p>
 <h2 id="the-concept">The concept</h2>
 <p>A prime portrait is a prime number formatted as a matrix with X digits per line. When we select a color for each digit, we can generate an image.</p>
 <p>Instead of doing this for many prime numbers and color schemes until you find something that resembles a known image, I have turned the process around. I have taken iconic images, such as the Mona Lisa and Starry Night, and converted them to images with only 10 colors. I assigned a digit to each color. Then I generated many similar images with a little bit of ‘noise’ added. The noise changed the colors in the images slightly, and thus the digits. If the digits in the image formed a prime number, I found a prime portrait!</p>
-<p><img alt="starry night" src="https://www.pinchofintelligence.com/wp-content/uploads/2018/06/starrynight-prime-386kb.png" /></p>
+<p><img alt="starry night" src="../images/2018/06/starrynight-prime-386kb.png" /></p>
 <pre class="codehilite"><code>import matplotlib.pyplot as plt
 %matplotlib inline
 
@@ -375,23 +375,23 @@ plt.ylabel(&quot;Expected seconds&quot;)
 <p>If you can find a more efficient Python implementation of a probabilistic prime checker, or implement it in a language more suitable to high demand computation, you can lower the time you need to generate these portraits. Each additional computer core also reduces this time a bit, but for now we can not expect 4K prime portraits anytime soon.</p>
 <h2 id="conclusion-and-artworks">Conclusion and artworks</h2>
 <p>The last couple of weeks I really enjoyed letting my computer find prime portraits. Here are some of the artworks my computer found:<br />
-<img alt="Sunflowers" src="https://www.pinchofintelligence.com/wp-content/uploads/2018/05/sunflowers-prime.png" /><br />
+<img alt="Sunflowers" src="../images/2018/05/sunflowers-prime.png" /><br />
 Sunflowers by Van Gogh<br />
-<img alt="Great wave" src="https://www.pinchofintelligence.com/wp-content/uploads/2018/06/greatwave-prime-big.png" /><br />
+<img alt="Great wave" src="../images/2018/06/greatwave-prime-big.png" /><br />
 Great wave by Hokusai<br />
-<img alt="Pearl" src="https://www.pinchofintelligence.com/wp-content/uploads/2018/06/1200px-Girl_with_a_Pearl_Earring-prime.png" /><br />
+<img alt="Pearl" src="../images/2018/06/1200px-Girl_with_a_Pearl_Earring-prime.png" /><br />
 Girl with a pearl earring by Vermeer</p>
 <h2 id="celebrity-artworks">Celebrity artworks</h2>
 <p>Although pictures of existing art often turn our pretty well, it is quite difficult to create good looking prime portraits of people. There is often not enough contrast in the resulting images, which uses only ten colors. I decided to try some portraits for people I like to follow online. Images that turned our well are:</p>
 <h4 id="ionica-smeets">Ionica Smeets</h4>
 <p>Writes interesting articles in a Dutch newspaper every Saturday, and got featured a while ago in the Dutch comic called “Donald Duck”:<br />
-<img alt="Ionica Smeets" src="https://www.pinchofintelligence.com/wp-content/uploads/2018/06/ionica_duck-prime.png" /></p>
+<img alt="Ionica Smeets" src="../images/2018/06/ionica_duck-prime.png" /></p>
 <h4 id="brady-haran">Brady Haran</h4>
 <p>Makes interesting videos about mathematical concepts on the Numberphile Youtube channel. Also: has a cute dog 😉<br />
-<img alt="Brady Haran" src="https://www.pinchofintelligence.com/wp-content/uploads/2018/06/brady-prime.png" /></p>
+<img alt="Brady Haran" src="../images/2018/06/brady-prime.png" /></p>
 <h4 id="roland-meertens">Roland Meertens</h4>
 <p>And myself.<br />
-<img alt="My face" src="https://www.pinchofintelligence.com/wp-content/uploads/2018/06/rolandface-prime.png" /></p>
+<img alt="My face" src="../images/2018/06/rolandface-prime.png" /></p>
 <h2 id="requests">Requests</h2>
 <p>As I put <a href="https://github.com/rmeertens/prime_portraits">the code online you can try to generate some prime portraits for yourself</a>! If you really think I should try a certain artwork, feel free to reach out to me. Also: if you have a good idea what to do with these results, feel free to reach out. I know that I personally am going to hang the prime version of Starry Night on my wall!</p>
   </div>

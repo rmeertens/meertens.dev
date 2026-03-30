@@ -12,7 +12,7 @@ This weekend we got the second place in the Hack the Road Hackathon with our ide
 
 In traffic, a green wave is a phenomenon that occurs when series of traffic lights are green when you approach them. Riding a green wave, you never have to stop for a red traffic light. As stopping and accelerating takes a lot of time and wastes energy, such a green wave is beneficial for you and the road users behind you. If you know your distance to the next intersection and the time it will take for the traffic sign to become green you can calculate your ideal speed, and keep driving this speed. Sometimes, by driving a little slower, you actually are quicker at your destination, with more fuel to spare. 
 
-### [![](https://www.pinchofintelligence.com/wp-content/uploads/2017/09/bothsigns-1024x516.jpg)](https://www.pinchofintelligence.com/wp-content/uploads/2017/09/bothsigns.jpg)
+### [![](images/2017/09/bothsigns-1024x516.jpg)](images/2017/09/bothsigns.jpg)
 
 ### Existing solutions
 
@@ -20,7 +20,7 @@ A few intersections in the Netherlands have traffic signs that indicate what spe
 
 We have the same problem with traffic jams. In the Netherlands, we have so-called “matrix signs” above the road that indicate your maximum speed. If there is a traffic jam up ahead the matrix signs try to slow people down to [prevent the “shockwave” traffic jams you often encounter](https://www.youtube.com/watch?v=Suugn-p5C1M). Unfortunately, almost everyone ignores these signs. Many people don’t understand them, and it’s not clear that abiding these signals will result in you waiting less.
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2017/09/leadbyexample-1024x576.jpg)](https://www.pinchofintelligence.com/wp-content/uploads/2017/09/leadbyexample.jpg)
+[![](images/2017/09/leadbyexample-1024x576.jpg)](images/2017/09/leadbyexample.jpg)
 
 ### Using vehicles AS infrastructure
 
@@ -28,15 +28,15 @@ The idea we came up with during the Hack the Road hackathon was to use autonomou
 
 This photoshopped image shows how we envision our prototype: a self-driving car is driving to a red light, but indicates that if you stay behind it you don’t have to brake for the red light.
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2017/09/smartcargreen-1024x819.jpg)](https://www.pinchofintelligence.com/wp-content/uploads/2017/09/smartcargreen.jpg)
+[![](images/2017/09/smartcargreen-1024x819.jpg)](images/2017/09/smartcargreen.jpg)
 
 ### The prototype: a wifi chip and a LED strip 
 
-During the hackathon, we spent a lot of time thinking about how to signal green wave information to other drivers. We wanted to convey a simple message in a way that would both be understood and followed. We went for a LED strip and programmed a wifi chip to accept messages from our computers (I used a build similar to the [one I made for my bed](https://www.pinchofintelligence.com/building-a-smart-iot-bed-part-2-of-5/)). 
+During the hackathon, we spent a lot of time thinking about how to signal green wave information to other drivers. We wanted to convey a simple message in a way that would both be understood and followed. We went for a LED strip and programmed a wifi chip to accept messages from our computers (I used a build similar to the [one I made for my bed](../building-a-smart-iot-bed-part-2-of-5/index.html)). 
 
 To get time-to-green and time-to-red information we [interfaced with Dynniq’s API](http://dynniq.com/). We looked at one intersection in the Dutch city Helmond whose information was available to us during this weekend. As data currently came in in a continuous stream we had to write our own parsers in Python that found relevant data. We also made a “mock-up” datastream we could use during a demo and which we use in the video below. 
 
-### [![](https://www.pinchofintelligence.com/wp-content/uploads/2017/09/DJ1L483XoAAInk4-768x1024.jpg)](https://www.pinchofintelligence.com/wp-content/uploads/2017/09/DJ1L483XoAAInk4.jpg)
+### [![](images/2017/09/DJ1L483XoAAInk4-768x1024.jpg)](images/2017/09/DJ1L483XoAAInk4.jpg)
 
 ### Putting a demonstration together
 

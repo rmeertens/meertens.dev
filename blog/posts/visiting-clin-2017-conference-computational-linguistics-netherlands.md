@@ -25,11 +25,11 @@ As can be expected many people at CLIN were using neural networks some way. Espe
 For me, the most interesting talk of the deep learning track was the one by Neculoiu, Versteegh, Rotaru. At their company Textkernel, they have the problem people use many different names to describe their profession. For example, I could describe myself as a deep learning engineer, neural network engineer, or researcher neural networks. All these names represent the same thing: I like to work with deep neural networks. Although sometimes there is an overlap in words within the category (in the example the word “neural”), sometimes there is no overlap at all (e.g. deep learning engineer). They took on the challenge of constructing a system that the name of a profession, and determines the category.
 
 [  
-](https://www.pinchofintelligence.com/wp-content/uploads/2017/02/Screen-Shot-2017-02-13-at-22.19.39.png) [![Image showing network](https://www.pinchofintelligence.com/wp-content/uploads/2017/02/Screen-Shot-2017-02-13-at-22.19.27.png)](https://www.pinchofintelligence.com/wp-content/uploads/2017/02/Screen-Shot-2017-02-13-at-22.19.27.png)
+](images/2017/02/Screen-Shot-2017-02-13-at-22.19.39.png) [![Image showing network](images/2017/02/Screen-Shot-2017-02-13-at-22.19.27.png)](images/2017/02/Screen-Shot-2017-02-13-at-22.19.27.png)
 
 To do this, they feed both character names in a neural network that goes over the name 8 times (4 times, left to right and right to left, using an LSTM). The representation this gives is put through another neural network that determines a “distance” between two words. If the distance is small, they belong to the same category. Some categories they automatically determined, and a diagram of their network can be seen below this paragraph. The paper they published about this is very interesting and can be found here: <http://anthology.aclweb.org/W16-1617> .
 
-### ![Image showing results](https://www.pinchofintelligence.com/wp-content/uploads/2017/02/Screen-Shot-2017-02-13-at-22.19.39.png)
+### ![Image showing results](images/2017/02/Screen-Shot-2017-02-13-at-22.19.39.png)
 
 ### Conclusion
 

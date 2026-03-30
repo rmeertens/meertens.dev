@@ -34,7 +34,7 @@
     <h1>Neural voting advice application</h1>
     <div class="post-meta">March 3, 2017</div>
   </div>
-  <div class="post-hero"><img src="https://www.pinchofintelligence.com/wp-content/uploads/2017/03/stemwijzerbackground-300x200.jpg" alt="" loading="lazy"></div>
+  
   <div class="post-content">
     <p>Next week the Netherlands will hold elections to choose who is going to represent the people in the house of representatives. <a href="https://en.wikipedia.org/wiki/Dutch_general_election,_2017">There are 28 political parties participating, although there are 10 ‘big’ political parties most people choose from.</a> As there are so many political parties people orient themselves on who to vote for using voting advice applications. Most of the time people tell these applications what their opinion is on 30 important questions, and the application tells them what party would represent their opinions the best.</p>
 <h2 id="neural-voting-advice-application">Neural voting advice application</h2>
@@ -46,7 +46,7 @@
 <li>Nederland versterkt de internationale terrorismebestrijding, de inlichtingendiensten en de aanpak van jihadisten.</li>
 <li>In Nederland gedraag je je. Als je dat doet, dan zijn de mogelijkheden eindeloos.</li>
 </ul>
-<p><a href="https://www.pinchofintelligence.com/wp-content/uploads/2017/03/stemwijzerbackground.jpg"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/03/stemwijzerbackground-300x200.jpg" /></a></p>
+<p><a href="../images/2017/03/stemwijzerbackground.jpg"><img alt="" src="../images/2017/03/stemwijzerbackground-300x200.jpg" /></a></p>
 <h3 id="how-did-your-program-learn-this">How did your program learn this?</h3>
 <p>Most parties have their program as PDF on their website. I downloaded these and cut them to single sentences. After , his I “trained” the neural voting advice application sentence by sentence by asking it “what party had this sentence in their program?”. Because the “Party for freedom” (right-wing populist party) has a one-page program I downloaded all tweets of their leader Geert Wilders instead. On a set of sentences it never saw before my program guesses the origin correctly in 55% of the cases.</p>
 <h3 id="why-are-some-of-the-words-replaced-by-_unk">Why are some of the words replaced by _UNK?</h3>

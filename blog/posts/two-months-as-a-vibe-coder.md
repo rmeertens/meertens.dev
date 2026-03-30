@@ -12,7 +12,7 @@ The last two months my work completely changed. My job changed from thinking lon
 
 First of all, I’m definitely feeling way more productive with agentic programming. I see a lot of complaints on Reddit and HackerNews about how they don’t like agentic programming, how it slows you down in the end, but for me it simply works. It’s always hard to find a metric for productivity, but IMO “number of pull requests merged” is a pretty good one. The best engineers I know have frequent pull requests, making the code base a tiny bit better every single day. Having picked a metric, here are my last two years worth of pull requests, including how many got accepted per month. You can clearly see when agentic programming started to work…
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2026/03/pr_histogram-1024x399.png)](https://www.pinchofintelligence.com/wp-content/uploads/2026/03/pr_histogram.png)
+[![](images/2026/03/pr_histogram-1024x399.png)](images/2026/03/pr_histogram.png)
 
 ### Programming is fun (again)
 

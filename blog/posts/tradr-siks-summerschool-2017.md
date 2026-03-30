@@ -6,9 +6,9 @@ excerpt: "A few weeks ago I gave an introductory course to reinforcement learnin
 original_url: "https://www.pinchofintelligence.com/tradr-siks-summerschool-2017/"
 ---
 
-A few weeks ago I gave an introductory course to reinforcement learning with the OpenAI Gym environment. As content, I used the [writeups I already put on my site several weeks ago](https://www.pinchofintelligence.com/getting-started-openai-gym/). I asked Jasper van der Waa (TNO), who co-organized it, to write a short summary of the summer school. 
+A few weeks ago I gave an introductory course to reinforcement learning with the OpenAI Gym environment. As content, I used the [writeups I already put on my site several weeks ago](../getting-started-openai-gym/index.html). I asked Jasper van der Waa (TNO), who co-organized it, to write a short summary of the summer school. 
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2017/09/tradr-300x200.jpg)](https://www.pinchofintelligence.com/wp-content/uploads/2017/09/tradr.jpg)
+[![](images/2017/09/tradr-300x200.jpg)](images/2017/09/tradr.jpg)
 
 For some years now it is quite clear that robots will be part of our future. However, we still have a long way to go before we have robots like those in “I, Robot” or “Ex Machina”. The research in the TRADR project is one step towards this future. More specific, one step towards a future where robots aid rescue workers right after major disasters like hurricanes and earthquakes by locating victims and identifying dangers. The TRADR SIKS Summerschool of 2017 focused on the vital issue of how we can let robots and humans work together as teammates.  
 ****

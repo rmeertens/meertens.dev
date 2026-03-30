@@ -4,7 +4,7 @@ date: "2016-11-01"
 slug: "ineffective-sorts-tensorflowsort"
 excerpt: "Recently sequential neural networks have been gaining popularity. To explore what they were capable of I decided to create the ineffective sorting algorithm (<https://xkcd.com/1185/)..."
 original_url: "https://www.pinchofintelligence.com/ineffective-sorts-tensorflowsort/"
-thumbnail: "https://www.pinchofintelligence.com/wp-content/uploads/2016/11/Shell_sorting_algorithm_color_bars.svg_.png"
+thumbnail: "images/2016/11/Shell_sorting_algorithm_color_bars.svg_.png"
 ---
 
 Recently sequential neural networks have been gaining popularity. To explore what they were capable of I decided to create the ineffective sorting algorithm (<https://xkcd.com/1185/>) “Tensorflowsort”. In this post I will explain what we can do with sequential neural networks, and how we can use them to sort an array.

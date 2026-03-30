@@ -16,6 +16,6 @@ To create a personal gift I decided to create a laser engraved wine box with the
 
 I’m very pleased with the result:
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2017/04/winebox2-300x136.jpg)](https://www.pinchofintelligence.com/wp-content/uploads/2017/04/winebox2.jpg) [![](https://www.pinchofintelligence.com/wp-content/uploads/2017/04/winebox1-300x225.jpg)](https://www.pinchofintelligence.com/wp-content/uploads/2017/04/winebox1.jpg)
+[![](images/2017/04/winebox2-300x136.jpg)](images/2017/04/winebox2.jpg) [![](images/2017/04/winebox1-300x225.jpg)](images/2017/04/winebox1.jpg)
 
 This is a video that shows the laser engraving:

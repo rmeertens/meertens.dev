@@ -8,7 +8,7 @@ original_url: "https://www.pinchofintelligence.com/calculating-how-to-split-your
 
 Dutch people are known for splitting their bills. When frequently eating with the same group this could normally lead to an awkward situation, where everybody has to pay everybody a little bit. Most students use the site “https://wiebetaaltwat.nl/”. You create a group with the people you frequently eat with, and every time you do something with a set of these people you add your expense to the list.
 
-[![screen-shot-2016-11-06-at-23-49-16](http://pinchofintelligence.com/wp-content/uploads/2016/10/Screen-Shot-2016-11-06-at-23.49.16.png)](http://pinchofintelligence.com/wp-content/uploads/2016/10/Screen-Shot-2016-11-06-at-23.49.16.png)
+[![screen-shot-2016-11-06-at-23-49-16](images/2016/10/Screen-Shot-2016-11-06-at-23.49.16.png)](images/2016/10/Screen-Shot-2016-11-06-at-23.49.16.png)
 
 Once in a while you want your bills paid, to do this wiebetaaltwat tries to find a way in which there is the lowest amount of transactions. Last week I had a discussion with a friend about what would be the best way to calculate these transactions. This post will show my first attempt at finding an algorithm, why my algorithm was wrong, and how I improved it.
 
@@ -77,6 +77,6 @@ To do this we:
 Searching for two numbers in a list takes 2*log(n). With this update the total steps we take is n*log(n) + n/2 * 2 * log(n) which is 2*n*log(n).
 
 I plotted the two graphs so you can see that the optimal solution takes double the time than my first solution:  
-[![whoo](http://pinchofintelligence.com/wp-content/uploads/2016/10/whoo-1024x483.png)](http://pinchofintelligence.com/wp-content/uploads/2016/10/whoo.png)
+[![whoo](images/2016/10/whoo-1024x483.png)](images/2016/10/whoo.png)
 
 Is my second algorithm correct? Is there a way to calculate who has to pay what which leads to less transactions? I hope so! If you have a better algorithm, please leave a comment!

@@ -10,11 +10,11 @@ In May 2020 Scale released their open Autonomous Driving dataset called [Pandase
 
 Here are some examples of point clouds you can experience now in virtual reality:
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2020/05/sequencepandas4-300x278.gif)](https://www.pinchofintelligence.com/wp-content/uploads/2020/05/sequencepandas4.gif)
+[![](images/2020/05/sequencepandas4-300x278.gif)](images/2020/05/sequencepandas4.gif)
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2020/05/sequencepandas2-300x187.gif)](https://www.pinchofintelligence.com/wp-content/uploads/2020/05/sequencepandas2.gif)
+[![](images/2020/05/sequencepandas2-300x187.gif)](images/2020/05/sequencepandas2.gif)
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2020/05/sequencepandas1-300x187.gif)](https://www.pinchofintelligence.com/wp-content/uploads/2020/05/sequencepandas1.gif)
+[![](images/2020/05/sequencepandas1-300x187.gif)](images/2020/05/sequencepandas1.gif)
 
 If you are browsing with an Oculus Quest you can immediately click the following links. If you are browsing on a computer you can still see what you can walk through in virtual reality:  
 [ Frame 024 lidar with semantic segmentation](https://immersivepoints.com/oculus.html?jsonb64=eyJwb2ludHMiOiBbeyJzb3VyY2UiOiAidXJsIiwgInVybCI6ICJodHRwczovL3BvaW50Y2xvdWR2aXN1YWxpemF0aW9uLnMzLmV1LWNlbnRyYWwtMS5hbWF6b25hd3MuY29tL3BhbmRhLWV4cG9ydC8wMjRfeHl6cmdiLm5weSIsICJ0eXBlIjogIlhZWlJHQiJ9XX0=)  

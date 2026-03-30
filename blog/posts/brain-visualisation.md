@@ -10,11 +10,11 @@ During a project in which I created partitions in the brain there was no simple 
 
 To show how well our visualisation works we applied a community detection algorithm to the motor cortices of the brain. Although we did not apply any statistical measures on the resulting data it is possible to see that the community detection algorithm works. As you can see that the resulting communities have a very local focus, while the location of each voxel was not given to the community detector.
 
-[![Cardboard Example 2](http://pinchofintelligence.com/wp-content/uploads/2014/11/Cardboard-Example-2-1024x543.png)](http://pinchofintelligence.com/wp-content/uploads/2014/11/Cardboard-Example-2.png)
+[![Cardboard Example 2](images/2014/11/Cardboard-Example-2-1024x543.png)](images/2014/11/Cardboard-Example-2.png)
 
-[![Cardboard Example 3](http://pinchofintelligence.com/wp-content/uploads/2014/11/Cardboard-Example-3-1024x543.png)](http://pinchofintelligence.com/wp-content/uploads/2014/11/Cardboard-Example-3.png)
+[![Cardboard Example 3](images/2014/11/Cardboard-Example-3-1024x543.png)](images/2014/11/Cardboard-Example-3.png)
 
-### Google Cardboard support![140625165116-google-cardboard-boxes-620xa](http://pinchofintelligence.com/wp-content/uploads/2014/11/140625165116-google-cardboard-boxes-620xa-300x187.jpg)
+### Google Cardboard support![140625165116-google-cardboard-boxes-620xa](images/2014/11/140625165116-google-cardboard-boxes-620xa-300x187.jpg)
 
 At Google I/O 2014 the google cardboard was introduced. With a cardboard box, two plastic lenses and a smartphone one can create their own 3D glasses. We added support for this cheap visualisation tool so everybody is able to look at the visualisations in three dimensions.
 
@@ -28,7 +28,7 @@ At Google I/O 2014 the google cardboard was introduced. With a cardboard box, tw
 
 [Only the edges with occulus rift support](https://rmeertens.github.io/brainvisualisation/occulusrift.html)
 
-![Cardboard Example 1](http://pinchofintelligence.com/wp-content/uploads/2014/11/Cardboard-Example-1-1024x543.png)
+![Cardboard Example 1](images/2014/11/Cardboard-Example-1-1024x543.png)
 
 # 
 

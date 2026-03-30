@@ -8,7 +8,7 @@ original_url: "https://www.pinchofintelligence.com/saturn-v/"
 
 I absolutely love everything related to space! When decorating our apartment we decided to add a little ‘space corner’ in the hallway for all space related decoration. One thing we bought for this is the [LEGO Apollo Saturn V rocket](https://www.lego.com/en-de/product/lego-nasa-apollo-saturn-v-21309). It first simply hang on the ceiling as an amazing decorating piece. However, I decided to spice it up by turning it into a flaming lamp. 
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2020/06/IMG_0213-1024x768.jpg)](https://www.pinchofintelligence.com/wp-content/uploads/2020/06/IMG_0213.jpg)
+[![](images/2020/06/IMG_0213-1024x768.jpg)](images/2020/06/IMG_0213.jpg)
 
 Inspiration for this project came from several people on Reddit posting their design of the rocket taking off inside an [Ikea glass case](https://www.reddit.com/r/lego/comments/d8ndka/saturn_v_display/)**.** As my rocket already hangs on the ceiling (and the Ikea glass case houses my girlfriends elephant collection) I wanted to make an alternative design. This would also allow me to address my biggest issue with the other designs: the flames look too tame for a launching rocket. 
 
@@ -20,7 +20,7 @@ As a last thing I had to find a way to emulate the “liveliness” of the flame
 
 **Two designs for the flame which did not make it:**
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2020/06/Screenshot-2020-06-07-at-16.27.48-232x300.png)](https://www.pinchofintelligence.com/wp-content/uploads/2020/06/Screenshot-2020-06-07-at-16.27.48.png)[![](https://www.pinchofintelligence.com/wp-content/uploads/2020/06/Screenshot-2020-06-07-at-16.24.12-203x300.png)](https://www.pinchofintelligence.com/wp-content/uploads/2020/06/Screenshot-2020-06-07-at-16.24.12.png)
+[![](images/2020/06/Screenshot-2020-06-07-at-16.27.48-232x300.png)](images/2020/06/Screenshot-2020-06-07-at-16.27.48.png)[![](images/2020/06/Screenshot-2020-06-07-at-16.24.12-203x300.png)](images/2020/06/Screenshot-2020-06-07-at-16.24.12.png)
 
 The electricity wire for the light is guided along the top of the rocket so it’s not too distracting when walking underneath it. If someone finds a way to lead to electric cable through the rocket itself using original lego that would be very welcome. 
 
@@ -36,6 +36,6 @@ Making the lamp yourself is really easy if you have a 3D printer. The three thin
 
 
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2020/06/Screenshot-2020-06-07-at-17.54.00-300x266.png)](https://www.pinchofintelligence.com/wp-content/uploads/2020/06/Screenshot-2020-06-07-at-17.54.00.png)
+[![](images/2020/06/Screenshot-2020-06-07-at-17.54.00-300x266.png)](images/2020/06/Screenshot-2020-06-07-at-17.54.00.png)
 
 Last but not least I wanted to tell fans of space and rocket launches to watch the [Apollo 11 documentary about the first moon landing](https://www.youtube.com/watch?v=3Co8Z8BQgWc). It’s an amazing piece of art which I really enjoyed!

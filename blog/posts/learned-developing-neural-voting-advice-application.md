@@ -2,11 +2,11 @@
 title: "What I learned developing the Neural Voting Advice Application"
 date: "2017-03-21"
 slug: "learned-developing-neural-voting-advice-application"
-excerpt: "Two weeks ago I put the neural voting advice application online (http://www.pinchofintelligence.com/neural-voting-advice-application/). In this post, I look back at two aspects: the end-user aspect..."
+excerpt: "Two weeks ago I put the neural voting advice application online (../neural-voting-advice-application/index.html). In this post, I look back at two aspects: the end-user aspect..."
 original_url: "https://www.pinchofintelligence.com/learned-developing-neural-voting-advice-application/"
 ---
 
-Two weeks ago I put the neural voting advice application online (http://www.pinchofintelligence.com/neural-voting-advice-application/). In this post, I look back at two aspects: the end-user aspect and the technical aspect. The first one will be interesting for people working with neural networks. The technical aspect might be useful for somebody else interested in deploying their Tensorflow or Keras application.
+Two weeks ago I put the neural voting advice application online (../neural-voting-advice-application/index.html). In this post, I look back at two aspects: the end-user aspect and the technical aspect. The first one will be interesting for people working with neural networks. The technical aspect might be useful for somebody else interested in deploying their Tensorflow or Keras application.
 
 ### Introduction
 
@@ -14,7 +14,7 @@ For years I enjoyed the multiple voting advice applications that all focus on di
 
 The end result was accessible here: [rmeertens.github.io/NeuralVotingAdvice](http://rmeertens.github.io/NeuralVotingAdvice)/ . Since I started my service it has been used over 500 times. Most comments I received were from people who felt that a certain input should have recommended another party.
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2017/03/2017-03-22-15_32_25-Kunstmatige-Intelligentie-stemwijzer-755x1024.png)](https://www.pinchofintelligence.com/wp-content/uploads/2017/03/2017-03-22-15_32_25-Kunstmatige-Intelligentie-stemwijzer.png)
+[![](images/2017/03/2017-03-22-15_32_25-Kunstmatige-Intelligentie-stemwijzer-755x1024.png)](images/2017/03/2017-03-22-15_32_25-Kunstmatige-Intelligentie-stemwijzer.png)
 
 Another problem was that my backend did not have SSL encryption (an HTTP connection) while the Github page I used to host my site had HTTPS. Chrome and other browser don’t like HTTP posts on encrypted pages, and thus my app did not work for many users. This was something I was only able to fix after the elections already passed (see the technical writeup).
 

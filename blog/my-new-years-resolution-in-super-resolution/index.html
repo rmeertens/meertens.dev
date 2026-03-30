@@ -34,34 +34,34 @@
     <h1>My new years resolution in super-resolution</h1>
     <div class="post-meta">December 15, 2019</div>
   </div>
-  <div class="post-hero"><img src="https://www.pinchofintelligence.com/wp-content/uploads/2019/12/inputtooutput.png" alt="" loading="lazy"></div>
+  <div class="post-hero"><img src="https://neurohive.io/wp-content/uploads/2018/09/face-resolution-upscaling-e1538401724331.png" alt="" loading="lazy"></div>
   <div class="post-content">
     <p>A new year is approaching, which means that it’s time for everybody to think about new-years resolutions to improve your life. An ideal moment to take your new-years resolution and turn it into a super-resolution image!</p>
 <p>For the sake of learning, I decided to train a network that can take a picture of me, and turn it into a super-resolution image which shows better behaviour. The end result looks like this, where left is me drinking a beer, and right is the neural network output in super-resolution of me sporting more.</p>
-<p><a href="https://www.pinchofintelligence.com/wp-content/uploads/2019/12/inputtooutput.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2019/12/inputtooutput.png" /></a></p>
+<p><a href="../images/2019/12/inputtooutput.png"><img alt="" src="../images/2019/12/inputtooutput.png" /></a></p>
 <h2 id="about-super-resolution">About super-resolution</h2>
 <p>Super-resolution is the neural network equivalent of shouting “ENHANCE”. If you have an image with a low resolution, you try to find a way to “guess” what a higher resolution image looks like. Normally this looks something like this:<br />
 <img alt="Example super resolution" src="https://neurohive.io/wp-content/uploads/2018/09/face-resolution-upscaling-e1538401724331.png" /><br />
-People started using neural networks for this (of which this post gives a nice overview: <a href="https://medium.com/beyondminds/an-introduction-to-super-resolution-using-deep-learning-f60aff9a499d">https://medium.com/beyondminds/an-introduction-to-super-resolution-using-deep-learning-f60aff9a499d</a>), and I guess that my photorealistic gameboy camera work (<a href="https://www.pinchofintelligence.com/photorealistic-neural-network-gameboy/">http://www.pinchofintelligence.com/photorealistic-neural-network-gameboy/</a>) also counts in a way.</p>
+People started using neural networks for this (of which this post gives a nice overview: <a href="https://medium.com/beyondminds/an-introduction-to-super-resolution-using-deep-learning-f60aff9a499d">https://medium.com/beyondminds/an-introduction-to-super-resolution-using-deep-learning-f60aff9a499d</a>), and I guess that my photorealistic gameboy camera work (<a href="../photorealistic-neural-network-gameboy/index.html">../photorealistic-neural-network-gameboy/index.html</a>) also counts in a way.</p>
 <h2 id="the-idea">The idea</h2>
 <p>Let’s as a new years resolution set that I want to drink less beer, and sport more. What I want to achieve is training a neural network that can take an image of me taking beer, and outputs a higher-resolution (super-resolution) image of me doing sports.</p>
-<p><a href="https://www.pinchofintelligence.com/wp-content/uploads/2019/12/beer.jpeg"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2019/12/beer-300x225.jpeg" /></a> <a href="https://www.pinchofintelligence.com/wp-content/uploads/2019/12/ski.jpeg"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2019/12/ski-300x225.jpeg" /></a></p>
-<p>I decided to implement a simple network in keras and overfit it to two images. The network takes a single input and outputs a single image. The output in the end looks like this:<a href="https://www.pinchofintelligence.com/wp-content/uploads/2019/12/predicted-4.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2019/12/predicted-4.png" /></a></p>
+<p><a href="../images/2019/12/beer.jpeg"><img alt="" src="../images/2019/12/beer-300x225.jpeg" /></a> <a href="../images/2019/12/ski.jpeg"><img alt="" src="../images/2019/12/ski-300x225.jpeg" /></a></p>
+<p>I decided to implement a simple network in keras and overfit it to two images. The network takes a single input and outputs a single image. The output in the end looks like this:<a href="../images/2019/12/predicted-4.png"><img alt="" src="../images/2019/12/predicted-4.png" /></a></p>
 <p>As you can see it does a relatively good job given that there is no relation between input and output of the image. What’s interesting is that it manage to capture the detail of some people quite well, but the mountains have been reduced to a bit of blur…</p>
 <h2 id="why-does-this-work">Why does this work?</h2>
 <p>Anybody who works with neural networks knows / should know that neural networks are good at overfitting, and can learn non-relevant relations. In this case I’m hoping that the neural network can learn to over-fit the relation between input and output image patches.</p>
 <p>What makes the task harder in this case is the fact that the network is fully convolutional. As a convolutional kernel is location-invariant the kernels really have to learn to encode all possible input-output image patches. I suspect that this is also the reason the training takes quite a while.</p>
 <p>What’s important to note is that you can’t just put any image in (it isn’t a pure bias learning). I show this at the end of the code with a picture of me with a self-driving car. It’s really all about training a network to go from image patch to image patch. With an alternative input image the output looks like this:</p>
-<p><a href="https://www.pinchofintelligence.com/wp-content/uploads/2019/12/predicted_wrong.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2019/12/predicted_wrong.png" /></a></p>
+<p><a href="../images/2019/12/predicted_wrong.png"><img alt="" src="../images/2019/12/predicted_wrong.png" /></a></p>
 <h2 id="is-this-useful">Is this useful?</h2>
 <p>No, please do not copy anything from this except for making your own new-years super-resolution. Not only did I not spend any time making this good or work well, it’s also not more than an interesting experiment to see how much you can overfit neural networks to useless tasks. What might be interesting for people is experimenting what parameters contribute to the speed of overfitting. Have fun playing around with it and let me know if you make something interesting!</p>
 <p>In [0]:</p>
 <pre class="codehilite"><code>import os.path
 
 if not os.path.isfile('beer.jpeg'):
-  !wget http://www.pinchofintelligence.com/wp-content/uploads/2019/12/beer.jpeg
-  !wget http://www.pinchofintelligence.com/wp-content/uploads/2019/12/ski.jpeg
-  !wget http://www.pinchofintelligence.com/wp-content/uploads/2019/02/profile1jpg.jpg
+  !wget images/2019/12/beer.jpeg
+  !wget images/2019/12/ski.jpeg
+  !wget images/2019/02/profile1jpg.jpg
 </code></pre>
 
 <p>In [2]:</p>

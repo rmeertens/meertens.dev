@@ -14,7 +14,7 @@ Because I could not find a good app to give me this insight I decided to analyse
 
 The result looks like this:
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2021/06/Screenshot-2021-06-06-at-21.32.48-300x269.png)](https://www.pinchofintelligence.com/wp-content/uploads/2021/06/Screenshot-2021-06-06-at-21.32.48.png)
+[![](images/2021/06/Screenshot-2021-06-06-at-21.32.48-300x269.png)](images/2021/06/Screenshot-2021-06-06-at-21.32.48.png)
 
 As you can see my strokes per minute is a bit too slow for the pace I’m going. Next months I will work on increasing that for sure! Brighter dots are newer swims, and you can kind of spot a gradient. It’s good to know that I’m already progressing to the right, meaning my time to swim 100 meters is already decreasing over the last three years. Fantastic 🥳.
 

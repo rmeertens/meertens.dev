@@ -4,7 +4,7 @@ date: "2020-11-22"
 slug: "using-emojis-in-mathematical-notation"
 excerpt: "Math is hard to understand. Whenever I read technical documents I skip the mathematical equations. When I do read them I have to go over them multiple times to fully finally what the author meant. A..."
 original_url: "https://www.pinchofintelligence.com/using-emojis-in-mathematical-notation/"
-thumbnail: "https://www.pinchofintelligence.com/wp-content/uploads/2020/11/Screenshot-2020-11-22-at-22.46.39.png"
+thumbnail: "images/2020/11/Screenshot-2020-11-22-at-22.46.39.png"
 ---
 
 Math is hard to understand. Whenever I read technical documents I skip the mathematical equations. When I do read them I have to go over them multiple times to fully finally what the author meant. A major problem is that in my head I have to translate every character back to the concept meant by this character. What makes this problem worse is that mathematical notation is domain specific. Every scientific domain has its usual notation for specific concepts, and scientific papers often assume the reader is very familiar with this notation. In this blogpost I’m going to argue for using emojis in mathematical notation to make concepts easier to understand. 

@@ -12,7 +12,7 @@ Currently the world catches more fish than are “regenerated”. Not only does 
 
 Part of the datathon was coming up with an idea, and finding data with this idea. We decided to look at possible solutions against overfishing and found out that the best way to tackle this problem was setting up Marine Protected Areas. In the Philippines several experiments have been conducted with these zones, and the world wildlife fund published an infographic with results. Note that a well-managed Marine Protected Area increased the biomass in that area with 446 percent. 
 
-[![fisheries_benefits_marine_protected_areas_wwf_infographic-1](https://www.pinchofintelligence.com/wp-content/uploads/2016/12/fisheries_benefits_marine_protected_areas_wwf_infographic-1.png)](https://www.pinchofintelligence.com/wp-content/uploads/2016/12/fisheries_benefits_marine_protected_areas_wwf_infographic-1.png)source:  
+[![fisheries_benefits_marine_protected_areas_wwf_infographic-1](images/2016/12/fisheries_benefits_marine_protected_areas_wwf_infographic-1.png)](images/2016/12/fisheries_benefits_marine_protected_areas_wwf_infographic-1.png)source:  
 http://wwf.panda.org/_core/general.cfc?method=getOriginalImage&uImgID=%26%2AR%24%27%21%2EK%3F%0A  
 http://wwf.panda.org/what_we_do/how_we_work/our_global_goals/oceans/solutions/protection/protected_areas/
 
@@ -37,7 +37,7 @@ To show what we were capable of, and to tweak our results, we created a GUI. In 
 
 It turned out that this was good enough to bring back the first price! 
 
-[![img-20160326-wa0064-1](https://www.pinchofintelligence.com/wp-content/uploads/2016/12/IMG-20160326-WA0064-1-1024x768.jpg)](https://www.pinchofintelligence.com/wp-content/uploads/2016/12/IMG-20160326-WA0064-1.jpg)
+[![img-20160326-wa0064-1](images/2016/12/IMG-20160326-WA0064-1-1024x768.jpg)](images/2016/12/IMG-20160326-WA0064-1.jpg)
 
 Watch the aftermovie here: 
 

@@ -22,7 +22,7 @@ Francois Chollet talked about the integration of high-level libraries in Tensorf
 
 Another awesome development are the canned estimators. These are basically models in a box, ready to use in your model. At the end of his talk Francois created a network for what seems to be a difficult task: show a computer a video, ask a question, and let the computer answer with a single word. The resulting code fit in this single slide: 
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2017/02/Screen-Shot-2017-02-15-at-20.58.54.png)](https://www.pinchofintelligence.com/wp-content/uploads/2017/02/Screen-Shot-2017-02-15-at-20.58.54.png)
+[![](images/2017/02/Screen-Shot-2017-02-15-at-20.58.54.png)](images/2017/02/Screen-Shot-2017-02-15-at-20.58.54.png)
 
 Unfortunately, I am in the wrong timezone for watching the whole summit live, but I will surely watching the rest of the talks later this week. If this post peaked your interest:
 

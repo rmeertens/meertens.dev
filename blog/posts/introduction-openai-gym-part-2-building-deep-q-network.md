@@ -8,9 +8,9 @@ original_url: "https://www.pinchofintelligence.com/introduction-openai-gym-part-
 
 In part 1 we used a random search algorithm to “solve” the cartpole environment. This time we are going to take things to the next level and implement a deep q-network.The OpenAI gym environment is one of the most fun ways to learn more about machine learning. Especially reinforcement learning and neural networks can be applied perfectly to the benchmark and Atari games collection that is included.Every environment has multiple featured solutions, and often you can find a writeup on how to achieve the same score. By looking at others approaches and ideas you can improve yourself quickly in a fun way.
 
-In [part 1](https://www.pinchofintelligence.com/getting-started-openai-gym/) we introduced the Gym environment, and looked at a “random search” algorithm. Hopefully you were able to add something to this algorithm, and got some more experience with OpenAI Gym. In part two we are going to take a look at reinforcement learning algorithms, specifically the deep q-networks that are all the hype lately.
+In [part 1](../getting-started-openai-gym/index.html) we introduced the Gym environment, and looked at a “random search” algorithm. Hopefully you were able to add something to this algorithm, and got some more experience with OpenAI Gym. In part two we are going to take a look at reinforcement learning algorithms, specifically the deep q-networks that are all the hype lately.
 
-![deep q network 2](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/deepqnetworks.png)
+![deep q network 2](images/2017/07/deepqnetworks.png)
 
 ## Background
 
@@ -25,7 +25,7 @@ In the Atari game environment you get a reward of 1 every time you score a point
 
 We combine this into a neat formula where say that the predicted value should be ![r](https://s0.wp.com/latex.php?latex=r&bg=ffffff&fg=000000&s=0) in a
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/rewardfunction-300x39.png)](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/rewardfunction.png)
+[![](images/2017/07/rewardfunction-300x39.png)](images/2017/07/rewardfunction.png)
 
 Where ![\\gamma](https://s0.wp.com/latex.php?latex=%5Cgamma&bg=ffffff&fg=000000&s=0) is the discount factor. Taking a small ![\\gamma](https://s0.wp.com/latex.php?latex=%5Cgamma&bg=ffffff&fg=000000&s=0) (for example 0.2) means that you don’t really care about long-term rewards, a large ![\\gamma](https://s0.wp.com/latex.php?latex=%5Cgamma&bg=ffffff&fg=000000&s=0) (0.95) means that you care a lot about the long-term rewards. In our case we do care a lot about long-term rewards, so we take a large ![\\gamma](https://s0.wp.com/latex.php?latex=%5Cgamma&bg=ffffff&fg=000000&s=0).
 
@@ -140,7 +140,7 @@ One of the main contributions of this paper is their use of an “experience rep
 (![S](https://s0.wp.com/latex.php?latex=S&bg=ffffff&fg=000000&s=0), ![action](https://s0.wp.com/latex.php?latex=action&bg=ffffff&fg=000000&s=0), ![reward](https://s0.wp.com/latex.php?latex=reward&bg=ffffff&fg=000000&s=0), ![is terminal](https://s0.wp.com/latex.php?latex=is+terminal&bg=ffffff&fg=000000&s=0), ![S_{t+1}](https://s0.wp.com/latex.php?latex=S_%7Bt%2B1%7D&bg=ffffff&fg=000000&s=0))
 
 Now every frame we sample a random minibatch of our memory and train our network on that. We also only keep the newer experiences to keep our memory fresh with good actions. The full algorithm in their paper looks like this:  
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/dqn-alg.png)](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/dqn-alg.png)
+[![](images/2017/07/dqn-alg.png)](images/2017/07/dqn-alg.png)
 
 In [ ]:
     
@@ -252,7 +252,7 @@ In [ ]:
     display_frames_as_gif(frames,filename_gif='dqn_run.gif')
     
 
-![Dqn result](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/dqn_run-1.gif)
+![Dqn result](images/2017/07/dqn_run-1.gif)
 
 ### Result
 
@@ -267,7 +267,7 @@ In [ ]:
     plt.ylabel('predicted Q(s,a)')
     
 
-![estimated q-value](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/predicted_qvalue.png)
+![estimated q-value](images/2017/07/predicted_qvalue.png)
 
 ## Handling difficult situations – team up with your robot
 

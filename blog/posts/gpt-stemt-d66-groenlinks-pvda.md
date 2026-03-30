@@ -10,7 +10,7 @@ De verkiezingen komen eraan, en dus zijn er weer meerdere kieswijzers online. Nu
 
 ### Waarom een taalmodel bij de verkiezingen?
 
-In 2017 heb ik zelf een [stemwijzer gemaakt met kunstmatige intelligentie er in](https://www.pinchofintelligence.com/stemwijzer-met-kunstmatige-intelligentie/). Hierbij kon je zelf typen wat voor toekomst je voor Nederland wilde, en de stemwijzer gaf dan aan op welke partij je moest stemmen. Dit was voordat er grote taalmodellen waren, maar je kon al wel een classifier bouwen op zinsniveau. Helaas hebben niet veel mensen er gebruik van gemaakt, en was de invoer van de meeste mensen niet inhoudelijk genoeg om een goede beslissing te maken. 
+In 2017 heb ik zelf een [stemwijzer gemaakt met kunstmatige intelligentie er in](../stemwijzer-met-kunstmatige-intelligentie/index.html). Hierbij kon je zelf typen wat voor toekomst je voor Nederland wilde, en de stemwijzer gaf dan aan op welke partij je moest stemmen. Dit was voordat er grote taalmodellen waren, maar je kon al wel een classifier bouwen op zinsniveau. Helaas hebben niet veel mensen er gebruik van gemaakt, en was de invoer van de meeste mensen niet inhoudelijk genoeg om een goede beslissing te maken. 
 
 Hetzelfde programma maken is tegenwoordig een stuk makkelijker nu je zogenaamde Large Language Models als Foundation Model kan gebruiken. Helaas stuit je dan wel op het probleem dat er een grote bias in de taalmodellen zit. Over het algemeen probeert ChatGPT altijd aardig en inclusief te zijn, en probeert hij het beste te bereiken voor de aarde. Vanzelfsprekend vertaalt dit zich naar een bepaalde politieke bias. 
 
@@ -34,17 +34,17 @@ Omdat er een random element in GPT-3 zit, krijg ik niet elke keer dezelfde menin
 
 GPT-3 is erg links progressief. GPT-3 doet er alles aan om vriendelijk te zijn voor alles en iedereen, en vooral voor de natuur. Er zijn vier partijen die 50% of meer overeenkomen met de bias in de mening van GPT-3, dit zijn D66, de GroenLinks/PVDA combinatie, de partij voor de dieren, en DENK. 
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2023/10/image4-248x300.png)](https://www.pinchofintelligence.com/wp-content/uploads/2023/10/image4.png)
+[![](images/2023/10/image4-248x300.png)](images/2023/10/image4.png)
 
 Als we naar de rest van de scores kijken zien we meer interessante trends. Eerst komen de partijen die staan voor socialisme, of die vechten tegen racisme. Echter staat de PVV ook in dit lijstje. Het voelt voor mij alsof ChatGPT niet goed aan zou sluiten bij waar Geert Wilders het meest om bekend staat, maar wel goed aansluit bij de meer socialistische standpunten die de PVV heeft.
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2023/10/Screenshot-2023-10-26-at-22.50.14-233x300.png)](https://www.pinchofintelligence.com/wp-content/uploads/2023/10/Screenshot-2023-10-26-at-22.50.14.png)
+[![](images/2023/10/Screenshot-2023-10-26-at-22.50.14-233x300.png)](images/2023/10/Screenshot-2023-10-26-at-22.50.14.png)
 
 Het is lastig om te zeggen wat de volgende partijen in het lijstje gemeen hebben. Sommige partijen zijn klein, sommigen hebben ontzettend veel zetels behaald. Voor de standpunten van sommige partijen zijn veel teksten online te vinden, sommige partijen lijken voor mij minder aanwezig op discussiefora.
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2023/10/image5-247x300.png)](https://www.pinchofintelligence.com/wp-content/uploads/2023/10/image5.png)
+[![](images/2023/10/image5-247x300.png)](images/2023/10/image5.png)
 
-En als laatste komen enkele grotere partijen die nu aan de macht zijn of in de regering zitten. Waarom deze partijen zo laag staan weet ik niet zeker, omdat je zou verwachten dat een taalmodel de ‘huidige stand van de wereld’ zou moeten leren. Een van mijn hypotheses is dat mensen online meer klagen over zittende partijen en dat het taalmodel hiervan geleerd heeft. Deze hypothese sluit echter niet aan bij de lage score van de nieuwe partij van Pieter Omtzigt, die juist erg populair lijkt op het internet. [![](https://www.pinchofintelligence.com/wp-content/uploads/2023/10/image2-259x300.png)](https://www.pinchofintelligence.com/wp-content/uploads/2023/10/image2.png)
+En als laatste komen enkele grotere partijen die nu aan de macht zijn of in de regering zitten. Waarom deze partijen zo laag staan weet ik niet zeker, omdat je zou verwachten dat een taalmodel de ‘huidige stand van de wereld’ zou moeten leren. Een van mijn hypotheses is dat mensen online meer klagen over zittende partijen en dat het taalmodel hiervan geleerd heeft. Deze hypothese sluit echter niet aan bij de lage score van de nieuwe partij van Pieter Omtzigt, die juist erg populair lijkt op het internet. [![](images/2023/10/image2-259x300.png)](images/2023/10/image2.png)
 
 ### Controversiële vragen
 

@@ -2,15 +2,15 @@
 title: "Introduction to OpenAI gym part 3: playing Space Invaders with deep reinforcement learning"
 date: "2017-07-30"
 slug: "openai-gym-part-3-playing-space-invaders-deep-reinforcement-learning"
-excerpt: "In part 1 we got to know the openAI Gym environment(https://www.pinchofintelligence.com/getting-started-openai-gym/), and in part 2 we explored deep..."
+excerpt: "In part 1 we got to know the openAI Gym environment(../getting-started-openai-gym/index.html), and in part 2 we explored deep..."
 original_url: "https://www.pinchofintelligence.com/openai-gym-part-3-playing-space-invaders-deep-reinforcement-learning/"
 ---
 
-In [part 1 we got to know the openAI Gym environment](https://www.pinchofintelligence.com/getting-started-openai-gym/), and in [part 2 we explored deep q-networks](https://www.pinchofintelligence.com/introduction-openai-gym-part-2-building-deep-q-network/). We implemented a simple network that, if everything went well, was able to solve the Cartpole environment. Atari games are more fun than the CartPole environment, but are also harder to solve. This session is dedicated to playing Atari with deep reinforcement learning.
+In [part 1 we got to know the openAI Gym environment](../getting-started-openai-gym/index.html), and in [part 2 we explored deep q-networks](../introduction-openai-gym-part-2-building-deep-q-network/index.html). We implemented a simple network that, if everything went well, was able to solve the Cartpole environment. Atari games are more fun than the CartPole environment, but are also harder to solve. This session is dedicated to playing Atari with deep reinforcement learning.
 
 A first warning before you are disappointed is that playing Atari games is more difficult than cartpole, and training times are way longer. This is the reason we toyed around with CartPole in the previous session.
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/cartwheel-neural-part3-300x191.png)](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/cartwheel-neural-part3.png)
+[![](images/2017/07/cartwheel-neural-part3-300x191.png)](images/2017/07/cartwheel-neural-part3.png)
 
 In this session I will show how you can use OpenAI gym to replicate the paper [Playing Atari with Deep Reinforcement Learning](https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf). A video of a Breakout playing robot [can be found on Youtube](https://www.youtube.com/watch?v=V1eYniJ0Rnk), as well as a video of a [Enduro playing robot](https://www.youtube.com/watch?v=6kO4eZWeKOM). Demis Hassabis, the CEO of DeepMind, can explain what happend in their experiments in a [very entertaining way](https://youtu.be/rbsqaJwpu6A?t=9m55s).
 
@@ -95,13 +95,13 @@ In [2]:
     Before processing: (210, 160, 3)
     
 
-![](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/before1.png)
+![](images/2017/07/before1.png)
     
     
     After processing: (84, 84, 1)
     
 
-![](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/after1.png)
+![](images/2017/07/after1.png)
 
 ### Network layout
 
@@ -185,7 +185,7 @@ In [8]:
     display_frames_as_gif(frameshistory, 'playing_space_invaders.gif')
     
 
-![Playing space invaders](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/playing_space_invaders.gif)
+![Playing space invaders](images/2017/07/playing_space_invaders.gif)
 
 ## Exercises
 

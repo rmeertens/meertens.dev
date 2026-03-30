@@ -130,9 +130,9 @@ In [2]:
         
     
 
-![](https://www.pinchofintelligence.com/wp-content/uploads/2021/01/moonimg0.png)
+![](images/2021/01/moonimg0.png)
 
-![](https://www.pinchofintelligence.com/wp-content/uploads/2021/01/moonimg1.png)
+![](images/2021/01/moonimg1.png)
 
 ![](https://raw.githubusercontent.com/bennylp/nb2wp/master/out/demo2/img/img2.png)
 
@@ -403,11 +403,11 @@ In [9]:
         
     
 
-![](https://www.pinchofintelligence.com/wp-content/uploads/2021/01/moonimg3.png)
+![](images/2021/01/moonimg3.png)
 
-![](https://www.pinchofintelligence.com/wp-content/uploads/2021/01/moonimg4.png)
+![](images/2021/01/moonimg4.png)
 
-![](https://www.pinchofintelligence.com/wp-content/uploads/2021/01/moonimg5.png)
+![](images/2021/01/moonimg5.png)
 
 ### Find craters on the whole map
 
@@ -444,7 +444,7 @@ In [11]:
     plt.imsave('moon.png', test[0,...,0], cmap='gray')
     
 
-![](https://www.pinchofintelligence.com/wp-content/uploads/2021/01/moonimg6.png)
+![](images/2021/01/moonimg6.png)
 
 ### Conclusion
 

@@ -22,29 +22,29 @@ https://aws.amazon.com/blogs/machine-learning/scalable-multi-node-training-with-
 
 To start scaling your machine-learning algorithm across instances you first login to your AWS console (https://console.aws.amazon.com/ec2/home) and click the Lauch Instance button.
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image3.png)](https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image3.png)
+[![](images/2019/10/image3.png)](images/2019/10/image3.png)
 
 First you select the deep learning AMI I talked about before.
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image4.png)](https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image4.png)
+[![](images/2019/10/image4.png)](images/2019/10/image4.png)
 
 Next you can select the specific instance you want to have. You can find an overview of the GPU instances and their capabilities here: https://docs.aws.amazon.com/dlami/latest/devguide/gpu.html. Note that having more GPUS will speed up your training, but will also be more expensive. I recommend trying to start with one GPU and trying to fully use that one. Once you can do that try to fill 4-8 GPUs to their full capacity. Once you finished that you can move on to the final challenge: scale your training across multiple machines.  
 As a side-note: not every Amazon region has the same instances, and some regions have more compute available than others. If your preference is not available you can always go to another region. Make sure your data is in the same region though.
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image5-1024x244.png)](https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image5.png)
+[![](images/2019/10/image5-1024x244.png)](images/2019/10/image5.png)
 
 Next you can configure the instance details. I case you are interested in scaling your machine learning algorithm across multiple instances this is the moment where you can select how many instances, and where you have to add them to a placement group.
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image6-738x1024.png)](https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image6.png)
+[![](images/2019/10/image6-738x1024.png)](images/2019/10/image6.png)
 
 Next steps involve selecting how much storage you want on your instances, and tags you might want to add. This is purely dependent on how you want to use your instances.  
 In terms of security group: what I found works is creating a new security group for them where you can choose from what sources SSH access is allowed.
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image7-1024x389.png)](https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image7.png)
+[![](images/2019/10/image7-1024x389.png)](images/2019/10/image7.png)
 
 Launch your instances! Now that they are running it’s time to edit them directly. For horovod you apparently need more than only SSH-access. Select your instances one by one and add them to a security group which allows inbound traffic from all instances in the same security group. For me this was the default security group.
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image1-1024x539.png)](https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image1.png)[![](https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image8-1024x576.png)](https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image8.png)
+[![](images/2019/10/image1-1024x539.png)](images/2019/10/image1.png)[![](images/2019/10/image8-1024x576.png)](images/2019/10/image8.png)
 
 As a next step you have to make sure that your machines can connect to each other. I had to create two ssh keys on both machines using ssh-keygen, and add credentials to the machines. Note that I had to add not only the key of the other machine, but also my own public key to ~/.ssh/authorized_keys.  
 The steps to do this are as follows for the case where you have two AWS instances, which I will call machine_1 and machine_2:  
@@ -60,7 +60,7 @@ As last step you can test whether horovod now scales to two machines. You do thi
 
 If everything went well you should now see that you can train an imagenet neural network with synthetic data with 16 powerful GPUS with over 10.000 images per second, and that all GPUS are actively working!
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image2-1024x950.png)](https://www.pinchofintelligence.com/wp-content/uploads/2019/10/image2.png)
+[![](images/2019/10/image2-1024x950.png)](images/2019/10/image2.png)
 
 Enjoy your new superpowers in training and experimenting with neural networks!
 

@@ -34,10 +34,10 @@
     <h1>Getting started with OpenAI gym</h1>
     <div class="post-meta">July 11, 2017</div>
   </div>
-  <div class="post-hero"><img src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/cartwheel-neural-part1-e1500278401585-300x191.png" alt="" loading="lazy"></div>
+  
   <div class="post-content">
     <p>The OpenAI gym environment is one of the most fun ways to learn more about machine learning. Especially reinforcement learning and neural networks can be applied perfectly to the benchmark and Atari games collection that is included. Every environment has multiple featured solutions, and often you can find a writeup on how to achieve the same score. By looking at others approaches and ideas you can improve yourself quickly in a fun way.I noticed that getting started with Gym can be a bit difficult. Although there are many tutorials for algorithms online, the first step is understanding the programming environment in which you are working. To easy new people into this environment I decided to make a small tutorial with a docker container and a jupyter notebook.</p>
-<p><a href="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/cartwheel-neural-part1-e1500278401585.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/cartwheel-neural-part1-e1500278401585-300x191.png" /></a></p>
+<p><a href="../images/2017/07/cartwheel-neural-part1-e1500278401585.png"><img alt="" src="../images/2017/07/cartwheel-neural-part1-e1500278401585-300x191.png" /></a></p>
 <h3 id="what-you-need">What you need</h3>
 <p>Before you get started, <a href="https://docs.docker.com/engine/installation/#supported-platforms">install Docker</a>. Docker is a tool that lets you run virtual machines on your computer. I created an “image” that contains several things you want to have: tensorflow, the gym environment, numpy, opencv, and some other useful tools.</p>
 <p>After you installed Docker, run the following command to download my prepared docker image:</p>
@@ -103,7 +103,7 @@ def onclick(action):
         env.reset()
 </code></pre>
 
-<p><img alt="My manual play" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/manualplay.gif" /></p>
+<p><img alt="My manual play" src="../images/2017/07/manualplay.gif" /></p>
 <h3 id="replay">Replay</h3>
 <p>Now that you toyed around you probably want to see a replay. Every button click we saved the state of the game, which you can display in your browser:</p>
 <p>In [ ]:</p>
@@ -176,7 +176,7 @@ frames = show_episode(env, bestparams)
 display_frames_as_gif(frames, filename_gif=&quot;bestresultrandom.gif&quot;)
 </code></pre>
 
-<p><img alt="My best random result" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/bestresultrandom.gif" /></p>
+<p><img alt="My best random result" src="../images/2017/07/bestresultrandom.gif" /></p>
 <h3 id="exercises-to-learn-more-about-openai-gym">Exercises to learn more about OpenAI gym</h3>
 <p>The next step is to play and learn yourself. Here are some suggestions:</p>
 <ul>

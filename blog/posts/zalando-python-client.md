@@ -10,7 +10,7 @@ original_url: "https://www.pinchofintelligence.com/zalando-python-client/"
 
 Shopping is probably in the top-5 of things I hate. Walking from store to store, having to wade through endless clothes you are NOT interested in – it’s a really inefficient experience. Luckily I found Zalando a few years ago: you order your clothes online with free shipping and free returns. The only thing that could make this experience even better for me is if I could specify some rules and find the clothes I wanted in exactly my fit. This is why I created the Zalando python API client.
 
-### [![](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/zalanopytho-300x300.jpg)](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/zalanopytho.jpg)
+### [![](images/2017/07/zalanopytho-300x300.jpg)](images/2017/07/zalanopytho.jpg)
 
 ### The API and querying
 
@@ -123,7 +123,7 @@ In [4]:
     https://www.zalando.nl/produkt-pktakm-cargobroek-py522e00t-b11.html
     
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/img1.png)](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/img1.png)
+[![](images/2017/07/img1.png)](images/2017/07/img1.png)
     
     
     Costs: 31.95 from 39.95
@@ -133,7 +133,7 @@ In [4]:
     https://www.zalando.nl/tom-tailor-uni-travis-chino-to222e02r-c11.html
     
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/img-2.png)](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/img-2.png)
+[![](images/2017/07/img-2.png)](images/2017/07/img-2.png)
     
     
     Costs: 39.95 from 39.95
@@ -143,7 +143,7 @@ In [4]:
     https://www.zalando.nl/produkt-cargobroek-forest-night-py522e00t-m11.html
     
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/img-3.png)](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/img-3.png)
+[![](images/2017/07/img-3.png)](images/2017/07/img-3.png)
     
     
     Costs: 31.95 from 39.95
@@ -153,7 +153,7 @@ In [4]:
     https://www.zalando.nl/pier-one-pantalon-beige-pi922ea16-b11.html
     
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/img-4.png)](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/img-4.png)
+[![](images/2017/07/img-4.png)](images/2017/07/img-4.png)
     
     
     Costs: 22.95 from 22.95
@@ -163,7 +163,7 @@ In [4]:
     https://www.zalando.nl/pier-one-chino-beige-pi922ea14-b11.html
     
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/img-5.png)](https://www.pinchofintelligence.com/wp-content/uploads/2017/07/img-5.png)
+[![](images/2017/07/img-5.png)](images/2017/07/img-5.png)
     
     
     Costs: 27.95 from 27.95

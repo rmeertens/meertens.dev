@@ -34,13 +34,13 @@
     <h1>What I learned developing the Neural Voting Advice Application</h1>
     <div class="post-meta">March 21, 2017</div>
   </div>
-  <div class="post-hero"><img src="https://www.pinchofintelligence.com/wp-content/uploads/2017/03/2017-03-22-15_32_25-Kunstmatige-Intelligentie-stemwijzer-755x1024.png" alt="" loading="lazy"></div>
+  
   <div class="post-content">
-    <p>Two weeks ago I put the neural voting advice application online (http://www.pinchofintelligence.com/neural-voting-advice-application/). In this post, I look back at two aspects: the end-user aspect and the technical aspect. The first one will be interesting for people working with neural networks. The technical aspect might be useful for somebody else interested in deploying their Tensorflow or Keras application.</p>
+    <p>Two weeks ago I put the neural voting advice application online (../neural-voting-advice-application/index.html). In this post, I look back at two aspects: the end-user aspect and the technical aspect. The first one will be interesting for people working with neural networks. The technical aspect might be useful for somebody else interested in deploying their Tensorflow or Keras application.</p>
 <h3 id="introduction">Introduction</h3>
 <p>For years I enjoyed the multiple voting advice applications that all focus on different aspects. This year I wanted to make my own: an application in which you could enter your opinion in natural language! In only a few hours I was able to download the programs of most political parties and analyze them with a simple recurrent neural network. It worked well enough to share it with more people. I did this during a week of skiing in Austria.</p>
 <p>The end result was accessible here: <a href="http://rmeertens.github.io/NeuralVotingAdvice">rmeertens.github.io/NeuralVotingAdvice</a>/ . Since I started my service it has been used over 500 times. Most comments I received were from people who felt that a certain input should have recommended another party.</p>
-<p><a href="https://www.pinchofintelligence.com/wp-content/uploads/2017/03/2017-03-22-15_32_25-Kunstmatige-Intelligentie-stemwijzer.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/03/2017-03-22-15_32_25-Kunstmatige-Intelligentie-stemwijzer-755x1024.png" /></a></p>
+<p><a href="../images/2017/03/2017-03-22-15_32_25-Kunstmatige-Intelligentie-stemwijzer.png"><img alt="" src="../images/2017/03/2017-03-22-15_32_25-Kunstmatige-Intelligentie-stemwijzer-755x1024.png" /></a></p>
 <p>Another problem was that my backend did not have SSL encryption (an HTTP connection) while the Github page I used to host my site had HTTPS. Chrome and other browser don’t like HTTP posts on encrypted pages, and thus my app did not work for many users. This was something I was only able to fix after the elections already passed (see the technical writeup).</p>
 <h3 id="end-user-aspect">End-user aspect</h3>
 <p>All queries put in the system are saved in a database. These were my favorite inputs people used to get advice on who to vote for:</p>

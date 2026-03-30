@@ -34,11 +34,11 @@
     <h1>Introduction to OpenAI gym part 3: playing Space Invaders with deep reinforcement learning</h1>
     <div class="post-meta">July 30, 2017</div>
   </div>
-  <div class="post-hero"><img src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/cartwheel-neural-part3-300x191.png" alt="" loading="lazy"></div>
+  <div class="post-hero"><img src="https://cbssanfran.files.wordpress.com/2015/02/block-up.jpg" alt="" loading="lazy"></div>
   <div class="post-content">
-    <p>In <a href="https://www.pinchofintelligence.com/getting-started-openai-gym/">part 1 we got to know the openAI Gym environment</a>, and in <a href="https://www.pinchofintelligence.com/introduction-openai-gym-part-2-building-deep-q-network/">part 2 we explored deep q-networks</a>. We implemented a simple network that, if everything went well, was able to solve the Cartpole environment. Atari games are more fun than the CartPole environment, but are also harder to solve. This session is dedicated to playing Atari with deep reinforcement learning.</p>
+    <p>In <a href="../getting-started-openai-gym/index.html">part 1 we got to know the openAI Gym environment</a>, and in <a href="../introduction-openai-gym-part-2-building-deep-q-network/index.html">part 2 we explored deep q-networks</a>. We implemented a simple network that, if everything went well, was able to solve the Cartpole environment. Atari games are more fun than the CartPole environment, but are also harder to solve. This session is dedicated to playing Atari with deep reinforcement learning.</p>
 <p>A first warning before you are disappointed is that playing Atari games is more difficult than cartpole, and training times are way longer. This is the reason we toyed around with CartPole in the previous session.</p>
-<p><a href="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/cartwheel-neural-part3.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/cartwheel-neural-part3-300x191.png" /></a></p>
+<p><a href="../images/2017/07/cartwheel-neural-part3.png"><img alt="" src="../images/2017/07/cartwheel-neural-part3-300x191.png" /></a></p>
 <p>In this session I will show how you can use OpenAI gym to replicate the paper <a href="https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf">Playing Atari with Deep Reinforcement Learning</a>. A video of a Breakout playing robot <a href="https://www.youtube.com/watch?v=V1eYniJ0Rnk">can be found on Youtube</a>, as well as a video of a <a href="https://www.youtube.com/watch?v=6kO4eZWeKOM">Enduro playing robot</a>. Demis Hassabis, the CEO of DeepMind, can explain what happend in their experiments in a <a href="https://youtu.be/rbsqaJwpu6A?t=9m55s">very entertaining way</a>.</p>
 <p>A big difference between the CartPole and Atari task is that the Atari environment gives you the raw pixels as observation. Instead of 4 variables you are now dealing with <img alt="210 * 160 * 3 = 100.800" src="https://s0.wp.com/latex.php?latex=210+%2A+160+%2A+3+%3D+100.800&amp;bg=ffffff&amp;fg=000000&amp;s=0" />variables as input. The network you build in part 2 is not going to play very well. This means you can either improve your network yourself, or you can replicate the DeepMind layout. This session is only dedicated to showing what the DeepMind network is able to do.</p>
 <p>Flood Sung was able to put the network in Tensorflow and <a href="https://github.com/songrotek/DQN-Atari-Tensorflow">put the code on GitHub</a>. I downloaded his network architecture, updated it to the latest Tensorflow version, changed some parameters and added it to the Git repository of this <a href="https://github.com/rmeertens/reinforcementlearning-tensorflow-tradr-summerschool">summerschool session</a>.</p>
@@ -111,11 +111,11 @@ brain.currentState = np.squeeze(brain.currentState)
 Before processing: (210, 160, 3)
 </code></pre>
 
-<p><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/before1.png" /></p>
+<p><img alt="" src="../images/2017/07/before1.png" /></p>
 <pre class="codehilite"><code>After processing: (84, 84, 1)
 </code></pre>
 
-<p><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/after1.png" /></p>
+<p><img alt="" src="../images/2017/07/after1.png" /></p>
 <h3 id="network-layout">Network layout</h3>
 <p>Open the file BrainDQN_Nature.py and take a look at the function createQNetwork. You will see that this network consists of:</p>
 <ul>
@@ -184,7 +184,7 @@ brain.epsilon = backupepsilon
 display_frames_as_gif(frameshistory, 'playing_space_invaders.gif')
 </code></pre>
 
-<p><img alt="Playing space invaders" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/07/playing_space_invaders.gif" /></p>
+<p><img alt="Playing space invaders" src="../images/2017/07/playing_space_invaders.gif" /></p>
 <h2 id="exercises">Exercises</h2>
 <p>This session you were handed the network layout and training methods described in the paper <a href="https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf">Playing Atari with Deep Reinforcement Learning</a>.</p>
 <h3 id="team-up">Team up</h3>

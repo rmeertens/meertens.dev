@@ -16,7 +16,7 @@ If you look at the NodeMCU it has many pins. What the General Purpose Input Outp
 
 The complete new diagram we build looks like this:
 
-[![](http://pinchofintelligence.com/wp-content/uploads/2016/11/second_overview_fritzing_bb-1-1024x375.png)](http://pinchofintelligence.com/wp-content/uploads/2016/11/second_overview_fritzing_bb-1.png)
+[![](images/2016/11/second_overview_fritzing_bb-1-1024x375.png)](images/2016/11/second_overview_fritzing_bb-1.png)
 
 Next up: the code to control the LED’s, and a way to set the color over the internet. I already wrote some code that does this. Please read through the code, and replace the SSID and password to match your own wifi.
 

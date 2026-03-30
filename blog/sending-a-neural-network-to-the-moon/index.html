@@ -34,7 +34,7 @@
     <h1>Sending a Neural Network to the Moon</h1>
     <div class="post-meta">January 29, 2021</div>
   </div>
-  <div class="post-hero"><img src="https://www.pinchofintelligence.com/wp-content/uploads/2021/01/moonimg0.png" alt="" loading="lazy"></div>
+  <div class="post-hero"><img src="https://raw.githubusercontent.com/bennylp/nb2wp/master/out/demo2/img/img2.png" alt="" loading="lazy"></div>
   <div class="post-content">
     <h1 id="sending-a-neural-network-to-the-moon">Sending a neural network to the moon</h1>
 <p>I absolutely love space, and am obsessed with the moon. Last week <a href="https://www.reddit.com/r/space/comments/l52iym/you_can_send_something_to_the_moon_for_free_im/">/r/Valphon on Reddit posted</a> that he ordered a “moonbox”. Apparently a company called Atrobotic, together with DHL, is offering to send things to the moon for <a href="https://www.astrobotic.com/moon-box">quite an afforable price</a>. He is giving out 10MB of storage space on a first come, first save, limited supply basis. I thought it would be cool to send a neural network to the moon. This is something which, as far as I know, has never been done before!</p>
@@ -146,8 +146,8 @@ for i in range(3):
     plt.show()
 </code></pre>
 
-<p><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2021/01/moonimg0.png" /></p>
-<p><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2021/01/moonimg1.png" /></p>
+<p><img alt="" src="../images/2021/01/moonimg0.png" /></p>
+<p><img alt="" src="../images/2021/01/moonimg1.png" /></p>
 <p><img alt="" src="https://raw.githubusercontent.com/bennylp/nb2wp/master/out/demo2/img/img2.png" /></p>
 <h2 id="the-neural-network">The neural network</h2>
 <p>The authors of the original paper use an U-net architecture. I wanted to do the same, but am limited to the 10MB for the weights. I thus made a less deep U-net, with a smaller amount of weights. In the end my weights stayed under the 10MB, so they are cleared to go to the moon!</p>
@@ -401,9 +401,9 @@ for i in range(3):
     plt.show()
 </code></pre>
 
-<p><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2021/01/moonimg3.png" /></p>
-<p><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2021/01/moonimg4.png" /></p>
-<p><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2021/01/moonimg5.png" /></p>
+<p><img alt="" src="../images/2021/01/moonimg3.png" /></p>
+<p><img alt="" src="../images/2021/01/moonimg4.png" /></p>
+<p><img alt="" src="../images/2021/01/moonimg5.png" /></p>
 <h3 id="find-craters-on-the-whole-map">Find craters on the whole map</h3>
 <p>One of available inputs in the DeepMoon dataset is a <a href="https://zenodo.org/record/1133969">very large image of the moon</a>. I ran my neural network, and visualised the result for the whole image. Running it takes quite a bit of time, but the result looks really good!</p>
 <p>In [10]:</p>
@@ -433,7 +433,7 @@ plt.show()
 plt.imsave('moon.png', test[0,...,0], cmap='gray')
 </code></pre>
 
-<p><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2021/01/moonimg6.png" /></p>
+<p><img alt="" src="../images/2021/01/moonimg6.png" /></p>
 <h3 id="conclusion">Conclusion</h3>
 <p>This was a short but great project to do! I’m really happy with the results, and feel proud to be the first person sending a neural network to the moon! I really hope you enjoyed reading the code and process, and can one day send something to the moon yourself :).</p>
 <p>In [ ]:</p>

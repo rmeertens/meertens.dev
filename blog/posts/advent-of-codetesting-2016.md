@@ -12,7 +12,7 @@ During the first few challenges I noticed that each challenge included a wide ra
 
 At the start of the december I started with my normal debugging method: writing print statements at the places I wanted to see were correct (and places I suspected had a bug). However, if you are unsure where your bug is, this can lead to a long messy output. In this long list of output you have to find the ‘wrong’ output, and have to track down where this came from (usually with more print statements).
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2016/12/Screen-Shot-2016-12-25-at-09.29.56.png)](https://www.pinchofintelligence.com/wp-content/uploads/2016/12/Screen-Shot-2016-12-25-at-09.29.56.png)
+[![](images/2016/12/Screen-Shot-2016-12-25-at-09.29.56.png)](images/2016/12/Screen-Shot-2016-12-25-at-09.29.56.png)
 
 To fix this problem I started writing down some of the examples using the [Unittest framework](https://docs.python.org/2/library/unittest.html). This had the advantage of verifying step by step that your example works (using AssertEquals). For each function I wrote I had at least one testcase to verify that the code I wrote was working for the example given in the question.
 

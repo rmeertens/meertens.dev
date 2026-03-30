@@ -12,8 +12,8 @@ This is why I designed a 3D-printable car with the vehicle coordinate system as 
 
 If you want to print your own version, you can download it here: <https://www.thingiverse.com/thing:4032327>.
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2019/12/F17386CD-EBF0-4578-8BE4-C4D60E21D29F_1_105_c-300x225.jpeg)](https://www.pinchofintelligence.com/wp-content/uploads/2019/12/F17386CD-EBF0-4578-8BE4-C4D60E21D29F_1_105_c.jpeg) [![](https://www.pinchofintelligence.com/wp-content/uploads/2019/12/3FCF05B8-DAF5-44CD-83EA-FAFD7DCC941F_1_105_c-300x225.jpeg)](https://www.pinchofintelligence.com/wp-content/uploads/2019/12/3FCF05B8-DAF5-44CD-83EA-FAFD7DCC941F_1_105_c.jpeg) [![](https://www.pinchofintelligence.com/wp-content/uploads/2019/12/931AD546-1DB5-4323-A211-02D875415421_1_105_c-300x225.jpeg)](https://www.pinchofintelligence.com/wp-content/uploads/2019/12/931AD546-1DB5-4323-A211-02D875415421_1_105_c.jpeg)
+[![](images/2019/12/F17386CD-EBF0-4578-8BE4-C4D60E21D29F_1_105_c-300x225.jpeg)](images/2019/12/F17386CD-EBF0-4578-8BE4-C4D60E21D29F_1_105_c.jpeg) [![](images/2019/12/3FCF05B8-DAF5-44CD-83EA-FAFD7DCC941F_1_105_c-300x225.jpeg)](images/2019/12/3FCF05B8-DAF5-44CD-83EA-FAFD7DCC941F_1_105_c.jpeg) [![](images/2019/12/931AD546-1DB5-4323-A211-02D875415421_1_105_c-300x225.jpeg)](images/2019/12/931AD546-1DB5-4323-A211-02D875415421_1_105_c.jpeg)
 
 I also wanted to thank my colleagues for giving feedback on the designs I made, as you can see it took multiple iterations to get the most useful design. That said, if you have any ideas for improvement, please let me know!
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2019/12/A2658496-2DAF-45F2-96A3-B617952F7BF6_1_102_o-300x225.jpeg)](https://www.pinchofintelligence.com/wp-content/uploads/2019/12/A2658496-2DAF-45F2-96A3-B617952F7BF6_1_102_o.jpeg)
+[![](images/2019/12/A2658496-2DAF-45F2-96A3-B617952F7BF6_1_102_o-300x225.jpeg)](images/2019/12/A2658496-2DAF-45F2-96A3-B617952F7BF6_1_102_o.jpeg)

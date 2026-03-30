@@ -41,4 +41,4 @@ This small amount of power can be given by the motion detector. On this website 
 
 Our motion triggered lights can be achieved by building this diagram:
 
-[![first_overview_fritzing_bb_annotated](http://pinchofintelligence.com/wp-content/uploads/2016/10/first_overview_fritzing_bb_annotated-1024x387.png)](http://pinchofintelligence.com/wp-content/uploads/2016/10/first_overview_fritzing_bb_annotated.png)
+[![first_overview_fritzing_bb_annotated](images/2016/10/first_overview_fritzing_bb_annotated-1024x387.png)](images/2016/10/first_overview_fritzing_bb_annotated.png)

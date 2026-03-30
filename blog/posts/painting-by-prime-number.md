@@ -8,7 +8,7 @@ original_url: "https://www.pinchofintelligence.com/painting-by-prime-number/"
 
 Two weeks ago I stumbled upon the concept of [prime portraits](http://archive.bridgesmathart.org/2016/bridges2016-359.pdf). In short, prime portraits are pictures in which each color is assigned a number. When we align every pixel, the result should be a prime number. Because I could not find the code used in the article, I decided to recreate these prime portraits in Python – in color! Below is the Jupyter Notebook with the code ([also available on Github](https://github.com/rmeertens/prime_portraitshttps://github.com/rmeertens/prime_portraits)) I used to generate the Mona Lisa:
 
-![mona lisa](https://www.pinchofintelligence.com/wp-content/uploads/2018/05/monalisa-prime.png)
+![mona lisa](images/2018/05/monalisa-prime.png)
 
 ## The concept
 
@@ -16,7 +16,7 @@ A prime portrait is a prime number formatted as a matrix with X digits per line.
 
 Instead of doing this for many prime numbers and color schemes until you find something that resembles a known image, I have turned the process around. I have taken iconic images, such as the Mona Lisa and Starry Night, and converted them to images with only 10 colors. I assigned a digit to each color. Then I generated many similar images with a little bit of ‘noise’ added. The noise changed the colors in the images slightly, and thus the digits. If the digits in the image formed a prime number, I found a prime portrait!
 
-![starry night](https://www.pinchofintelligence.com/wp-content/uploads/2018/06/starrynight-prime-386kb.png)
+![starry night](images/2018/06/starrynight-prime-386kb.png)
     
     
     import matplotlib.pyplot as plt
@@ -391,11 +391,11 @@ If you can find a more efficient Python implementation of a probabilistic prime 
 ## Conclusion and artworks
 
 The last couple of weeks I really enjoyed letting my computer find prime portraits. Here are some of the artworks my computer found:  
-![Sunflowers](https://www.pinchofintelligence.com/wp-content/uploads/2018/05/sunflowers-prime.png)  
+![Sunflowers](images/2018/05/sunflowers-prime.png)  
 Sunflowers by Van Gogh  
-![Great wave](https://www.pinchofintelligence.com/wp-content/uploads/2018/06/greatwave-prime-big.png)  
+![Great wave](images/2018/06/greatwave-prime-big.png)  
 Great wave by Hokusai  
-![Pearl](https://www.pinchofintelligence.com/wp-content/uploads/2018/06/1200px-Girl_with_a_Pearl_Earring-prime.png)  
+![Pearl](images/2018/06/1200px-Girl_with_a_Pearl_Earring-prime.png)  
 Girl with a pearl earring by Vermeer
 
 ## Celebrity artworks
@@ -405,17 +405,17 @@ Although pictures of existing art often turn our pretty well, it is quite diffic
 #### Ionica Smeets
 
 Writes interesting articles in a Dutch newspaper every Saturday, and got featured a while ago in the Dutch comic called “Donald Duck”:  
-![Ionica Smeets](https://www.pinchofintelligence.com/wp-content/uploads/2018/06/ionica_duck-prime.png)
+![Ionica Smeets](images/2018/06/ionica_duck-prime.png)
 
 #### Brady Haran
 
 Makes interesting videos about mathematical concepts on the Numberphile Youtube channel. Also: has a cute dog 😉  
-![Brady Haran](https://www.pinchofintelligence.com/wp-content/uploads/2018/06/brady-prime.png)
+![Brady Haran](images/2018/06/brady-prime.png)
 
 #### Roland Meertens
 
 And myself.  
-![My face](https://www.pinchofintelligence.com/wp-content/uploads/2018/06/rolandface-prime.png)
+![My face](images/2018/06/rolandface-prime.png)
 
 ## Requests
 

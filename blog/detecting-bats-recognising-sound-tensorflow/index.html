@@ -34,10 +34,10 @@
     <h1>Detecting bats by recognising their sound with Tensorflow</h1>
     <div class="post-meta">August 2, 2017</div>
   </div>
-  <div class="post-hero"><img src="https://www.pinchofintelligence.com/wp-content/uploads/2017/08/bats-banner.png" alt="" loading="lazy"></div>
+  <div class="post-hero"><img src="https://batslive.files.wordpress.com/2017/06/bat-device-inside_web.jpg?w=900" alt="" loading="lazy"></div>
   <div class="post-content">
     <p>Last week I discovered that there are bats behind my appartment. I immediately grabbed my “bat detector”: a device that converts the ultrasound signals bats use to echolocate from an inaudible frequency range to an audible one. The name “bat detector” thus is a lie: you can use it to detect bats, but it does not detect bats itself. In this tutorial I will show you how to build a real bat detector using Tensorflow.</p>
-<p><a href="https://www.pinchofintelligence.com/wp-content/uploads/2017/08/bats-banner.png"><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/08/bats-banner.png" /></a><img alt="Me and my girlfriend listening to bats" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/08/DE4fqUoXUAAnU42-1.jpg" /> <img alt="My bat detector" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/08/batdetector.png" /></p>
+<p><a href="../images/2017/08/bats-banner.png"><img alt="" src="../images/2017/08/bats-banner.png" /></a><img alt="Me and my girlfriend listening to bats" src="../images/2017/08/DE4fqUoXUAAnU42-1.jpg" /> <img alt="My bat detector" src="../images/2017/08/batdetector.png" /></p>
 <h2 id="problem-statement">Problem statement</h2>
 <p>To approach this problem I hooked up the bat detector to my laptop and recorded several clips. In a <a href="https://github.com/rmeertens/batdetection/blob/master/Label%20data.ipynb">seperate Jupyter notebook I created a labeling program</a>. This program creates “soundbites” of one second, which I classified as either containing the sound of a bat, or not containing the sound of a bat. I take the data and labels to create a classifier that can distinguish them.</p>
 <h2 id="libraries-to-recognize-sound">Libraries to recognize sound</h2>
@@ -146,14 +146,14 @@ inspect_data(noisesounds[0])
 </code></pre>
 
 <p>Your browser does not support the audio element.</p>
-<p><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/08/bat1.png" /></p>
-<p><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/08/bat2.png" /></p>
+<p><img alt="" src="../images/2017/08/bat1.png" /></p>
+<p><img alt="" src="../images/2017/08/bat2.png" /></p>
 <pre class="codehilite"><code>Length per sample: 22050, shape of spectogram: (129, 345), max: -22.786959 min: -100.000000
 </code></pre>
 
 <p>Your browser does not support the audio element.</p>
-<p><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/08/noise1.png" /></p>
-<p><img alt="" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/08/noise2.png" /></p>
+<p><img alt="" src="../images/2017/08/noise1.png" /></p>
+<p><img alt="" src="../images/2017/08/noise2.png" /></p>
 <pre class="codehilite"><code>Length per sample: 22050, shape of spectogram: (129, 345), max: -58.154167 min: -100.000000
 </code></pre>
 
@@ -165,7 +165,7 @@ I decided to put every negative signal onto one big “negative” pile, combini
 <h3 id="spectrogram">Spectrogram</h3>
 <p>I was hoping the see the exact frequency bats produce back in our spectogram. Unfortunately it looks like my sensor picks it up as noise over ALL frequencies. Looking at the spectrogram you can still see a clear difference between bat-sound and noise. My first attempt was to use this spectrogram as input for a convolutional neural network. Unfortunately, using only a few positive samples, it was very difficult to train this network. I thus gave up on this approach.</p>
 <p>In the end I decided to go with a “metadata approach”. I divide every second of sound in 22 parts. For each part I determine the max, min, mean, standard deviation, and max-min of the sample. The reason I take this approach is because the “bat signals” DO clearly show up as a not of high-amplitude signals in the audio visualisation. By analyzing different parts of the audio signal, I can find out if multiple parts of the signal have certain features (such as a high standard deviation), and thus detect a bat call.<br />
-<img alt="Preprocessing idea" src="https://www.pinchofintelligence.com/wp-content/uploads/2017/08/download-20.png" /></p>
+<img alt="Preprocessing idea" src="../images/2017/08/download-20.png" /></p>
 <p>In [4]:</p>
 <pre class="codehilite"><code>WINDOW_WIDTH = 10
 AUDIO_WINDOW_WIDTH = 1000 # With sampling rate of 22050 we get 22 samples for our second of audio

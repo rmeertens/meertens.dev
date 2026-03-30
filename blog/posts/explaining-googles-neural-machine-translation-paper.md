@@ -4,7 +4,7 @@ date: "2016-11-25"
 slug: "explaining-googles-neural-machine-translation-paper"
 excerpt: "Google recently published the paper “Google’s Neural Machine Translation System: Bridging the Gap between Human and Machine Translation”: <https://arxiv.org/abs/1609.08144. As I got a lot of..."
 original_url: "https://www.pinchofintelligence.com/explaining-googles-neural-machine-translation-paper/"
-thumbnail: "https://www.pinchofintelligence.com/wp-content/uploads/2016/11/2016-11-28-11_25_12-1611.04558v1.pdf.png"
+thumbnail: "images/2016/11/2016-11-28-11_25_12-1611.04558v1.pdf.png"
 ---
 
 Google recently published the paper “Google’s Neural Machine Translation System: Bridging the Gap between Human and Machine Translation”: <https://arxiv.org/abs/1609.08144>. As I got a lot of questions about this paper I wanted to explain what they do to get neural machine translation closer to human translation than they could with phrase based translation.

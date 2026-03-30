@@ -8,7 +8,7 @@ original_url: "https://www.pinchofintelligence.com/detecting-bats-recognising-so
 
 Last week I discovered that there are bats behind my appartment. I immediately grabbed my “bat detector”: a device that converts the ultrasound signals bats use to echolocate from an inaudible frequency range to an audible one. The name “bat detector” thus is a lie: you can use it to detect bats, but it does not detect bats itself. In this tutorial I will show you how to build a real bat detector using Tensorflow.
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2017/08/bats-banner.png)](https://www.pinchofintelligence.com/wp-content/uploads/2017/08/bats-banner.png)![Me and my girlfriend listening to bats](https://www.pinchofintelligence.com/wp-content/uploads/2017/08/DE4fqUoXUAAnU42-1.jpg) ![My bat detector](https://www.pinchofintelligence.com/wp-content/uploads/2017/08/batdetector.png)
+[![](images/2017/08/bats-banner.png)](images/2017/08/bats-banner.png)![Me and my girlfriend listening to bats](images/2017/08/DE4fqUoXUAAnU42-1.jpg) ![My bat detector](images/2017/08/batdetector.png)
 
 ## Problem statement
 
@@ -139,9 +139,9 @@ In [3]:
 
 Your browser does not support the audio element.
 
-![](https://www.pinchofintelligence.com/wp-content/uploads/2017/08/bat1.png)
+![](images/2017/08/bat1.png)
 
-![](https://www.pinchofintelligence.com/wp-content/uploads/2017/08/bat2.png)
+![](images/2017/08/bat2.png)
     
     
     Length per sample: 22050, shape of spectogram: (129, 345), max: -22.786959 min: -100.000000
@@ -149,9 +149,9 @@ Your browser does not support the audio element.
 
 Your browser does not support the audio element.
 
-![](https://www.pinchofintelligence.com/wp-content/uploads/2017/08/noise1.png)
+![](images/2017/08/noise1.png)
 
-![](https://www.pinchofintelligence.com/wp-content/uploads/2017/08/noise2.png)
+![](images/2017/08/noise2.png)
     
     
     Length per sample: 22050, shape of spectogram: (129, 345), max: -58.154167 min: -100.000000
@@ -171,7 +171,7 @@ I decided to put every negative signal onto one big “negative” pile, combini
 I was hoping the see the exact frequency bats produce back in our spectogram. Unfortunately it looks like my sensor picks it up as noise over ALL frequencies. Looking at the spectrogram you can still see a clear difference between bat-sound and noise. My first attempt was to use this spectrogram as input for a convolutional neural network. Unfortunately, using only a few positive samples, it was very difficult to train this network. I thus gave up on this approach.
 
 In the end I decided to go with a “metadata approach”. I divide every second of sound in 22 parts. For each part I determine the max, min, mean, standard deviation, and max-min of the sample. The reason I take this approach is because the “bat signals” DO clearly show up as a not of high-amplitude signals in the audio visualisation. By analyzing different parts of the audio signal, I can find out if multiple parts of the signal have certain features (such as a high standard deviation), and thus detect a bat call.  
-![Preprocessing idea](https://www.pinchofintelligence.com/wp-content/uploads/2017/08/download-20.png)
+![Preprocessing idea](images/2017/08/download-20.png)
 
 In [4]:
     

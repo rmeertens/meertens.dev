@@ -8,11 +8,11 @@ original_url: "https://www.pinchofintelligence.com/managing-budget-excel-machine
 
 A little over a year ago my girlfriend Lisette and I moved in together. A big part of living together was getting used to managing a budget, and knowing where our money went. Lisette made one of the coolest Excel spreadsheets I ever saw, the only thing we needed to do was… actually fill in what expense belongs to what category. This is where things went wrong…Every month we have about 100 shared expenses, and labeling them turned out to be a boring job we both didn’t want to do (and thus ignored for the last 10 months…). Last weekend I made an attempt at automating this task using the power of machine learning!
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2017/12/budgetfrontpage-300x200.png)](https://www.pinchofintelligence.com/wp-content/uploads/2017/12/budgetfrontpage.png)
+[![](images/2017/12/budgetfrontpage-300x200.png)](images/2017/12/budgetfrontpage.png)
 
 The first step to training a classifier is getting your training data! My bank gives you the option to download a spreadsheet with all (unlabeled) expenses. I imported this into a Google spreadsheet and added two columns: one with my own (optional) labels and one for the computer-generated labels.
 
-![extra labels](https://www.pinchofintelligence.com/wp-content/uploads/2017/12/excelextra.png)
+![extra labels](images/2017/12/excelextra.png)
 
 ## Getting Excel data into Python
 
@@ -129,13 +129,13 @@ Out[6]:
 
 Below is a part of the decision tree the algorithm generated. It correctly discovered that I do my grocery shopping at the “Albert Heijn” (<https://www.youtube.com/watch?v=GiZJa_Ctkr4>), where I rent my apartment, where my internet money goes to, and much more!
 
-![result](https://www.pinchofintelligence.com/wp-content/uploads/2017/12/subparttree.png)
+![result](images/2017/12/subparttree.png)
 
 ## Labeling data
 
 And now the most important part of this project: classify each of my transactions! As described at the start of this article I added a column for the computer prediction. The Google Sheets API allows you to write a single cell at a time which for some reason takes around a second per edit. Although it’s annoying if you try to iterate quickly, it gives some cool visualizations while your algorithm is working!
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2017/12/labelingdata.gif)](https://www.pinchofintelligence.com/wp-content/uploads/2017/12/labelingdata.gif)
+[![](images/2017/12/labelingdata.gif)](images/2017/12/labelingdata.gif)
 
 In [7]:
     

@@ -27,7 +27,7 @@ Schrijf in een normale zin op wat je graag wilt met Nederland. Het beste is een 
 Normaal stelt een stemwijzer je een hele hoop vragen, maar heb je niet de kans om zelf aan te geven wat je met Nederland wilt. Om dit te verhelpen wilde ik het volgende maken: je typt een zin in, en de computer bedenkt bij welke partij dit zou passen.  
 Om dit te maken heb ik neurale netwerken gebruikt. Deze technieke uit de kunstmatige intelligentie “leest” de zin, en gaat dan gokken uit welk partijprogramma deze komt.
 
-### [![](https://www.pinchofintelligence.com/wp-content/uploads/2017/03/stemwijzerbackground-300x200.jpg)](https://www.pinchofintelligence.com/wp-content/uploads/2017/03/stemwijzerbackground.jpg)
+### [![](images/2017/03/stemwijzerbackground-300x200.jpg)](images/2017/03/stemwijzerbackground.jpg)
 
 ### Hoe heeft hij dat kunnen leren?
 

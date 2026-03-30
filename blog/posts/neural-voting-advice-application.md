@@ -22,7 +22,7 @@ Enter a normal Dutch sentence that describes what you want to do with the Nether
 
 
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2017/03/stemwijzerbackground-300x200.jpg)](https://www.pinchofintelligence.com/wp-content/uploads/2017/03/stemwijzerbackground.jpg)
+[![](images/2017/03/stemwijzerbackground-300x200.jpg)](images/2017/03/stemwijzerbackground.jpg)
 
 ### How did your program learn this?
 

@@ -10,7 +10,7 @@ In January I have been a machine learning engineer at [Autonomous Intelligent Dr
 
 First of all, it might make sense to describe what I do at this job. My task is to both explore the feasibility of algorithms (mostly in Python) before we put them on the car, as well as rewrite algorithms in C++ to put them on the car. Projects I worked on in the past year are dynamic object detection (cars, pedestrians, etc.), semantic segmentation, and landmark recognition for localization. These algorithms ended up on the car, and the output of the algorithms is used by other teams to drive autonomously. 
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2019/02/profile1jpg-1024x683.jpg)](https://www.pinchofintelligence.com/wp-content/uploads/2019/02/profile1jpg.jpg)
+[![](images/2019/02/profile1jpg-1024x683.jpg)](images/2019/02/profile1jpg.jpg)
 
 **Working with LIDAR data**
 
@@ -34,4 +34,4 @@ In addition to making sure your code doesn’t become worse over time, it’s al
 
 One of AID’s values is to succeed as a team. It takes a diverse team with people with different backgrounds to think about every possible scenario, both in the world as on the hardware. As almost every company we work in an agile way where we as a team decide how to approach our challenges. I worked as a scrum master for the machine learning team, which I greatly enjoyed. If you are interested in joining us, take a look at [AID’s career page](https://jobs.lever.co/aid-driving?lever-via=ahRIYgDiOu), or reach out to me if you want to know if building self-driving cars would be something for you! Make sure to [follow this link](https://jobs.lever.co/aid-driving?lever-via=ahRIYgDiOu) when applying. 
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2019/03/grouppicture-1024x768.jpeg)](https://www.pinchofintelligence.com/wp-content/uploads/2019/03/grouppicture.jpeg)
+[![](images/2019/03/grouppicture-1024x768.jpeg)](images/2019/03/grouppicture.jpeg)

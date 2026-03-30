@@ -23,6 +23,6 @@ When I started sending these messages, I expected no response at all. The best I
 
 Some people did not reply at all. I consider these people spammers who are worthless connections. Would you keep the business card of a creepy guy who gave it to you without talking and walked away immediately? Would you recommend this guy to a friend searching for a new employee? If no: delete this person if you did not receive a reply within a week. On their profile page you will find the remove connection button to banish this person from your network.
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2017/06/remove-connection-284x300.png)](https://www.pinchofintelligence.com/wp-content/uploads/2017/06/remove-connection.png)
+[![](images/2017/06/remove-connection-284x300.png)](images/2017/06/remove-connection.png)
 
 To add or to ignore strangers on LinkedIn: it has been a dilemma since the day LinkedIn started. Hopefully, you can give this method a try to improve your connections and build a stronger network.

@@ -22,4 +22,4 @@ India: [https://www.amazon.in/Pinch-of-intelligence-InfoQ-Headlines/dp/B07KMXK1N
 
 The skill will also soon be available in Japanese and French-speaking countries. 
 
-[![](https://www.pinchofintelligence.com/wp-content/uploads/2019/01/1Screenshot-2018-12-28-at-17.29.59-1546015284807-1024x381.png)](https://www.pinchofintelligence.com/wp-content/uploads/2019/01/1Screenshot-2018-12-28-at-17.29.59-1546015284807.png)
+[![](images/2019/01/1Screenshot-2018-12-28-at-17.29.59-1546015284807-1024x381.png)](images/2019/01/1Screenshot-2018-12-28-at-17.29.59-1546015284807.png)

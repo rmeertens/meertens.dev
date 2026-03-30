@@ -34,7 +34,7 @@
     <h1>Ineffective sorts: tensorflowsort</h1>
     <div class="post-meta">November 1, 2016</div>
   </div>
-  <div class="post-hero"><img src="https://www.pinchofintelligence.com/wp-content/uploads/2016/11/Shell_sorting_algorithm_color_bars.svg_.png" alt="" loading="lazy"></div>
+  <div class="post-hero"><img src="../images/2016/11/Shell_sorting_algorithm_color_bars.svg_.png" alt="" loading="lazy"></div>
   <div class="post-content">
     <p>Recently sequential neural networks have been gaining popularity. To explore what they were capable of I decided to create the ineffective sorting algorithm (<a href="https://xkcd.com/1185/">https://xkcd.com/1185/</a>) “Tensorflowsort”. In this post I will explain what we can do with sequential neural networks, and how we can use them to sort an array.</p>
 <p>The basis of my sorting algorithm is the Recurrent Neural Network. The best article to learn about how they work can be found in this post: <a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/">http://colah.github.io/posts/2015-08-Understanding-LSTMs/</a> . The basic idea is that there is an encoder, through which you pass your input sequentially. For comprehending text this means reading word for word, or letter for letter. Every time the encoder reads a letter it updates its own global state. After reading everything the cell state is passed to the decoder, that generates output. The encoder thus has to create a representation of the input at all time steps for the decoder to be able to generate suitable output.</p>

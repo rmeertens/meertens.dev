@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building a Smart IoT Bed — Roland Meertens</title>
+  <link rel="stylesheet" href="../../style.css">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXWYNZC7YH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXWYNZC7YH');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="page">
+    <a class="site-name" href="../../index.html">🤖 Roland Meertens</a>
+    <nav class="site-nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../about.html">About me</a>
+      <a href="../../blog/index.html" class="active">Blog</a>
+      <a href="../../photos/index.html">Photos</a>
+    </nav>
+  </div>
+</header>
+<div class="page">
+  <div class="post-header">
+    <div class="post-breadcrumb"><a href="../index.html">Blog</a></div>
+    <h1>Building a Smart IoT Bed</h1>
+    <div class="post-meta">December 9, 2016</div>
+  </div>
+  <div class="post-hero"><img src="../images/2016/10/first_overview_fritzing_bb_annotated-1024x387.png" alt="" loading="lazy"></div>
+  <div class="post-content">
+    <p>Recently I finished a cool electronics project: internet connected lights under my bed. In three steps I will guide you from project to project, each time adding functionality to what we made.</p>
+<h2 id="part-1-motion-activated-lights">Part 1: Motion-activated lights</h2>
+<p>Whenever I wake up at night I have to walk to the end of the room to turn on the lights. Although it is only slightly inconvenient, this is something that can we can solve by having lights that are motion activated. In this recently posted blog on hackaday.io you can see other people face the same problem, and solve it in the same smart way: <a href="https://hackaday.io/project/13207-smart-bed-lighting">https://hackaday.io/project/13207-smart-bed-lighting</a>.</p>
+<p>Although the Hackaday project is cool, it is possible to extend the project to be more useful for us in our daily lives. In this first part I will set you up with a minimalistic design that performs the task. Next parts I will help you connect your lights to the internet and help you do cool stuff with them.</p>
+<p>To create this project you only need a small amount of parts. I list what I bought, and where I bought it. If you want to build soon, you can spend more money and buy the components in your local shop.</p>
+<table>
+<thead>
+<tr>
+<th>Week 1</th>
+<th>Part name</th>
+<th>Where to buy it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1x</td>
+<td><a href="https://amzn.to/2rKIBiH">LED Lights (I bought 2 meters)</a></td>
+<td><a href="https://amzn.to/2rKIBiH">https://amzn.to/2rKIBiH</a></td>
+</tr>
+<tr>
+<td>1x</td>
+<td><a href="https://amzn.to/2rISjD3">HC-SR501 Sensor</a></td>
+<td><a href="https://amzn.to/2rISjD3">https://amzn.to/2rISjD3</a></td>
+</tr>
+<tr>
+<td>3x</td>
+<td><a href="https://amzn.to/2rIZo6s">TRANSISTOR (TIP31C)</a></td>
+<td><a href="https://amzn.to/2rIZo6s">https://amzn.to/2rIZo6s</a></td>
+</tr>
+<tr>
+<td>1x</td>
+<td><a href="https://amzn.to/2Ihvpgo">12V 2A power supply</a></td>
+<td><a href="https://amzn.to/2Ihvpgo">https://amzn.to/2Ihvpgo</a></td>
+</tr>
+<tr>
+<td>1x</td>
+<td><a href="https://amzn.to/2GfUzX3">Powerplug connector</a></td>
+<td><a href="https://amzn.to/2GfUzX3">https://amzn.to/2GfUzX3</a></td>
+</tr>
+<tr>
+<td>1x</td>
+<td><a href="https://amzn.to/2KoBZyp">Breadboard + jumper wires</a></td>
+<td><a href="https://amzn.to/2KoBZyp">https://amzn.to/2KoBZyp</a></td>
+</tr>
+<tr>
+<td>Week 2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1x</td>
+<td><a href="https://amzn.to/2KXZRtz">NodeMCU development board</a></td>
+<td><a href="https://amzn.to/2KXZRtz">https://amzn.to/2KXZRtz</a></td>
+</tr>
+<tr>
+<td>1x</td>
+<td><a href="https://amzn.to/2rKebOr">12V to 5V voltage regulator LM7805</a></td>
+<td><a href="https://amzn.to/2rKebOr">https://amzn.to/2rKebOr</a></td>
+</tr>
+</tbody>
+</table>
+<p>The LED strip consists of three wires:</p>
+<ul>
+<li>12V input</li>
+<li>Ground blue</li>
+<li>Ground red</li>
+<li>Ground green</li>
+</ul>
+<p>To turn on a part of the lights connect the + of the power supply to the 12V input and the – of the power supply to the ground of one of the colours. Connecting and disconnecting the connection to the ground can also be done with an electronic switch: the transistor that we bought. To create a connection we need a small amount of power on the center pin of the transistor.</p>
+<p>This small amount of power can be given by the motion detector. On this website we find that the sensor can operate from 5 to 20 volts (our 12 volts is perfect), and that the output of the sensor is 3.3 volts: <a href="http://henrysbench.capnfatz.com/henrys-bench/arduino-sensors-and-input/arduino-hc-sr501-motion-sensor-tutorial/">http://henrysbench.capnfatz.com/henrys-bench/arduino-sensors-and-input/arduino-hc-sr501-motion-sensor-tutorial/</a> . This 3.3 volts can be put on the center pin of the transistor to trigger the lights.</p>
+<p>Our motion triggered lights can be achieved by building this diagram:</p>
+<p><a href="../images/2016/10/first_overview_fritzing_bb_annotated.png"><img alt="first_overview_fritzing_bb_annotated" src="../images/2016/10/first_overview_fritzing_bb_annotated-1024x387.png" /></a></p>
+<h2 id="part-2-adding-a-nodemcu-for-internet-control">Part 2: Adding a NodeMCU for internet control</h2>
+<p>After part 1 you were probably wondering why you could only choose 3 colours, and how you might be able to dim the lights. Dimming the light can be seen as quickly pressing the on/off button. If you press faster: more light will come out, if you press slowly: less light will come out. Our sensor only has the &ldquo;on&rdquo; and &ldquo;off&rdquo; press, so we will have to add something that regulates how fast lights are pressed.</p>
+<p>For this project we will use a &ldquo;Node MCU&rdquo;: <a href="http://www.nodemcu.com/index_en.html">http://www.nodemcu.com/index_en.html</a> . You can see it as a small programmable computer that you can connect to the internet over Wi-fi. Programming it is easy using the Arduino environment(which can be downloaded here: <a href="https://www.arduino.cc/en/Main/Software">https://www.arduino.cc/en/Main/Software</a>). How to set this up can be found on this webpage: <a href="http://www.instructables.com/id/Quick-Start-to-Nodemcu-ESP8266-on-Arduino-IDE/">http://www.instructables.com/id/Quick-Start-to-Nodemcu-ESP8266-on-Arduino-IDE/</a> . After you set up the environment we will start by creating a simple program that does the pressing for us.</p>
+<p>If you look at the NodeMCU it has many pins. What the General Purpose Input Output (GPIO) number is of each pin can be found on this image: https://pradeepsinghblog.files.wordpress.com/2016/04/nodemcu_pins.png?w=616. In your code you set one pin to input (the one you connect the motion sensor to), and three pins to output (the ones that control the colors). If you would simply connect the output of the sensor to the NodeMCU you could get a randomly fluctuating voltage, that is why you need a pull down resistor (see <a href="https://en.wikipedia.org/wiki/Pull-up_resistor">https://en.wikipedia.org/wiki/Pull-up_resistor</a>).</p>
+<p>The complete new diagram we build looks like this:</p>
+<p><a href="../images/2016/11/second_overview_fritzing_bb-1.png"><img alt="" src="../images/2016/11/second_overview_fritzing_bb-1-1024x375.png" /></a></p>
+<p>Next up: the code to control the LED&rsquo;s, and a way to set the color over the internet. I already wrote some code that does this. Please read through the code, and replace the SSID and password to match your own wifi.</p>
+<p>If you put this code on your NodeMCU you can open the serial monitor to see the IP of your device. In my case this is 192.168.1.17. If you type this number in your browser you should see &ldquo;Hello from my intelligent bed&rdquo; in your browser. If you navigate to YOURIP/setstate?state=0 the lights should turn on.</p>
+<p>What&rsquo;s next? Well, there are currently three things we like to fix:</p>
+<ul>
+<li>Setting the mode and colors in a browser is terribly user-unfriendly. In part 3 we will make an app that lets you set the colors!</li>
+<li>The internet of things kind of dictates that we should at least let something know that we are walking past our bed.</li>
+<li>The bed is called &ldquo;smart&rdquo;, but the only thing it does is react to you. Let&rsquo;s change this and react to the weather outside.</li>
+</ul>
+<p>I hope you enjoyed tinkering with the components! If you have any questions, or a cool result: send me a message!</p>
+<h2 id="part-3-building-an-android-app">Part 3: Building an Android app</h2>
+<p>In the first two parts we tinkered with hardware and now have an internet connected device! This time we will create a user friendly interface: an Android app.</p>
+<p>Creating a simple app is ridiculously easy nowadays. Every simple app I create is done using the MIT App inventor found here: ai2.appinventor.mit.edu/. The layout of your app is created by dragging and dropping components, and the logic is created by putting &ldquo;puzzle pieces&rdquo; together.</p>
+<p>As you &ldquo;code&rdquo; by dragging and dropping components, sharing this &ldquo;code&rdquo; is difficult to do. Therefore I will show what I made, how I made it, and why I made it that way.</p>
+<p>Start off by dragging the following things in your screen:</p>
+<ul>
+<li>Three sliders (red, green, and blue) which we use to select a colour. Make sure that their MinValue is 0, and their MaxValue is 250.</li>
+<li>A canvas that will display the color we selected with the sliders</li>
+<li>A button that, when pushed, will set the lights on our device</li>
+<li>A WebViewer. This component is necessary to go to a URL, just like we did in our browser in the previous part of the tutorial.</li>
+</ul>
+<p>I made the width of all components equal to &ldquo;Fill parent..&rdquo; to look good on my phone.</p>
+<p><a href="../images/2016/11/Screen-Shot-2016-12-08-at-21.28.00.png"><img alt="screen-shot-2016-12-08-at-21-28-00" src="../images/2016/11/Screen-Shot-2016-12-08-at-21.28.00-1024x553.png" /></a></p>
+<p>Speaking about phones: the best thing about the App Inventor is the possibility to immediately test your app on your phone using the companion app. Download it from the App store: <a href="https://play.google.com/store/apps/details?id=edu.mit.appinventor.aicompanion3&amp;hl=nl">https://play.google.com/store/apps/details?id=edu.mit.appinventor.aicompanion3&amp;hl=nl</a> .</p>
+<p><a href="../images/2016/12/2016-12-09-15_20_55-MIT-App-Inventor.png"><img alt="2016-12-09-15_20_55-mit-app-inventor" src="../images/2016/12/2016-12-09-15_20_55-MIT-App-Inventor.png" /></a></p>
+<p>Next we will first create the color preview option. In your designer screen you added a canvas. This canvas has the option to set a background color, making it perfectly usable as a color previewer.</p>
+<p>Although you can select many colors with the built-in functions, we want to preview the color we selected with the red, green, and blue slider. This can be done using the block &ldquo;make color&rdquo;.</p>
+<p>After you create the procedure (or, function) &ldquo;setCanvasColor&rdquo; you call this one every time the position of the sliders changed. This will update your canvas continuously making it easy to select a color.</p>
+<p><a href="../images/2016/11/Screen-Shot-2016-12-08-at-21.28.23.png"><img alt="screen-shot-2016-12-08-at-21-28-23" src="../images/2016/11/Screen-Shot-2016-12-08-at-21.28.23-1024x553.png" /></a></p>
+<p>Note that changing the color of the bed at the same time would probably be a bad idea: moving the slider from 0 to 250 would cause a lot of data packages sent to our device. That&rsquo;s why we added the &ldquo;SetColorButton&rdquo; to our interface. After this button is clicked we will go to the URL of our device with the WebViewer. How I coded this can be seen in this image:</p>
+<p><a href="../images/2016/11/Screen-Shot-2016-12-08-at-21.30.56.png"><img alt="screen-shot-2016-12-08-at-21-28-51" src="../images/2016/11/Screen-Shot-2016-12-08-at-21.28.51-1024x592.png" /></a></p>
+<p>Try our your self-made app and enjoy the fact that you just made a nice interface with your bed!</p>
+<p>You might remember that we had 3 different modes: on, off, and motion detected. You can adjust your app to be able to set these with a &ldquo;ListPicker&rdquo;, an element that when clicked gives the user the choice between several items. What these items are can be selected with the &ldquo;ElementsFromString&rdquo; option.</p>
+<p><a href="../images/2016/11/Screen-Shot-2016-12-08-at-21.30.56.png"><img alt="screen-shot-2016-12-08-at-21-30-05" src="../images/2016/11/Screen-Shot-2016-12-08-at-21.30.05-1024x621.png" /></a></p>
+<p>The set state function works like the set color function: you navigate to a certain URL using the WebViewer. Note that the listpicker outputs numbers 1,2,3, and we expect the number 0,1,2. This means we have to substract one from the selectionIndex before sending it to our device. The final program looks like this:</p>
+<p><a href="../images/2016/11/Screen-Shot-2016-12-08-at-21.30.56.png"><br />
+<img alt="screen-shot-2016-12-08-at-21-30-56" src="../images/2016/11/Screen-Shot-2016-12-08-at-21.30.56-1024x573.png" /></a><br />
+<img alt="screen-shot-2016-12-08-at-21-30-35" src="../images/2016/11/Screen-Shot-2016-12-08-at-21.30.35-1024x575.png" /><br />
+Hopefully you enjoyed building your own app with the MIT App inventor. If you have any questions, feel free to leave a comment!</p>
+<p><a href="../images/2016/11/Screen-Shot-2016-12-08-at-21.28.46.png"><img alt="screen-shot-2016-12-08-at-21-28-46" src="../images/2016/11/Screen-Shot-2016-12-08-at-21.28.46.png" /></a></p>
+  </div>
+  <nav class="post-nav">
+<a class="post-nav-link post-nav-prev" href="../looking-back-at-my-first-datathon/index.html">
+  <span class="post-nav-label">&larr; Previous</span>
+  <span class="post-nav-title">Looking back at my first datathon</span>
+</a>
+<a class="post-nav-link post-nav-next" href="../explaining-googles-zero-shot-translation/index.html">
+  <span class="post-nav-label">Next &rarr;</span>
+  <span class="post-nav-title">Explaining Google’s zero shot translation</span>
+</a>
+</nav>
+</div>
+
+</body>
+</html>

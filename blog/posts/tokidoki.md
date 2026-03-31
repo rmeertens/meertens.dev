@@ -3,6 +3,7 @@ title: "Tokidoki - practice Japanese grammar"
 date: "2026-03-30"
 slug: "tokidoki-japanese-grammar"
 excerpt: "I am trying to learn Japanese. This is extremely hard, especially the grammar. I now made a tool to help you practice!"
+thumbnail: "images/tokidoki-thumbnail.png"
 ---
 
 About a year ago I started learning Japanese. I already learned a few languages, so I hoped I would manage to get to a reasonable level in a few month. Turns out I didn't! This language is extremely hard...

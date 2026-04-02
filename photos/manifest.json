@@ -1,18 +1,21 @@
 [
   {
     "stem": "DSC01516",
+    "title": "Robin",
     "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC01516.jpg",
-    "description": "A Robin that visits my bird feeder daily."
+    "description": "A Robin that comes to my bird feeder every single day. Robins are famously bold and curious, and this one is no exception — always the first to arrive and the last to leave."
   },
   {
     "stem": "DSC01523",
+    "title": "Maple the Fox",
     "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC01523.jpg",
-    "description": "Maple, a fox who visits the garden once every two or three days."
+    "description": "This is Maple, a fox who visits the garden once every two or three days. She seems comfortable around people and always has an air of quiet confidence about her."
   },
   {
     "stem": "DSC01574",
+    "title": "Maple Resting",
     "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC01574.jpg",
-    "description": "Maple sleeping in the backyard. She sometimes waits for the neighbours to feed her."
+    "description": "Maple making herself at home in the backyard. She sometimes just settles down and waits, clearly knowing she'll be fed eventually. Urban foxes are remarkably good at training their humans."
   },
   {
     "stem": "DSC02432",
@@ -24,23 +27,27 @@
   },
   {
     "stem": "DSC03696",
+    "title": "Redwing",
     "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC03696.jpg",
-    "description": "A Redwing eating a berry. They arrived in spring and occasionally drop by in the yard."
+    "description": "A Redwing caught mid-meal on a berry. Redwings are winter visitors to the UK, arriving from Scandinavia and Iceland. They occasionally drop by the yard, and it's always a treat when they do."
   },
   {
     "stem": "DSC04216",
+    "title": "Chiffchaff",
     "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC04216.jpg",
-    "description": "A Chiffchaff in the Walthamstow Wetlands."
+    "description": "A Chiffchaff spotted at the Walthamstow Wetlands. These small warblers are one of the first migrants to arrive in spring, and you often hear their repetitive \"chiff-chaff\" call before you spot them."
   },
   {
     "stem": "DSC04223",
+    "title": "Long-tailed Tit",
     "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC04223.jpg",
-    "description": "A Long-tailed Tit in the Walthamstow Wetlands."
+    "description": "A Long-tailed Tit at the Walthamstow Wetlands. These tiny, fluffy birds travel in noisy flocks and are almost impossibly cute up close. Getting a sharp shot of one sitting still for even a moment is a small victory."
   },
   {
     "stem": "DSC04293",
+    "title": "Swan at Walthamstow Wetlands",
     "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC04293.jpg",
-    "description": "A swan in the Walthamstow Wetlands."
+    "description": "A swan gliding through the Walthamstow Wetlands. The wetlands are a hidden gem in the middle of London — a vast nature reserve that feels miles away from the city surrounding it."
   },
   {
     "stem": "DSC04463",
@@ -48,17 +55,20 @@
   },
   {
     "stem": "DSC04479",
+    "title": "Willow the Fox",
     "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC04479.jpg",
-    "description": "Willow, a fox who visits the garden occasionally. She is currently pregnant, but is also suffering from mange."
+    "description": "This is Willow, a fox who visits the garden occasionally. She is currently pregnant, which is wonderful — but she is also suffering from mange. I am hoping to earn her trust so I can slip medication into her food."
   },
   {
     "stem": "DSC04487",
+    "title": "Willow's Breakfast",
     "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC04487.jpg",
-    "description": "Willow eating an egg. I hope to get her visiting often so I can give her medication for the mange."
+    "description": "Willow tucking into an egg I left out for her. The plan is to get her visiting regularly and comfortable enough to eat here, so I can start hiding mange medication in her food."
   },
   {
     "stem": "DSC04526",
+    "title": "Willow",
     "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC04526.JPG",
-    "description": "Willow in the garden."
+    "description": "Another visit from Willow. Despite her condition, she carries herself with dignity. Fingers crossed the treatment works and she gets to raise her cubs healthy."
   }
 ]

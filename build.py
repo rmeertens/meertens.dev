@@ -530,8 +530,9 @@ def build_photos_page():
     photos = []
     if manifest_path.exists():
         for e in json.loads(manifest_path.read_text(encoding="utf-8")):
+            fallback_name = e["stem"].replace("-", " ").replace("_", " ").title()
             photos.append({
-                "name": e["stem"].replace("-", " ").replace("_", " ").title(),
+                "name": e.get("title", fallback_name),
                 "thumb": f"thumbs/{e['stem']}.jpg",
                 "full_url": e["full_url"],
                 "description": e.get("description", ""),

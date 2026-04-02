@@ -471,8 +471,9 @@ def photos_page_html(photos):
             thumb_esc = html.escape(p["thumb"])
             full_url_esc = html.escape(p["full_url"])
             desc_attr = f' data-description="{html.escape(p["description"])}"' if p.get("description") else ""
+            title_attr = f' data-title="{name_esc}"'
             items.append(
-                f'<a class="photo-item" href="{full_url_esc}" target="_blank" rel="noopener"{desc_attr}>\n'
+                f'<a class="photo-item" href="{full_url_esc}" target="_blank" rel="noopener"{title_attr}{desc_attr}>\n'
                 f'  <img src="{thumb_esc}" alt="{name_esc}" loading="lazy">\n'
                 f'  <span class="photo-caption">{name_esc}</span>\n'
                 f'</a>'
@@ -498,22 +499,29 @@ def photos_page_html(photos):
   {grid}
 </div>
 <div id="photo-lightbox" class="photo-lightbox" onclick="this.classList.remove('open')">
-  <div class="lightbox-inner">
+  <div class="lightbox-inner" onclick="event.stopPropagation()">
     <img id="lightbox-img" src="" alt="">
-    <p id="lightbox-desc" class="lightbox-desc"></p>
+    <div class="lightbox-caption">
+      <h2 id="lightbox-title" class="lightbox-title"></h2>
+      <p id="lightbox-desc" class="lightbox-desc"></p>
+    </div>
+    <button class="lightbox-close" onclick="document.getElementById('photo-lightbox').classList.remove('open')">&times;</button>
   </div>
 </div>
 <script>
   document.querySelectorAll('.photo-item').forEach(function(link) {{
     link.addEventListener('click', function(e) {{
       e.preventDefault();
-      var lb = document.getElementById('photo-lightbox');
       document.getElementById('lightbox-img').src = this.href;
+      var title = this.getAttribute('data-title') || '';
       var desc = this.getAttribute('data-description') || '';
+      var titleEl = document.getElementById('lightbox-title');
       var descEl = document.getElementById('lightbox-desc');
+      titleEl.textContent = title;
       descEl.textContent = desc;
-      descEl.style.display = desc ? '' : 'none';
-      lb.classList.add('open');
+      var captionEl = document.querySelector('.lightbox-caption');
+      captionEl.style.display = (title || desc) ? '' : 'none';
+      document.getElementById('photo-lightbox').classList.add('open');
     }});
   }});
 </script>

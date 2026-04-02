@@ -19,11 +19,15 @@
   },
   {
     "stem": "DSC02432",
-    "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC02432.jpg"
+    "title": "Maple Waiting for Meatballs",
+    "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC02432.jpg",
+    "description": "Maple relaxing in the garden, patiently hoping the neighbours will come out with meatballs. She has clearly done this before."
   },
   {
     "stem": "DSC02503",
-    "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC02503.JPG"
+    "title": "Maple Staring",
+    "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC02503.JPG",
+    "description": "Maple fixing me with a stare that says exactly one thing: food, please. Hard to say no to that."
   },
   {
     "stem": "DSC03696",
@@ -51,7 +55,9 @@
   },
   {
     "stem": "DSC04463",
-    "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC04463.jpg"
+    "title": "Seagull at Walthamstow Wetlands",
+    "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC04463.jpg",
+    "description": "A seagull at the Walthamstow Wetlands. Seagulls are easy to overlook, but they look surprisingly regal when you stop and actually point a camera at them."
   },
   {
     "stem": "DSC04479",

@@ -1,15 +1,18 @@
 [
   {
     "stem": "DSC01516",
-    "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC01516.jpg"
+    "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC01516.jpg",
+    "description": "A Robin that visits my bird feeder daily."
   },
   {
     "stem": "DSC01523",
-    "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC01523.jpg"
+    "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC01523.jpg",
+    "description": "Maple, a fox who visits the garden once every two or three days."
   },
   {
     "stem": "DSC01574",
-    "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC01574.jpg"
+    "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC01574.jpg",
+    "description": "Maple sleeping in the backyard. She sometimes waits for the neighbours to feed her."
   },
   {
     "stem": "DSC02432",
@@ -21,19 +24,23 @@
   },
   {
     "stem": "DSC03696",
-    "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC03696.jpg"
+    "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC03696.jpg",
+    "description": "A Redwing eating a berry. They arrived in spring and occasionally drop by in the yard."
   },
   {
     "stem": "DSC04216",
-    "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC04216.jpg"
+    "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC04216.jpg",
+    "description": "A Chiffchaff in the Walthamstow Wetlands."
   },
   {
     "stem": "DSC04223",
-    "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC04223.jpg"
+    "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC04223.jpg",
+    "description": "A Long-tailed Tit in the Walthamstow Wetlands."
   },
   {
     "stem": "DSC04293",
-    "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC04293.jpg"
+    "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC04293.jpg",
+    "description": "A swan in the Walthamstow Wetlands."
   },
   {
     "stem": "DSC04463",
@@ -41,14 +48,17 @@
   },
   {
     "stem": "DSC04479",
-    "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC04479.jpg"
+    "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC04479.jpg",
+    "description": "Willow, a fox who visits the garden occasionally. She is currently pregnant, but is also suffering from mange."
   },
   {
     "stem": "DSC04487",
-    "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC04487.jpg"
+    "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC04487.jpg",
+    "description": "Willow eating an egg. I hope to get her visiting often so I can give her medication for the mange."
   },
   {
     "stem": "DSC04526",
-    "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC04526.JPG"
+    "full_url": "https://rolands-nice-photos.s3.amazonaws.com/DSC04526.JPG",
+    "description": "Willow in the garden."
   }
 ]

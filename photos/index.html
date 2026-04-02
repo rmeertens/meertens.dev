@@ -32,15 +32,15 @@
     <p>A selection of photos I've taken. I recently bought a new camera and lens, mostly to photograph the diversity of wildlife in my garden in the center of London! Click any image to open the full resolution version.</p>
   </div>
   <div class="photo-grid">
-<a class="photo-item" href="https://rolands-nice-photos.s3.amazonaws.com/DSC01516.jpg" target="_blank" rel="noopener">
+<a class="photo-item" href="https://rolands-nice-photos.s3.amazonaws.com/DSC01516.jpg" target="_blank" rel="noopener" data-description="A Robin that visits my bird feeder daily.">
   <img src="thumbs/DSC01516.jpg" alt="Dsc01516" loading="lazy">
   <span class="photo-caption">Dsc01516</span>
 </a>
-<a class="photo-item" href="https://rolands-nice-photos.s3.amazonaws.com/DSC01523.jpg" target="_blank" rel="noopener">
+<a class="photo-item" href="https://rolands-nice-photos.s3.amazonaws.com/DSC01523.jpg" target="_blank" rel="noopener" data-description="Maple, a fox who visits the garden once every two or three days.">
   <img src="thumbs/DSC01523.jpg" alt="Dsc01523" loading="lazy">
   <span class="photo-caption">Dsc01523</span>
 </a>
-<a class="photo-item" href="https://rolands-nice-photos.s3.amazonaws.com/DSC01574.jpg" target="_blank" rel="noopener">
+<a class="photo-item" href="https://rolands-nice-photos.s3.amazonaws.com/DSC01574.jpg" target="_blank" rel="noopener" data-description="Maple sleeping in the backyard. She sometimes waits for the neighbours to feed her.">
   <img src="thumbs/DSC01574.jpg" alt="Dsc01574" loading="lazy">
   <span class="photo-caption">Dsc01574</span>
 </a>
@@ -52,19 +52,19 @@
   <img src="thumbs/DSC02503.jpg" alt="Dsc02503" loading="lazy">
   <span class="photo-caption">Dsc02503</span>
 </a>
-<a class="photo-item" href="https://rolands-nice-photos.s3.amazonaws.com/DSC03696.jpg" target="_blank" rel="noopener">
+<a class="photo-item" href="https://rolands-nice-photos.s3.amazonaws.com/DSC03696.jpg" target="_blank" rel="noopener" data-description="A Redwing eating a berry. They arrived in spring and occasionally drop by in the yard.">
   <img src="thumbs/DSC03696.jpg" alt="Dsc03696" loading="lazy">
   <span class="photo-caption">Dsc03696</span>
 </a>
-<a class="photo-item" href="https://rolands-nice-photos.s3.amazonaws.com/DSC04216.jpg" target="_blank" rel="noopener">
+<a class="photo-item" href="https://rolands-nice-photos.s3.amazonaws.com/DSC04216.jpg" target="_blank" rel="noopener" data-description="A Chiffchaff in the Walthamstow Wetlands.">
   <img src="thumbs/DSC04216.jpg" alt="Dsc04216" loading="lazy">
   <span class="photo-caption">Dsc04216</span>
 </a>
-<a class="photo-item" href="https://rolands-nice-photos.s3.amazonaws.com/DSC04223.jpg" target="_blank" rel="noopener">
+<a class="photo-item" href="https://rolands-nice-photos.s3.amazonaws.com/DSC04223.jpg" target="_blank" rel="noopener" data-description="A Long-tailed Tit in the Walthamstow Wetlands.">
   <img src="thumbs/DSC04223.jpg" alt="Dsc04223" loading="lazy">
   <span class="photo-caption">Dsc04223</span>
 </a>
-<a class="photo-item" href="https://rolands-nice-photos.s3.amazonaws.com/DSC04293.jpg" target="_blank" rel="noopener">
+<a class="photo-item" href="https://rolands-nice-photos.s3.amazonaws.com/DSC04293.jpg" target="_blank" rel="noopener" data-description="A swan in the Walthamstow Wetlands.">
   <img src="thumbs/DSC04293.jpg" alt="Dsc04293" loading="lazy">
   <span class="photo-caption">Dsc04293</span>
 </a>
@@ -72,22 +72,25 @@
   <img src="thumbs/DSC04463.jpg" alt="Dsc04463" loading="lazy">
   <span class="photo-caption">Dsc04463</span>
 </a>
-<a class="photo-item" href="https://rolands-nice-photos.s3.amazonaws.com/DSC04479.jpg" target="_blank" rel="noopener">
+<a class="photo-item" href="https://rolands-nice-photos.s3.amazonaws.com/DSC04479.jpg" target="_blank" rel="noopener" data-description="Willow, a fox who visits the garden occasionally. She is currently pregnant, but is also suffering from mange.">
   <img src="thumbs/DSC04479.jpg" alt="Dsc04479" loading="lazy">
   <span class="photo-caption">Dsc04479</span>
 </a>
-<a class="photo-item" href="https://rolands-nice-photos.s3.amazonaws.com/DSC04487.jpg" target="_blank" rel="noopener">
+<a class="photo-item" href="https://rolands-nice-photos.s3.amazonaws.com/DSC04487.jpg" target="_blank" rel="noopener" data-description="Willow eating an egg. I hope to get her visiting often so I can give her medication for the mange.">
   <img src="thumbs/DSC04487.jpg" alt="Dsc04487" loading="lazy">
   <span class="photo-caption">Dsc04487</span>
 </a>
-<a class="photo-item" href="https://rolands-nice-photos.s3.amazonaws.com/DSC04526.JPG" target="_blank" rel="noopener">
+<a class="photo-item" href="https://rolands-nice-photos.s3.amazonaws.com/DSC04526.JPG" target="_blank" rel="noopener" data-description="Willow in the garden.">
   <img src="thumbs/DSC04526.jpg" alt="Dsc04526" loading="lazy">
   <span class="photo-caption">Dsc04526</span>
 </a>
 </div>
 </div>
 <div id="photo-lightbox" class="photo-lightbox" onclick="this.classList.remove('open')">
-  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-inner">
+    <img id="lightbox-img" src="" alt="">
+    <p id="lightbox-desc" class="lightbox-desc"></p>
+  </div>
 </div>
 <script>
   document.querySelectorAll('.photo-item').forEach(function(link) {
@@ -95,6 +98,10 @@
       e.preventDefault();
       var lb = document.getElementById('photo-lightbox');
       document.getElementById('lightbox-img').src = this.href;
+      var desc = this.getAttribute('data-description') || '';
+      var descEl = document.getElementById('lightbox-desc');
+      descEl.textContent = desc;
+      descEl.style.display = desc ? '' : 'none';
       lb.classList.add('open');
     });
   });

@@ -470,8 +470,9 @@ def photos_page_html(photos):
             name_esc = html.escape(p["name"])
             thumb_esc = html.escape(p["thumb"])
             full_url_esc = html.escape(p["full_url"])
+            desc_attr = f' data-description="{html.escape(p["description"])}"' if p.get("description") else ""
             items.append(
-                f'<a class="photo-item" href="{full_url_esc}" target="_blank" rel="noopener">\n'
+                f'<a class="photo-item" href="{full_url_esc}" target="_blank" rel="noopener"{desc_attr}>\n'
                 f'  <img src="{thumb_esc}" alt="{name_esc}" loading="lazy">\n'
                 f'  <span class="photo-caption">{name_esc}</span>\n'
                 f'</a>'
@@ -497,7 +498,10 @@ def photos_page_html(photos):
   {grid}
 </div>
 <div id="photo-lightbox" class="photo-lightbox" onclick="this.classList.remove('open')">
-  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-inner">
+    <img id="lightbox-img" src="" alt="">
+    <p id="lightbox-desc" class="lightbox-desc"></p>
+  </div>
 </div>
 <script>
   document.querySelectorAll('.photo-item').forEach(function(link) {{
@@ -505,6 +509,10 @@ def photos_page_html(photos):
       e.preventDefault();
       var lb = document.getElementById('photo-lightbox');
       document.getElementById('lightbox-img').src = this.href;
+      var desc = this.getAttribute('data-description') || '';
+      var descEl = document.getElementById('lightbox-desc');
+      descEl.textContent = desc;
+      descEl.style.display = desc ? '' : 'none';
       lb.classList.add('open');
     }});
   }});
@@ -526,6 +534,7 @@ def build_photos_page():
                 "name": e["stem"].replace("-", " ").replace("_", " ").title(),
                 "thumb": f"thumbs/{e['stem']}.jpg",
                 "full_url": e["full_url"],
+                "description": e.get("description", ""),
             })
 
     photos_dir.mkdir(exist_ok=True)

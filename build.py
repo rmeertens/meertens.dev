@@ -14,6 +14,7 @@ Usage:
 import re
 import html
 from pathlib import Path
+from datetime import datetime, timezone
 
 try:
     import markdown
@@ -322,6 +323,7 @@ def blog_index_html(posts):
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog — Roland Meertens</title>
   <link rel="stylesheet" href="{css_path}">
+  <link rel="alternate" type="application/rss+xml" title="Roland Meertens Blog" href="/blog/rss.xml">
   {GTAG}
 </head>
 <body>
@@ -552,6 +554,67 @@ def build_photos_page():
 
 
 # ---------------------------------------------------------------------------
+# RSS feed
+# ---------------------------------------------------------------------------
+
+SITE_URL = "https://meertens.dev"
+
+
+def _rss_date(date_str):
+    """Convert YYYY-MM-DD to RFC 822 format required by RSS."""
+    y, m, day = parse_date(date_str)
+    if y == 0:
+        return ""
+    try:
+        dt = datetime(y, m, day, tzinfo=timezone.utc)
+        return dt.strftime("%a, %d %b %Y 00:00:00 +0000")
+    except ValueError:
+        return ""
+
+
+def build_rss(posts):
+    """Generate blog/rss.xml from sorted post list."""
+    items = []
+    for meta in posts:
+        slug = meta["slug"]
+        title = html.escape(meta["title"])
+        link = f"{SITE_URL}/blog/{slug}/"
+        pub_date = _rss_date(meta.get("date", ""))
+        desc = html.escape(clean_excerpt(meta["excerpt"]))
+
+        item = (
+            f"    <item>\n"
+            f"      <title>{title}</title>\n"
+            f"      <link>{link}</link>\n"
+            f"      <guid isPermaLink=\"true\">{link}</guid>\n"
+            f"      <description>{desc}</description>\n"
+        )
+        if pub_date:
+            item += f"      <pubDate>{pub_date}</pubDate>\n"
+        item += "    </item>"
+        items.append(item)
+
+    items_xml = "\n".join(items)
+    now = datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S +0000")
+    feed = f"""<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Roland Meertens</title>
+    <link>{SITE_URL}/blog/</link>
+    <description>Writing about AI, side projects, and things I find interesting.</description>
+    <language>en</language>
+    <lastBuildDate>{now}</lastBuildDate>
+    <atom:link href="{SITE_URL}/blog/rss.xml" rel="self" type="application/rss+xml"/>
+{items_xml}
+  </channel>
+</rss>"""
+
+    out = BLOG_OUT / "rss.xml"
+    out.write_text(feed, encoding="utf-8")
+    print(f"  Built: blog/rss.xml ({len(posts)} items)")
+
+
+# ---------------------------------------------------------------------------
 # Sort / build
 # ---------------------------------------------------------------------------
 
@@ -601,6 +664,9 @@ def build():
         blog_index_html(all_posts), encoding="utf-8"
     )
     print(f"  Built: blog/index.html")
+
+    # Phase 3b: write RSS feed
+    build_rss(all_posts)
 
     # Phase 4: write homepage
     (ROOT / "index.html").write_text(

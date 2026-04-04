@@ -28,6 +28,8 @@ While autoresearch did find ways to massively speed up my development I don't ha
 
 Besides that, I noticed that autoresearch mostly hangs on to existing hyperparameters and features. It's eager to try changing the batch size or learning rate when training a neural network, but didn't attempt to pre-train layers or do research on what the best state of the art encoders are. I'm still happy that it did the comparisons without me having to actively consider them, but I also notice that I did not spend enough time thinking for myself what the best high-level solution should be as I already saw autoresearch happily plodding along.
 
+Last but not least: in my case autoresearch auto found some "exploits". If you specify an objective but don't specify what you can and can't do the AI will naturally find ways which minimise a score, without actually achieving the objective. This is something we are used to with evolutionary algorithms, but I hoped that the 'thinking' aspect of LLMs would be more fair to how to achieve the objective.
+
 ### Self made apps are better
 
 This month I also got myself a Claude 20$ license (and immediately felt restricted with the amount of tokens I had...). I wrote and rewrote some things I made in the past, and really enjoyed the process! The best part of the process was the full control of any app functionality.

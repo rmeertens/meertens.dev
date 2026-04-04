@@ -3,11 +3,10 @@ title: "Three months of agentic coding - my experience"
 date: "2026-04-04"
 slug: "three-months-of-agentic-coding"
 excerpt: "Last month I wrote my experience with AI-generated coding on this blog. I got a lot of positive feedback, so I created another chart for my work up till this month and wrote down the thoughts I had."
+thumbnail: "images/2026/04/pr_histogram-1024x399.png"
 ---
 
 Last month I wrote my experience with AI-generated coding on this blog([two months as a vibe coder](https://meertens.dev/blog/two-months-as-a-vibe-coder/index.html)). I got a lot of positive feedback, so I created another chart for my work up till this months and wrote down the thoughts I had this month.
-
-[![](images/2026/04/pr_histogram-1024x399.png)](images/2026/04/pr_histogram.png)
 
 Overall first impression is that my amount of PRs went up once again, while my amount of merged PRs went down. The reason the amount of PRs went up is at the bottom of this article (automating solving problems), while the reason the amount of closed PRs went down is at the top (many PRs do stack up frustrations...)!
 

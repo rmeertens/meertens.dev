@@ -333,6 +333,7 @@ def blog_index_html(posts):
   <h1>Blog</h1>
   <p>Writing about AI, side projects, and things I find interesting.<br>
   Previously known as <em>Pinch of Intelligence</em>.</p>
+  <p><a href="/blog/rss.xml">RSS feed</a></p>
 </div>
 
 {featured}

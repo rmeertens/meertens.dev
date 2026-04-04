@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Three months of agentic coding - my experience — Roland Meertens</title>
+  <link rel="stylesheet" href="../../style.css">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXWYNZC7YH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXWYNZC7YH');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="page">
+    <a class="site-name" href="../../index.html">🤖 Roland Meertens</a>
+    <nav class="site-nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../about.html">About me</a>
+      <a href="../../blog/index.html" class="active">Blog</a>
+      <a href="../../photos/index.html">Photos</a>
+    </nav>
+  </div>
+</header>
+<div class="page">
+  <div class="post-header">
+    <div class="post-breadcrumb"><a href="../index.html">Blog</a></div>
+    <h1>Three months of agentic coding - my experience</h1>
+    <div class="post-meta">April 4, 2026</div>
+  </div>
+  <div class="post-hero"><img src="../images/2026/04/pr_histogram-1024x399.png" alt="" loading="lazy"></div>
+  <div class="post-content">
+    <p>Last month I wrote my experience with AI-generated coding on this blog(<a href="https://meertens.dev/blog/two-months-as-a-vibe-coder/index.html">two months as a vibe coder</a>). I got a lot of positive feedback, so I created another chart for my work up till this months and wrote down the thoughts I had this month.</p>
+<p><a href="../images/2026/04/pr_histogram.png"><img alt="" src="../images/2026/04/pr_histogram-1024x399.png" /></a></p>
+<p>Overall first impression is that my amount of PRs went up once again, while my amount of merged PRs went down. The reason the amount of PRs went up is at the bottom of this article (automating solving problems), while the reason the amount of closed PRs went down is at the top (many PRs do stack up frustrations&hellip;)!</p>
+<h3 id="free-is-not-free">Free is not free</h3>
+<p>In the first two months I created PRs all over our codebase. This was great initially - people loved the new features I introduced, and problems I unblocked. However, slowly maintenance requests started coming in. This can be supporting another robotics platform in a dashboard, a small bug filtering wrong data, or a test not covering all test cases. Slowly but surely my days and work became dominated by features I was not planning to work on / didn&rsquo;t consider when I made my initial changes.</p>
+<p>Time will tell what the correct solution is. Should you redirect people who make a feature request to their own Cursor/Claude instances? Does an engineer collect features till the time they take to maintain features is equal to their workweek? Or should one team be responsible for maintaining a feature, but also be forced to review and consider any idea for which a pull request is made? The answer is probably &ldquo;a mix of all three&rdquo;.</p>
+<p>With the concept of AI-generated code being so new I am still eager to personally own the code and features I introduce, but I&rsquo;m lately less eager as I feel I filled the amount of features I can currently maintain.</p>
+<h3 id="auto-research-is-interesting">Auto research is interesting</h3>
+<p>I have seen some hype around Karpathy&rsquo;s <a href="https://github.com/karpathy/autoresearch">auto-research</a>. Basically you ask an AI to keep optimising a problem over and over and later investigate what solutions it found. Last month I set up multiple of these loops - both to speed up some processes, as well as to optimize my neural networks.</p>
+<p>First of all: I did indeed find multiple code improvements! I merged multiple pull requests significantly speeding up development for everyone working with neural networks. However, I still have two problems with this approach. I am now less connected to the actual problems and code, and most of the attempted solutions were not super interesting.</p>
+<p>While autoresearch did find ways to massively speed up my development I don&rsquo;t have a good overview of where all of our time is going, and don&rsquo;t have a good architecture in mind for the &ldquo;optimal&rdquo; solution. Autoresearch found a few bugs and features which massively reduced time, but did not give me a bigger idea of how we should set up our code to eliminate the issues in the first place. It does feel like I&rsquo;m spending all my brain power finding a local minimum rather than rethinking how to get to a global minimum.</p>
+<p>Besides that, I noticed that autoresearch mostly hangs on to existing hyperparameters and features. It&rsquo;s eager to try changing the batch size or learning rate when training a neural network, but didn&rsquo;t attempt to pre-train layers or do research on what the best state of the art encoders are. I&rsquo;m still happy that it did the comparisons without me having to actively consider them, but I also notice that I did not spend enough time thinking for myself what the best high-level solution should be as I already saw autoresearch happily plodding along.</p>
+<h3 id="self-made-apps-are-better">Self made apps are better</h3>
+<p>This month I also got myself a Claude 20$ license (and immediately felt restricted with the amount of tokens I had&hellip;). I wrote and rewrote some things I made in the past, and really enjoyed the process! The best part of the process was the full control of any app functionality.</p>
+<p>In the past if I did not like an app or feature I had to either reach out to the developer (and wait months to get it implemented, if even&hellip;), or dive into the source code myself (where even figuring out how to run/compile/host something was enough pain to deter me from it). By making an app from scratch you have full control over the functionality, even if the app might already exist somewhere else.</p>
+<p>I think the future will be more apps with dynamic features, where users can request in natural language what a button should do. The app Bitrig is a fun thing to play with which feels like the future, but the default included model and permissions are so bad that it&rsquo;s also immediately disappointing.</p>
+<p>This doesn&rsquo;t just go for apps, but also for frameworks. Where my previous blog used Wordpress this blog is completely created with help of Claude, and actually runs a lot faster than the previous blog! This month I heard multiple of my friends building interesting new tools for their own usage!</p>
+<h3 id="big-impact-with-a-big-bazooka">Big impact with a big bazooka</h3>
+<p>The reason my PR count is so large this month is that I tried auto-generating PRs for some types of issues. I managed to solve multiple problems which the authors/reviewers of the PR were not aware of. Overall it had a big impact. However, there were also some false positives (of which I closed the PRs as soon as I realised they were). That means there was some collateral damage. Overall in this case the positive outweighed the negative impact, but now that every software engineer (and others) has this power we will see what the impact is down the line!</p>
+  </div>
+  <nav class="post-nav">
+
+<a class="post-nav-link post-nav-next" href="../tokidoki-japanese-grammar/index.html">
+  <span class="post-nav-label">Next &rarr;</span>
+  <span class="post-nav-title">Tokidoki - practice Japanese grammar</span>
+</a>
+</nav>
+</div>
+
+</body>
+</html>

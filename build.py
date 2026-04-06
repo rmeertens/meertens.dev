@@ -259,12 +259,18 @@ def post_page_html(meta, content_html, prev_meta=None, next_meta=None):
 
     nav_html = _post_nav_html(prev_meta, next_meta)
 
+    excerpt_esc = html.escape(clean_excerpt(meta["excerpt"]))
+    slug = meta["slug"]
+    canonical = f"{SITE_URL}/blog/{slug}/"
+
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title_esc} — Roland Meertens</title>
+  <meta name="description" content="{excerpt_esc}">
+  <link rel="canonical" href="{canonical}">
   <link rel="stylesheet" href="{css_path}">
   {GTAG}
 </head>
@@ -616,6 +622,56 @@ def build_rss(posts):
 
 
 # ---------------------------------------------------------------------------
+# Sitemap + robots.txt
+# ---------------------------------------------------------------------------
+
+def build_sitemap(posts):
+    """Generate sitemap.xml covering all pages of the site."""
+    static_urls = [
+        (f"{SITE_URL}/", "weekly", "1.0"),
+        (f"{SITE_URL}/about.html", "monthly", "0.8"),
+        (f"{SITE_URL}/blog/", "weekly", "0.9"),
+        (f"{SITE_URL}/photos/", "monthly", "0.7"),
+    ]
+
+    url_entries = []
+    for loc, changefreq, priority in static_urls:
+        url_entries.append(
+            f"  <url>\n"
+            f"    <loc>{loc}</loc>\n"
+            f"    <changefreq>{changefreq}</changefreq>\n"
+            f"    <priority>{priority}</priority>\n"
+            f"  </url>"
+        )
+
+    for meta in posts:
+        slug = meta["slug"]
+        loc = f"{SITE_URL}/blog/{slug}/"
+        lastmod = meta.get("date", "")
+        entry = f"  <url>\n    <loc>{loc}</loc>\n"
+        if lastmod:
+            entry += f"    <lastmod>{lastmod}</lastmod>\n"
+        entry += "    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>"
+        url_entries.append(entry)
+
+    sitemap = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + "\n".join(url_entries)
+        + "\n</urlset>\n"
+    )
+    (ROOT / "sitemap.xml").write_text(sitemap, encoding="utf-8")
+    print(f"  Built: sitemap.xml ({len(url_entries)} URLs)")
+
+
+def build_robots():
+    """Generate robots.txt pointing crawlers to the sitemap."""
+    content = f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n"
+    (ROOT / "robots.txt").write_text(content, encoding="utf-8")
+    print("  Built: robots.txt")
+
+
+# ---------------------------------------------------------------------------
 # Sort / build
 # ---------------------------------------------------------------------------
 
@@ -677,6 +733,10 @@ def build():
 
     # Phase 5: write photos page (reads from photos/thumbs/ and photos/full/)
     build_photos_page()
+
+    # Phase 6: sitemap + robots.txt
+    build_sitemap(all_posts)
+    build_robots()
 
     print(f"\nDone — {len(all_posts)} posts built.")
 

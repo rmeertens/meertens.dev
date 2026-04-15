@@ -263,6 +263,14 @@ def post_page_html(meta, content_html, prev_meta=None, next_meta=None):
     slug = meta["slug"]
     canonical = f"{SITE_URL}/blog/{slug}/"
 
+    raw_thumb = meta.get("thumbnail", "")
+    if raw_thumb.startswith(("http://", "https://")):
+        og_image = raw_thumb
+    elif raw_thumb.startswith("images/"):
+        og_image = f"{SITE_URL}/blog/{raw_thumb}"
+    else:
+        og_image = f"{SITE_URL}/photo.jpg"
+
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -271,6 +279,16 @@ def post_page_html(meta, content_html, prev_meta=None, next_meta=None):
   <title>{title_esc} — Roland Meertens</title>
   <meta name="description" content="{excerpt_esc}">
   <link rel="canonical" href="{canonical}">
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="{canonical}">
+  <meta property="og:title" content="{title_esc} — Roland Meertens">
+  <meta property="og:description" content="{excerpt_esc}">
+  <meta property="og:image" content="{og_image}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{title_esc} — Roland Meertens">
+  <meta name="twitter:description" content="{excerpt_esc}">
+  <meta name="twitter:image" content="{og_image}">
   <link rel="stylesheet" href="{css_path}">
   {GTAG}
 </head>
@@ -328,6 +346,17 @@ def blog_index_html(posts):
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog — Roland Meertens</title>
+  <meta name="description" content="Blog posts by Roland Meertens — ML engineer writing about AI, robotics, and building things.">
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{SITE_URL}/blog/">
+  <meta property="og:title" content="Blog — Roland Meertens">
+  <meta property="og:description" content="Blog posts by Roland Meertens — ML engineer writing about AI, robotics, and building things.">
+  <meta property="og:image" content="{SITE_URL}/photo.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Blog — Roland Meertens">
+  <meta name="twitter:description" content="Blog posts by Roland Meertens — ML engineer writing about AI, robotics, and building things.">
+  <meta name="twitter:image" content="{SITE_URL}/photo.jpg">
   <link rel="stylesheet" href="{css_path}">
   <link rel="alternate" type="application/rss+xml" title="Roland Meertens Blog" href="/blog/rss.xml">
   {GTAG}
@@ -400,6 +429,16 @@ def homepage_html(posts):
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Roland Meertens</title>
   <meta name="description" content="Roland Meertens — ML engineer, builder of curious things.">
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{SITE_URL}/">
+  <meta property="og:title" content="Roland Meertens">
+  <meta property="og:description" content="Roland Meertens — ML engineer, builder of curious things.">
+  <meta property="og:image" content="{SITE_URL}/photo.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Roland Meertens">
+  <meta name="twitter:description" content="Roland Meertens — ML engineer, builder of curious things.">
+  <meta name="twitter:image" content="{SITE_URL}/photo.jpg">
   <link rel="stylesheet" href="{css_path}">
   {GTAG}
 </head>
@@ -495,6 +534,17 @@ def photos_page_html(photos):
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Photos — Roland Meertens</title>
+  <meta name="description" content="Wildlife and nature photography by Roland Meertens.">
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{SITE_URL}/photos/">
+  <meta property="og:title" content="Photos — Roland Meertens">
+  <meta property="og:description" content="Wildlife and nature photography by Roland Meertens.">
+  <meta property="og:image" content="{SITE_URL}/photo.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Photos — Roland Meertens">
+  <meta name="twitter:description" content="Wildlife and nature photography by Roland Meertens.">
+  <meta name="twitter:image" content="{SITE_URL}/photo.jpg">
   <link rel="stylesheet" href="{css_path}">
   {GTAG}
 </head>

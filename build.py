@@ -35,6 +35,14 @@ GTAG = """<!-- Google tag (gtag.js) -->
   gtag('config', 'G-XXWYNZC7YH');
 </script>"""
 
+FAVICON_TAGS = """<link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">"""
+
+SOCIAL_IMAGE = "https://meertens.dev/social-preview.jpg"
+SOCIAL_IMAGE_W = 1200
+SOCIAL_IMAGE_H = 627
+
 MONTHS = [
     "", "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December",
@@ -269,7 +277,28 @@ def post_page_html(meta, content_html, prev_meta=None, next_meta=None):
     elif raw_thumb.startswith("images/"):
         og_image = f"{SITE_URL}/blog/{raw_thumb}"
     else:
-        og_image = f"{SITE_URL}/photo.jpg"
+        og_image = SOCIAL_IMAGE
+
+    date_iso = meta.get("date", "")
+    jsonld = f"""{{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{title_esc}",
+    "description": "{excerpt_esc}",
+    "image": "{og_image}",
+    "url": "{canonical}",
+    "datePublished": "{date_iso}",
+    "author": {{
+      "@type": "Person",
+      "name": "Roland Meertens",
+      "url": "{SITE_URL}"
+    }},
+    "publisher": {{
+      "@type": "Person",
+      "name": "Roland Meertens",
+      "url": "{SITE_URL}"
+    }}
+  }}"""
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -282,15 +311,23 @@ def post_page_html(meta, content_html, prev_meta=None, next_meta=None):
   <!-- Open Graph / Social Media -->
   <meta property="og:type" content="article">
   <meta property="og:url" content="{canonical}">
+  <meta property="og:site_name" content="Roland Meertens">
+  <meta property="og:locale" content="en_US">
   <meta property="og:title" content="{title_esc} — Roland Meertens">
   <meta property="og:description" content="{excerpt_esc}">
   <meta property="og:image" content="{og_image}">
+  <meta property="og:image:width" content="{SOCIAL_IMAGE_W}">
+  <meta property="og:image:height" content="{SOCIAL_IMAGE_H}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{title_esc} — Roland Meertens">
   <meta name="twitter:description" content="{excerpt_esc}">
   <meta name="twitter:image" content="{og_image}">
+  {FAVICON_TAGS}
   <link rel="stylesheet" href="{css_path}">
   {GTAG}
+  <script type="application/ld+json">
+  {jsonld}
+  </script>
 </head>
 <body>
 {site_header(css_path, active="blog")}
@@ -340,26 +377,50 @@ def blog_index_html(posts):
     remaining = posts[1:] if latest else posts
     cards = "\n".join(post_card_html(m) for m in remaining)
 
+    blog_desc = "Blog posts by Roland Meertens — ML engineer writing about AI, robotics, and building things."
+    blog_url = f"{SITE_URL}/blog/"
+    blog_jsonld = f"""{{
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Roland Meertens Blog",
+    "url": "{blog_url}",
+    "description": "{blog_desc}",
+    "author": {{
+      "@type": "Person",
+      "name": "Roland Meertens",
+      "url": "{SITE_URL}"
+    }}
+  }}"""
+
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog — Roland Meertens</title>
-  <meta name="description" content="Blog posts by Roland Meertens — ML engineer writing about AI, robotics, and building things.">
+  <meta name="description" content="{blog_desc}">
+  <link rel="canonical" href="{blog_url}">
   <!-- Open Graph / Social Media -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="{SITE_URL}/blog/">
+  <meta property="og:url" content="{blog_url}">
+  <meta property="og:site_name" content="Roland Meertens">
+  <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Blog — Roland Meertens">
-  <meta property="og:description" content="Blog posts by Roland Meertens — ML engineer writing about AI, robotics, and building things.">
-  <meta property="og:image" content="{SITE_URL}/photo.jpg">
+  <meta property="og:description" content="{blog_desc}">
+  <meta property="og:image" content="{SOCIAL_IMAGE}">
+  <meta property="og:image:width" content="{SOCIAL_IMAGE_W}">
+  <meta property="og:image:height" content="{SOCIAL_IMAGE_H}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Blog — Roland Meertens">
-  <meta name="twitter:description" content="Blog posts by Roland Meertens — ML engineer writing about AI, robotics, and building things.">
-  <meta name="twitter:image" content="{SITE_URL}/photo.jpg">
+  <meta name="twitter:description" content="{blog_desc}">
+  <meta name="twitter:image" content="{SOCIAL_IMAGE}">
+  {FAVICON_TAGS}
   <link rel="stylesheet" href="{css_path}">
   <link rel="alternate" type="application/rss+xml" title="Roland Meertens Blog" href="/blog/rss.xml">
   {GTAG}
+  <script type="application/ld+json">
+  {blog_jsonld}
+  </script>
 </head>
 <body>
 {site_header(css_path, active="blog")}
@@ -422,25 +483,53 @@ def homepage_html(posts):
     highlighted = [by_slug[s] for s in HIGHLIGHTED_SLUGS if s in by_slug]
     highlight_cards = "\n".join(post_card_html(m, slug_prefix="blog/", thumb_prefix="blog/") for m in highlighted)
 
+    home_desc = "Roland Meertens — ML engineer, builder of curious things."
+    person_jsonld = f"""{{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Roland Meertens",
+    "url": "{SITE_URL}",
+    "image": "{SOCIAL_IMAGE}",
+    "jobTitle": "Machine Learning Engineer",
+    "worksFor": {{
+      "@type": "Organization",
+      "name": "Wayve"
+    }},
+    "sameAs": [
+      "https://linkedin.com/in/rmeertens",
+      "https://github.com/rmeertens",
+      "https://www.youtube.com/@roland_does_things"
+    ]
+  }}"""
+
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Roland Meertens</title>
-  <meta name="description" content="Roland Meertens — ML engineer, builder of curious things.">
+  <meta name="description" content="{home_desc}">
+  <link rel="canonical" href="{SITE_URL}/">
   <!-- Open Graph / Social Media -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="{SITE_URL}/">
+  <meta property="og:site_name" content="Roland Meertens">
+  <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Roland Meertens">
-  <meta property="og:description" content="Roland Meertens — ML engineer, builder of curious things.">
-  <meta property="og:image" content="{SITE_URL}/photo.jpg">
+  <meta property="og:description" content="{home_desc}">
+  <meta property="og:image" content="{SOCIAL_IMAGE}">
+  <meta property="og:image:width" content="{SOCIAL_IMAGE_W}">
+  <meta property="og:image:height" content="{SOCIAL_IMAGE_H}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Roland Meertens">
-  <meta name="twitter:description" content="Roland Meertens — ML engineer, builder of curious things.">
-  <meta name="twitter:image" content="{SITE_URL}/photo.jpg">
+  <meta name="twitter:description" content="{home_desc}">
+  <meta name="twitter:image" content="{SOCIAL_IMAGE}">
+  {FAVICON_TAGS}
   <link rel="stylesheet" href="{css_path}">
   {GTAG}
+  <script type="application/ld+json">
+  {person_jsonld}
+  </script>
 </head>
 <body>
 {site_header(css_path, active="home")}
@@ -528,23 +617,32 @@ def photos_page_html(photos):
             )
         grid = '<div class="photo-grid">\n' + "\n".join(items) + "\n</div>"
 
+    photos_desc = "Wildlife and nature photography by Roland Meertens."
+    photos_url = f"{SITE_URL}/photos/"
+
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Photos — Roland Meertens</title>
-  <meta name="description" content="Wildlife and nature photography by Roland Meertens.">
+  <meta name="description" content="{photos_desc}">
+  <link rel="canonical" href="{photos_url}">
   <!-- Open Graph / Social Media -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="{SITE_URL}/photos/">
+  <meta property="og:url" content="{photos_url}">
+  <meta property="og:site_name" content="Roland Meertens">
+  <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Photos — Roland Meertens">
-  <meta property="og:description" content="Wildlife and nature photography by Roland Meertens.">
-  <meta property="og:image" content="{SITE_URL}/photo.jpg">
+  <meta property="og:description" content="{photos_desc}">
+  <meta property="og:image" content="{SOCIAL_IMAGE}">
+  <meta property="og:image:width" content="{SOCIAL_IMAGE_W}">
+  <meta property="og:image:height" content="{SOCIAL_IMAGE_H}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Photos — Roland Meertens">
-  <meta name="twitter:description" content="Wildlife and nature photography by Roland Meertens.">
-  <meta name="twitter:image" content="{SITE_URL}/photo.jpg">
+  <meta name="twitter:description" content="{photos_desc}">
+  <meta name="twitter:image" content="{SOCIAL_IMAGE}">
+  {FAVICON_TAGS}
   <link rel="stylesheet" href="{css_path}">
   {GTAG}
 </head>

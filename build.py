@@ -483,7 +483,7 @@ def homepage_html(posts):
     highlighted = [by_slug[s] for s in HIGHLIGHTED_SLUGS if s in by_slug]
     highlight_cards = "\n".join(post_card_html(m, slug_prefix="blog/", thumb_prefix="blog/") for m in highlighted)
 
-    home_desc = "Roland Meertens — ML engineer, builder of curious things."
+    home_desc = "Roland Meertens — ML engineer, software developer, likes to build robots!"
     person_jsonld = f"""{{
     "@context": "https://schema.org",
     "@type": "Person",

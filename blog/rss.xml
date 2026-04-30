@@ -5,8 +5,15 @@
     <link>https://meertens.dev/blog/</link>
     <description>Writing about AI, side projects, and things I find interesting.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 26 Apr 2026 17:39:12 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 30 Apr 2026 13:52:41 +0000</lastBuildDate>
     <atom:link href="https://meertens.dev/blog/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Passport Privacy: a watermark tool that respects your data</title>
+      <link>https://meertens.dev/blog/passport-privacy/</link>
+      <guid isPermaLink="true">https://meertens.dev/blog/passport-privacy/</guid>
+      <description>Why I built passport-privacy.meertens.dev — a no-tracking, no-cookies, fully client-side, open-source watermarking tool for photos of your passport and ID documents.</description>
+      <pubDate>Thu, 30 Apr 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Three months of agentic coding - my experience</title>
       <link>https://meertens.dev/blog/three-months-of-agentic-coding/</link>

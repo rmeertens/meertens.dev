@@ -16,7 +16,7 @@ For the sake of learning, I decided to train a network that can take a picture o
 
 Super-resolution is the neural network equivalent of shouting “ENHANCE”. If you have an image with a low resolution, you try to find a way to “guess” what a higher resolution image looks like. Normally this looks something like this:  
 ![Example super resolution](https://neurohive.io/wp-content/uploads/2018/09/face-resolution-upscaling-e1538401724331.png)  
-People started using neural networks for this (of which this post gives a nice overview: <https://medium.com/beyondminds/an-introduction-to-super-resolution-using-deep-learning-f60aff9a499d>), and I guess that my photorealistic gameboy camera work ([../photorealistic-neural-network-gameboy/index.html](../photorealistic-neural-network-gameboy/index.html)) also counts in a way.
+People started using neural networks for this (of which this post gives a nice overview: <https://medium.com/beyondminds/an-introduction-to-super-resolution-using-deep-learning-f60aff9a499d>), and I guess that my photorealistic gameboy camera work ([../photorealistic-neural-network-gameboy/](../photorealistic-neural-network-gameboy/)) also counts in a way.
 
 ## The idea
 

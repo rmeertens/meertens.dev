@@ -8,7 +8,7 @@ original_url: "https://www.pinchofintelligence.com/introduction-openai-gym-part-
 
 In part 1 we used a random search algorithm to “solve” the cartpole environment. This time we are going to take things to the next level and implement a deep q-network.The OpenAI gym environment is one of the most fun ways to learn more about machine learning. Especially reinforcement learning and neural networks can be applied perfectly to the benchmark and Atari games collection that is included.Every environment has multiple featured solutions, and often you can find a writeup on how to achieve the same score. By looking at others approaches and ideas you can improve yourself quickly in a fun way.
 
-In [part 1](../getting-started-openai-gym/index.html) we introduced the Gym environment, and looked at a “random search” algorithm. Hopefully you were able to add something to this algorithm, and got some more experience with OpenAI Gym. In part two we are going to take a look at reinforcement learning algorithms, specifically the deep q-networks that are all the hype lately.
+In [part 1](../getting-started-openai-gym/) we introduced the Gym environment, and looked at a “random search” algorithm. Hopefully you were able to add something to this algorithm, and got some more experience with OpenAI Gym. In part two we are going to take a look at reinforcement learning algorithms, specifically the deep q-networks that are all the hype lately.
 
 ![deep q network 2](images/2017/07/deepqnetworks.png)
 

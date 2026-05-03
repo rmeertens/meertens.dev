@@ -6,7 +6,7 @@ excerpt: "A few weeks ago I gave an introductory course to reinforcement learnin
 original_url: "https://www.pinchofintelligence.com/tradr-siks-summerschool-2017/"
 ---
 
-A few weeks ago I gave an introductory course to reinforcement learning with the OpenAI Gym environment. As content, I used the [writeups I already put on my site several weeks ago](../getting-started-openai-gym/index.html). I asked Jasper van der Waa (TNO), who co-organized it, to write a short summary of the summer school. 
+A few weeks ago I gave an introductory course to reinforcement learning with the OpenAI Gym environment. As content, I used the [writeups I already put on my site several weeks ago](../getting-started-openai-gym/). I asked Jasper van der Waa (TNO), who co-organized it, to write a short summary of the summer school. 
 
 [![](images/2017/09/tradr-300x200.jpg)](images/2017/09/tradr.jpg)
 

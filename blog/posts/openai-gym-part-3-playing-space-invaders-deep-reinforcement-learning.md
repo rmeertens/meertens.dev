@@ -2,11 +2,11 @@
 title: "Introduction to OpenAI gym part 3: playing Space Invaders with deep reinforcement learning"
 date: "2017-07-30"
 slug: "openai-gym-part-3-playing-space-invaders-deep-reinforcement-learning"
-excerpt: "In part 1 we got to know the openAI Gym environment(../getting-started-openai-gym/index.html), and in part 2 we explored deep..."
+excerpt: "In part 1 we got to know the openAI Gym environment(../getting-started-openai-gym/), and in part 2 we explored deep..."
 original_url: "https://www.pinchofintelligence.com/openai-gym-part-3-playing-space-invaders-deep-reinforcement-learning/"
 ---
 
-In [part 1 we got to know the openAI Gym environment](../getting-started-openai-gym/index.html), and in [part 2 we explored deep q-networks](../introduction-openai-gym-part-2-building-deep-q-network/index.html). We implemented a simple network that, if everything went well, was able to solve the Cartpole environment. Atari games are more fun than the CartPole environment, but are also harder to solve. This session is dedicated to playing Atari with deep reinforcement learning.
+In [part 1 we got to know the openAI Gym environment](../getting-started-openai-gym/), and in [part 2 we explored deep q-networks](../introduction-openai-gym-part-2-building-deep-q-network/). We implemented a simple network that, if everything went well, was able to solve the Cartpole environment. Atari games are more fun than the CartPole environment, but are also harder to solve. This session is dedicated to playing Atari with deep reinforcement learning.
 
 A first warning before you are disappointed is that playing Atari games is more difficult than cartpole, and training times are way longer. This is the reason we toyed around with CartPole in the previous session.
 

@@ -5,7 +5,7 @@
     <link>https://meertens.dev/blog/</link>
     <description>Writing about AI, side projects, and things I find interesting.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 30 Apr 2026 13:52:41 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 03 May 2026 18:20:39 +0000</lastBuildDate>
     <atom:link href="https://meertens.dev/blog/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>Passport Privacy: a watermark tool that respects your data</title>
@@ -179,7 +179,7 @@
       <title>Immersive Points: a virtual reality point cloud visualisation tool</title>
       <link>https://meertens.dev/blog/immersive-points-a-virtual-reality-point-cloud-visualisation-tool/</link>
       <guid isPermaLink="true">https://meertens.dev/blog/immersive-points-a-virtual-reality-point-cloud-visualisation-tool/</guid>
-      <description>A couple of years ago I made a visualization tool for the Google Cardboard that could show you a brain by looking around(../brain-visualisation/index.html). The two big...</description>
+      <description>A couple of years ago I made a visualization tool for the Google Cardboard that could show you a brain by looking around(../brain-visualisation/). The two big...</description>
       <pubDate>Sat, 11 Jan 2020 00:00:00 +0000</pubDate>
     </item>
     <item>
@@ -270,7 +270,7 @@
       <title>Introduction to OpenAI gym part 3: playing Space Invaders with deep reinforcement learning</title>
       <link>https://meertens.dev/blog/openai-gym-part-3-playing-space-invaders-deep-reinforcement-learning/</link>
       <guid isPermaLink="true">https://meertens.dev/blog/openai-gym-part-3-playing-space-invaders-deep-reinforcement-learning/</guid>
-      <description>In part 1 we got to know the openAI Gym environment(../getting-started-openai-gym/index.html), and in part 2 we explored deep...</description>
+      <description>In part 1 we got to know the openAI Gym environment(../getting-started-openai-gym/), and in part 2 we explored deep...</description>
       <pubDate>Sun, 30 Jul 2017 00:00:00 +0000</pubDate>
     </item>
     <item>
@@ -312,7 +312,7 @@
       <title>What I learned developing the Neural Voting Advice Application</title>
       <link>https://meertens.dev/blog/learned-developing-neural-voting-advice-application/</link>
       <guid isPermaLink="true">https://meertens.dev/blog/learned-developing-neural-voting-advice-application/</guid>
-      <description>Two weeks ago I put the neural voting advice application online (../neural-voting-advice-application/index.html). In this post, I look back at two aspects: the end-user aspect...</description>
+      <description>Two weeks ago I put the neural voting advice application online (../neural-voting-advice-application/). In this post, I look back at two aspects: the end-user aspect...</description>
       <pubDate>Tue, 21 Mar 2017 00:00:00 +0000</pubDate>
     </item>
     <item>

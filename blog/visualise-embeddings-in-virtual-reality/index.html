@@ -57,36 +57,36 @@
 <body>
 <header class="site-header">
   <div class="page">
-    <a class="site-name" href="../../index.html">🤖 Roland Meertens</a>
+    <a class="site-name" href="/">🤖 Roland Meertens</a>
     <nav class="site-nav">
-      <a href="../../index.html">Home</a>
-      <a href="../../about.html">About me</a>
-      <a href="../../blog/index.html" class="active">Blog</a>
-      <a href="../../photos/index.html">Photos</a>
+      <a href="/">Home</a>
+      <a href="/about.html">About me</a>
+      <a href="/blog/" class="active">Blog</a>
+      <a href="/photos/">Photos</a>
     </nav>
   </div>
 </header>
 <div class="page">
   <div class="post-header">
-    <div class="post-breadcrumb"><a href="../index.html">Blog</a></div>
+    <div class="post-breadcrumb"><a href="/blog/">Blog</a></div>
     <h1>Visualise embeddings in virtual reality</h1>
     <div class="post-meta">February 16, 2020</div>
   </div>
   <div class="post-hero"><img src="../images/2020/02/embedding3d-300x202.png" alt="" loading="lazy"></div>
   <div class="post-content">
     <p>When working with data and neural networks it’s good to know whether similar data is close together. This could be either in the original space of the data or in a deep layer of a neural network. In the last case, we call the data an “embedding” (most well-known for <a href="https://en.wikipedia.org/wiki/Word_embedding">word embeddings</a>). As humans like to look at data in two or three dimensions people often project data down in this space. I wanted to show that it’s possible to walk through your data using virtual reality using the <a href="https://rmeertens.github.io/ImmersivePoints/index.html">Immersive Points app</a> I programmed over the last month.</p>
-<p>Embeddings are so important that the visualisation of them is by default included in Tensorboard, that you can view and upload them on <a href="http://projector.tensorflow.org/">this site</a> as well, and that how to do this easily is <a href="../simple-introduction-to-tensorboard-embedding-visualisation/index.html">one of my most popular blog posts</a>. As for how to visualise the data: you can either use PCA or T-SNE, where T-SNE often finds interesting clusters which give some insight into how separable your data is.</p>
+<p>Embeddings are so important that the visualisation of them is by default included in Tensorboard, that you can view and upload them on <a href="http://projector.tensorflow.org/">this site</a> as well, and that how to do this easily is <a href="../simple-introduction-to-tensorboard-embedding-visualisation/">one of my most popular blog posts</a>. As for how to visualise the data: you can either use PCA or T-SNE, where T-SNE often finds interesting clusters which give some insight into how separable your data is.</p>
 <p>To see the results directly in 3D, you can go to <a href="https://rmeertens.github.io/ImmersivePoints/oculus.html?name=8a7eccb4-2914-4f8f-8b0a-b86645b821c6.xyzi">this page</a>. You can also look at the code used to produce this on <a href="https://github.com/rmeertens/ImmersivePoints/blob/master/examples/export_embeddings.ipynb">my GitHub page</a>.</p>
 <p><a href="../images/2020/02/embedding3d.png"><img alt="" src="../images/2020/02/embedding3d-300x202.png" /></a></p>
 <p><strong>Update:</strong> In the MNIST example it’s actually a bit lame that you visualise the representation of the digits directly. This doesn’t seem to be possible with CIFAR10, which has a much more interesting range of representations of objects. In fact, Laurens van der Maaten challenges people to look at the neural network representation of CIFAR10 in his <a href="https://www.youtube.com/watch?v=RJVL80Gg3lA">tech talk at google 6 years ago</a> (which is a great recommendation if you want to learn how t-SNE “learns” the visualisation). I made a simple neural network and visualised a 512 dimensional embedding space using t-SNE and uploaded it to my site. You can see the result here: <a href="https://rmeertens.github.io/ImmersivePoints/oculus.html?name=0c8b60de-cb28-46cc-b580-f255ed72f3d6.xyzi">https://rmeertens.github.io/ImmersivePoints/oculus.html?name=0c8b60de-cb28-46cc-b580-f255ed72f3d6.xyzi</a> .</p>
 <p><a href="../images/2020/02/Screenshot-2020-02-16-at-13.07.27.png"><img alt="" src="../images/2020/02/Screenshot-2020-02-16-at-13.07.27-300x238.png" /></a></p>
   </div>
   <nav class="post-nav">
-<a class="post-nav-link post-nav-prev" href="../looking-back-at-the-first-ai-meet-vr-event/index.html">
+<a class="post-nav-link post-nav-prev" href="../looking-back-at-the-first-ai-meet-vr-event/">
   <span class="post-nav-label">&larr; Previous</span>
   <span class="post-nav-title">Looking back at the first AI Meet VR event</span>
 </a>
-<a class="post-nav-link post-nav-next" href="../immersive-points-a-virtual-reality-point-cloud-visualisation-tool/index.html">
+<a class="post-nav-link post-nav-next" href="../immersive-points-a-virtual-reality-point-cloud-visualisation-tool/">
   <span class="post-nav-label">Next &rarr;</span>
   <span class="post-nav-title">Immersive Points: a virtual reality point cloud visualisation tool</span>
 </a>

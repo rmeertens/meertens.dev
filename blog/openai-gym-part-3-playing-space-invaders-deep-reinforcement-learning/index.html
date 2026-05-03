@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Introduction to OpenAI gym part 3: playing Space Invaders with deep reinforcement learning — Roland Meertens</title>
-  <meta name="description" content="In part 1 we got to know the openAI Gym environment(../getting-started-openai-gym/index.html), and in part 2 we explored deep...">
+  <meta name="description" content="In part 1 we got to know the openAI Gym environment(../getting-started-openai-gym/), and in part 2 we explored deep...">
   <link rel="canonical" href="https://meertens.dev/blog/openai-gym-part-3-playing-space-invaders-deep-reinforcement-learning/">
   <!-- Open Graph / Social Media -->
   <meta property="og:type" content="article">
@@ -12,13 +12,13 @@
   <meta property="og:site_name" content="Roland Meertens">
   <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Introduction to OpenAI gym part 3: playing Space Invaders with deep reinforcement learning — Roland Meertens">
-  <meta property="og:description" content="In part 1 we got to know the openAI Gym environment(../getting-started-openai-gym/index.html), and in part 2 we explored deep...">
+  <meta property="og:description" content="In part 1 we got to know the openAI Gym environment(../getting-started-openai-gym/), and in part 2 we explored deep...">
   <meta property="og:image" content="https://meertens.dev/blog/images/2017/07/cartwheel-neural-part3-300x191.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="627">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Introduction to OpenAI gym part 3: playing Space Invaders with deep reinforcement learning — Roland Meertens">
-  <meta name="twitter:description" content="In part 1 we got to know the openAI Gym environment(../getting-started-openai-gym/index.html), and in part 2 we explored deep...">
+  <meta name="twitter:description" content="In part 1 we got to know the openAI Gym environment(../getting-started-openai-gym/), and in part 2 we explored deep...">
   <meta name="twitter:image" content="https://meertens.dev/blog/images/2017/07/cartwheel-neural-part3-300x191.png">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
@@ -37,7 +37,7 @@
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": "Introduction to OpenAI gym part 3: playing Space Invaders with deep reinforcement learning",
-    "description": "In part 1 we got to know the openAI Gym environment(../getting-started-openai-gym/index.html), and in part 2 we explored deep...",
+    "description": "In part 1 we got to know the openAI Gym environment(../getting-started-openai-gym/), and in part 2 we explored deep...",
     "image": "https://meertens.dev/blog/images/2017/07/cartwheel-neural-part3-300x191.png",
     "url": "https://meertens.dev/blog/openai-gym-part-3-playing-space-invaders-deep-reinforcement-learning/",
     "datePublished": "2017-07-30",
@@ -57,24 +57,24 @@
 <body>
 <header class="site-header">
   <div class="page">
-    <a class="site-name" href="../../index.html">🤖 Roland Meertens</a>
+    <a class="site-name" href="/">🤖 Roland Meertens</a>
     <nav class="site-nav">
-      <a href="../../index.html">Home</a>
-      <a href="../../about.html">About me</a>
-      <a href="../../blog/index.html" class="active">Blog</a>
-      <a href="../../photos/index.html">Photos</a>
+      <a href="/">Home</a>
+      <a href="/about.html">About me</a>
+      <a href="/blog/" class="active">Blog</a>
+      <a href="/photos/">Photos</a>
     </nav>
   </div>
 </header>
 <div class="page">
   <div class="post-header">
-    <div class="post-breadcrumb"><a href="../index.html">Blog</a></div>
+    <div class="post-breadcrumb"><a href="/blog/">Blog</a></div>
     <h1>Introduction to OpenAI gym part 3: playing Space Invaders with deep reinforcement learning</h1>
     <div class="post-meta">July 30, 2017</div>
   </div>
   <div class="post-hero"><img src="../images/2017/07/cartwheel-neural-part3-300x191.png" alt="" loading="lazy"></div>
   <div class="post-content">
-    <p>In <a href="../getting-started-openai-gym/index.html">part 1 we got to know the openAI Gym environment</a>, and in <a href="../introduction-openai-gym-part-2-building-deep-q-network/index.html">part 2 we explored deep q-networks</a>. We implemented a simple network that, if everything went well, was able to solve the Cartpole environment. Atari games are more fun than the CartPole environment, but are also harder to solve. This session is dedicated to playing Atari with deep reinforcement learning.</p>
+    <p>In <a href="../getting-started-openai-gym/">part 1 we got to know the openAI Gym environment</a>, and in <a href="../introduction-openai-gym-part-2-building-deep-q-network/">part 2 we explored deep q-networks</a>. We implemented a simple network that, if everything went well, was able to solve the Cartpole environment. Atari games are more fun than the CartPole environment, but are also harder to solve. This session is dedicated to playing Atari with deep reinforcement learning.</p>
 <p>A first warning before you are disappointed is that playing Atari games is more difficult than cartpole, and training times are way longer. This is the reason we toyed around with CartPole in the previous session.</p>
 <p><a href="../images/2017/07/cartwheel-neural-part3.png"><img alt="" src="../images/2017/07/cartwheel-neural-part3-300x191.png" /></a></p>
 <p>In this session I will show how you can use OpenAI gym to replicate the paper <a href="https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf">Playing Atari with Deep Reinforcement Learning</a>. A video of a Breakout playing robot <a href="https://www.youtube.com/watch?v=V1eYniJ0Rnk">can be found on Youtube</a>, as well as a video of a <a href="https://www.youtube.com/watch?v=6kO4eZWeKOM">Enduro playing robot</a>. Demis Hassabis, the CEO of DeepMind, can explain what happend in their experiments in a <a href="https://youtu.be/rbsqaJwpu6A?t=9m55s">very entertaining way</a>.</p>
@@ -241,11 +241,11 @@ display_frames_as_gif(frameshistory, 'playing_space_invaders.gif')
 <p>This blogpost is the first part of my TRADR summerschool workshop on using human input in reinforcement learning algorithms. More information can be found <a href="https://sites.google.com/view/tradr/home">on their homepage. </a></p>
   </div>
   <nav class="post-nav">
-<a class="post-nav-link post-nav-prev" href="../detecting-bats-recognising-sound-tensorflow/index.html">
+<a class="post-nav-link post-nav-prev" href="../detecting-bats-recognising-sound-tensorflow/">
   <span class="post-nav-label">&larr; Previous</span>
   <span class="post-nav-title">Detecting bats by recognising their sound with Tensorflow</span>
 </a>
-<a class="post-nav-link post-nav-next" href="../introduction-openai-gym-part-2-building-deep-q-network/index.html">
+<a class="post-nav-link post-nav-next" href="../introduction-openai-gym-part-2-building-deep-q-network/">
   <span class="post-nav-label">Next &rarr;</span>
   <span class="post-nav-title">Introduction to OpenAI gym part 2: building a deep q-network</span>
 </a>

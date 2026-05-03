@@ -32,7 +32,7 @@ This photoshopped image shows how we envision our prototype: a self-driving car 
 
 ### The prototype: a wifi chip and a LED strip 
 
-During the hackathon, we spent a lot of time thinking about how to signal green wave information to other drivers. We wanted to convey a simple message in a way that would both be understood and followed. We went for a LED strip and programmed a wifi chip to accept messages from our computers (I used a build similar to the [one I made for my bed](../building-a-smart-iot-bed-part-2-of-5/index.html)). 
+During the hackathon, we spent a lot of time thinking about how to signal green wave information to other drivers. We wanted to convey a simple message in a way that would both be understood and followed. We went for a LED strip and programmed a wifi chip to accept messages from our computers (I used a build similar to the [one I made for my bed](../building-a-smart-iot-bed-part-2-of-5/)). 
 
 To get time-to-green and time-to-red information we [interfaced with Dynniq’s API](http://dynniq.com/). We looked at one intersection in the Dutch city Helmond whose information was available to us during this weekend. As data currently came in in a continuous stream we had to write our own parsers in Python that found relevant data. We also made a “mock-up” datastream we could use during a demo and which we use in the video below. 
 

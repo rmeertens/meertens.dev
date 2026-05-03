@@ -2,11 +2,11 @@
 title: "Immersive Points: a virtual reality point cloud visualisation tool"
 date: "2020-01-11"
 slug: "immersive-points-a-virtual-reality-point-cloud-visualisation-tool"
-excerpt: "A couple of years ago I made a visualization tool for the Google Cardboard that could show you a brain by looking around(../brain-visualisation/index.html). The two big..."
+excerpt: "A couple of years ago I made a visualization tool for the Google Cardboard that could show you a brain by looking around(../brain-visualisation/). The two big..."
 original_url: "https://www.pinchofintelligence.com/immersive-points-a-virtual-reality-point-cloud-visualisation-tool/"
 ---
 
-A couple of years ago I made a visualization tool for the [Google Cardboard that could show you a brain by looking around](../brain-visualisation/index.html). The two big downsides were that you could not walk around through the point cloud and that you could not point out to others what you are seeing. This weekend I fixed both points by creating a new app: [Immersive Points](https://rmeertens.github.io/ImmersivePoints/index.html). This web app still shows a point cloud, but also allows you to physically walk through it, and use your hands to point to things. Other people can look at the screencast to see what you want to point out. 
+A couple of years ago I made a visualization tool for the [Google Cardboard that could show you a brain by looking around](../brain-visualisation/). The two big downsides were that you could not walk around through the point cloud and that you could not point out to others what you are seeing. This weekend I fixed both points by creating a new app: [Immersive Points](https://rmeertens.github.io/ImmersivePoints/index.html). This web app still shows a point cloud, but also allows you to physically walk through it, and use your hands to point to things. Other people can look at the screencast to see what you want to point out. 
 
 The app can be found at [https://rmeertens.github.io/ImmersivePoints/index.html](https://rmeertens.github.io/ImmersivePoints/index.html). I currently put a frame with points from a brain in (taken from the old brain visualization app), two frames from a self-driving car dataset, and a frame from a scan of the Notre-Dame. 
 

@@ -2,11 +2,11 @@
 title: "What I learned developing the Neural Voting Advice Application"
 date: "2017-03-21"
 slug: "learned-developing-neural-voting-advice-application"
-excerpt: "Two weeks ago I put the neural voting advice application online (../neural-voting-advice-application/index.html). In this post, I look back at two aspects: the end-user aspect..."
+excerpt: "Two weeks ago I put the neural voting advice application online (../neural-voting-advice-application/). In this post, I look back at two aspects: the end-user aspect..."
 original_url: "https://www.pinchofintelligence.com/learned-developing-neural-voting-advice-application/"
 ---
 
-Two weeks ago I put the neural voting advice application online (../neural-voting-advice-application/index.html). In this post, I look back at two aspects: the end-user aspect and the technical aspect. The first one will be interesting for people working with neural networks. The technical aspect might be useful for somebody else interested in deploying their Tensorflow or Keras application.
+Two weeks ago I put the neural voting advice application online (../neural-voting-advice-application/). In this post, I look back at two aspects: the end-user aspect and the technical aspect. The first one will be interesting for people working with neural networks. The technical aspect might be useful for somebody else interested in deploying their Tensorflow or Keras application.
 
 ### Introduction
 

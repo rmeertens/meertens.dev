@@ -156,23 +156,17 @@ def embed_youtube(html_text: str) -> str:
 # ---------------------------------------------------------------------------
 
 def site_header(css_path, active=""):
-    root = css_path.replace("style.css", "").rstrip("/") or "."
-    blog_path = f"{root}/blog/index.html" if root != "." else "blog/index.html"
-    about_path = f"{root}/about.html" if root != "." else "about.html"
-    home_path = f"{root}/index.html" if root != "." else "index.html"
-    photos_path = f"{root}/photos/index.html" if root != "." else "photos/index.html"
-
     def cls(name):
         return ' class="active"' if active == name else ""
 
     return f"""<header class="site-header">
   <div class="page">
-    <a class="site-name" href="{home_path}">\U0001F916 Roland Meertens</a>
+    <a class="site-name" href="/">\U0001F916 Roland Meertens</a>
     <nav class="site-nav">
-      <a href="{home_path}"{cls("home")}>Home</a>
-      <a href="{about_path}"{cls("about")}>About me</a>
-      <a href="{blog_path}"{cls("blog")}>Blog</a>
-      <a href="{photos_path}"{cls("photos")}>Photos</a>
+      <a href="/"{cls("home")}>Home</a>
+      <a href="/about.html"{cls("about")}>About me</a>
+      <a href="/blog/"{cls("blog")}>Blog</a>
+      <a href="/photos/"{cls("photos")}>Photos</a>
     </nav>
   </div>
 </header>"""
@@ -199,7 +193,7 @@ def post_card_html(meta, slug_prefix="", thumb_prefix=""):
     excerpt_esc = html.escape(clean_excerpt(meta["excerpt"]))
     date_str = format_date(meta.get("date", ""))
     thumb = _prefix_thumb(meta.get("thumbnail", ""), thumb_prefix)
-    href = f"{slug_prefix}{slug}/index.html"
+    href = f"{slug_prefix}{slug}/"
 
     if thumb:
         img = f'<img class="card-thumb" src="{html.escape(thumb)}" alt="" loading="lazy">'
@@ -229,7 +223,7 @@ def _post_nav_html(prev_meta, next_meta):
 
     if prev_meta:
         prev_link = (
-            f'<a class="post-nav-link post-nav-prev" href="../{prev_meta["slug"]}/index.html">\n'
+            f'<a class="post-nav-link post-nav-prev" href="../{prev_meta["slug"]}/">\n'
             f'  <span class="post-nav-label">&larr; Previous</span>\n'
             f'  <span class="post-nav-title">{html.escape(prev_meta["title"])}</span>\n'
             f'</a>'
@@ -237,7 +231,7 @@ def _post_nav_html(prev_meta, next_meta):
 
     if next_meta:
         next_link = (
-            f'<a class="post-nav-link post-nav-next" href="../{next_meta["slug"]}/index.html">\n'
+            f'<a class="post-nav-link post-nav-next" href="../{next_meta["slug"]}/">\n'
             f'  <span class="post-nav-label">Next &rarr;</span>\n'
             f'  <span class="post-nav-title">{html.escape(next_meta["title"])}</span>\n'
             f'</a>'
@@ -333,7 +327,7 @@ def post_page_html(meta, content_html, prev_meta=None, next_meta=None):
 {site_header(css_path, active="blog")}
 <div class="page">
   <div class="post-header">
-    <div class="post-breadcrumb"><a href="../index.html">Blog</a></div>
+    <div class="post-breadcrumb"><a href="/blog/">Blog</a></div>
     <h1>{title_esc}</h1>
     <div class="post-meta">{html.escape(date_pretty)}</div>
   </div>
@@ -363,7 +357,7 @@ def blog_index_html(posts):
     featured = ""
     if latest:
         featured = (
-            f'<a class="featured-post" href="{latest["slug"]}/index.html">\n'
+            f'<a class="featured-post" href="{latest["slug"]}/">\n'
             f'  <div class="featured-body">\n'
             f'    <span class="featured-label">Latest post</span>\n'
             f'    <h3>{html.escape(latest["title"])}</h3>\n'
@@ -468,7 +462,7 @@ def homepage_html(posts):
     featured = ""
     if latest:
         featured = (
-            f'<a class="featured-post" href="blog/{latest["slug"]}/index.html">\n'
+            f'<a class="featured-post" href="/blog/{latest["slug"]}/">\n'
             f'  <div class="featured-body">\n'
             f'    <span class="featured-label">Latest post</span>\n'
             f'    <h3>{html.escape(latest["title"])}</h3>\n'
@@ -542,7 +536,7 @@ def homepage_html(posts):
         I'm a machine learning engineer who builds <strong>self-driving cars</strong> at
         <a href="https://wayve.ai" target="_blank">Wayve</a>.
         In my spare time I sometimes build interesting things, and on this
-        <a href="blog/index.html">blog</a> I share robots I build, websites I make,
+        <a href="/blog/">blog</a> I share robots I build, websites I make,
         and other interesting musings.
       </p>
     </div>
@@ -577,12 +571,12 @@ def homepage_html(posts):
 
 {featured}
 
-  <div class="section-label">Highlighted posts (<a href="blog/index.html">all posts</a>)</div>
+  <div class="section-label">Highlighted posts (<a href="/blog/">all posts</a>)</div>
   <div class="post-grid">
 {highlight_cards}
   </div>
   <div class="view-all-posts">
-    <a href="blog/index.html" class="view-all-btn">View all {len(posts)} posts &rarr;</a>
+    <a href="/blog/" class="view-all-btn">View all {len(posts)} posts &rarr;</a>
   </div>
 
 </div>

@@ -10,7 +10,7 @@ De verkiezingen komen eraan, en dus zijn er weer meerdere kieswijzers online. Nu
 
 ### Waarom een taalmodel bij de verkiezingen?
 
-In 2017 heb ik zelf een [stemwijzer gemaakt met kunstmatige intelligentie er in](../stemwijzer-met-kunstmatige-intelligentie/index.html). Hierbij kon je zelf typen wat voor toekomst je voor Nederland wilde, en de stemwijzer gaf dan aan op welke partij je moest stemmen. Dit was voordat er grote taalmodellen waren, maar je kon al wel een classifier bouwen op zinsniveau. Helaas hebben niet veel mensen er gebruik van gemaakt, en was de invoer van de meeste mensen niet inhoudelijk genoeg om een goede beslissing te maken. 
+In 2017 heb ik zelf een [stemwijzer gemaakt met kunstmatige intelligentie er in](../stemwijzer-met-kunstmatige-intelligentie/). Hierbij kon je zelf typen wat voor toekomst je voor Nederland wilde, en de stemwijzer gaf dan aan op welke partij je moest stemmen. Dit was voordat er grote taalmodellen waren, maar je kon al wel een classifier bouwen op zinsniveau. Helaas hebben niet veel mensen er gebruik van gemaakt, en was de invoer van de meeste mensen niet inhoudelijk genoeg om een goede beslissing te maken. 
 
 Hetzelfde programma maken is tegenwoordig een stuk makkelijker nu je zogenaamde Large Language Models als Foundation Model kan gebruiken. Helaas stuit je dan wel op het probleem dat er een grote bias in de taalmodellen zit. Over het algemeen probeert ChatGPT altijd aardig en inclusief te zijn, en probeert hij het beste te bereiken voor de aarde. Vanzelfsprekend vertaalt dit zich naar een bepaalde politieke bias. 
 

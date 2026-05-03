@@ -57,25 +57,25 @@
 <body>
 <header class="site-header">
   <div class="page">
-    <a class="site-name" href="../../index.html">🤖 Roland Meertens</a>
+    <a class="site-name" href="/">🤖 Roland Meertens</a>
     <nav class="site-nav">
-      <a href="../../index.html">Home</a>
-      <a href="../../about.html">About me</a>
-      <a href="../../blog/index.html" class="active">Blog</a>
-      <a href="../../photos/index.html">Photos</a>
+      <a href="/">Home</a>
+      <a href="/about.html">About me</a>
+      <a href="/blog/" class="active">Blog</a>
+      <a href="/photos/">Photos</a>
     </nav>
   </div>
 </header>
 <div class="page">
   <div class="post-header">
-    <div class="post-breadcrumb"><a href="../index.html">Blog</a></div>
+    <div class="post-breadcrumb"><a href="/blog/">Blog</a></div>
     <h1>Introduction to OpenAI gym part 2: building a deep q-network</h1>
     <div class="post-meta">July 17, 2017</div>
   </div>
   <div class="post-hero"><img src="../images/2017/07/deepqnetworks.png" alt="" loading="lazy"></div>
   <div class="post-content">
     <p>In part 1 we used a random search algorithm to “solve” the cartpole environment. This time we are going to take things to the next level and implement a deep q-network.The OpenAI gym environment is one of the most fun ways to learn more about machine learning. Especially reinforcement learning and neural networks can be applied perfectly to the benchmark and Atari games collection that is included.Every environment has multiple featured solutions, and often you can find a writeup on how to achieve the same score. By looking at others approaches and ideas you can improve yourself quickly in a fun way.</p>
-<p>In <a href="../getting-started-openai-gym/index.html">part 1</a> we introduced the Gym environment, and looked at a “random search” algorithm. Hopefully you were able to add something to this algorithm, and got some more experience with OpenAI Gym. In part two we are going to take a look at reinforcement learning algorithms, specifically the deep q-networks that are all the hype lately.</p>
+<p>In <a href="../getting-started-openai-gym/">part 1</a> we introduced the Gym environment, and looked at a “random search” algorithm. Hopefully you were able to add something to this algorithm, and got some more experience with OpenAI Gym. In part two we are going to take a look at reinforcement learning algorithms, specifically the deep q-networks that are all the hype lately.</p>
 <p><img alt="deep q network 2" src="../images/2017/07/deepqnetworks.png" /></p>
 <h2 id="background">Background</h2>
 <p>Q-learning is a reinforcement learning technique that tries to predict the reward of a state-action pair. For the cartpole environment the state consists of four values, and there are two possible actions. For a certain state S we can predict the reward if we were to push left <img alt="Q(S,left)" src="https://s0.wp.com/latex.php?latex=Q%28S%2Cleft%29&amp;bg=ffffff&amp;fg=000000&amp;s=0" /> or right <img alt="Q(S,right)" src="https://s0.wp.com/latex.php?latex=Q%28S%2Cright%29&amp;bg=ffffff&amp;fg=000000&amp;s=0" />.</p>
@@ -374,11 +374,11 @@ print(&quot;Unfortunately, the agent died...&quot;)
 <p>This blogpost is the first part of my TRADR summerschool workshop on using human input in reinforcement learning algorithms. More information can be found <a href="https://sites.google.com/view/tradr/home">on their homepage.</a></p>
   </div>
   <nav class="post-nav">
-<a class="post-nav-link post-nav-prev" href="../openai-gym-part-3-playing-space-invaders-deep-reinforcement-learning/index.html">
+<a class="post-nav-link post-nav-prev" href="../openai-gym-part-3-playing-space-invaders-deep-reinforcement-learning/">
   <span class="post-nav-label">&larr; Previous</span>
   <span class="post-nav-title">Introduction to OpenAI gym part 3: playing Space Invaders with deep reinforcement learning</span>
 </a>
-<a class="post-nav-link post-nav-next" href="../getting-started-openai-gym/index.html">
+<a class="post-nav-link post-nav-next" href="../getting-started-openai-gym/">
   <span class="post-nav-label">Next &rarr;</span>
   <span class="post-nav-title">Getting started with OpenAI gym</span>
 </a>

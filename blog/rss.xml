@@ -5,8 +5,15 @@
     <link>https://meertens.dev/blog/</link>
     <description>Writing about AI, side projects, and things I find interesting.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 03 May 2026 18:20:39 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 10 May 2026 08:22:20 +0000</lastBuildDate>
     <atom:link href="https://meertens.dev/blog/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>GitHub enables your domain to be abused</title>
+      <link>https://meertens.dev/blog/github-enables-domain-abuse/</link>
+      <guid isPermaLink="true">https://meertens.dev/blog/github-enables-domain-abuse/</guid>
+      <description>How a wildcard DNS record pointing at GitHub Pages let strangers spin up scam subdomains on my own domain — and what should change.</description>
+      <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Passport Privacy: a watermark tool that respects your data</title>
       <link>https://meertens.dev/blog/passport-privacy/</link>

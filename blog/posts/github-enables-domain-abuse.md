@@ -3,13 +3,18 @@ title: "GitHub enables your domain to be abused"
 date: "2026-05-10"
 slug: "github-enables-domain-abuse"
 excerpt: "How a wildcard DNS record pointing at GitHub Pages let strangers spin up scam subdomains on my own domain — and what should change."
+thumbnail: "images/2026/05/newowner.png"
 ---
 
 The last few weeks I traveled through Africa, with barely any internet. At some point I got an email from Google Search Console about a new owner for the domain [https://kafka.immersivepoints.com/](https://kafka.immersivepoints.com/).
 
+![Google Search Console email: "New owner for https://kafka.immersivepoints.com/"](images/2026/05/newowner.png)
+
 Weird... My immersivepoints.com domain is only used for one website hosted as a GitHub page. The website is for my 3D and VR point cloud visualizer, which in practice is just a simple hosted html page. There definitely is no Kafka involved here, let alone that I knew the new owner of this subdomain.
 
 After I regained access to a normal speed internet connection I started digging. First check was my DNS records, but initially nothing seemed off there. I simply forwarded the domain to the servers of GitHub, with a wildcard to also catch any subpage (such as [www.immersivepoints.com](https://www.immersivepoints.com)).
+
+![DNS records for immersivepoints.com, including a wildcard *.immersivepoints.com pointing at GitHub Pages](images/2026/05/dns_config.png)
 
 That's unfortunately where the problem was…
 
@@ -21,7 +26,11 @@ It looks like GitHub always tries to resolve any domain, as long as there is any
 
 This problem is not new, I already found a couple of tools (ironically hosted on GitHub) which would help you find domains which are available to steal! For example, this one: [https://github.com/EdOverflow/can-i-take-over-xyz](https://github.com/EdOverflow/can-i-take-over-xyz). In my case I don't know how long my domain has been abused this way, and would have never noticed if I did not set up Google Search Console for myself last month. In the end I noticed a few more emails from Google Search Console - as in the past weeks I was updating my blog anyways I completely missed these!
 
+![Gmail inbox showing several Google Search Console emails about new owners on kafka, grandbet, and hd subdomains of immersivepoints.com](images/2026/05/more_bad_domains.png)
+
 I hope nobody fell victim to the undoubtedly shitty slot machine scam sites which were hosted on my domain. As Google already has issues indexing my blog and pages I guess not a lot of people will have found these subdomains.
+
+![Kagi search for hd.immersivepoints.com showing "HDJITU - Pusat Permainan Games Online Indonesia" ranking above my actual ImmersivePoints VR site](images/2026/05/ranked_high.png)
 
 This brings me to the question of "who is at fault here". I guess I should have better set up my DNS records, but I did not have a good understanding of DNS records (and still don't really understand them). Personally I think it would be good if there is better verification on the GitHub side of who owns a domain, or which users are allowed to build on top of their subdomains. For example, if two different users want to use the same high level domain, let the first user verify that the other user is allowed to host a GitHub page there. Another option could be adding a specific TXT record on the DNS side for each GitHub user which is allowed to use your subdomain. I'm not sure how big this scam is, but every bit helps!
 

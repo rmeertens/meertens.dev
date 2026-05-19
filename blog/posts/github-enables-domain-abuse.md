@@ -1,5 +1,5 @@
 ---
-title: "GitHub enables your domain to be abused"
+title: "My domain got abused on Github Pages"
 date: "2026-05-10"
 slug: "github-enables-domain-abuse"
 excerpt: "How a wildcard DNS record pointing at GitHub Pages let strangers spin up scam subdomains on my own domain — and what should change."

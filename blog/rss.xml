@@ -5,10 +5,10 @@
     <link>https://meertens.dev/blog/</link>
     <description>Writing about AI, side projects, and things I find interesting.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 19 May 2026 07:24:28 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 19 May 2026 07:26:04 +0000</lastBuildDate>
     <atom:link href="https://meertens.dev/blog/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title>GitHub enables your domain to be abused</title>
+      <title>My domain got abused on Github Pages</title>
       <link>https://meertens.dev/blog/github-enables-domain-abuse/</link>
       <guid isPermaLink="true">https://meertens.dev/blog/github-enables-domain-abuse/</guid>
       <description>How a wildcard DNS record pointing at GitHub Pages let strangers spin up scam subdomains on my own domain — and what should change.</description>

@@ -256,7 +256,7 @@ def post_page_html(meta, content_html, prev_meta=None, next_meta=None):
     )
 
     hero_html = ""
-    if thumb:
+    if thumb and meta.get("hero", "true").lower() != "false":
         hero_html = f'<div class="post-hero"><img src="{html.escape(thumb)}" alt="" loading="lazy"></div>'
 
     nav_html = _post_nav_html(prev_meta, next_meta)

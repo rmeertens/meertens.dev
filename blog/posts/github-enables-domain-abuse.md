@@ -4,6 +4,7 @@ date: "2026-05-10"
 slug: "github-enables-domain-abuse"
 excerpt: "How a wildcard DNS record pointing at GitHub Pages let strangers spin up scam subdomains on my own domain — and what should change."
 thumbnail: "images/2026/05/newowner.png"
+hero: false
 ---
 
 The last few weeks I traveled through Africa, with barely any internet. At some point I got an email from Google Search Console about a new owner for the domain [https://kafka.immersivepoints.com/](https://kafka.immersivepoints.com/).

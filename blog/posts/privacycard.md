@@ -15,4 +15,6 @@ My goal is to build a collection of loyalty cards worldwide. This will give you 
 
 In the future I want to see if I can also refresh the cards frequently just in case a supermarket starts blocking some of these cards.
 
+Last but not least: the website is super simple! No need to create an account, no tracking across other websites, and no advertisements. Just pure privacy bliss!
+
 Let me know if you are missing a supermarket or feature at [privacycard@meertens.dev](mailto:privacycard@meertens.dev)!

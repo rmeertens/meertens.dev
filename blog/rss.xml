@@ -5,8 +5,15 @@
     <link>https://meertens.dev/blog/</link>
     <description>Writing about AI, side projects, and things I find interesting.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 19 May 2026 07:26:04 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 28 Jul 2026 14:54:14 +0000</lastBuildDate>
     <atom:link href="https://meertens.dev/blog/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Privacycard: a collection of random loyalty cards</title>
+      <link>https://meertens.dev/blog/privacycard/</link>
+      <guid isPermaLink="true">https://meertens.dev/blog/privacycard/</guid>
+      <description>Why I built privacycard.meertens.dev — a free collection of shared supermarket loyalty cards, so you get the discount without the tracking.</description>
+      <pubDate>Tue, 28 Jul 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>My domain got abused on Github Pages</title>
       <link>https://meertens.dev/blog/github-enables-domain-abuse/</link>

@@ -1073,6 +1073,24 @@
         ["....kgk.kgk....", "....kgk.kgk....", "....kgk.kgk....", "....kGk.kGk....", "....kgk.kgk....", "....kgk.kgk....", "....kgk.kgk....", "...kGGk.kGGk..."],
       ],
     },
+    {
+      id: "f1tenth", name: "F1TENTH car", speed: 44, step: 0.1, act: "dash",
+      palette: { G: "#34373c", g: "#6b7078", o: "#f28a1e", r: "#e0352b", v: "#2fae5a", c: "#5ec8ff", x: "#9aa0a6", z: "#d0d4d8" },
+      quotes: ["Lidar on, brain on, full send.", "1/10th the size, 10x the lap-time anxiety.", "Autonomous racing since 2016."],
+      body: [
+        "...k..k..............kkkkk....",
+        "...k..k...kkkkkkkk...koook....",
+        "...k..k...kvvvvvvkkrkkGGGk....",
+        ".kkkkkkk.kkvvsvvvvkrrkGcGk....",
+        ".kGGGGGGGGGGGGGGGGGGGGGGGGGGkk",
+        ".kkkkkkkkkkkkkkkkkkkkkkkkkkkkk",
+        "....kgk......kgggk.....kgk..kk",
+      ],
+      legs: [
+        ["...kkkkk..............kkkkk...", "..kGkGkGk............kGkGkGk..", "..kGrrrGkkkkkkkkkkkkkkGrrrGkkk", "kkkkrzrkkGGGGGGGGGGGGkkrzrkkkk", "..kGrrrGkkkkkkkkkkkkkkGrrrGk..", "..kGkGkGk............kGkGkGk..", "...kkkkk..............kkkkk..."],
+        ["...kkkkk..............kkkkk...", "..kkGkGkk............kkGkGkk..", "..kGrrrGkkkkkkkkkkkkkkGrrrGkkk", "kkkGrxrGkGGGGGGGGGGGGkGrxrGkkk", "..kGrrrGkkkkkkkkkkkkkkGrrrGk..", "..kkGkGkk............kkGkGkk..", "...kkkkk..............kkkkk..."],
+      ],
+    },
     // Forty more: film, TV and game robots, then real ones.
     {
       id: "tars", name: "TARS (Interstellar)", speed: 16, step: 0.5, bob: true, act: "flip",

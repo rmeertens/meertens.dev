@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Robot parade playground — Roland Meertens</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    .pg { max-width: 960px; margin: 0 auto; padding: 32px 24px 0; }
+    .pg h1 { font-size: 1.5rem; letter-spacing: -0.02em; }
+    .pg p { color: var(--muted); font-size: 0.9rem; margin-bottom: 20px; }
+    .pg-controls { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px 20px; margin-bottom: 20px; }
+    .pg-controls label { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 0.82rem; font-weight: 500; }
+    .pg-controls input[type=range] { width: 110px; }
+    .pg-presets { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .pg-presets button { padding: 6px 14px; border: 1px solid var(--border); border-radius: 7px; background: var(--card); font: inherit; font-size: 0.82rem; cursor: pointer; }
+    .pg-presets button:hover { border-color: var(--accent); color: var(--accent); }
+    .pg-stage { background: var(--sky, var(--bg)); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; padding-top: 60px; }
+    .pg-stage .site-footer { margin-top: 0; }
+    .pg-stage .page { max-width: none; }
+    .pg-output { width: 100%; margin: 16px 0 32px; font: 0.78rem/1.5 ui-monospace, Menlo, monospace; padding: 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--card); resize: vertical; }
+    .pg-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-bottom: 48px; }
+    .pg-gallery figure { border: 1px solid var(--border); border-radius: 8px; background: var(--card); padding: 12px; text-align: center; }
+    .pg-gallery canvas { max-width: 100%; image-rendering: pixelated; }
+    .pg-gallery figcaption { font-size: 0.78rem; color: var(--muted); margin-top: 6px; }
+  </style>
+</head>
+<body>
+<div class="pg">
+  <h1>Robot parade playground</h1>
+  <p>Tweak the footer live. When something looks right, copy the CSS variables below into <code>.site-footer</code> in <code>style.css</code>.</p>
+
+  <div class="pg-presets" id="presets"></div>
+
+  <div class="pg-controls">
+    <label>Sky <input type="color" data-var="--sky" value="#fafaf9"></label>
+    <label>Grass <input type="color" data-var="--grass" value="#6a9f3a"></label>
+    <label>Grass edge <input type="color" data-var="--grass-dark" value="#4f7a2a"></label>
+    <label>Soil <input type="color" data-var="--soil" value="#6b4a2f"></label>
+    <label>Soil text <input type="color" data-var="--soil-text" value="#f1e4d3"></label>
+    <label>Pixel size <input type="range" id="scale" min="2" max="6" step="1" value="3"></label>
+    <label>Speed <input type="range" id="speed" min="0.25" max="4" step="0.25" value="1"></label>
+    <label>Robots <input type="range" id="count" min="1" max="44" step="1" value="10"></label>
+  </div>
+</div>
+
+<div class="pg" style="padding-top:0">
+  <div class="pg-stage" id="stage">
+    <footer class="site-footer" id="footer">
+      <div class="robot-parade" data-robot-parade data-manual id="parade"></div>
+      <div class="footer-ground">
+        <div class="footer-grass"></div>
+        <div class="page footer-inner">
+          <span>&copy; 2026 Roland Meertens</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <textarea class="pg-output" id="output" rows="6" readonly></textarea>
+
+  <div class="section-label">Sprites</div>
+  <div class="pg-gallery" id="gallery"></div>
+</div>
+
+<script src="/robot-parade.js"></script>
+<script>
+  var PRESETS = {
+    Park:   { "--sky": "#fafaf9", "--grass": "#6a9f3a", "--grass-dark": "#4f7a2a", "--soil": "#6b4a2f", "--soil-text": "#f1e4d3" },
+    Spring: { "--sky": "#e0f2fe", "--grass": "#7cc242", "--grass-dark": "#5a9a2c", "--soil": "#7a5536", "--soil-text": "#fdf4e7" },
+    Autumn: { "--sky": "#fdf6ec", "--grass": "#b7892f", "--grass-dark": "#8f6420", "--soil": "#5a3a24", "--soil-text": "#f6e7d2" },
+    Night:  { "--sky": "#1e2235", "--grass": "#3f6b3a", "--grass-dark": "#2b4c29", "--soil": "#2e2319", "--soil-text": "#d9cbb8" },
+    Mars:   { "--sky": "#fbe3d3", "--grass": "#c2542d", "--grass-dark": "#983c1d", "--soil": "#5e2413", "--soil-text": "#fbd9c4" },
+  };
+
+  var stage = document.getElementById("stage");
+  var footer = document.getElementById("footer");
+  var parade = document.getElementById("parade");
+  var output = document.getElementById("output");
+  var inputs = document.querySelectorAll("[data-var]");
+  var scale = document.getElementById("scale");
+  var speed = document.getElementById("speed");
+  var count = document.getElementById("count");
+  var instance = null;
+
+  function setVar(name, value) {
+    (name === "--sky" ? stage : footer).style.setProperty(name, value);
+  }
+
+  function writeOutput() {
+    var lines = [];
+    inputs.forEach(function (i) {
+      if (i.dataset.var !== "--sky") lines.push("  " + i.dataset.var + ": " + i.value + ";");
+    });
+    output.value = ".site-footer {\n" + lines.join("\n") + "\n}";
+  }
+
+  function remount() {
+    if (instance) instance.destroy();
+    instance = RobotParade.mount(parade, {
+      scale: +scale.value, speed: +speed.value, count: +count.value,
+    });
+  }
+
+  inputs.forEach(function (i) {
+    i.addEventListener("input", function () { setVar(i.dataset.var, i.value); writeOutput(); });
+  });
+  speed.addEventListener("input", function () { instance.options.speed = +speed.value; });
+  scale.addEventListener("change", remount);
+  count.addEventListener("change", remount);
+
+  var presets = document.getElementById("presets");
+  Object.keys(PRESETS).forEach(function (name) {
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.textContent = name;
+    btn.addEventListener("click", function () {
+      inputs.forEach(function (i) {
+        var v = PRESETS[name][i.dataset.var];
+        if (v) { i.value = v; setVar(i.dataset.var, v); }
+      });
+      writeOutput();
+    });
+    presets.appendChild(btn);
+  });
+
+  var gallery = document.getElementById("gallery");
+  RobotParade.robots.forEach(function (robot) {
+    var fig = document.createElement("figure");
+    fig.appendChild(RobotParade.renderSheet(robot, 5).canvas);
+    var cap = document.createElement("figcaption");
+    cap.textContent = robot.name + " — " + robot.quotes[0];
+    fig.appendChild(cap);
+    gallery.appendChild(fig);
+  });
+
+  writeOutput();
+  remount();
+</script>
+</body>
+</html>

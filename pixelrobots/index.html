@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Pixel robots — Roland Meertens</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="page">
+    <a class="site-name" href="/">🤖 Roland Meertens</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/about.html">About me</a>
+      <a href="/blog/">Blog</a>
+      <a href="/photos/">Photos</a>
+    </nav>
+  </div>
+</header>
+<div class="page page-wide">
+  <div class="blog-intro">
+    <h1>Pixel robots</h1>
+    <p>Every robot that can turn up in the parade at the bottom of this site. Click one to hear what it has to say.</p>
+  </div>
+  <div id="robot-overview"></div>
+</div>
+<footer class="site-footer">
+  <div class="robot-parade" data-robot-parade aria-label="A parade of famous robots. Click one!"></div>
+  <div class="footer-ground">
+    <div class="footer-grass"></div>
+    <div class="page footer-inner">
+      <span>&copy; 2026 Roland Meertens</span>
+    </div>
+  </div>
+</footer>
+<script src="/robot-parade.js" defer></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var REAL = ["spot", "roomba", "curiosity", "asimo", "pepper", "nao", "romeo", "sphero", "viam", "ardrone", "bebop", "cozmo", "cupcake"];
+    var sections = [
+      { title: "Wayve fleet", test: function (r) { return r.pin === "wayve"; } },
+      { title: "Real robots", test: function (r) { return REAL.indexOf(r.id) >= 0; } },
+      { title: "Film, TV and games", test: function (r) { return r.pin !== "wayve" && REAL.indexOf(r.id) < 0; } },
+    ];
+    var root = document.getElementById("robot-overview");
+    function fmt(q) { return q.charAt(0) === "*" ? q : "“" + q + "”"; }
+    sections.forEach(function (section) {
+      var robots = RobotParade.robots.filter(section.test);
+      var label = document.createElement("div");
+      label.className = "section-label";
+      label.textContent = section.title + " (" + robots.length + ")";
+      var grid = document.createElement("div");
+      grid.className = "robot-grid";
+      robots.forEach(function (robot) {
+        var sheet = RobotParade.renderSheet(robot, 4);
+        var card = document.createElement("button");
+        card.type = "button";
+        card.className = "robot-card";
+        var stage = document.createElement("span");
+        stage.className = "robot-card-stage";
+        var sprite = document.createElement("span");
+        sprite.className = "rp-sprite";
+        sprite.style.width = sheet.w + "px";
+        sprite.style.height = sheet.h + "px";
+        sprite.style.backgroundImage = "url(" + sheet.canvas.toDataURL() + ")";
+        sprite.style.animationDuration = robot.step * 2 + "s";
+        stage.appendChild(sprite);
+        var name = document.createElement("span");
+        name.className = "robot-card-name";
+        name.textContent = robot.name;
+        var quote = document.createElement("span");
+        quote.className = "robot-card-quote";
+        quote.textContent = fmt(robot.quotes[0]);
+        var n = 0;
+        card.addEventListener("click", function () {
+          n = (n + 1) % robot.quotes.length;
+          quote.textContent = fmt(robot.quotes[n]);
+        });
+        card.appendChild(stage);
+        card.appendChild(name);
+        card.appendChild(quote);
+        grid.appendChild(card);
+      });
+      root.appendChild(label);
+      root.appendChild(grid);
+    });
+  });
+</script>
+</body>
+</html>

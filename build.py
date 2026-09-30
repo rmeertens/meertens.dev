@@ -173,7 +173,17 @@ def site_header(css_path, active=""):
 
 
 def site_footer(root="."):
-    return ""
+    year = datetime.now().year
+    return f"""<footer class="site-footer">
+  <div class="robot-parade" data-robot-parade aria-label="A parade of famous robots. Click one!"></div>
+  <div class="footer-ground">
+    <div class="footer-grass"></div>
+    <div class="page footer-inner">
+      <span>&copy; {year} Roland Meertens</span>
+    </div>
+  </div>
+</footer>
+<script src="/robot-parade.js" defer></script>"""
 
 
 # ---------------------------------------------------------------------------
@@ -676,6 +686,7 @@ def photos_page_html(photos):
     }});
   }});
 </script>
+{site_footer("..")}
 </body>
 </html>"""
 
@@ -700,6 +711,94 @@ def build_photos_page():
     photos_dir.mkdir(exist_ok=True)
     (photos_dir / "index.html").write_text(photos_page_html(photos), encoding="utf-8")
     print(f"  Built: photos/index.html ({len(photos)} photo(s))")
+
+
+# ---------------------------------------------------------------------------
+# Pixel robots overview (unlisted: not in the nav or sitemap)
+# ---------------------------------------------------------------------------
+
+def pixelrobots_page_html():
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Pixel robots — Roland Meertens</title>
+  {FAVICON_TAGS}
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+{site_header("../style.css")}
+<div class="page page-wide">
+  <div class="blog-intro">
+    <h1>Pixel robots</h1>
+    <p>Every robot that can turn up in the parade at the bottom of this site. Click one to hear what it has to say.</p>
+  </div>
+  <div id="robot-overview"></div>
+</div>
+{site_footer("..")}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {{
+    var REAL = ["spot", "roomba", "curiosity", "asimo", "pepper", "nao", "romeo", "sphero", "viam", "ardrone", "bebop", "cozmo", "cupcake"];
+    var sections = [
+      {{ title: "Wayve fleet", test: function (r) {{ return r.pin === "wayve"; }} }},
+      {{ title: "Real robots", test: function (r) {{ return REAL.indexOf(r.id) >= 0; }} }},
+      {{ title: "Film, TV and games", test: function (r) {{ return r.pin !== "wayve" && REAL.indexOf(r.id) < 0; }} }},
+    ];
+    var root = document.getElementById("robot-overview");
+    function fmt(q) {{ return q.charAt(0) === "*" ? q : "\u201c" + q + "\u201d"; }}
+    sections.forEach(function (section) {{
+      var robots = RobotParade.robots.filter(section.test);
+      var label = document.createElement("div");
+      label.className = "section-label";
+      label.textContent = section.title + " (" + robots.length + ")";
+      var grid = document.createElement("div");
+      grid.className = "robot-grid";
+      robots.forEach(function (robot) {{
+        var sheet = RobotParade.renderSheet(robot, 4);
+        var card = document.createElement("button");
+        card.type = "button";
+        card.className = "robot-card";
+        var stage = document.createElement("span");
+        stage.className = "robot-card-stage";
+        var sprite = document.createElement("span");
+        sprite.className = "rp-sprite";
+        sprite.style.width = sheet.w + "px";
+        sprite.style.height = sheet.h + "px";
+        sprite.style.backgroundImage = "url(" + sheet.canvas.toDataURL() + ")";
+        sprite.style.animationDuration = robot.step * 2 + "s";
+        stage.appendChild(sprite);
+        var name = document.createElement("span");
+        name.className = "robot-card-name";
+        name.textContent = robot.name;
+        var quote = document.createElement("span");
+        quote.className = "robot-card-quote";
+        quote.textContent = fmt(robot.quotes[0]);
+        var n = 0;
+        card.addEventListener("click", function () {{
+          n = (n + 1) % robot.quotes.length;
+          quote.textContent = fmt(robot.quotes[n]);
+        }});
+        card.appendChild(stage);
+        card.appendChild(name);
+        card.appendChild(quote);
+        grid.appendChild(card);
+      }});
+      root.appendChild(label);
+      root.appendChild(grid);
+    }});
+  }});
+</script>
+</body>
+</html>"""
+
+
+def build_pixelrobots_page():
+    out_dir = ROOT / "pixelrobots"
+    out_dir.mkdir(exist_ok=True)
+    (out_dir / "index.html").write_text(pixelrobots_page_html(), encoding="utf-8")
+    print("  Built: pixelrobots/index.html")
 
 
 # ---------------------------------------------------------------------------
@@ -875,6 +974,7 @@ def build():
 
     # Phase 5: write photos page (reads from photos/thumbs/ and photos/full/)
     build_photos_page()
+    build_pixelrobots_page()
 
     # Phase 6: sitemap + robots.txt
     build_sitemap(all_posts)

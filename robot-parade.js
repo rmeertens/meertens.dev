@@ -633,30 +633,6 @@
       ],
     },
     {
-      id: "gort", name: "Gort", speed: 12, step: 0.7, act: "zap", gun: 3,
-      quotes: ["Klaatu barada nikto.", "*visor slowly opens*", "..."],
-      body: [
-        "...kkkkk...",
-        "..ksssssk..",
-        "..ksssssk..",
-        "..kGGGGGk..",
-        "..ksssssk..",
-        "...ksssk...",
-        ".kkkkkkkkk.",
-        "ksksssssksk",
-        "ksksssssksk",
-        "ksksssssksk",
-        "ksksssssksk",
-        "ksksssssksk",
-        "kkkssssskkk",
-        "...ksssk...",
-      ],
-      legs: [
-        ["..ksk.ksk..", "..ksk.ksk..", ".ksk...ksk.", ".kkk...kkk."],
-        ["..ksk.ksk..", "..ksk.ksk..", "..ksk.ksk..", "..kkk.kkk.."],
-      ],
-    },
-    {
       id: "claptrap", name: "Claptrap", speed: 26, step: 0.2, bob: true, act: "dance",
       quotes: ["Minion!", "Stairs! NOOOOO!", "Let me teach you the secret handshake!"],
       body: [

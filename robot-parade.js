@@ -633,28 +633,6 @@
       ],
     },
     {
-      id: "megaman", name: "Mega Man", speed: 30, step: 0.2, act: "zap", gun: 9,
-      quotes: ["*charges Mega Buster*", "Dr. Wily, I'm coming for you!", "Pew pew!"],
-      body: [
-        "...kkkkk....",
-        "..kbbbbbk...",
-        ".kbcbbbbbk..",
-        ".kbhhhhhbk..",
-        ".kbhkhkhbk..",
-        ".kbhhhhhbk..",
-        "..kkhhhkk...",
-        ".kkbbbbbkk..",
-        "kckcccccbbbk",
-        "kckcccccbbbk",
-        "kkkbbbbbkkk.",
-        "...kbbbk....",
-      ],
-      legs: [
-        ["..kbk.kbk...", ".kbbk..kbbk.", ".kkkk..kkkk."],
-        ["..kbk.kbk...", "..kbbkkbbk..", "..kkkkkkkk.."],
-      ],
-    },
-    {
       id: "gort", name: "Gort", speed: 12, step: 0.7, act: "zap", gun: 3,
       quotes: ["Klaatu barada nikto.", "*visor slowly opens*", "..."],
       body: [

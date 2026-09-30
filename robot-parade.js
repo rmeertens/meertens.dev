@@ -594,17 +594,20 @@
     },
     {
       id: "kitt", name: "KITT", speed: 40, step: 0.12, act: "dash",
-      palette: { g: "#3f3f46" },
+      palette: { w: "#232428", d: "#3a3c42", G: "#5a6b78" },
       quotes: ["Turbo boost!", "Michael, we have a problem.", "I am the voice of the Knight Industries Two Thousand."],
       body: [
-        ".......kkkkkkkk.......",
-        ".....kkGcGGGGcGkk.....",
-        "..kkkGGGGGGGGGGGGkkk..",
-        ".kgggggggggggggggggggk",
+        "...........kkkkkkkk...............",
+        "........kkkGGGGkGGGGkk............",
+        ".....kkkGGGGGGGkGGGGGGkkk.........",
+        "..kkkwwwwwwwwwwwdwwwwwwwwwkkkkk...",
+        ".kwwwwwwwwwwwwwwdwwwwwwwwwwwwwwkk.",
+        ".krwwwwwwwwwwwwwdwwwwwwwwwwwrrrrrk",
+        ".kwwwwwwwwwwwwwwdwwwwwwwwwwwwwwwwk",
       ],
       legs: [
-        ["kggggggggggggggggrrrgk", "kkkGGGkkkkkkkkkkGGGkkk", "..kGsGk........kGsGk..", "..kkkkk........kkkkk.."],
-        ["kgggggggggggggggrrrggk", "kkkGGGkkkkkkkkkkGGGkkk", "..ksGsk........ksGsk..", "..kkkkk........kkkkk.."],
+        [".kwwkkkkkkkwwwwwdwwwwwwkkkkkkkwwwk", ".kwkkkkkkkkkwwwwdwwwwwkkkkkkkkkwwk", ".kwkkkxxxkkkwwwwdwwwwwkkkxxxkkkwwk", ".kwkkxxzxxkkwwwwdwwwwwkkxxzxxkkwwk", ".kkkkxzzzxkkkkkkkkkkkkkkxzzzxkkkkk", "....kxxzxxk............kxxzxxk....", ".....kxxxk..............kxxxk.....", "......kkk................kkk......"],
+        [".kwwkkkkkkkwwwwwdwwwwwwkkkkkkkwwwk", ".kwkkkkkkkkkwwwwdwwwwwkkkkkkkkkwwk", ".kwkkkxxxkkkwwwwdwwwwwkkkxxxkkkwwk", ".kwkkxzxzxkkwwwwdwwwwwkkxzxzxkkwwk", ".kkkkxxzxxkkkkkkkkkkkkkkxxzxxkkkkk", "....kxzxzxk............kxzxzxk....", ".....kxxxk..............kxxxk.....", "......kkk................kkk......"],
       ],
     },
     {

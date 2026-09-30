@@ -41,7 +41,7 @@
 <script src="/robot-parade.js" defer></script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    var REAL = ["spot", "roomba", "curiosity", "asimo", "pepper", "nao", "romeo", "sphero", "viam", "ardrone", "bebop", "cupcake", "atlas", "ingenuity", "sojourner", "aibo", "kiva", "starship", "shakey", "astro", "robosapien", "stanley", "keepon", "elektro", "icub", "pr2", "turtlebot", "husky", "crazyflie", "robody", "go2", "g1", "h1", "f1tenth"];
+    var REAL = ["spot", "roomba", "curiosity", "asimo", "pepper", "nao", "romeo", "sphero", "viam", "ardrone", "bebop", "cupcake", "atlas", "ingenuity", "sojourner", "aibo", "kiva", "starship", "shakey", "astro", "robosapien", "stanley", "keepon", "elektro", "icub", "pr2", "turtlebot", "husky", "crazyflie", "robody", "go2", "g1", "f1tenth"];
     var sections = [
       { title: "Wayve fleet", test: function (r) { return r.pin === "wayve"; } },
       { title: "Real robots", test: function (r) { return REAL.indexOf(r.id) >= 0; } },

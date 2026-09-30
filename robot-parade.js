@@ -821,6 +821,21 @@
         "....k......k..",
       ],
     },
+    {
+      id: "crazyflie", name: "Bitcraze Crazyflie", speed: 36, step: 0.05, bob: true, lift: 26, act: "flip",
+      palette: { s: "#c9ccd0", g: "#7c828a", b: "#3b82f6" },
+      quotes: ["27 grams of open-source drone!", "*swarms with 49 friends*", "Hej from Malmö!"],
+      top: [["kkkkk......kkkkk"], ["..k..........k.."]],
+      body: [
+        "..k..........k..",
+        ".kgk........kgk.",
+        ".kgk.kkkkkk.kgk.",
+        ".kgk.kssssk.kgk.",
+        "kbkkkkkkkkkkkrkk",
+        ".kwk........kwk.",
+        ".kk..........kk.",
+      ],
+    },
     // Forty more: film, TV and game robots, then real ones.
     {
       id: "sonny", name: "Sonny (I, Robot)", speed: 20, step: 0.45, act: "flash",

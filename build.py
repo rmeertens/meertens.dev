@@ -740,7 +740,7 @@ def pixelrobots_page_html():
 {site_footer("..")}
 <script>
   document.addEventListener("DOMContentLoaded", function () {{
-    var REAL = ["spot", "roomba", "curiosity", "asimo", "pepper", "nao", "romeo", "sphero", "viam", "ardrone", "bebop", "cozmo", "cupcake", "atlas", "digit", "ingenuity", "sojourner", "lunokhod", "aibo", "kiva", "starship", "shakey", "astro", "robosapien", "stanley", "keepon", "elektro", "icub", "pr2", "turtlebot", "husky"];
+    var REAL = ["spot", "roomba", "curiosity", "asimo", "pepper", "nao", "romeo", "sphero", "viam", "ardrone", "bebop", "cupcake", "atlas", "digit", "ingenuity", "sojourner", "lunokhod", "aibo", "kiva", "starship", "shakey", "astro", "robosapien", "stanley", "keepon", "elektro", "icub", "pr2", "turtlebot", "husky"];
     var sections = [
       {{ title: "Wayve fleet", test: function (r) {{ return r.pin === "wayve"; }} }},
       {{ title: "Real robots", test: function (r) {{ return REAL.indexOf(r.id) >= 0; }} }},

@@ -682,25 +682,6 @@
       ],
     },
     {
-      id: "cozmo", name: "Cozmo", speed: 22, step: 0.18, act: "jump",
-      quotes: ["*happy beeps*", "Cozmo!", "*stacks a cube*"],
-      body: [
-        "..kkkkkkk..",
-        "..kkkkkkk..",
-        "..kcckcck..",
-        "..kcckcck..",
-        "..kkkkkkk..",
-        ".kwwwwwwwk.",
-        ".kwwwwwwwkk",
-        ".kwwwwwwwkr",
-        ".kkkkkkkkkr",
-      ],
-      legs: [
-        ["kGGGGGGGGk.", "kGgGGgGGgk.", ".kkkkkkkk.."],
-        ["kGGGGGGGGk.", "kGGgGGgGGk.", ".kkkkkkkk.."],
-      ],
-    },
-    {
       id: "pepper", name: "Pepper", speed: 16, step: 0.5, bob: true, act: "flash",
       quotes: ["Hello! I'm Pepper.", "*shows an ad on my tablet*", "Shall we take a selfie?"],
       body: [

@@ -1357,24 +1357,6 @@
       ],
     },
     {
-      id: "digit", name: "Agility Digit", speed: 20, step: 0.3, act: "shake",
-      palette: { g: "#b5b0a4", c: "#6fd0ff" },
-      quotes: ["Moving totes since 2023.", "*carries boxes around the warehouse*", "Look, no head!"],
-      body: [
-        "..kkkkkkk..",
-        ".kgggggggk.",
-        ".kggcgcggk.",
-        ".kgggggggk.",
-        "kkkgggggkkk",
-        "kgkgggggkgk",
-        "kgk.kgk.kgk",
-      ],
-      legs: [
-        ["..kgk.kgk..", "...kgk.kgk.", "..kgk.kgk..", ".kkk..kkk.."],
-        ["..kgk.kgk..", "..kgk.kgk..", "...kgk.kgk.", "...kkk.kkk."],
-      ],
-    },
-    {
       id: "ingenuity", name: "Ingenuity (Mars helicopter)", speed: 30, step: 0.05, bob: true, lift: 30, act: "fly",
       quotes: ["First powered flight on another planet!", "72 flights on Mars. Not bad for a 5-flight demo.", "*whirrs in the thin Martian air*"],
       top: [["kkkkkkkkkkkkkkk", ".......k.......", "....kkkkkkk....", ".......k......."], ["....kkkkkkk....", ".......k.......", "kkkkkkkkkkkkkkk", ".......k......."]],

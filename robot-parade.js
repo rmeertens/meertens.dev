@@ -553,26 +553,6 @@
       ],
     },
     {
-      id: "wayve-ipace", name: "Wayve Jaguar I-PACE", pin: "wayve", speed: 40, step: 0.12, act: "dash",
-      palette: { w: "#2e3538", d: "#1f2426", G: "#5b6f7a", s: "#d9dde0" },
-      quotes: ["London, Zones 1 to 3. Here I come!", "Cameras only, please.", "*learning from every drive*"],
-      body: [
-        "................................",
-        "...................kk...........",
-        ".........kkkkkkkkkkkkkk.........",
-        "......kkksssssssssssssskk.......",
-        "...kkkwwsGGGGGGGsGGGGGGGskk.....",
-        ".kkwwwwwssssssssssssssssssswkk..",
-        ".kwwwwwwwwwsswwwwdwwsswwwwwwwwkk",
-        ".krwwwwwwwwwwwwwwdwwwwwwwwwwwwyk",
-        ".kwwwwwwwwwwwwwwwdwwwwwwwwwwwwwk",
-      ],
-      legs: [
-        [".kwwkkkkkkkwwwwwwdwwwwkkkkkkkwwk", ".kwkkkkkkkkkwwwwwdwwwkkkkkkkkkwk", ".kwkkkxxxkkkwwwwwdwwwkkkxxxkkkwk", ".kwkkxxzxxkksGsGsdwwwkkxxzxxkkwk", ".kkkkxzzzxkkkkkkkkkkkkkxzzzxkkkk", "....kxxzxxk...........kxxzxxk...", ".....kxxxk.............kxxxk....", "......kkk...............kkk....."],
-        [".kwwkkkkkkkwwwwwwdwwwwkkkkkkkwwk", ".kwkkkkkkkkkwwwwwdwwwkkkkkkkkkwk", ".kwkkkxxxkkkwwwwwdwwwkkkxxxkkkwk", ".kwkkxzxzxkksGsGsdwwwkkxzxzxkkwk", ".kkkkxxzxxkkkkkkkkkkkkkxxzxxkkkk", "....kxzxzxk...........kxzxzxk...", ".....kxxxk.............kxxxk....", "......kkk...............kkk....."],
-      ],
-    },
-    {
       id: "wayve-mache", name: "Wayve Mach-E robotaxi", pin: "wayve", speed: 44, step: 0.12, act: "dash",
       palette: { w: "#c7cbd1", d: "#9aa0a8", G: "#27303b" },
       quotes: ["Now picking up Uber riders in London!", "Small sensor box, big brain.", "No HD map needed. I learned London."],
@@ -586,26 +566,6 @@
         ".kwwwwwwwwwsswwwwdwwsswwwwwwwwkk",
         ".krwwwwwwwwwwwwwwdwwwwwwwwwwwwyk",
         ".kwwwwwwwwwwwwwwwdwwwwwwwwwwwwwk",
-      ],
-      legs: [
-        [".kwwkkkkkkkwwwwwwdwwwwkkkkkkkwwk", ".kwkkkkkkkkkwwwwwdwwwkkkkkkkkkwk", ".kwkkkxxxkkkwwwwwdwwwkkkxxxkkkwk", ".kwkkxxzxxkkwwwwwdwwwkkxxzxxkkwk", ".kkkkxzzzxkkkkkkkkkkkkkxzzzxkkkk", "....kxxzxxk...........kxxzxxk...", ".....kxxxk.............kxxxk....", "......kkk...............kkk....."],
-        [".kwwkkkkkkkwwwwwwdwwwwkkkkkkkwwk", ".kwkkkkkkkkkwwwwwdwwwkkkkkkkkkwk", ".kwkkkxxxkkkwwwwwdwwwkkkxxxkkkwk", ".kwkkxzxzxkkwwwwwdwwwkkxzxzxkkwk", ".kkkkxxzxxkkkkkkkkkkkkkxxzxxkkkk", "....kxzxzxk...........kxzxzxk...", ".....kxxxk.............kxxxk....", "......kkk...............kkk....."],
-      ],
-    },
-    {
-      id: "wayve-mache-blue", name: "Wayve Ford Mustang Mach-E", pin: "wayve", speed: 42, step: 0.12, act: "dash",
-      palette: { w: "#1f5fd1", d: "#17469c", G: "#1d2530" },
-      quotes: ["Five cameras and a radar. That's all I need.", "*drives through an unfamiliar city*", "Embodied AI, coming through!"],
-      body: [
-        "................kk....kk........",
-        "................kkkkkkkk........",
-        ".........kkkkkkkkkkkkkk.........",
-        "......kkkGGGGGGGkGGGGGGkk.......",
-        "...kkkwwkGGGGGGGkGGGGGGGGkk.....",
-        ".kkwwwwwwwwwwwwwwdwwwwwwwwwwkk..",
-        ".kwwwwwwwwwsswwwwdwwsswwwwwwwwkk",
-        ".krwwwwwwwwwwwwwwdwwwwwwwwwwwwyk",
-        ".kwwwwwwwwwwwwwwwdwwwwwwwfffwwwk",
       ],
       legs: [
         [".kwwkkkkkkkwwwwwwdwwwwkkkkkkkwwk", ".kwkkkkkkkkkwwwwwdwwwkkkkkkkkkwk", ".kwkkkxxxkkkwwwwwdwwwkkkxxxkkkwk", ".kwkkxxzxxkkwwwwwdwwwkkxxzxxkkwk", ".kkkkxzzzxkkkkkkkkkkkkkxzzzxkkkk", "....kxxzxxk...........kxxzxxk...", ".....kxxxk.............kxxxk....", "......kkk...............kkk....."],
@@ -630,27 +590,6 @@
       legs: [
         [".kwwkkkkkkkwwwwwwdwwwwkkkkkkkwwk", ".kwkkkkkkkkkwwwwwdwwwkkkkkkkkkwk", ".kwkkkxxxkkkGkGwGwkGkkkkxxxkkkwk", ".kkkkxxzxxkkkkkkkkkkkkkxxzxxkkkk", ".kkkkxzzzxkkkkkkkkkkkkkxzzzxkkkk", "....kxxzxxk...........kxxzxxk...", ".....kxxxk.............kxxxk....", "......kkk...............kkk....."],
         [".kwwkkkkkkkwwwwwwdwwwwkkkkkkkwwk", ".kwkkkkkkkkkwwwwwdwwwkkkkkkkkkwk", ".kwkkkxxxkkkGkGwGwkGkkkkxxxkkkwk", ".kkkkxzxzxkkkkkkkkkkkkkxzxzxkkkk", ".kkkkxxzxxkkkkkkkkkkkkkxxzxxkkkk", "....kxzxzxk...........kxzxzxk...", ".....kxxxk.............kxxxk....", "......kkk...............kkk....."],
-      ],
-    },
-    {
-      id: "wayve-van", name: "Wayve data-collection van", pin: "wayve", speed: 22, step: 0.16, act: "flash",
-      palette: { w: "#f3f3f1", d: "#cfd2d6", G: "#262d36", q: "#3aa5a0" },
-      quotes: ["Collecting petabytes of driving data!", "*uploads another day of London*", "Big van, bigger dataset."],
-      body: [
-        ".kkkkkkkkkkkkkkkkkkkkkkkkk........",
-        "kwwwwwwwwwwwNNwwwwwwwwwwwwk.......",
-        "kwwwwwwwwwwNNwqwwwwwwwwwwwwk......",
-        "kwwwwwwwwwwNNwqqwwwwwwwwkGGGGk....",
-        "kwwwwwwwwwNNwqqwwwwwwwwwkGGGGGk...",
-        "kwwwwwwwwwNNwqqwwwwwwwwwkkkkkkkk..",
-        "kwwwwwwwwwNNqqwwwwwwwwwwwwwwwwwwk.",
-        "kwwwwwwwwNNqqwwwwwwNNNNNwwwwwwwwwk",
-        "krwwwwwwNNqqwwwwwwwwwwwwwwwwwwwwyk",
-        "kwwwwwwNNqqwwwwwwwwwwwwwwwwwwwwwwk",
-      ],
-      legs: [
-        ["kwwwkkkkkkkwwwwwwwwwwwwwkkkkkkkwwk", "kwwkkkkkkkkkwwwwwwwwwwwkkkkkkkkkwk", "kwwkkkxxxkkkwwwwwwwwwwwkkkxxxkkkwk", "kkkkkxxzxxkkkkkkkkkkkkkkkxxzxxkkkk", "....kxzzzxk.............kxzzzxk...", "....kxxzxxk.............kxxzxxk...", ".....kxxxk...............kxxxk....", "......kkk.................kkk....."],
-        ["kwwwkkkkkkkwwwwwwwwwwwwwkkkkkkkwwk", "kwwkkkkkkkkkwwwwwwwwwwwkkkkkkkkkwk", "kwwkkkxxxkkkwwwwwwwwwwwkkkxxxkkkwk", "kkkkkxzxzxkkkkkkkkkkkkkkkxzxzxkkkk", "....kxxzxxk.............kxxzxxk...", "....kxzxzxk.............kxzxzxk...", ".....kxxxk...............kxxxk....", "......kkk.................kkk....."],
       ],
     },
     {

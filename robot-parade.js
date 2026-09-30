@@ -1700,7 +1700,7 @@
 
     function later(fn, ms) { timers.push(setTimeout(fn, ms)); }
 
-    var count = opts.count || Math.max(4, Math.min(ROBOTS.length, Math.floor(W / 95)));
+    var count = opts.count || Math.max(4, Math.min(ROBOTS.length, Math.floor(W / 136)));
     // Every lineup includes one random member of each `pin` group.
     var groups = {};
     ROBOTS.forEach(function (r) { if (r.pin) (groups[r.pin] = groups[r.pin] || []).push(r); });

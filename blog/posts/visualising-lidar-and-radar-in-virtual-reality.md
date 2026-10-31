@@ -2,11 +2,11 @@
 title: "Visualising lidar and radar in virtual reality"
 date: "2020-09-27"
 slug: "visualising-lidar-and-radar-in-virtual-reality"
-excerpt: "Last week someone pointed out the Astyx dataset to me. So far I only visualised lidar data in my virtual reality tool immersivepoints.com(http://immersivepoints.com), so I was interested in seeing..."
+excerpt: "Last week someone pointed out the Astyx dataset to me. So far I only visualised lidar data in my virtual reality tool immersivepoints.meertens.dev(https://immersivepoints.meertens.dev/), so I was interested in seeing..."
 original_url: "https://www.pinchofintelligence.com/visualising-lidar-and-radar-in-virtual-reality/"
 ---
 
-Last week someone pointed out the Astyx dataset to me. So far I only visualised lidar data in my virtual reality tool [immersivepoints.com](http://immersivepoints.com), so I was interested in seeing how radar could be integrated as well.
+Last week someone pointed out the Astyx dataset to me. So far I only visualised lidar data in my virtual reality tool [immersivepoints.meertens.dev](https://immersivepoints.meertens.dev/), so I was interested in seeing how radar could be integrated as well.
 
 The Astyx dataset is provided by [what is now Cruise](https://www.theinformation.com/articles/gms-cruise-quietly-acquired-german-radar-manufacturer). The dataset can be [downloaded for free](https://www.astyx.com/development/astyx-hires2019-dataset.html), and contains data from three sensors: 
 
@@ -20,29 +20,29 @@ It also contains bounding box annotations of all objects that can be observed by
 
 [![](images/2020/09/Screenshot-2020-09-27-at-17.42.43-1024x326.png)](images/2020/09/Screenshot-2020-09-27-at-17.42.43.png)
 
-Loading the lidar data and visualising it in virtual reality is really easy with an Oculus Quest and [immersivepoints.com](http://immersivepoints.com/). Visualising two sources of data required a bit more experimentation. The challenge of any data visualisation is finding a representation which shows the properties you care about. In the case of lidar data this is most likely the intensity of each point, as this says something about how reflective a surface is (and thus allows you to see license plates on cars and lane markings on the road). For radar you could visualise the radial velocity (in the direction of the radar sensor), or the magnitude with which the radar waves return. For self-driving cars it’s most interesting to know the (radial) velocity of road-users around you, so I chose to visualise that. 
+Loading the lidar data and visualising it in virtual reality is really easy with an Oculus Quest and [immersivepoints.meertens.dev](https://immersivepoints.meertens.dev/). Visualising two sources of data required a bit more experimentation. The challenge of any data visualisation is finding a representation which shows the properties you care about. In the case of lidar data this is most likely the intensity of each point, as this says something about how reflective a surface is (and thus allows you to see license plates on cars and lane markings on the road). For radar you could visualise the radial velocity (in the direction of the radar sensor), or the magnitude with which the radar waves return. For self-driving cars it’s most interesting to know the (radial) velocity of road-users around you, so I chose to visualise that. 
 
 Now that we know what we want to visualise the last challenge is finding a good representation for the two things. In the end I chose to make lidar white (non-reflective) to black (very reflective) and make radar between blue (going away from us), through red (low velocity) to green (coming towards us). You can now know the direction cars on the road are going by simply looking at the colour of the radar points, something you couldn’t do with only the lidar points. 
 
 If you want to see the results of the visualisation, take a look at the following links: 
 
-[Scene 1](http://immersivepoints.com/oculus.html?jsonb64=eyJwb2ludHMiOiBbeyJzb3VyY2UiOiAidXJsIiwgInVybCI6ICJodHRwczovL3BvaW50Y2xvdWR2aXN1YWxpemF0aW9uLnMzLmV1LWNlbnRyYWwtMS5hbWF6b25hd3MuY29tL2FzdHl4L2FzdHl4MDAwMDAwLnR4dC54eXpyZ2IiLCAidHlwZSI6ICJYWVpSR0IifV0sICJiYm94ZXMiOiBbeyJzb3VyY2UiOiAidXJsIiwgInVybCI6ICJodHRwczovL3BvaW50Y2xvdWR2aXN1YWxpemF0aW9uLnMzLmV1LWNlbnRyYWwtMS5hbWF6b25hd3MuY29tL2FzdHl4L2FzdHl4YmJveDAwMDAwMC50eHQuYmJveCJ9XX0=)
+[Scene 1](https://immersivepoints.meertens.dev/oculus.html?jsonb64=eyJwb2ludHMiOiBbeyJzb3VyY2UiOiAidXJsIiwgInVybCI6ICJodHRwczovL3BvaW50Y2xvdWR2aXN1YWxpemF0aW9uLnMzLmV1LWNlbnRyYWwtMS5hbWF6b25hd3MuY29tL2FzdHl4L2FzdHl4MDAwMDAwLnR4dC54eXpyZ2IiLCAidHlwZSI6ICJYWVpSR0IifV0sICJiYm94ZXMiOiBbeyJzb3VyY2UiOiAidXJsIiwgInVybCI6ICJodHRwczovL3BvaW50Y2xvdWR2aXN1YWxpemF0aW9uLnMzLmV1LWNlbnRyYWwtMS5hbWF6b25hd3MuY29tL2FzdHl4L2FzdHl4YmJveDAwMDAwMC50eHQuYmJveCJ9XX0=)
 
 [![](images/2020/09/Screenshot-2020-09-27-at-17.46.01-300x156.png)](images/2020/09/Screenshot-2020-09-27-at-17.46.01.png)
 
-[Scene 2](http://immersivepoints.com/oculus.html?jsonb64=eyJwb2ludHMiOiBbeyJzb3VyY2UiOiAidXJsIiwgInVybCI6ICJodHRwczovL3BvaW50Y2xvdWR2aXN1YWxpemF0aW9uLnMzLmV1LWNlbnRyYWwtMS5hbWF6b25hd3MuY29tL2FzdHl4L2FzdHl4MDAwMDAxLnR4dC54eXpyZ2IiLCAidHlwZSI6ICJYWVpSR0IifV0sICJiYm94ZXMiOiBbeyJzb3VyY2UiOiAidXJsIiwgInVybCI6ICJodHRwczovL3BvaW50Y2xvdWR2aXN1YWxpemF0aW9uLnMzLmV1LWNlbnRyYWwtMS5hbWF6b25hd3MuY29tL2FzdHl4L2FzdHl4YmJveDAwMDAwMS50eHQuYmJveCJ9XX0=)
+[Scene 2](https://immersivepoints.meertens.dev/oculus.html?jsonb64=eyJwb2ludHMiOiBbeyJzb3VyY2UiOiAidXJsIiwgInVybCI6ICJodHRwczovL3BvaW50Y2xvdWR2aXN1YWxpemF0aW9uLnMzLmV1LWNlbnRyYWwtMS5hbWF6b25hd3MuY29tL2FzdHl4L2FzdHl4MDAwMDAxLnR4dC54eXpyZ2IiLCAidHlwZSI6ICJYWVpSR0IifV0sICJiYm94ZXMiOiBbeyJzb3VyY2UiOiAidXJsIiwgInVybCI6ICJodHRwczovL3BvaW50Y2xvdWR2aXN1YWxpemF0aW9uLnMzLmV1LWNlbnRyYWwtMS5hbWF6b25hd3MuY29tL2FzdHl4L2FzdHl4YmJveDAwMDAwMS50eHQuYmJveCJ9XX0=)
 
 [![](images/2020/09/Screenshot-2020-09-27-at-17.46.42-300x152.png)](images/2020/09/Screenshot-2020-09-27-at-17.46.42.png)
 
-[Scene 3](http://immersivepoints.com/oculus.html?jsonb64=eyJwb2ludHMiOiBbeyJzb3VyY2UiOiAidXJsIiwgInVybCI6ICJodHRwczovL3BvaW50Y2xvdWR2aXN1YWxpemF0aW9uLnMzLmV1LWNlbnRyYWwtMS5hbWF6b25hd3MuY29tL2FzdHl4L2FzdHl4MDAwMDAyLnR4dC54eXpyZ2IiLCAidHlwZSI6ICJYWVpSR0IifV0sICJiYm94ZXMiOiBbeyJzb3VyY2UiOiAidXJsIiwgInVybCI6ICJodHRwczovL3BvaW50Y2xvdWR2aXN1YWxpemF0aW9uLnMzLmV1LWNlbnRyYWwtMS5hbWF6b25hd3MuY29tL2FzdHl4L2FzdHl4YmJveDAwMDAwMi50eHQuYmJveCJ9XX0=)
+[Scene 3](https://immersivepoints.meertens.dev/oculus.html?jsonb64=eyJwb2ludHMiOiBbeyJzb3VyY2UiOiAidXJsIiwgInVybCI6ICJodHRwczovL3BvaW50Y2xvdWR2aXN1YWxpemF0aW9uLnMzLmV1LWNlbnRyYWwtMS5hbWF6b25hd3MuY29tL2FzdHl4L2FzdHl4MDAwMDAyLnR4dC54eXpyZ2IiLCAidHlwZSI6ICJYWVpSR0IifV0sICJiYm94ZXMiOiBbeyJzb3VyY2UiOiAidXJsIiwgInVybCI6ICJodHRwczovL3BvaW50Y2xvdWR2aXN1YWxpemF0aW9uLnMzLmV1LWNlbnRyYWwtMS5hbWF6b25hd3MuY29tL2FzdHl4L2FzdHl4YmJveDAwMDAwMi50eHQuYmJveCJ9XX0=)
 
 [![](images/2020/09/Screenshot-2020-09-27-at-17.52.20-296x300.png)](images/2020/09/Screenshot-2020-09-27-at-17.52.20.png)
 
-[Scene 4](http://immersivepoints.com/oculus.html?jsonb64=eyJwb2ludHMiOiBbeyJzb3VyY2UiOiAidXJsIiwgInVybCI6ICJodHRwczovL3BvaW50Y2xvdWR2aXN1YWxpemF0aW9uLnMzLmV1LWNlbnRyYWwtMS5hbWF6b25hd3MuY29tL2FzdHl4L2FzdHl4MDAwMDAzLnR4dC54eXpyZ2IiLCAidHlwZSI6ICJYWVpSR0IifV0sICJiYm94ZXMiOiBbeyJzb3VyY2UiOiAidXJsIiwgInVybCI6ICJodHRwczovL3BvaW50Y2xvdWR2aXN1YWxpemF0aW9uLnMzLmV1LWNlbnRyYWwtMS5hbWF6b25hd3MuY29tL2FzdHl4L2FzdHl4YmJveDAwMDAwMy50eHQuYmJveCJ9XX0=)
+[Scene 4](https://immersivepoints.meertens.dev/oculus.html?jsonb64=eyJwb2ludHMiOiBbeyJzb3VyY2UiOiAidXJsIiwgInVybCI6ICJodHRwczovL3BvaW50Y2xvdWR2aXN1YWxpemF0aW9uLnMzLmV1LWNlbnRyYWwtMS5hbWF6b25hd3MuY29tL2FzdHl4L2FzdHl4MDAwMDAzLnR4dC54eXpyZ2IiLCAidHlwZSI6ICJYWVpSR0IifV0sICJiYm94ZXMiOiBbeyJzb3VyY2UiOiAidXJsIiwgInVybCI6ICJodHRwczovL3BvaW50Y2xvdWR2aXN1YWxpemF0aW9uLnMzLmV1LWNlbnRyYWwtMS5hbWF6b25hd3MuY29tL2FzdHl4L2FzdHl4YmJveDAwMDAwMy50eHQuYmJveCJ9XX0=)
 
 [![](images/2020/09/Screenshot-2020-09-27-at-17.53.56-300x193.png)](images/2020/09/Screenshot-2020-09-27-at-17.53.56.png)
 
-[Scene 5](http://immersivepoints.com/oculus.html?jsonb64=eyJwb2ludHMiOiBbeyJzb3VyY2UiOiAidXJsIiwgInVybCI6ICJodHRwczovL3BvaW50Y2xvdWR2aXN1YWxpemF0aW9uLnMzLmV1LWNlbnRyYWwtMS5hbWF6b25hd3MuY29tL2FzdHl4L2FzdHl4MDAwMDA0LnR4dC54eXpyZ2IiLCAidHlwZSI6ICJYWVpSR0IifV0sICJiYm94ZXMiOiBbeyJzb3VyY2UiOiAidXJsIiwgInVybCI6ICJodHRwczovL3BvaW50Y2xvdWR2aXN1YWxpemF0aW9uLnMzLmV1LWNlbnRyYWwtMS5hbWF6b25hd3MuY29tL2FzdHl4L2FzdHl4YmJveDAwMDAwNC50eHQuYmJveCJ9XX0=)
+[Scene 5](https://immersivepoints.meertens.dev/oculus.html?jsonb64=eyJwb2ludHMiOiBbeyJzb3VyY2UiOiAidXJsIiwgInVybCI6ICJodHRwczovL3BvaW50Y2xvdWR2aXN1YWxpemF0aW9uLnMzLmV1LWNlbnRyYWwtMS5hbWF6b25hd3MuY29tL2FzdHl4L2FzdHl4MDAwMDA0LnR4dC54eXpyZ2IiLCAidHlwZSI6ICJYWVpSR0IifV0sICJiYm94ZXMiOiBbeyJzb3VyY2UiOiAidXJsIiwgInVybCI6ICJodHRwczovL3BvaW50Y2xvdWR2aXN1YWxpemF0aW9uLnMzLmV1LWNlbnRyYWwtMS5hbWF6b25hd3MuY29tL2FzdHl4L2FzdHl4YmJveDAwMDAwNC50eHQuYmJveCJ9XX0=)
 
 [![](images/2020/09/Screenshot-2020-09-27-at-17.54.35-300x191.png)](images/2020/09/Screenshot-2020-09-27-at-17.54.35.png)
 

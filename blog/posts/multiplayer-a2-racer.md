@@ -9,9 +9,9 @@ hero: false
 
 In the 90s Davilex Games created a lot of games which dominated my childhood: Red Cat, A2 Racer, London Racer, and for my German friends: Autobahn Raser. Even 30 years after these games came out they still seem to have a dedicated following, and people have fond memories of them.
 
-Three weeks ago someone made a WebAssembly port of some of these old games! That means you can now play them in your browser on any kind of computer. Unfortunately there was always one problem with these games: they were single player!
+Three weeks ago someone made a [WebAssembly port](https://github.com/NostalgiaRealm/A2-Racer-4) of some of these old games! That means you can now play them in your browser on any kind of computer. Unfortunately there was always one problem with these games: they were single player!
 
-I personally had loads of fun playing these games on my own, but I thought it would be more fun if we could play these old games all together. Thus, on Sunday morning, I decided to ask Claude to add a multiplayer mode. I gave it the open source A2 Racer WebAssembly repository someone else made three weeks ago, and no further guidance besides "make this game multiplayer". After we played a different game for an hour the new implementation was ready for testing! I invited my friends to join the server at [http://a2racer.meertens.dev/](http://a2racer.meertens.dev/), and... it just worked!
+I personally had loads of fun playing these games on my own, but I thought it would be more fun if we could play these old games all together. Thus, on Sunday morning, I decided to ask Claude to add a multiplayer mode. I gave it the open source A2 Racer WebAssembly repository someone else made three weeks ago, and no further guidance besides "make this game multiplayer". After we played a different game for an hour the new implementation was ready for testing! I invited my friends to join the server at [http://a2racer.meertens.dev/](http://a2racer.meertens.dev/), and... it just worked! You can find my multiplayer version of the code in [my fork on GitHub](https://github.com/rmeertens/a2racer2-re).
 
 ![Several laptops on a wooden table, each running the multiplayer version of A2 Racer in the browser, with a police car racing over cobblestones on screen](images/2026/11/a2racer-multiplayer-lan-party.jpg)
 

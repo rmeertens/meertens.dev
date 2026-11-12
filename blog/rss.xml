@@ -5,8 +5,15 @@
     <link>https://meertens.dev/blog/</link>
     <description>Writing about AI, side projects, and things I find interesting.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 31 Oct 2026 22:56:48 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Nov 2026 13:18:40 +0000</lastBuildDate>
     <atom:link href="https://meertens.dev/blog/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Multiplayer A2 Racer</title>
+      <link>https://meertens.dev/blog/multiplayer-a2-racer/</link>
+      <guid isPermaLink="true">https://meertens.dev/blog/multiplayer-a2-racer/</guid>
+      <description>I asked Claude to turn a WebAssembly port of the 90s Davilex game A2 Racer into a multiplayer game, and an hour later my friends and I were racing each other in the browser.</description>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Privacycard: a collection of random loyalty cards</title>
       <link>https://meertens.dev/blog/privacycard/</link>
